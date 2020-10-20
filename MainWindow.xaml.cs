@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Repair_Service.Controllers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,5 +25,19 @@ namespace Repair_Service
         {
             InitializeComponent();
         }
+
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            MainController.LoadNHibernateCfg();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MainController.AddNewClient();
+        }
+
+
     }
 }
