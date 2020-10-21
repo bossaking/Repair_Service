@@ -30,7 +30,7 @@ namespace Repair_Service
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
-            MainController.LoadNHibernateCfg();
+            //MainController.LoadNHibernateCfg();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

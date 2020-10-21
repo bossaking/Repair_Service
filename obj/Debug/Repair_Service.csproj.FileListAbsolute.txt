@@ -99,3 +99,4 @@ C:\Users\ddgam\source\repos\Temp\Repair_Service\obj\Debug\Repair_Service.csproj.
 C:\Users\ddgam\source\repos\Temp\Repair_Service\obj\Debug\Repair_Service.exe
 C:\Users\ddgam\source\repos\Temp\Repair_Service\obj\Debug\Repair_Service.pdb
 C:\Users\ddgam\source\repos\Temp\Repair_Service\bin\Debug\hibernate.cfg.xml
+C:\Users\ddgam\source\repos\Repair_Service\bin\Debug\hibernate.cfg.xml

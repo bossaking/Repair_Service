@@ -13,13 +13,13 @@ namespace Repair_Service.Controllers
     public class MainController
     {
 
-        public static void LoadNHibernateCfg()
-        {
-            Configuration configuration = new Configuration();
-            configuration.Configure();
-            configuration.AddAssembly(typeof(Client).Assembly);
-            new SchemaExport(configuration).Execute(true, true, false);
-        }
+        //public static void LoadNHibernateCfg()
+        //{
+        //    Configuration configuration = new Configuration();
+        //    configuration.Configure();
+        //    configuration.AddAssembly(typeof(Client).Assembly);
+        //    new SchemaExport(configuration).Execute(true, true, false);
+        //}
 
         public static void AddNewClient()
         {
