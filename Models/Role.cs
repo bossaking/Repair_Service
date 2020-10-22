@@ -10,5 +10,6 @@ namespace Repair_Service.Models
     {
         public virtual int Id_Role { get; set; }
         public virtual string Title { get; set; }
+        public virtual IList<Employee> Employees { get; set; }
     }
 }

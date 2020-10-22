@@ -11,5 +11,6 @@ namespace Repair_Service.Models
         public virtual int Id_Salon { get; set; }
         public virtual string Title { get; set; }
         public virtual string Location { get; set; }
+        public virtual IList<Employee> Employees { get; set; }
     }
 }

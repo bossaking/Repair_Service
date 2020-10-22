@@ -43,6 +43,9 @@
     <Reference Include="BouncyCastle.Crypto, Version=1.8.3.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
       <HintPath>packages\BouncyCastle.1.8.3.1\lib\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
+    <Reference Include="FluentNHibernate, Version=3.0.0.0, Culture=neutral, PublicKeyToken=8aa435e3cb308880, processorArchitecture=MSIL">
+      <HintPath>packages\FluentNHibernate.3.0.1\lib\net461\FluentNHibernate.dll</HintPath>
+    </Reference>
     <Reference Include="Google.Protobuf, Version=3.11.4.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>packages\Google.Protobuf.3.11.4\lib\net45\Google.Protobuf.dll</HintPath>
     </Reference>
@@ -120,7 +123,23 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controllers\MainController.cs" />
-    <Compile Include="Repositories\ClientRepository.cs" />
+    <Compile Include="HibernateMapping\BrandMap.cs" />
+    <Compile Include="HibernateMapping\ClientMap.cs" />
+    <Compile Include="HibernateMapping\DeviceMap.cs" />
+    <Compile Include="HibernateMapping\EmployeeMap.cs" />
+    <Compile Include="HibernateMapping\OrderMap.cs" />
+    <Compile Include="HibernateMapping\ProblemMap.cs" />
+    <Compile Include="HibernateMapping\RoleMap.cs" />
+    <Compile Include="HibernateMapping\SalonMap.cs" />
+    <Compile Include="HibernateMapping\TypeMap.cs" />
+    <Compile Include="Models\Brand.cs" />
+    <Compile Include="Models\Device.cs" />
+    <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\Problem.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\Salon.cs" />
+    <Compile Include="Models\Device_Type.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -163,16 +182,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="hibernate.cfg.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="HibernateMapping\Mapping.hbm.xml" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -10,5 +10,6 @@ namespace Repair_Service.Models
     {
         public virtual int Id_Brand { get; set; }
         public virtual string Title { get; set; }
+        public virtual IList<Device> Devices { get; set; }
     }
 }

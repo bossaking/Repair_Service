@@ -16,9 +16,6 @@ using System.Windows.Shapes;
 
 namespace Repair_Service
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -30,14 +27,38 @@ namespace Repair_Service
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
-            //MainController.LoadNHibernateCfg();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            MainController.AddNewBrand();
             MainController.AddNewClient();
+            MainController.AddNewProblem();
+            MainController.AddNewRole();
+            MainController.AddNewSalon();
+            MainController.AddNewType();
+            MainController.AddNewDevice();
+            MainController.AddNewEmployee();
+            MainController.AddNewOrder();
+
+
         }
 
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            MainController.GetAllOrders();
+        }
 
+        private void EditButtonClick(object sender, RoutedEventArgs e)
+        {
+            MainController.SetOrder();
+        }
+
+        private void DeleteButtonClick(object sender, RoutedEventArgs e)
+        {
+            //MainController.DeleteOrder();
+            //MainController.DeleteProblem();
+            MainController.DeleteEmployee();
+        }
     }
 }

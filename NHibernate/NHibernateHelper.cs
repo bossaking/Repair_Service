@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FluentNHibernate.Cfg;
+using FluentNHibernate.Cfg.Db;
 using NHibernate;
 using NHibernate.Cfg;
+using NHibernate.Tool.hbm2ddl;
+using Repair_Service.Controllers;
 using Repair_Service.Models;
 
 namespace Repair_Service.NHibernate
@@ -20,13 +24,18 @@ namespace Repair_Service.NHibernate
             {
                 if (_sessionFactory == null)
                 {
-                    var configuration = new Configuration();
-                    configuration.Configure();
-                    configuration.AddAssembly(typeof(Client).Assembly);
-                    _sessionFactory = configuration.BuildSessionFactory();
+                    InitializeSessionFactory();
                 }
                 return _sessionFactory;
             }
+        }
+
+        private static void InitializeSessionFactory()
+        {
+            _sessionFactory = Fluently.Configure().Database(MySQLConfiguration.Standard.ConnectionString(
+                c => c.FromConnectionStringWithKey("DefaultConnection")).ShowSql())
+                    .Mappings(m => m.FluentMappings.AddFromAssemblyOf<MainController>())
+                        .BuildSessionFactory();
         }
 
         public static ISession OpenSession()
