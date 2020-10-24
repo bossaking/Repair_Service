@@ -13,13 +13,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Repair_Service.DAL;
 
 namespace Repair_Service
 {
     public partial class MainWindow : Window
     {
+
+        Database database;
         public MainWindow()
         {
+            database = new Database();
             InitializeComponent();
         }
 
@@ -31,35 +35,36 @@ namespace Repair_Service
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //MainController.AddNewBrand();
-            //MainController.AddNewClient();
-            //MainController.AddNewProblem();
-            //MainController.AddNewRole();
-            //MainController.AddNewSalon();
-            //MainController.AddNewType();
-            //MainController.AddNewDevice();
-            //MainController.AddNewEmployee();
-            MainController.AddNewOrder();
+            database.AddNewBrand();
+            database.AddNewClient();
+            database.AddNewProblem();
+            database.AddNewRole();
+            database.AddNewSalon();
+            database.AddNewType();
+            database.AddNewDevice();
+            database.AddNewEmployee();
+            database.AddNewOrder();
 
 
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            //MainController.GetAllOrders();
-            MainController.GetAllBrands();
+            database.GetAllOrders();
+            database.GetAllBrands();
+            database.GetAllProblems();
         }
 
         private void EditButtonClick(object sender, RoutedEventArgs e)
         {
-            MainController.SetOrder();
+            database.SetOrder();
         }
 
         private void DeleteButtonClick(object sender, RoutedEventArgs e)
         {
-            MainController.DeleteOrder();
-            //MainController.DeleteProblem();
-            //MainController.DeleteEmployee();
+            database.DeleteOrder();
+            database.DeleteProblem();
+            database.DeleteEmployee();
         }
     }
 }
