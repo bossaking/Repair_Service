@@ -15,14 +15,6 @@ namespace Repair_Service.Controllers
     public class MainController
     {
 
-        //public static void LoadNHibernateCfg()
-        //{
-        //    Configuration configuration = new Configuration();
-        //    configuration.Configure();
-        //    configuration.AddAssembly(typeof(Client).Assembly);
-        //    new SchemaExport(configuration).Execute(true, true, false);
-        //}
-
         #region CRUD's
 
         #region CREATE
@@ -36,7 +28,7 @@ namespace Repair_Service.Controllers
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    Client client = new Client { Name = "Dymitr", Surname = "Dragalow", Phone_Number = "+48669706372" };
+                    Client client = new Client { Name = "Mateusz", Surname = "Czajkowski", Phone_Number = "+48111222333" };
                     session.Save(client);
                     transaction.Commit();
                     MessageBox.Show("New client added");
@@ -180,21 +172,22 @@ namespace Repair_Service.Controllers
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    Client client = session.QueryOver<Client>().Where(c => c.Id_Client == 1).SingleOrDefault();
-                    Device device = session.QueryOver<Device>().Where(d => d.Id_Device == 1).SingleOrDefault();
-                    Employee employee = session.QueryOver<Employee>().Where(e => e.Id_Employee == 1).SingleOrDefault();
-                    Problem problem = session.Get<Problem>(1);
+                    Client client = session.QueryOver<Client>().Where(c => c.Name == "Mateusz").SingleOrDefault();
+                    Device device = session.Get<Device>(1);
+                    Employee employee = session.Get<Employee>(1);
+                    IList<Problem> problems = session.QueryOver<Problem>().List();
+
                     Order order = new Order
                     {
                         Client = client,
-                        Description = "Spadł",
-                        Price = 130,
+                        Description = null,
+                        Price = 150,
                         Device = device,
                         Employee = employee,
                         Order_Date = DateTime.Now,
                         Reception_Date = null,
                         Order_Status = "W trakcie naprawy",
-                        Problems = new List<Problem>() { problem }
+                        Problems = problems
                     };
 
                     session.Save(order);
@@ -218,7 +211,19 @@ namespace Repair_Service.Controllers
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    Order order = session.QueryOver<Order>().Where(o => o.Id_Order == 1).SingleOrDefault();
+                    IList<Order> orders = session.QueryOver<Order>().List();
+                    transaction.Commit();
+                }
+            }
+        }
+
+        public static void GetAllBrands()
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    Brand brand = session.Get<Brand>(1);
                     transaction.Commit();
                 }
             }
@@ -237,7 +242,7 @@ namespace Repair_Service.Controllers
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    Order order = session.QueryOver<Order>().Where(o => o.Id_Order == 1).SingleOrDefault();
+                    Order order = session.QueryOver<Order>().Where(o => o.Id_Order == 3).SingleOrDefault();
                     Client client = session.Get<Client>(1);
                     order.Description = "Nowy opis";
                     order.Client = client;
@@ -262,7 +267,7 @@ namespace Repair_Service.Controllers
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    Order order = session.QueryOver<Order>().Where(o => o.Id_Order == 1).SingleOrDefault();
+                    Order order = session.QueryOver<Order>().Where(o => o.Id_Order == 3).SingleOrDefault();
                     session.Delete(order);
                     transaction.Commit();
                     MessageBox.Show("Order deleted!");

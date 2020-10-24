@@ -31,14 +31,14 @@ namespace Repair_Service
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MainController.AddNewBrand();
-            MainController.AddNewClient();
-            MainController.AddNewProblem();
-            MainController.AddNewRole();
-            MainController.AddNewSalon();
-            MainController.AddNewType();
-            MainController.AddNewDevice();
-            MainController.AddNewEmployee();
+            //MainController.AddNewBrand();
+            //MainController.AddNewClient();
+            //MainController.AddNewProblem();
+            //MainController.AddNewRole();
+            //MainController.AddNewSalon();
+            //MainController.AddNewType();
+            //MainController.AddNewDevice();
+            //MainController.AddNewEmployee();
             MainController.AddNewOrder();
 
 
@@ -46,7 +46,8 @@ namespace Repair_Service
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            MainController.GetAllOrders();
+            //MainController.GetAllOrders();
+            MainController.GetAllBrands();
         }
 
         private void EditButtonClick(object sender, RoutedEventArgs e)
@@ -56,9 +57,9 @@ namespace Repair_Service
 
         private void DeleteButtonClick(object sender, RoutedEventArgs e)
         {
-            //MainController.DeleteOrder();
+            MainController.DeleteOrder();
             //MainController.DeleteProblem();
-            MainController.DeleteEmployee();
+            //MainController.DeleteEmployee();
         }
     }
 }
