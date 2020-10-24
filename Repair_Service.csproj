@@ -122,7 +122,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Controllers\MainController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAL\Database.cs" />
     <Compile Include="HibernateMapping\BrandMap.cs" />
     <Compile Include="HibernateMapping\ClientMap.cs" />

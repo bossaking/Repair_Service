@@ -2,6 +2,7 @@
 using FluentNHibernate.Cfg.Db;
 using NHibernate;
 using Repair_Service.Controllers;
+using Repair_Service.DAL;
 
 namespace Repair_Service.NHibernate
 {
@@ -26,7 +27,7 @@ namespace Repair_Service.NHibernate
         {
             _sessionFactory = Fluently.Configure().Database(MySQLConfiguration.Standard.ConnectionString(
                 c => c.FromConnectionStringWithKey("DefaultConnection")).ShowSql())
-                    .Mappings(m => m.FluentMappings.AddFromAssemblyOf<MainController>())
+                    .Mappings(m => m.FluentMappings.AddFromAssemblyOf<Database>())
                         .BuildSessionFactory();
         }
 
