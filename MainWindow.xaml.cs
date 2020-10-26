@@ -17,6 +17,8 @@ using Repair_Service.DAL;
 
 namespace Repair_Service
 {
+    //XDDDD
+    //Kolejny kom
     public partial class MainWindow : Window
     {
 
