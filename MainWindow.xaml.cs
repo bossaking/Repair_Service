@@ -50,8 +50,8 @@ namespace Repair_Service
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            database.GetAllOrders();
-            database.GetAllBrands();
+            //database.GetAllOrders();
+            //database.GetAllBrands();
             database.GetAllProblems();
         }
 
