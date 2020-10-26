@@ -19,6 +19,7 @@ namespace Repair_Service
 {
     //XDDDD
     //Kolejny kom
+    //ASDLKAHSFLKAHSFKHA:LSKHF
     public partial class MainWindow : Window
     {
 
