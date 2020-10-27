@@ -1,4 +1,5 @@
-﻿using Repair_Service.Models;
+﻿using NHibernate;
+using Repair_Service.Models;
 using Repair_Service.NHibernate;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,20 @@ namespace Repair_Service.DAL
 {
     public class Database
     {
+
+        public void CheckConnection()
+        {
+            try
+            {
+                ISession session = NHibernateHelper.OpenSession();
+                MessageBox.Show($"Version: {session.Connection.DataSource}", "Connection opened");
+                
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Connection error");
+            }
+        }
 
         #region CRUD's
 

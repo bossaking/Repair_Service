@@ -27,13 +27,10 @@ namespace Repair_Service.NHibernate
 
         private static void InitializeSessionFactory()
         {
-            //_sessionFactory = Fluently.Configure().Database(MySQLConfiguration.Standard.ConnectionString(
-            //    c => c.FromConnectionStringWithKey("DefaultConnection")).ShowSql())
-            //        .Mappings(m => m.FluentMappings.AddFromAssemblyOf<Database>())
-            //            .BuildSessionFactory();
-            _sessionFactory = Fluently.Configure().Database(OracleDataClientConfiguration.Oracle10.ConnectionString(c => c.FromConnectionStringWithKey("OracleConnection"))
-                .Provider<DriverConnectionProvider>().Driver<OracleManagedDataClientDriver>()
-                .ShowSql()).Mappings(m => m.FluentMappings.AddFromAssemblyOf<Database>()).BuildSessionFactory();
+            _sessionFactory = Fluently.Configure().Database(MySQLConfiguration.Standard.ConnectionString(
+                c => c.FromConnectionStringWithKey("DefaultConnection")).ShowSql())
+                    .Mappings(m => m.FluentMappings.AddFromAssemblyOf<Database>())
+                        .BuildSessionFactory();
         }
 
         public static ISession OpenSession()

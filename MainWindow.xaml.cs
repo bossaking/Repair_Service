@@ -17,9 +17,6 @@ using Repair_Service.DAL;
 
 namespace Repair_Service
 {
-    //XDDDD
-    //Kolejny kom
-    //ASDLKAHSFLKAHSFKHA:LSKHF
     public partial class MainWindow : Window
     {
 
@@ -33,7 +30,7 @@ namespace Repair_Service
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
+            database.CheckConnection();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
