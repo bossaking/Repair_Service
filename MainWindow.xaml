@@ -5,8 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Repair_Service"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
-        
+        <TextBox x:Name="brandTextBox" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="50" Width="100" Margin="324,114,369.6,256">LOL</TextBox>
+        <Button Content="Add Button" HorizontalAlignment="Left" Margin="337,200,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Button Content="Get Button" HorizontalAlignment="Left" Margin="337,250,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
+        <Button Content="Edit Button" HorizontalAlignment="Left" Margin="337,300,0,0" VerticalAlignment="Top" Width="75" Click="EditButtonClick"/>
+        <Button Content="Delete Button" HorizontalAlignment="Left" Margin="337,350,0,0" VerticalAlignment="Top" Width="80" Click="DeleteButtonClick"/>
     </Grid>
 </Window>
