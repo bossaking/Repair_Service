@@ -15,13 +15,14 @@ using System.Windows.Shapes;
 
 namespace Repair_Service
 {
-    public partial class NewReportmentPage : Page
+    /// <summary>
+    /// Interaction logic for EditPage.xaml
+    /// </summary>
+    public partial class EditPage : Page
     {
-        public NewReportmentPage()
+        public EditPage()
         {
             InitializeComponent();
-            DateTime thisDay = DateTime.Now;
-            Date.Text = thisDay.ToString("F");
         }
 
         private void ButtonCancel(object sender, RoutedEventArgs e)
