@@ -397,69 +397,37 @@ namespace Repair_Service.DAL
         /// <summary>
         /// Usuwanie zlecenia
         /// </summary>
-        public void DeleteOrder()
+        public override void DeleteOrder(int id)
         {
             using (var session = NHibernateHelper.OpenSession())
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    Order order = session.QueryOver<Order>().Where(o => o.Id_Order == 3).SingleOrDefault();
+                    Order order = session.QueryOver<Order>().Where(o => o.Id_Order == id).SingleOrDefault();
                     session.Delete(order);
                     transaction.Commit();
-                    MessageBox.Show("Order deleted!");
                 }
             }
         }
-
-        /// <summary>
-        /// Usuwanie problemu
-        /// </summary>
-        public void DeleteProblem()
-        {
-            using (var session = NHibernateHelper.OpenSession())
-            {
-                using (var transaction = session.BeginTransaction())
-                {
-                    Problem problem = session.Get<Problem>(1);
-                    session.Delete(problem);
-                    transaction.Commit();
-                    MessageBox.Show("Problem deleted!");
-                }
-            }
-        }
-
-        /// <summary>
-        /// Usuwanie pracownika
-        /// </summary>
-        public void DeleteEmployee()
-        {
-            using (var session = NHibernateHelper.OpenSession())
-            {
-                using (var transaction = session.BeginTransaction())
-                {
-                    Employee employee = session.Get<Employee>(2);
-                    session.Delete(employee);
-                    transaction.Commit();
-                    MessageBox.Show("Employee deleted!");
-                }
-            }
-        }
-
-
-
-
 
         #endregion
-
         #endregion
 
+
+        /// <summary>
+        /// Metoda, pozwalająca na logowanie za pomocą logina i hasła
+        /// </summary>
+        /// <param name="login">Login użytkownika</param>
+        /// <param name="password">Hasło użytkownika</param>
+        /// <returns>Zwraca TRUE jeżeli udało się zalogować</returns>
         public override bool SingInWithLoginAndPassword(string login, string password)
         {
             bool result = false;
 
-            using (var session = NHibernateHelper.OpenSession()){
-                
-                using(var transaction = session.BeginTransaction())
+            using (var session = NHibernateHelper.OpenSession())
+            {
+
+                using (var transaction = session.BeginTransaction())
                 {
                     Employee employee = session.QueryOver<Employee>().Where(e => e.Login == login).SingleOrDefault();
                     if (employee == null) { result = false; }

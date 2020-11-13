@@ -16,7 +16,7 @@ namespace Repair_Service.Controllers
 
         public MainPageController()
         {
-            database = new MainDatabase();
+            database = ProxyDatabase.GetDatabase();
         }
 
 
@@ -33,7 +33,14 @@ namespace Repair_Service.Controllers
 
             return orders;
         }
+        
 
+        public async Task DeleteOrder(int id)
+        {
+            await Task.Run(() => 
+                database.DeleteOrder(id)
+            );
+        }
 
 
     }

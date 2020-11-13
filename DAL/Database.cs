@@ -11,7 +11,9 @@ namespace Repair_Service.DAL
     public abstract class Database
     {
         public abstract ObservableCollection<Order> GetAllOrders();
+        public abstract void DeleteOrder(int id);
         public abstract bool SingInWithLoginAndPassword(string login, string password);
+        
 
     }
 }

@@ -15,12 +15,12 @@ namespace Repair_Service.Controllers
 
         public LoginPageController()
         {
-            database = new MainDatabase();
+            database = ProxyDatabase.GetDatabase();
             localUserData = new LocalUserData();
         }
 
         /// <summary>
-        /// Metoda, pozwalająca na logowanie za pomocą logina i hasła
+        /// Metoda, pozwalająca na asynchroniczne logowanie za pomocą logina i hasła
         /// </summary>
         /// <param name="login">Login użytkownika</param>
         /// <param name="password">Hasło użytkownika</param>
@@ -34,6 +34,11 @@ namespace Repair_Service.Controllers
             return result;
         }
 
+        /// <summary>
+        /// Metoda, pozwalająca na asynchroniczne zapisanie danych logowania użytkownika do pliku
+        /// </summary>
+        /// <param name="login">Login użytkownika</param>
+        /// <param name="password">Hasło użytkownika</param>
         public async Task SaveUserDataAsync(string login, string password)
         {
             await Task.Run(() =>
@@ -41,6 +46,10 @@ namespace Repair_Service.Controllers
             );
         }
 
+        /// <summary>
+        /// Metoda, pozwalająca na asynchroniczny odczyt danych logowania użytkownika z pliku
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<string>> ReadUserDataAsync()
         {
             List<string> userCredentials = new List<string>();
@@ -52,6 +61,10 @@ namespace Repair_Service.Controllers
             return userCredentials;
         }
 
+        /// <summary>
+        /// Metoda, pozwalająca na asynchroniczne usuwanie danych logowania użytkownika z pliku
+        /// </summary>
+        /// <returns></returns>
         public async Task DeleteuserDataAsync()
         {
             await Task.Run(() => 

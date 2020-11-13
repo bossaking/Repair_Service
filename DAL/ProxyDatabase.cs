@@ -12,15 +12,40 @@ namespace Repair_Service.DAL
     {
 
         private MainDatabase database;
+        private ObservableCollection<Order> orders;
+
+        private static ProxyDatabase instance;
+
+        private ProxyDatabase()
+        {
+        }
+
+        public static ProxyDatabase GetDatabase()
+        {
+            if (instance == null) instance = new ProxyDatabase();
+            return instance;
+        }
+
+        public override void DeleteOrder(int id)
+        {
+            System.Windows.Application.Current.Dispatcher.Invoke(() => orders.Remove(orders.Where(o => o.Id_Order == id).FirstOrDefault()));
+            database.DeleteOrder(id);
+        }
 
         public override ObservableCollection<Order> GetAllOrders()
         {
-            throw new NotImplementedException();
+            if(orders == null)
+            {
+                orders = database == null ? (database = new MainDatabase()).GetAllOrders() : database.GetAllOrders();
+            }
+
+            return orders;
         }
 
         public override bool SingInWithLoginAndPassword(string login, string password)
         {
-            throw new NotImplementedException();
+            if(database == null) database = new MainDatabase();
+            return database.SingInWithLoginAndPassword(login, password);
         }
     }
 }
