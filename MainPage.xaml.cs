@@ -60,8 +60,8 @@ namespace Repair_Service
 
         private void ButtonEditClick(object sender, RoutedEventArgs e)
         {
-            EditPage editPage = new EditPage();
-            this.NavigationService.Navigate(editPage);
+            //EditPage editPage = new EditPage();
+            //this.NavigationService.Navigate(editPage);
         }
 
         private void ButtonDeleteClick(object sender, RoutedEventArgs e)
