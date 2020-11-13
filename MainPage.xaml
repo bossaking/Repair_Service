@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Repair_Service"
       mc:Ignorable="d" 
-      d:DesignHeight="700" d:DesignWidth="900" Title="MainPage">
+      d:DesignHeight="700" d:DesignWidth="900" Title="MainPage" Loaded="Page_Loaded">
 
     <Grid ShowGridLines="False" Background="White">
         <Grid.RowDefinitions>
@@ -15,7 +15,24 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Label Content="Placeholder" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40"/>
-        <DataGrid Grid.Row="1" Margin="5,5,5,5" Name="DataGrid" FontSize="16" Width="auto" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center" CanUserResizeColumns="False" CanUserResizeRows="False" ColumnWidth="auto" BorderBrush="Gray"/>
+        <DataGrid AutoGenerateColumns="False" Grid.Row="1" Margin="5,5,5,5" Name="DataGrid" FontSize="16" Width="auto" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center" CanUserResizeColumns="False" CanUserResizeRows="False" ColumnWidth="auto" BorderBrush="Gray">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id_Order}"/>
+                <DataGridTextColumn Header="Client Data">
+                    <DataGridTextColumn.Binding>
+                        <MultiBinding StringFormat="{}{0} {1}">
+                            <Binding Path="Client.Name"/>
+                            <Binding Path="Client.Surname"/>
+                        </MultiBinding>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Client phone number" Binding="{Binding Client.Phone_Number}"/>
+                <DataGridTextColumn Header="Device name" Binding="{Binding Device.Model_Title}"/>
+                <DataGridTextColumn Header="Device type" Binding="{Binding Device.Device_Type.Type_Title}"/>
+                <DataGridTextColumn Header="Order date" Binding="{Binding Order_Date}"/>
+                <DataGridTextColumn Header="Status" Binding="{Binding Order_Status}"/>
+            </DataGrid.Columns>
+        </DataGrid>
         <Button Grid.Row="2" Width="150" Height="40" Margin="5,5,5,5" Content="+Dodaj zamówienie" Click="ButtonAddReportment"/>
         <Button Grid.Row="3" Width="150" Height="40" Margin="5,5,5,5" Content="Wyloguj" Click="ButtonLogout"/>
     </Grid>

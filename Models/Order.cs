@@ -18,5 +18,6 @@ namespace Repair_Service.Models
         public virtual DateTime? Reception_Date { get; set; }
         public virtual string Order_Status { get; set; }
         public virtual IList<Problem> Problems { get; set; }
+
     }
 }

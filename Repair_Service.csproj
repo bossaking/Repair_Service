@@ -125,8 +125,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MainPageController.cs" />
     <Compile Include="DAL\Database.cs" />
+    <Compile Include="DAL\MainDatabase.cs" />
+    <Compile Include="DAL\ProxyDatabase.cs" />
     <Compile Include="HibernateMapping\BrandMap.cs" />
     <Compile Include="HibernateMapping\ClientMap.cs" />
     <Compile Include="HibernateMapping\DeviceMap.cs" />

@@ -17,8 +17,8 @@ namespace Repair_Service.HibernateMapping
 
             Map(x => x.Model_Title);
 
-            References(x => x.Device_Type).Column("Id_Type");
-            References(x => x.Device_Brand).Column("Id_Brand");
+            References(x => x.Device_Type).Column("Id_Type").Not.LazyLoad();
+            References(x => x.Device_Brand).Column("Id_Brand").Not.LazyLoad();
 
             HasMany(x => x.Orders);
 

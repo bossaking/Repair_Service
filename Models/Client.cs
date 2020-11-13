@@ -11,5 +11,6 @@ namespace Repair_Service.Models
         public virtual string Name { get; set; }
         public virtual string Surname { get; set; }
         public virtual IList<Order> Orders { get; set; }
+
     }
 }
