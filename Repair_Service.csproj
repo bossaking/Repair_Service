@@ -157,6 +157,11 @@
     <Compile Include="NewReportmentPage.xaml.cs">
       <DependentUpon>NewReportmentPage.xaml</DependentUpon>
     </Compile>
+
+    <Page Include="EditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LoginPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
