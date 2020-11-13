@@ -51,7 +51,7 @@ namespace Repair_Service {
         
         #line 18 "..\..\LoginPage.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.TextBox TextBoxLogin;
+        internal System.Windows.Controls.Image LogoImage;
         
         #line default
         #line hidden
@@ -59,13 +59,29 @@ namespace Repair_Service {
         
         #line 19 "..\..\LoginPage.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.TextBox TextBoxPassword;
+        internal System.Windows.Controls.TextBox TextBoxLogin;
         
         #line default
         #line hidden
         
         
         #line 20 "..\..\LoginPage.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.TextBox TextBoxPassword;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 21 "..\..\LoginPage.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.CheckBox RememberMeCheckBox;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 22 "..\..\LoginPage.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button ButtonLogin;
         
@@ -104,17 +120,35 @@ namespace Repair_Service {
             {
             case 1:
             this.LoginWindow = ((Repair_Service.LoginPage)(target));
+            
+            #line 8 "..\..\LoginPage.xaml"
+            this.LoginWindow.Loaded += new System.Windows.RoutedEventHandler(this.LoginWindow_Loaded);
+            
+            #line default
+            #line hidden
             return;
             case 2:
-            this.TextBoxLogin = ((System.Windows.Controls.TextBox)(target));
+            this.LogoImage = ((System.Windows.Controls.Image)(target));
             return;
             case 3:
-            this.TextBoxPassword = ((System.Windows.Controls.TextBox)(target));
+            this.TextBoxLogin = ((System.Windows.Controls.TextBox)(target));
             return;
             case 4:
+            this.TextBoxPassword = ((System.Windows.Controls.TextBox)(target));
+            return;
+            case 5:
+            this.RememberMeCheckBox = ((System.Windows.Controls.CheckBox)(target));
+            
+            #line 21 "..\..\LoginPage.xaml"
+            this.RememberMeCheckBox.Unchecked += new System.Windows.RoutedEventHandler(this.RememberMeCheckBox_Unchecked);
+            
+            #line default
+            #line hidden
+            return;
+            case 6:
             this.ButtonLogin = ((System.Windows.Controls.Button)(target));
             
-            #line 20 "..\..\LoginPage.xaml"
+            #line 22 "..\..\LoginPage.xaml"
             this.ButtonLogin.Click += new System.Windows.RoutedEventHandler(this.ButtonLoginClick);
             
             #line default
