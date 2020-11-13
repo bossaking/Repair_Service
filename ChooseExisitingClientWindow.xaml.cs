@@ -10,25 +10,28 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Repair_Service
 {
     /// <summary>
-    /// Interaction logic for EditPage.xaml
+    /// Interaction logic for ChooseExisitingClientWindow.xaml
     /// </summary>
-    public partial class EditPage : Page
+    public partial class ChooseExisitingClientWindow : Window
     {
-        public EditPage()
+        public ChooseExisitingClientWindow()
         {
             InitializeComponent();
         }
 
-        private void ButtonCancel(object sender, RoutedEventArgs e)
+        private void ButtonAddClick(object sender, RoutedEventArgs e)
         {
-            MainPage mainPage = new MainPage();
-            this.NavigationService.Navigate(mainPage);
+            DialogResult = true;
+        }
+
+        private void ButtonBackClick(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }
