@@ -57,5 +57,16 @@ namespace Repair_Service
         {
             DataGrid.ItemsSource = await mainPageController.GetAllOrdersAsync();
         }
+
+        private void ButtonEditClick(object sender, RoutedEventArgs e)
+        {
+            EditPage editPage = new EditPage();
+            this.NavigationService.Navigate(editPage);
+        }
+
+        private void ButtonDeleteClick(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Czy na pewno chcesz usunąć wybrany element?", "Usuń element", MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes) return;
+        }
     }
 }
