@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Repair_Service"
       mc:Ignorable="d" 
-      d:DesignHeight="700" d:DesignWidth="900" Title="LoginPage" Background="White" Name="LoginWindow">
+      d:DesignHeight="700" d:DesignWidth="1200" Title="LoginPage" Background="White" Name="LoginWindow">
 
     <Grid ShowGridLines="False" VerticalAlignment="Center" HorizontalAlignment="Center">
         <Grid.RowDefinitions>
