@@ -14,7 +14,27 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <Label Content="Placeholder" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40"/>
+        <Grid Grid.Row="0" ShowGridLines="True" HorizontalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Content="Clients" Margin="5" Click="ButtonClientsClick"/>
+            <Button Grid.Column="1" Content="Devices" Margin="5" Click="ButtonDevicesClick"/>
+            <Button Grid.Column="2" Content="Types" Margin="5"/>
+            <Button Grid.Column="3" Content="Brands" Margin="5"/>
+            <Button Grid.Column="4" Content="Problems" Margin="5"/>
+            <Button Grid.Column="5" Content="Employees" Margin="5"/>
+            <Button Grid.Column="6" Content="Roles" Margin="5"/>
+            <Button Grid.Column="7" Content="Salons" Margin="5"/>
+        </Grid>
+        <!--<Label Content="Placeholder" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40"/>-->
         <DataGrid AutoGenerateColumns="False" Grid.Row="1" Margin="5,5,5,5" Name="DataGrid" FontSize="16" Width="auto" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center" CanUserResizeColumns="False" CanUserResizeRows="False" ColumnWidth="auto" BorderBrush="Gray">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id_Order}"/>

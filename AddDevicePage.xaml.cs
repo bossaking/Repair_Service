@@ -15,25 +15,20 @@ using System.Windows.Shapes;
 
 namespace Repair_Service
 {
-    public partial class NewReportmentPage : Page
+    /// <summary>
+    /// Interaction logic for AddDevicePage.xaml
+    /// </summary>
+    public partial class AddDevicePage : Page
     {
-        public NewReportmentPage()
+        public AddDevicePage()
         {
             InitializeComponent();
-            DateTime thisDay = DateTime.Now;
-            Date.Text = thisDay.ToString("F");
         }
 
         private void ButtonCancel(object sender, RoutedEventArgs e)
         {
-            MainPage mainPage = new MainPage();
-            this.NavigationService.Navigate(mainPage);
-        }
-
-        private void ButtonChooseExistingClientClick(object sender, RoutedEventArgs e)
-        {
-            ChooseExisitingClientWindow chooseExisitingClientWindow = new ChooseExisitingClientWindow();
-            chooseExisitingClientWindow.ShowDialog();
+            DevicesPage devicesPage = new DevicesPage();
+            this.NavigationService.Navigate(devicesPage);
         }
     }
 }
