@@ -8,9 +8,14 @@ using System.Threading.Tasks;
 
 namespace Repair_Service.DAL
 {
-    public abstract class Database
+    public class ProxyDatabase : Database
     {
-        public abstract ObservableCollection<Order> GetAllOrders();
 
+        private MainDatabase database;
+
+        public override ObservableCollection<Order> GetAllOrders()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

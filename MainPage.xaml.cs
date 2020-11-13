@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Repair_Service.Controllers;
+using Repair_Service.Models;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -18,17 +20,16 @@ namespace Repair_Service
 {
     public partial class MainPage : Page
     {
-        public Collection<Reportment> Reportments { get; } = new ObservableCollection<Reportment>();
+        private MainPageController mainPageController;
 
         public MainPage()
         {
             InitializeComponent();
-            Reportments.Add(new Reportment { Id = 1, Name = "Mateusz Paszko", PhoneNumber = "123456789", ModelTitle = "Samsung Galaxy S7", Type = "Smartfon", OrderDate = "25.10.2020", Status = "W trakcie naprawy" });
-            Reportments.Add(new Reportment { Id = 2, Name = "Gabriel Czajkowski", PhoneNumber = "123456789", ModelTitle = "Lenovo Legion 5", Type = "Laptop", OrderDate = "01.11.2020", Status = "Przyjęty" });
-            Reportments.Add(new Reportment { Id = 3, Name = "Dzmitry Drahaliou", PhoneNumber = "123456789", ModelTitle = "Nokia 3310", Type = "Telefon", OrderDate = "29.09.2020", Status = "Zakończony" });
-            Reportments.Add(new Reportment { Id = 4, Name = "Michał Mirończuk", PhoneNumber = "123456789", ModelTitle = "OnePlus 8T", Type = "Smartfon", OrderDate = "31.10.2020", Status = "Przyjęty" });
 
-            DataGrid.ItemsSource = Reportments;
+            //Inicjalizacja kontrolera
+            mainPageController = new MainPageController();
+            
+            
         }
 
         private void ButtonAddReportment(object sender, RoutedEventArgs e)
@@ -41,6 +42,20 @@ namespace Repair_Service
         {
             LoginPage loginPage = new LoginPage();
             this.NavigationService.Navigate(loginPage);
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            //Pobiranie wszystkich zleceń z bazy danych
+            LoadAllOrders();
+        }
+
+        /// <summary>
+        /// Metoda, pozwalająca na asynchroniczne pobieranie wszystkich zleceń z bazy danych
+        /// </summary>
+        private async void LoadAllOrders()
+        {
+            DataGrid.ItemsSource = await mainPageController.GetAllOrdersAsync();
         }
     }
 }

@@ -163,3 +163,9 @@ C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\Repair_Service.csp
 C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\Repair_Service.csproj.CopyComplete
 C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\Repair_Service.exe
 C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\Repair_Service.pdb
+C:\Users\ddgam\source\repos\Repair_Service\obj\Debug\LoginPage.g.cs
+C:\Users\ddgam\source\repos\Repair_Service\obj\Debug\MainPage.g.cs
+C:\Users\ddgam\source\repos\Repair_Service\obj\Debug\NewReportmentPage.g.cs
+C:\Users\ddgam\source\repos\Repair_Service\obj\Debug\LoginPage.baml
+C:\Users\ddgam\source\repos\Repair_Service\obj\Debug\MainPage.baml
+C:\Users\ddgam\source\repos\Repair_Service\obj\Debug\NewReportmentPage.baml

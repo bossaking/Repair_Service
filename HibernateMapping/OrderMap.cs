@@ -22,8 +22,8 @@ namespace Repair_Service.HibernateMapping
             Map(x => x.Reception_Date).Nullable();
             Map(x => x.Order_Status);
 
-            References(x => x.Client).Column("Id_Client");
-            References(x => x.Device).Column("Id_Device");
+            References(x => x.Client).Column("Id_Client").Not.LazyLoad();
+            References(x => x.Device).Column("Id_Device").Not.LazyLoad();
             References(x => x.Employee).Column("Id_Employee");
 
             HasManyToMany(x => x.Problems).Table("orders_problems").ParentKeyColumn("Id_Order").ChildKeyColumn("Id_Problem").LazyLoad();
