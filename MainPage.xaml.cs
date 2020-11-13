@@ -28,8 +28,6 @@ namespace Repair_Service
 
             //Inicjalizacja kontrolera
             mainPageController = new MainPageController();
-            
-            
         }
 
         private void ButtonAddReportment(object sender, RoutedEventArgs e)
@@ -60,13 +58,25 @@ namespace Repair_Service
 
         private void ButtonEditClick(object sender, RoutedEventArgs e)
         {
-            //EditPage editPage = new EditPage();
-            //this.NavigationService.Navigate(editPage);
+            EditPage editPage = new EditPage();
+            this.NavigationService.Navigate(editPage);
         }
 
         private void ButtonDeleteClick(object sender, RoutedEventArgs e)
         {
             if (MessageBox.Show("Czy na pewno chcesz usunąć wybrany element?", "Usuń element", MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes) return;
+        }
+
+        private void ButtonClientsClick(object sender, RoutedEventArgs e)
+        {
+            ClientsPage clientsPage = new ClientsPage();
+            this.NavigationService.Navigate(clientsPage);
+        }
+
+        private void ButtonDevicesClick(object sender, RoutedEventArgs e)
+        {
+            DevicesPage devicesPage = new DevicesPage();
+            this.NavigationService.Navigate(devicesPage);
         }
     }
 }

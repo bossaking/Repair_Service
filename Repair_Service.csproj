@@ -125,12 +125,27 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddDevicePage.xaml.cs">
+      <DependentUpon>AddDevicePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChooseExisitingClientWindow.xaml.cs">
+      <DependentUpon>ChooseExisitingClientWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClientsPage.xaml.cs">
+      <DependentUpon>ClientsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\LoginPageController.cs" />
     <Compile Include="Controllers\MainPageController.cs" />
     <Compile Include="DAL\Database.cs" />
     <Compile Include="DAL\LocalUserData.cs" />
     <Compile Include="DAL\MainDatabase.cs" />
     <Compile Include="DAL\ProxyDatabase.cs" />
+    <Compile Include="DevicesPage.xaml.cs">
+      <DependentUpon>DevicesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditPage.xaml.cs">
+      <DependentUpon>EditPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HibernateMapping\BrandMap.cs" />
     <Compile Include="HibernateMapping\ClientMap.cs" />
     <Compile Include="HibernateMapping\DeviceMap.cs" />
@@ -157,7 +172,22 @@
     <Compile Include="NewReportmentPage.xaml.cs">
       <DependentUpon>NewReportmentPage.xaml</DependentUpon>
     </Compile>
-
+    <Page Include="AddDevicePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChooseExisitingClientWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ClientsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DevicesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="EditPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
