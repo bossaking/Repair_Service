@@ -14,16 +14,21 @@ namespace Repair_Service.DAL
     public class MainDatabase : Database
     {
 
-        public void CheckConnection()
+        /// <summary>
+        /// Metoda, pozwalająca na sprawdzenie połączenia z bazą danych
+        /// </summary>
+        /// <returns>Zwraca TRUE w przypadku, gdy udało się otworzyć sesje. W przeciwnym przypadku zwraca FALSE</returns>
+        public bool CheckConnection()
         {
             try
             {
                 ISession session = NHibernateHelper.OpenSession();
-                MessageBox.Show($"Version: {session.Connection.DataSource}", "Connection opened");
+                session.Close();
+                return true;
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show(ex.Message, "Connection error");
+                return false;
             }
         }
 
@@ -333,7 +338,6 @@ namespace Repair_Service.DAL
         {
 
             ObservableCollection<Order> orders;
-            //var session = NHibernateHelper.OpenSession();
             using (var session = NHibernateHelper.OpenSession())
             {
                 using (var transaction = session.BeginTransaction())
@@ -443,9 +447,29 @@ namespace Repair_Service.DAL
 
 
 
+
+
         #endregion
 
         #endregion
+
+        public override bool SingInWithLoginAndPassword(string login, string password)
+        {
+            bool result = false;
+
+            using (var session = NHibernateHelper.OpenSession()){
+                
+                using(var transaction = session.BeginTransaction())
+                {
+                    Employee employee = session.QueryOver<Employee>().Where(e => e.Login == login).SingleOrDefault();
+                    if (employee == null) { result = false; }
+                    else if (employee.Passwd == password) { result = true; }
+                    transaction.Commit();
+                }
+            }
+
+            return result;
+        }
 
 
     }
