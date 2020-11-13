@@ -17,5 +17,10 @@ namespace Repair_Service.DAL
         {
             throw new NotImplementedException();
         }
+
+        public override bool SingInWithLoginAndPassword(string login, string password)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

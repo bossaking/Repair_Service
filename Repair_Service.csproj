@@ -125,13 +125,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controllers\LoginPageController.cs" />
     <Compile Include="Controllers\MainPageController.cs" />
     <Compile Include="DAL\Database.cs" />
+    <Compile Include="DAL\LocalUserData.cs" />
     <Compile Include="DAL\MainDatabase.cs" />
     <Compile Include="DAL\ProxyDatabase.cs" />
-    <Compile Include="EditPage.xaml.cs">
-      <DependentUpon>EditPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="HibernateMapping\BrandMap.cs" />
     <Compile Include="HibernateMapping\ClientMap.cs" />
     <Compile Include="HibernateMapping\DeviceMap.cs" />
@@ -158,11 +157,6 @@
     <Compile Include="NewReportmentPage.xaml.cs">
       <DependentUpon>NewReportmentPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Reportment.cs" />
-    <Page Include="EditPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="LoginPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
