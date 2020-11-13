@@ -171,3 +171,5 @@ C:\Users\ddgam\source\repos\Repair_Service\obj\Debug\MainPage.baml
 C:\Users\ddgam\source\repos\Repair_Service\obj\Debug\NewReportmentPage.baml
 C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\EditPage.g.cs
 C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\EditPage.baml
+C:\Users\ddgam\source\repos\Repair_Service\obj\Debug\EditPage.g.cs
+C:\Users\ddgam\source\repos\Repair_Service\obj\Debug\EditPage.baml

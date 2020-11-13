@@ -38,7 +38,7 @@ namespace Repair_Service {
     /// <summary>
     /// MainPage
     /// </summary>
-    public partial class MainPage : System.Windows.Controls.Page, System.Windows.Markup.IComponentConnector {
+    public partial class MainPage : System.Windows.Controls.Page, System.Windows.Markup.IComponentConnector, System.Windows.Markup.IStyleConnector {
         
         
         #line 18 "..\..\MainPage.xaml"
@@ -89,17 +89,17 @@ namespace Repair_Service {
             case 2:
             this.DataGrid = ((System.Windows.Controls.DataGrid)(target));
             return;
-            case 3:
+            case 5:
             
-            #line 29 "..\..\MainPage.xaml"
+            #line 39 "..\..\MainPage.xaml"
             ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.ButtonAddReportment);
             
             #line default
             #line hidden
             return;
-            case 4:
+            case 6:
             
-            #line 30 "..\..\MainPage.xaml"
+            #line 40 "..\..\MainPage.xaml"
             ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.ButtonLogout);
             
             #line default
@@ -107,6 +107,34 @@ namespace Repair_Service {
             return;
             }
             this._contentLoaded = true;
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "4.0.0.0")]
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Design", "CA1033:InterfaceMethodsShouldBeCallableByChildTypes")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1800:DoNotCastUnnecessarily")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
+        void System.Windows.Markup.IStyleConnector.Connect(int connectionId, object target) {
+            switch (connectionId)
+            {
+            case 3:
+            
+            #line 31 "..\..\MainPage.xaml"
+            ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.ButtonEditClick);
+            
+            #line default
+            #line hidden
+            break;
+            case 4:
+            
+            #line 32 "..\..\MainPage.xaml"
+            ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.ButtonDeleteClick);
+            
+            #line default
+            #line hidden
+            break;
+            }
         }
     }
 }
