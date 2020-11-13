@@ -1,0 +1,23 @@
+﻿<Page x:Class="Repair_Service.LoginPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Repair_Service"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="900" Title="LoginPage" Background="White" Name="LoginWindow">
+
+    <Grid ShowGridLines="False" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Image Grid.Row="0" Width="250" Height="250" Margin="0,0,0,25" Source="Images/Logo.jpeg"/>
+        <TextBox Name="TextBoxLogin" Grid.Row="1" Width="200" Height="30" Margin="0,25,0,0" VerticalContentAlignment="Center">Login</TextBox>
+        <TextBox Name="TextBoxPassword" Grid.Row="2" Width="200" Height="30" Margin="0,15,0,0" VerticalContentAlignment="Center">Hasło</TextBox>
+        <Button Name="ButtonLogin" Click="ButtonLoginClick" Grid.Row="3" Width="100" Height="30" Margin="0,30,0,0" VerticalContentAlignment="Center">Zaloguj</Button>
+    </Grid>
+
+</Page>
