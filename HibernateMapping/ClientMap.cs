@@ -19,7 +19,7 @@ namespace Repair_Service.HibernateMapping
             Map(x => x.Name).Nullable();
             Map(x => x.Surname).Nullable();
 
-            HasMany(x => x.Orders);
+            HasMany(x => x.Orders).Not.LazyLoad();
 
             Table("clients");
         }

@@ -48,9 +48,7 @@ namespace Repair_Service
             LoadAllOrders();
         }
 
-        /// <summary>
-        /// Metoda, pozwalająca na asynchroniczne pobieranie wszystkich zleceń z bazy danych
-        /// </summary>
+
         private async void LoadAllOrders()
         {
             DataGrid.ItemsSource = await mainPageController.GetAllOrdersAsync();
@@ -64,7 +62,20 @@ namespace Repair_Service
 
         private void ButtonDeleteClick(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Czy na pewno chcesz usunąć wybrany element?", "Usuń element", MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes) return;
+            if (MessageBox.Show("Czy na pewno chcesz usunąć wybrany element?", "Usuń element",
+                MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
+            {
+                return;
+            }
+            else
+            {
+                DeleteOrder();
+            }
+        }
+
+        private async void DeleteOrder()
+        {
+            await mainPageController.DeleteOrder((DataGrid.SelectedItem as Order).Id_Order);
         }
 
         private void ButtonClientsClick(object sender, RoutedEventArgs e)

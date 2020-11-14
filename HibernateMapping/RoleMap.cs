@@ -17,7 +17,7 @@ namespace Repair_Service.HibernateMapping
 
             Map(x => x.Title);
 
-            HasMany(x => x.Employees);
+            HasMany(x => x.Employees).Not.LazyLoad();
 
             Table("roles");
         }

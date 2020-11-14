@@ -17,7 +17,7 @@ namespace Repair_Service.HibernateMapping
 
             Map(x => x.Type_Title);
 
-            HasMany(x => x.Devices);
+            HasMany(x => x.Devices).Not.LazyLoad();
 
             Table("types");
         }

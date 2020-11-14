@@ -18,10 +18,10 @@
         <Label Content="Urządzenia" HorizontalAlignment="Center" FontSize="40" VerticalAlignment="Center"/>
         <DataGrid AutoGenerateColumns="False" Grid.Row="1" Margin="5,5,5,5" Name="DataGrid" FontSize="16" Width="auto" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center" CanUserResizeColumns="False" CanUserResizeRows="False" ColumnWidth="auto" BorderBrush="Gray">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Binding="{Binding Devices.Id_Device}"/>
-                <DataGridTextColumn Header="Model title" Binding="{Binding Devices.Model_Title}"/>
-                <DataGridTextColumn Header="Type title" Binding="{Binding Types.Type_Title}"/>
-                <DataGridTextColumn Header="Brand title" Binding="{Binding Brands.Title}"/>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id_Device}"/>
+                <DataGridTextColumn Header="Model title" Binding="{Binding Model_Title}"/>
+                <DataGridTextColumn Header="Type title" Binding="{Binding Device_Type.Type_Title}"/>
+                <DataGridTextColumn Header="Brand title" Binding="{Binding Device_Brand.Title}"/>
                 <DataGridTemplateColumn Header="Action">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

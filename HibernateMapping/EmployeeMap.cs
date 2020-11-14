@@ -20,10 +20,10 @@ namespace Repair_Service.HibernateMapping
             Map(x => x.Login);
             Map(x => x.Passwd);
 
-            References(x => x.Employee_Salon).Column("Id_Salon");
-            References(x => x.Employee_Role).Column("Id_Role");
+            References(x => x.Employee_Salon).Column("Id_Salon").Not.LazyLoad();
+            References(x => x.Employee_Role).Column("Id_Role").Not.LazyLoad();
 
-            HasMany(x => x.Orders);
+            HasMany(x => x.Orders).Not.LazyLoad();
 
             Table("employees");
         }

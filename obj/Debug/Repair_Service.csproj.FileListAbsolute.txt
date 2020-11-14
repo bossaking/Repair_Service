@@ -181,3 +181,11 @@ C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\DevicesPage.g.cs
 C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\DevicesPage.baml
 C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\AddDevicePage.g.cs
 C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\AddDevicePage.baml
+C:\Users\ddgam\source\repos\Repair_Service\obj\Debug\AddDevicePage.g.cs
+C:\Users\ddgam\source\repos\Repair_Service\obj\Debug\ChooseExisitingClientWindow.g.cs
+C:\Users\ddgam\source\repos\Repair_Service\obj\Debug\ClientsPage.g.cs
+C:\Users\ddgam\source\repos\Repair_Service\obj\Debug\DevicesPage.g.cs
+C:\Users\ddgam\source\repos\Repair_Service\obj\Debug\AddDevicePage.baml
+C:\Users\ddgam\source\repos\Repair_Service\obj\Debug\ChooseExisitingClientWindow.baml
+C:\Users\ddgam\source\repos\Repair_Service\obj\Debug\ClientsPage.baml
+C:\Users\ddgam\source\repos\Repair_Service\obj\Debug\DevicesPage.baml
