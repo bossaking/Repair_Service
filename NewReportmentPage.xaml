@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Repair_Service"
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="1200"
-      Title="NewReportmentPage">
+      Title="NewReportmentPage" Loaded="Page_Loaded">
 
     <Grid ShowGridLines="False" Background="White" Margin="50,0,50,0" VerticalAlignment="Center">
         <Grid.RowDefinitions>
@@ -27,40 +27,54 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Button Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="Wybierz istniejącego klienta" Margin="5" Width="200" Height="25" Click="ButtonChooseExistingClientClick"/>
+        
+        
         <Label Grid.Row="1" Content="Imię:" VerticalContentAlignment="Center"/>
-        <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Padding="3,4,4,4" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+        <TextBox Text="{Binding Path=Client.Name}" Grid.Row="1" Grid.Column="1" Margin="5" Padding="3,4,4,4" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
         <Label Grid.Row="2" Grid.Column="0" Content="Nazwisko:" VerticalContentAlignment="Center"/>
-        <TextBox Grid.Row="2" Grid.Column="1" Margin="5" Padding="3,4,4,4" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+        <TextBox Text="{Binding Path=Client.Surname}" Grid.Row="2" Grid.Column="1" Margin="5" Padding="3,4,4,4" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
         <Label Grid.Row="3" Grid.Column="0" Content="Numer telefonu:" VerticalContentAlignment="Center"/>
-        <TextBox Grid.Row="3" Grid.Column="1" Margin="5" Padding="3,4,4,4" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+        <TextBox Text="{Binding Path=Client.Phone_Number}" Grid.Row="3" Grid.Column="1" Margin="5" Padding="3,4,4,4" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+        
+        <!--TYP-->
         <Label Grid.Row="4" Grid.Column="0" Content="Typ urządzenia:" VerticalContentAlignment="Center"/>
-        <ComboBox Grid.Row="4" Grid.Column="1" Margin="5" Padding="5" VerticalContentAlignment="Center" IsEditable="True" IsTextSearchEnabled="True" TextSearch.TextPath="Content">
-            <ComboBoxItem Content="Smartfon"/>
-            <ComboBoxItem Content="Laptop"/>
-            <ComboBoxItem Content="PC"/>
-            <ComboBoxItem Content="Telefon"/>
-        </ComboBox>
+        <ComboBox SelectedValue="{Binding Path=Device.Device_Type}" Name="DeviceTypeComboBox" DisplayMemberPath="Type_Title" Grid.Row="4" Grid.Column="1" Margin="5" Padding="5" VerticalContentAlignment="Center"/>
+
+        <!--MODEL-->
         <Label Grid.Row="5" Grid.Column="0" Content="Model" VerticalContentAlignment="Center"/>
-        <ComboBox Grid.Row="5" Grid.Column="1" Margin="5" Padding="5" VerticalContentAlignment="Center" IsEditable="True" IsTextSearchEnabled="True" TextSearch.TextPath="Content">
-            <ComboBoxItem Content="Samsung Galaxy S10"/>
-            <ComboBoxItem Content="iPhone 12"/>
-            <ComboBoxItem Content="OnePlus 8T"/>
-        </ComboBox>
+        <ComboBox Name="DeviceModelComboBox" SelectedValue="{Binding Path=Device}" ItemsSource="{Binding ElementName=DeviceTypeComboBox, Path=SelectedItem.Devices}" DisplayMemberPath="Model_Title" Grid.Row="5" Grid.Column="1" Margin="5" Padding="5" VerticalContentAlignment="Center" IsEditable="True" IsTextSearchEnabled="True" TextSearch.TextPath="Model_Title" IsEnabled="False"/>
+
+        <!--SZACOWANY KOSZT-->
         <Label Grid.Row="6" Grid.Column="0" Content="Szacowany koszt:" VerticalContentAlignment="Center"/>
-        <TextBox Grid.Row="6" Grid.Column="1"  Margin="5" Padding="3,4,4,4" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+        <TextBox Text="{Binding Path=Price}" Grid.Row="6" Grid.Column="1"  Margin="5" Padding="3,4,4,4" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+        
+        <!--PRACOWNIK-->
         <Label Grid.Row="7" Grid.Column="0" Content="Pracownik:" VerticalContentAlignment="Center"/>
-        <ComboBox Grid.Row="7" Grid.Column="1" Margin="5" Padding="5" VerticalContentAlignment="Center" IsTextSearchEnabled="True" TextSearch.TextPath="Content">
-            <ComboBoxItem Content="Janusz Wąs"/>
-            <ComboBoxItem Content="Halina Glina"/>
-            <ComboBoxItem Content="Robert Kurwica"/>
-            <ComboBoxItem Content="Marian Paździoch"/>
+        <ComboBox Name="EmployeesComboBox" SelectedValue="{Binding Path=Employee}" Grid.Row="7" Grid.Column="1" Margin="5" Padding="5" VerticalContentAlignment="Center" IsTextSearchEnabled="True" TextSearch.TextPath="Content">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} {1}">
+                                <Binding Path="Name"/>
+                                <Binding Path="Surname"/>
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
         </ComboBox>
-        <Label Grid.Row="8" Grid.Column="0" Content="Data przyjęcia zgłoszenia:" VerticalContentAlignment="Center"/>
-        <TextBox Name="Date" Grid.Row="8" Grid.Column="1"  Margin="5" Padding="3,4,4,4" IsReadOnly="True" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+        
+        <!--<Label Grid.Row="8" Grid.Column="0" Content="Data przyjęcia zgłoszenia:" VerticalContentAlignment="Center"/>
+        <TextBox Name="Date" Grid.Row="8" Grid.Column="1"  Margin="5" Padding="3,4,4,4" IsReadOnly="True" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>-->
+        
+        <!--OPIS-->
         <Label Grid.Row="9" Grid.Column="0" Content="Opis:" VerticalContentAlignment="Center"/>
-        <TextBox Grid.Row="9" Grid.Column="1" Margin="5" Padding="3,4,4,4" MinLines="8" MaxLines="8" MaxLength="1500" AcceptsReturn="True" AcceptsTab="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"/>
+        <TextBox Text="{Binding Path=Description}" Grid.Row="9" Grid.Column="1" Margin="5" Padding="3,4,4,4" MinLines="8" MaxLines="8" MaxLength="1500" AcceptsReturn="True" AcceptsTab="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"/>
+        
+        <!--PRZYCISKI-->
         <WrapPanel Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="5,20,5,5">
-            <Button Padding="10,5" Width="75" IsDefault="True" Content="OK"/>
+            <Button Name="OkButton" Padding="10,5" Width="75" IsDefault="True" Content="OK" Click="OkButton_Click"/>
             <Button Padding="10,5" Margin="5,0,0,0" Width="75" IsCancel="True" Content="Anuluj" Click="ButtonCancel"/>
         </WrapPanel>
     </Grid>

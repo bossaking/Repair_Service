@@ -134,8 +134,10 @@
     <Compile Include="ClientsPage.xaml.cs">
       <DependentUpon>ClientsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\ClientsPageController.cs" />
     <Compile Include="Controllers\LoginPageController.cs" />
     <Compile Include="Controllers\MainPageController.cs" />
+    <Compile Include="Controllers\ReportmentPageController.cs" />
     <Compile Include="DAL\Database.cs" />
     <Compile Include="DAL\LocalUserData.cs" />
     <Compile Include="DAL\MainDatabase.cs" />

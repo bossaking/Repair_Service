@@ -48,9 +48,7 @@ namespace Repair_Service
             LoadAllOrders();
         }
 
-        /// <summary>
-        /// Metoda, pozwalająca na asynchroniczne pobieranie wszystkich zleceń z bazy danych
-        /// </summary>
+
         private async void LoadAllOrders()
         {
             DataGrid.ItemsSource = await mainPageController.GetAllOrdersAsync();

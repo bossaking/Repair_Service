@@ -34,7 +34,11 @@ namespace Repair_Service.Controllers
             return orders;
         }
         
-
+        /// <summary>
+        /// Asynchroniczne usuwanie zlecenia z bazy danych
+        /// </summary>
+        /// <param name="id">Id zlecenia</param>
+        /// <returns></returns>
         public async Task DeleteOrder(int id)
         {
             await Task.Run(() => 

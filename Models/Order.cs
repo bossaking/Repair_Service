@@ -19,5 +19,16 @@ namespace Repair_Service.Models
         public virtual string Order_Status { get; set; }
         public virtual IList<Problem> Problems { get; set; }
 
+        public Order()
+        {
+            Client = new Client();
+            Employee = new Employee();
+            Device = new Device();
+            Problems = new List<Problem>();
+            Order_Date = DateTime.Now;
+            //TODO Dodać tabele statusów
+            Order_Status = "Przyjęty";
+        }
+
     }
 }

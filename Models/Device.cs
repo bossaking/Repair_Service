@@ -13,5 +13,12 @@ namespace Repair_Service.Models
         public virtual Device_Type Device_Type { get; set; }
         public virtual Brand Device_Brand { get; set; }
         public virtual IList<Order> Orders { get; set; }
+
+        public Device()
+        {
+            Device_Type = new Device_Type();
+            Device_Brand = new Brand();
+            Orders = new List<Order>();
+        }
     }
 }
