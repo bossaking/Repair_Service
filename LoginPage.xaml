@@ -29,7 +29,7 @@
         <CheckBox Name="CheckBoxRememberMe" Grid.Row="3" VerticalContentAlignment="Center" HorizontalAlignment="Center" Unchecked="CheckBoxRememberMeUnchecked">Remember me</CheckBox>
         
         <!--SIGN IN BUTTON-->
-        <Button Name="ButtonLogin" Click="ButtonLogin_Click" Grid.Row="4" Width="100" Height="30" Margin="0,30,0,0" VerticalContentAlignment="Center">Sign in</Button>
+        <Button Name="ButtonLogin" Click="LoginButton_Click" Grid.Row="4" Width="100" Height="30" Margin="0,30,0,0" VerticalContentAlignment="Center">Sign in</Button>
     </Grid>
 
 </Page>

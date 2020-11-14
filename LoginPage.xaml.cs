@@ -34,11 +34,6 @@ namespace Repair_Service
             ReadUserLoginData();
         }
 
-        private void ButtonLogin_Click(object sender, RoutedEventArgs e)
-        {
-            SingInWithEmailAndPassword();
-        }
-
         private async void SingInWithEmailAndPassword()
         {
             string login = TextBoxLogin.Text;
@@ -79,6 +74,11 @@ namespace Repair_Service
         private async void DeleteUserLoginData()
         {
             await loginPageController.DeleteuserDataAsync();
+        }
+
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        {
+            SingInWithEmailAndPassword();
         }
     }
 }

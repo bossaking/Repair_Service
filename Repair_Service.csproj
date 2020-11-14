@@ -128,6 +128,27 @@
     <Compile Include="AddDevicePage.xaml.cs">
       <DependentUpon>AddDevicePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddEditBrandsPage.xaml.cs">
+      <DependentUpon>AddEditBrandsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddEditEmployeesPage.xaml.cs">
+      <DependentUpon>AddEditEmployeesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddEditProblemsPage.xaml.cs">
+      <DependentUpon>AddEditProblemsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddEditRolesPage.xaml.cs">
+      <DependentUpon>AddEditRolesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddEditSalonsPage.xaml.cs">
+      <DependentUpon>AddEditSalonsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddEditTypesPage.xaml.cs">
+      <DependentUpon>AddEditTypesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BrandsPage.xaml.cs">
+      <DependentUpon>BrandsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ChooseExisitingClientWindow.xaml.cs">
       <DependentUpon>ChooseExisitingClientWindow.xaml</DependentUpon>
     </Compile>
@@ -145,8 +166,14 @@
     <Compile Include="DevicesPage.xaml.cs">
       <DependentUpon>DevicesPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EditClientPage.xaml.cs">
+      <DependentUpon>EditClientPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EditPage.xaml.cs">
       <DependentUpon>EditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeesPage.xaml.cs">
+      <DependentUpon>EmployeesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="HibernateMapping\BrandMap.cs" />
     <Compile Include="HibernateMapping\ClientMap.cs" />
@@ -174,7 +201,47 @@
     <Compile Include="NewReportmentPage.xaml.cs">
       <DependentUpon>NewReportmentPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ProblemsPage.xaml.cs">
+      <DependentUpon>ProblemsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RolesPage.xaml.cs">
+      <DependentUpon>RolesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SalonsPage.xaml.cs">
+      <DependentUpon>SalonsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TypesPage.xaml.cs">
+      <DependentUpon>TypesPage.xaml</DependentUpon>
+    </Compile>
     <Page Include="AddDevicePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddEditBrandsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddEditEmployeesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddEditProblemsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddEditRolesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddEditSalonsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddEditTypesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BrandsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -190,7 +257,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="EditClientPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="EditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EmployeesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -215,6 +290,22 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="NewReportmentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProblemsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RolesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SalonsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TypesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
