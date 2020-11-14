@@ -64,10 +64,7 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        
-        <!--<Label Grid.Row="8" Grid.Column="0" Content="Data przyjęcia zgłoszenia:" VerticalContentAlignment="Center"/>
-        <TextBox Name="Date" Grid.Row="8" Grid.Column="1"  Margin="5" Padding="3,4,4,4" IsReadOnly="True" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>-->
-        
+
         <!--OPIS-->
         <Label Grid.Row="9" Grid.Column="0" Content="Opis:" VerticalContentAlignment="Center"/>
         <TextBox Text="{Binding Path=Description}" Grid.Row="9" Grid.Column="1" Margin="5" Padding="3,4,4,4" MinLines="8" MaxLines="8" MaxLength="1500" AcceptsReturn="True" AcceptsTab="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"/>

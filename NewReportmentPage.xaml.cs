@@ -26,10 +26,7 @@ namespace Repair_Service
         public NewReportmentPage()
         {
             InitializeComponent();
-            //TODO Czas
             //TODO Dodać pole z problemami
-            //DateTime thisDay = DateTime.Now;
-            //Date.Text = thisDay.ToString("F");
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
