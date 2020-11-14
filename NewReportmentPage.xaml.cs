@@ -19,17 +19,18 @@ namespace Repair_Service
 {
     public partial class NewReportmentPage : Page
     {
-
         private ReportmentPageController reportmentPageController;
         private Order newOrder;
 
         public NewReportmentPage()
         {
             InitializeComponent();
-            //TODO Dodać pole z problemami
+            //TODO pole z problemami dodane, ale nie obsłużone w kodzie
+            //TODO obsłużyć brand w kodzie
         }
 
-        private void Page_Loaded(object sender, RoutedEventArgs e)
+        #region DATA
+        private void NewReportmentPage_Loaded(object sender, RoutedEventArgs e)
         {
             DeviceTypeComboBox.SelectionChanged += DeviceTypeComboBox_SelectionChanged;
 
@@ -41,8 +42,6 @@ namespace Repair_Service
             GetEmployees();
             GetTypes();
         }
-
-
 
         private async void GetEmployees()
         {
@@ -62,22 +61,24 @@ namespace Repair_Service
                 DeviceModelComboBox.SelectedIndex = 0;
             }
         }
+        #endregion
 
-        private void OkButton_Click(object sender, RoutedEventArgs e)
+        #region BUTTONS
+        private void SelectClientButton_Click(object sender, RoutedEventArgs e)
+        {
+            ChooseExisitingClientWindow chooseExisitingClientWindow = new ChooseExisitingClientWindow();
+            chooseExisitingClientWindow.ShowDialog();
+        }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             reportmentPageController.AddNewOrder(newOrder);
             LoadMainPage();
         }
 
-        private void ButtonCancel(object sender, RoutedEventArgs e)
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             LoadMainPage();
-        }
-
-        private void ButtonChooseExistingClientClick(object sender, RoutedEventArgs e)
-        {
-            ChooseExisitingClientWindow chooseExisitingClientWindow = new ChooseExisitingClientWindow();
-            chooseExisitingClientWindow.ShowDialog();
         }
 
         private void LoadMainPage()
@@ -85,5 +86,6 @@ namespace Repair_Service
             MainPage mainPage = new MainPage();
             this.NavigationService.Navigate(mainPage);
         }
+        #endregion
     }
 }

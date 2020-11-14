@@ -25,10 +25,22 @@ namespace Repair_Service
             InitializeComponent();
         }
 
-        private void ButtonCancel(object sender, RoutedEventArgs e)
+        #region BUTTONS
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            LoadMainPage();
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            LoadMainPage();
+        }
+
+        private void LoadMainPage()
         {
             MainPage mainPage = new MainPage();
             this.NavigationService.Navigate(mainPage);
         }
+        #endregion
     }
 }

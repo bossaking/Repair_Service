@@ -21,7 +21,6 @@ namespace Repair_Service
 {
     public partial class LoginPage : Page
     {
-
         private LoginPageController loginPageController;
 
         public LoginPage()
@@ -30,12 +29,12 @@ namespace Repair_Service
             loginPageController = new LoginPageController();
         }
 
-        private void LoginWindow_Loaded(object sender, RoutedEventArgs e)
+        private void LoginPage_Loaded(object sender, RoutedEventArgs e)
         {
             ReadUserLoginData();
         }
 
-        private void ButtonLoginClick(object sender, RoutedEventArgs e)
+        private void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
             SingInWithEmailAndPassword();
         }
@@ -46,16 +45,19 @@ namespace Repair_Service
             string password = TextBoxPassword.Text;
 
             bool result = await loginPageController.SignInWithEmailAndPasswordAsync(login, password);
-            if(result == true)
+            if (result == true)
             {
-                if(RememberMeCheckBox.IsChecked == true)
-                await loginPageController.SaveUserDataAsync(login, password);
+                if (CheckBoxRememberMe.IsChecked == true)
+                {
+                    await loginPageController.SaveUserDataAsync(login, password);
+                }
+
                 MainPage mainPage = new MainPage();
                 this.NavigationService.Navigate(mainPage);
             }
             else
             {
-                MessageBox.Show("Error", "Error");
+                MessageBox.Show("Incorrect login or password", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -66,10 +68,10 @@ namespace Repair_Service
 
             TextBoxLogin.Text = userCredentials[0];
             TextBoxPassword.Text = userCredentials[1];
-            RememberMeCheckBox.IsChecked = true;
+            CheckBoxRememberMe.IsChecked = true;
         }
 
-        private void RememberMeCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        private void CheckBoxRememberMeUnchecked(object sender, RoutedEventArgs e)
         {
             DeleteUserLoginData();
         }
@@ -78,6 +80,5 @@ namespace Repair_Service
         {
             await loginPageController.DeleteuserDataAsync();
         }
-
     }
 }

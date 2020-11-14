@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Repair_Service"
       mc:Ignorable="d" 
-      d:DesignHeight="700" d:DesignWidth="1200" Title="LoginPage" Background="White" Name="LoginWindow" Loaded="LoginWindow_Loaded">
+      Title="Repair Service: Login page" d:DesignHeight="700" d:DesignWidth="1200" FontSize="16" Loaded="LoginPage_Loaded">
 
     <Grid ShowGridLines="False" VerticalAlignment="Center" HorizontalAlignment="Center">
         <Grid.RowDefinitions>
@@ -15,11 +15,21 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <Image Name="LogoImage" Grid.Row="0" Width="250" Height="250" Margin="0,0,0,25" Source="Images/Logo.jpeg"/>
+        
+        <!--LOGO-->
+        <Image Grid.Row="0" Width="250" Height="250" Margin="0,0,0,25" Source="Images/Logo.jpeg"/>
+        
+        <!--LOGIN-->
         <TextBox Name="TextBoxLogin" Grid.Row="1" Width="200" Height="30" Margin="0,25,0,0" VerticalContentAlignment="Center">Login</TextBox>
-        <TextBox Name="TextBoxPassword" Grid.Row="2" Width="200" Height="30" Margin="0,15,0,10" VerticalContentAlignment="Center">Hasło</TextBox>
-        <CheckBox Name="RememberMeCheckBox" Grid.Row="3" HorizontalAlignment="Center" Unchecked="RememberMeCheckBox_Unchecked">Zapamiętaj mnie</CheckBox>
-        <Button Name="ButtonLogin" Click="ButtonLoginClick" Grid.Row="4" Width="100" Height="30" Margin="0,30,0,0" VerticalContentAlignment="Center">Zaloguj</Button>
+
+        <!--PASSWORD-->
+        <TextBox Name="TextBoxPassword" Grid.Row="2" Width="200" Height="30" Margin="0,15,0,10" VerticalContentAlignment="Center">Password</TextBox>
+        
+        <!--REMEMBER ME CHECKBOX-->
+        <CheckBox Name="CheckBoxRememberMe" Grid.Row="3" VerticalContentAlignment="Center" HorizontalAlignment="Center" Unchecked="CheckBoxRememberMeUnchecked">Remember me</CheckBox>
+        
+        <!--SIGN IN BUTTON-->
+        <Button Name="ButtonLogin" Click="ButtonLogin_Click" Grid.Row="4" Width="100" Height="30" Margin="0,30,0,0" VerticalContentAlignment="Center">Sign in</Button>
     </Grid>
 
 </Page>
