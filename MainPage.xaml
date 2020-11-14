@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Repair_Service"
       mc:Ignorable="d" 
-      d:DesignHeight="700" d:DesignWidth="1200" Title="MainPage" Loaded="Page_Loaded">
+      Title="Repair Service: Main page" d:DesignHeight="700" d:DesignWidth="1200" FontSize="16" Loaded="MainPage_Loaded">
 
     <Grid ShowGridLines="False" Background="White">
         <Grid.RowDefinitions>
@@ -25,17 +25,20 @@
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Content="Clients" Margin="5" Click="ButtonClientsClick"/>
-            <Button Grid.Column="1" Content="Devices" Margin="5" Click="ButtonDevicesClick"/>
-            <Button Grid.Column="2" Content="Types" Margin="5"/>
-            <Button Grid.Column="3" Content="Brands" Margin="5"/>
-            <Button Grid.Column="4" Content="Problems" Margin="5"/>
-            <Button Grid.Column="5" Content="Employees" Margin="5"/>
-            <Button Grid.Column="6" Content="Roles" Margin="5"/>
-            <Button Grid.Column="7" Content="Salons" Margin="5"/>
+            
+            <!--NAVIGATION BUTTONS-->
+            <Button Grid.Column="0" Margin="5" Click="ClientsButton_Click">Clients</Button>
+            <Button Grid.Column="1" Margin="5" Click="DevicesButton_Click">Devices</Button>
+            <Button Grid.Column="2" Margin="5" Click="TypesButton_Click">Types</Button>
+            <Button Grid.Column="3" Margin="5" Click="BrandsButton_Click">Brands</Button>
+            <Button Grid.Column="4" Margin="5" Click="ProblemsButton_Click">Problems</Button>
+            <Button Grid.Column="5" Margin="5" Click="EmployeesButton_Click">Employees</Button>
+            <Button Grid.Column="6" Margin="5" Click="RolesButton_Click">Roles</Button>
+            <Button Grid.Column="7" Margin="5" Click="SalonsButton_Click">Salons</Button>
         </Grid>
-        <!--<Label Content="Placeholder" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40"/>-->
-        <DataGrid AutoGenerateColumns="False" Grid.Row="1" Margin="5,5,5,5" Name="DataGrid" FontSize="16" Width="auto" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center" CanUserResizeColumns="False" CanUserResizeRows="False" ColumnWidth="auto" BorderBrush="Gray">
+
+        <!--TABLE WITH REPORTMENTS-->
+        <DataGrid Name="DataGrid" Grid.Row="1" Width="auto" ColumnWidth="auto" BorderBrush="Gray" FontSize="16" Margin="5,5,5,5" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center" AutoGenerateColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id_Order}"/>
                 <DataGridTextColumn Header="Client name" Binding="{Binding Client.Name}"/>
@@ -48,15 +51,19 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <WrapPanel>
-                                <Button Content="Edit" Click="ButtonEditClick"/>
-                                <Button Content="Delete" Click="ButtonDeleteClick"></Button>
+                                <Button Click="EditButton_Click">Edit</Button>
+                                <Button Click="DeleteButton_Click">Delete</Button>
                             </WrapPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Grid.Row="2" Width="150" Height="40" Margin="5,5,5,5" Content="+Add reportment" Click="ButtonAddReportment"/>
-        <Button Grid.Row="3" Width="150" Height="40" Margin="5,5,5,5" Content="Logout" Click="ButtonLogout"/>
+        
+        <!--ADD NEW REPORTMENT BUTTON-->
+        <Button Grid.Row="2" Width="150" Height="40" Margin="5,5,5,5" Click="AddReportmentButton_Click">+Add reportment</Button>
+        
+        <!--LOGOUT BUTTON-->
+        <Button Grid.Row="3" Width="150" Height="40" Margin="5,5,5,5" Click="LogoutButton_Click">Logout</Button>
     </Grid>
 </Page>

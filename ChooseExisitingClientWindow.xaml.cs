@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace Repair_Service
 {
-    /// <summary>
-    /// Interaction logic for ChooseExisitingClientWindow.xaml
-    /// </summary>
     public partial class ChooseExisitingClientWindow : Window
     {
         public ChooseExisitingClientWindow()
@@ -24,12 +21,12 @@ namespace Repair_Service
             InitializeComponent();
         }
 
-        private void ButtonAddClick(object sender, RoutedEventArgs e)
+        private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = true;
         }
 
-        private void ButtonBackClick(object sender, RoutedEventArgs e)
+        private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }

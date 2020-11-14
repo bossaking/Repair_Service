@@ -5,10 +5,13 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Repair_Service"
       mc:Ignorable="d" 
-      d:DesignHeight="700" d:DesignWidth="1200" Title="EditPage">
+      Title="Repair Service: Edit order" d:DesignHeight="700" d:DesignWidth="1200" FontSize="16">
 
     <Grid ShowGridLines="False" Background="White" Margin="50,0,50,0" VerticalAlignment="Center">
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -25,48 +28,55 @@
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Label Grid.Row="0" Content="Imię:" VerticalContentAlignment="Center"/>
+
+        <!--CLIENT INFORMATIONS-->
+        <Label Grid.Row="0" VerticalContentAlignment="Center">Name:</Label>
         <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Padding="3,4,4,4" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
-        <Label Grid.Row="1" Grid.Column="0" Content="Nazwisko:" VerticalContentAlignment="Center"/>
+        <Label Grid.Row="1" Grid.Column="0" VerticalContentAlignment="Center">Surname:</Label>
         <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Padding="3,4,4,4" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
-        <Label Grid.Row="2" Grid.Column="0" Content="Numer telefonu:" VerticalContentAlignment="Center"/>
+        <Label Grid.Row="2" Grid.Column="0" VerticalContentAlignment="Center">Phone number:</Label>
         <TextBox Grid.Row="2" Grid.Column="1" Margin="5" Padding="3,4,4,4" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
-        <Label Grid.Row="3" Grid.Column="0" Content="Typ urządzenia:" VerticalContentAlignment="Center"/>
-        <ComboBox Grid.Row="3" Grid.Column="1" Margin="5" Padding="5" VerticalContentAlignment="Center" IsEditable="True" IsTextSearchEnabled="True" TextSearch.TextPath="Content">
-            <ComboBoxItem Content="Smartfon"/>
-            <ComboBoxItem Content="Laptop"/>
-            <ComboBoxItem Content="PC"/>
-            <ComboBoxItem Content="Telefon"/>
-        </ComboBox>
-        <Label Grid.Row="4" Grid.Column="0" Content="Model" VerticalContentAlignment="Center"/>
-        <ComboBox Grid.Row="4" Grid.Column="1" Margin="5" Padding="5" VerticalContentAlignment="Center" IsEditable="True" IsTextSearchEnabled="True" TextSearch.TextPath="Content">
-            <ComboBoxItem Content="Samsung Galaxy S10"/>
-            <ComboBoxItem Content="iPhone 12"/>
-            <ComboBoxItem Content="OnePlus 8T"/>
-        </ComboBox>
-        <Label Grid.Row="5" Grid.Column="0" Content="Koszt:" VerticalContentAlignment="Center"/>
-        <TextBox Grid.Row="5" Grid.Column="1"  Margin="5" Padding="3,4,4,4" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
-        <Label Grid.Row="6" Grid.Column="0" Content="Pracownik:" VerticalContentAlignment="Center"/>
-        <ComboBox Grid.Row="6" Grid.Column="1" Margin="5" Padding="5" VerticalContentAlignment="Center" IsTextSearchEnabled="True" TextSearch.TextPath="Content">
-            <ComboBoxItem Content="Janusz Wąs"/>
-            <ComboBoxItem Content="Halina Glina"/>
-            <ComboBoxItem Content="Robert Kurwica"/>
-            <ComboBoxItem Content="Marian Paździoch"/>
-        </ComboBox>
-        <Label Grid.Row="7" Grid.Column="0" Content="Data przyjęcia zgłoszenia:" VerticalContentAlignment="Center"/>
-        <TextBox Grid.Row="7" Grid.Column="1"  Margin="5" Padding="3,4,4,4" IsReadOnly="True" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
-        <Label Grid.Row="8" Grid.Column="0" Content="Status:" VerticalContentAlignment="Center"/>
-        <ComboBox Grid.Row="8" Grid.Column="1" Margin="5" Padding="5" VerticalContentAlignment="Center">
-            <ComboBoxItem Content="Przyjęty"/>
-            <ComboBoxItem Content="W trakcie naprawy"/>
-            <ComboBoxItem Content="Zakończony"/>
-            <ComboBoxItem Content="Odebrany"/>
-        </ComboBox>
-        <Label Grid.Row="9" Grid.Column="0" Content="Opis:" VerticalContentAlignment="Center"/>
-        <TextBox Grid.Row="9" Grid.Column="1" Margin="5" Padding="3,4,4,4" MinLines="8" MaxLines="8" MaxLength="1500" AcceptsReturn="True" AcceptsTab="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"/>
-        <WrapPanel Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="5,20,5,5">
-            <Button Padding="10,5" Width="75" IsDefault="True" IsEnabled="False" Content="Save"/>
-            <Button Padding="10,5" Margin="5,0,0,0" Width="75" IsCancel="True" Content="Anuluj" Click="ButtonCancel"/>
+
+        <!--DEVICE TYPE-->
+        <Label Grid.Row="3" Grid.Column="0" VerticalContentAlignment="Center">Device type:</Label>
+        <ComboBox Name="DeviceTypeComboBox" Grid.Row="3" Grid.Column="1" Margin="5" Padding="5" VerticalContentAlignment="Center"/>
+
+        <!--DEVICE BRAND-->
+        <Label Grid.Row="4" Grid.Column="0" VerticalContentAlignment="Center">Device brand:</Label>
+        <ComboBox Name="DeviceBrandComboBox" Grid.Row="4" Grid.Column="1" Margin="5" Padding="5" VerticalContentAlignment="Center" IsEditable="True" IsTextSearchEnabled="True" TextSearch.TextPath="Content"/>
+
+        <!--DEVICE MODEL-->
+        <Label Grid.Row="5" Grid.Column="0" VerticalContentAlignment="Center">Device model:</Label>
+        <ComboBox Name="DeviceModelComboBox" Grid.Row="5" Grid.Column="1" Margin="5" Padding="5" VerticalContentAlignment="Center" IsEditable="True" IsTextSearchEnabled="True" TextSearch.TextPath="Content"/>
+
+        <!--PROBLEM-->
+        <Label Grid.Row="6" Grid.Column="0" VerticalContentAlignment="Center">Problem:</Label>
+        <ComboBox Name="ProblemComboBox" Grid.Row="6" Grid.Column="1" Margin="5" Padding="5" VerticalContentAlignment="Center"/>
+
+        <!--ESTIMATED COST-->
+        <Label Grid.Row="7" Grid.Column="0" VerticalContentAlignment="Center">Estimated cost:</Label>
+        <TextBox Grid.Row="7" Grid.Column="1"  Margin="5" Padding="3,4,4,4" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+
+        <!--EMPLOYEE-->
+        <Label Grid.Row="8" Grid.Column="0" VerticalContentAlignment="Center">Employee:</Label>
+        <ComboBox Name="EmployeesComboBox" Grid.Row="8" Grid.Column="1" Margin="5" Padding="5" VerticalContentAlignment="Center" IsTextSearchEnabled="True" TextSearch.TextPath="Content"/>
+
+        <!--ORDER DATE-->
+        <Label Grid.Row="9" Grid.Column="0" VerticalContentAlignment="Center">Order date:</Label>
+        <TextBox Grid.Row="9" Grid.Column="1"  Margin="5" Padding="3,4,4,4" IsReadOnly="True" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+        
+        <!--STATUS-->
+        <Label Grid.Row="10" Grid.Column="0" VerticalContentAlignment="Center">Status:</Label>
+        <ComboBox Name="StatusComboBox" Grid.Row="10" Grid.Column="1" Margin="5" Padding="5" VerticalContentAlignment="Center"/>
+
+        <!--DESCRIPTION-->
+        <Label Grid.Row="11" Grid.Column="0" VerticalContentAlignment="Center">Description:</Label>
+        <TextBox Grid.Row="11" Grid.Column="1" Margin="5" Padding="3,4,4,4" MinLines="8" MaxLines="8" MaxLength="1500" AcceptsReturn="True" AcceptsTab="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"/>
+
+        <!--BUTTONS-->
+        <WrapPanel Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2" Margin="5,20,5,5" HorizontalAlignment="Center">
+            <Button Click="SaveButton_Click" Width="75" Padding="10,5" IsDefault="True" IsEnabled="False">Save</Button>
+            <Button Click="CancelButton_Click" Width="75" Padding="10,5" Margin="5,0,0,0" IsCancel="True">Cancel</Button>
         </WrapPanel>
     </Grid>
 </Page>
