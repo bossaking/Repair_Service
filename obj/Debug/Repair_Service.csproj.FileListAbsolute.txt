@@ -189,3 +189,29 @@ C:\Users\ddgam\source\repos\Repair_Service\obj\Debug\AddDevicePage.baml
 C:\Users\ddgam\source\repos\Repair_Service\obj\Debug\ChooseExisitingClientWindow.baml
 C:\Users\ddgam\source\repos\Repair_Service\obj\Debug\ClientsPage.baml
 C:\Users\ddgam\source\repos\Repair_Service\obj\Debug\DevicesPage.baml
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\EditClientPage.g.cs
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\EditClientPage.baml
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\BrandsPage.g.cs
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\TypesPage.g.cs
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\BrandsPage.baml
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\TypesPage.baml
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\AddEditBrandsPage.g.cs
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\AddEditTypesPage.g.cs
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\AddEditBrandsPage.baml
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\AddEditTypesPage.baml
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\ProblemsPage.g.cs
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\ProblemsPage.baml
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\AddEditProblemsPage.g.cs
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\AddEditProblemsPage.baml
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\AddEditEmployeesPage.g.cs
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\EmployeesPage.g.cs
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\AddEditEmployeesPage.baml
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\EmployeesPage.baml
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\AddEditRolesPage.g.cs
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\AddEditSalonsPage.g.cs
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\RolesPage.g.cs
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\SalonsPage.g.cs
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\AddEditRolesPage.baml
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\AddEditSalonsPage.baml
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\RolesPage.baml
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\SalonsPage.baml

@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace Repair_Service
 {
-    /// <summary>
-    /// Interaction logic for AddDevicePage.xaml
-    /// </summary>
     public partial class AddDevicePage : Page
     {
         public AddDevicePage()
@@ -25,10 +22,22 @@ namespace Repair_Service
             InitializeComponent();
         }
 
-        private void ButtonCancel(object sender, RoutedEventArgs e)
+        #region BUTTONS
+        private void OkButton_Click(object sender, RoutedEventArgs e)
+        {
+            LoadDevicesPage();
+        }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            LoadDevicesPage();
+        }
+
+        private void LoadDevicesPage()
         {
             DevicesPage devicesPage = new DevicesPage();
             this.NavigationService.Navigate(devicesPage);
         }
+        #endregion
     }
 }

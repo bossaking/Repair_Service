@@ -90,32 +90,38 @@ namespace Repair_Service
 
         private void TypesButton_Click(object sender, RoutedEventArgs e)
         {
-
+            TypesPage typesPage = new TypesPage();
+            this.NavigationService.Navigate(typesPage);
         }
 
         private void BrandsButton_Click(object sender, RoutedEventArgs e)
         {
-
+            BrandsPage brandsPage = new BrandsPage();
+            this.NavigationService.Navigate(brandsPage);
         }
 
         private void ProblemsButton_Click(object sender, RoutedEventArgs e)
         {
-
+            ProblemsPage problemsPage = new ProblemsPage();
+            this.NavigationService.Navigate(problemsPage);
         }
 
         private void EmployeesButton_Click(object sender, RoutedEventArgs e)
         {
-
+            EmployeesPage employeesPage = new EmployeesPage();
+            this.NavigationService.Navigate(employeesPage);
         }
 
         private void RolesButton_Click(object sender, RoutedEventArgs e)
         {
-
+            RolesPage rolesPage = new RolesPage();
+            this.NavigationService.Navigate(rolesPage);
         }
 
         private void SalonsButton_Click(object sender, RoutedEventArgs e)
         {
-
+            SalonsPage salonsPage = new SalonsPage();
+            this.NavigationService.Navigate(salonsPage);
         }
 
         private void LogoutButton_Click(object sender, RoutedEventArgs e)

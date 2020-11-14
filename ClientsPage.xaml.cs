@@ -18,40 +18,51 @@ namespace Repair_Service
 {
     public partial class ClientsPage : Page
     {
-
         private ClientsPageController clientsPageController;
+     
         public ClientsPage()
         {
             InitializeComponent();
             clientsPageController = new ClientsPageController();
         }
 
-        private void Page_Loaded(object sender, RoutedEventArgs e)
+        #region DATA
+        private void ClientsPage_Loaded(object sender, RoutedEventArgs e)
         {
             GetAllClients();
-        }
-
-        private void ButtonEditClick(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void ButtonDeleteClick(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void ButtonBackClick(object sender, RoutedEventArgs e)
-        {
-            MainPage mainPage = new MainPage();
-            this.NavigationService.Navigate(mainPage);
         }
 
         private async void GetAllClients()
         {
             DataGrid.ItemsSource = await clientsPageController.GetClientsAsync();
         }
+        #endregion
 
+        #region BUTTONS
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            EditClientPage editClientPage = new EditClientPage();
+            this.NavigationService.Navigate(editClientPage);
+        }
 
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Czy na pewno chcesz usunąć wybrany element?", "Usuń element",
+                MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
+            {
+                return;
+            }
+            else
+            {
+                //DeleteClient();
+            }
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainPage mainPage = new MainPage();
+            this.NavigationService.Navigate(mainPage);
+        }
+        #endregion
     }
 }

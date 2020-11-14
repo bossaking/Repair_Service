@@ -5,10 +5,9 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Repair_Service"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="AddDevicePage">
+      Title="Repair Service" d:DesignHeight="450" d:DesignWidth="800" FontSize="16">
 
-    <Grid ShowGridLines="True" Background="White" Margin="5">
+    <Grid ShowGridLines="False" Background="White" Margin="5">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -19,25 +18,24 @@
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Label Grid.Row="0" Grid.Column="0" Content="Model title:" VerticalContentAlignment="Center"/>
+        
+        <!--MODEL TITLE-->
+        <Label Grid.Row="0" Grid.Column="0" VerticalContentAlignment="Center">Model title:</Label>
         <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Padding="3,4,4,4" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
-        <Label Grid.Row="1" Grid.Column="0" Content="Type:" VerticalContentAlignment="Center"/>
-        <ComboBox Grid.Row="1" Grid.Column="1" Margin="5" Padding="5" VerticalContentAlignment="Center" IsTextSearchEnabled="True" TextSearch.TextPath="Content">
-            <ComboBoxItem Content="Smartfon"/>
-            <ComboBoxItem Content="Laptop"/>
-            <ComboBoxItem Content="PC"/>
-            <ComboBoxItem Content="Telefon"/>
-        </ComboBox>
-        <Label Grid.Row="2" Grid.Column="0" Content="Brand:" VerticalContentAlignment="Center"/>
-        <ComboBox Grid.Row="2" Grid.Column="1" Margin="5" Padding="5" VerticalContentAlignment="Center" IsTextSearchEnabled="True" TextSearch.TextPath="Content">
-            <ComboBoxItem Content="Samsung"/>
-            <ComboBoxItem Content="iPhone"/>
-            <ComboBoxItem Content="OnePLus"/>
-            <ComboBoxItem Content="Nokia"/>
-        </ComboBox>
-        <WrapPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="5,20,5,5">
-            <Button Padding="10,5" Width="75" IsDefault="True" Content="OK"/>
-            <Button Padding="10,5" Margin="5,0,0,0" Width="75" IsCancel="True" Content="Anuluj" Click="ButtonCancel"/>
+        
+        <!--TYPE-->
+        <Label Grid.Row="1" Grid.Column="0" VerticalContentAlignment="Center">Type:</Label>
+        <ComboBox Grid.Row="1" Grid.Column="1" Margin="5" Padding="5" VerticalContentAlignment="Center" IsTextSearchEnabled="True" TextSearch.TextPath="Content"/>
+
+        <!--BRAND-->
+        <Label Grid.Row="2" Grid.Column="0" VerticalContentAlignment="Center">Brand:</Label>
+        <ComboBox Grid.Row="2" Grid.Column="1" Margin="5" Padding="5" VerticalContentAlignment="Center" IsTextSearchEnabled="True" TextSearch.TextPath="Content"/>
+
+        <!--BUTTONS-->
+        <WrapPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="5,20,5,5" HorizontalAlignment="Center">
+            <Button Click="OkButton_Click" Padding="10,5" Width="75" IsDefault="True">OK</Button>
+            <Button Click="CancelButton_Click" Padding="10,5" Margin="5,0,0,0" Width="75" IsCancel="True">Cancel</Button>
         </WrapPanel>
     </Grid>
+    
 </Page>
