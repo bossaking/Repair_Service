@@ -16,6 +16,7 @@ namespace Repair_Service.DAL
          ObservableCollection<Client> clients;
          ObservableCollection<Employee> employees;
          ObservableCollection<Device_Type> types;
+        ObservableCollection<Problem> problems;
 
         private static ProxyDatabase instance;
 
@@ -29,38 +30,7 @@ namespace Repair_Service.DAL
             return instance;
         }
 
-        #region ORDERS TABLE
-        public override void AddNewOrder(Order order)
-        {
-
-            if (database == null)
-            {
-                database = new MainDatabase();
-            }
-
-            
-            AddNewClient(order.Client);
-            order.Client.Id_Client = GetClientId(order.Client);
-            database.AddNewOrder(order);
-            App.Current.Dispatcher.Invoke(() => orders.Add(order));
-        }
-        public override ObservableCollection<Order> GetAllOrders()
-        {
-            if (orders == null)
-            {
-                orders = database == null ? (database = new MainDatabase()).GetAllOrders() : database.GetAllOrders();
-            }
-
-            return orders;
-        }
-
-        public override void DeleteOrder(int id)
-        {
-            App.Current.Dispatcher.Invoke(() => orders.Remove(orders.Where(o => o.Id_Order == id).FirstOrDefault()));
-            database.DeleteOrder(id);
-        }
-
-        #endregion
+        
 
         #region CLIENTS TABLE
         public override void AddNewClient(Client client)
@@ -84,17 +54,7 @@ namespace Repair_Service.DAL
 
         #endregion
 
-
-        public override ObservableCollection<Employee> GetEmployees()
-        {
-            if(employees == null)
-            {
-                employees = database == null ? (database = new MainDatabase()).GetEmployees() : database.GetEmployees();
-            }
-
-            return employees;
-        }
-
+        #region DEVICES TYPES TABLE
         public override ObservableCollection<Device_Type> GetTypes()
         {
             if (types == null)
@@ -104,6 +64,75 @@ namespace Repair_Service.DAL
 
             return types;
         }
+        #endregion
+
+        #region EMPLOYEES TABLE
+        public override ObservableCollection<Employee> GetEmployees()
+        {
+            if (employees == null)
+            {
+                employees = database == null ? (database = new MainDatabase()).GetEmployees() : database.GetEmployees();
+            }
+
+            return employees;
+        }
+        #endregion
+
+        #region ORDERS TABLE
+        public override void AddNewOrder(Order order)
+        {
+
+            if (database == null)
+            {
+                database = new MainDatabase();
+            }
+
+
+            AddNewClient(order.Client);
+            order.Client.Id_Client = GetClientId(order.Client);
+            database.AddNewOrder(order);
+            App.Current.Dispatcher.Invoke(() => orders.Add(order));
+        }
+        public override ObservableCollection<Order> GetAllOrders()
+        {
+            if (orders == null)
+            {
+                orders = database == null ? (database = new MainDatabase()).GetAllOrders() : database.GetAllOrders();
+            }
+
+            return orders;
+        }
+
+        public override void DeleteOrder(int id)
+        {
+            App.Current.Dispatcher.Invoke(() => orders.Remove(orders.Where(o => o.Id_Order == id).FirstOrDefault()));
+            database.DeleteOrder(id);
+        }
+
+        #endregion
+
+        #region PROBLEMS TABLE
+
+        public override ObservableCollection<Problem> GetProblems()
+        {
+            if(problems == null)
+            {
+                problems = database == null ? (database = new MainDatabase()).GetProblems() : database.GetProblems();
+            }
+
+            return problems;
+        }
+
+        #endregion
+
+
+
+
+
+
+
+
+
 
         public override bool SingInWithLoginAndPassword(string login, string password)
         {

@@ -79,7 +79,7 @@ namespace Repair_Service.DAL
         #region READ
 
         /// <summary>
-        /// Odczyt wszystkich klientów
+        /// Odczyt wszystkich klientów z bazy danych
         /// </summary>
         /// <returns>Zwraca listę klientów</returns>
         public override ObservableCollection<Client> GetAllClients()
@@ -99,7 +99,7 @@ namespace Repair_Service.DAL
         }
 
         /// <summary>
-        /// Odczyt wszystkich zleceń
+        /// Odczyt wszystkich zleceń z bazy danych
         /// </summary>
         /// <returns>Zwraca listę zleceń</returns>
         public override ObservableCollection<Order> GetAllOrders()
@@ -119,7 +119,7 @@ namespace Repair_Service.DAL
         }
 
         /// <summary>
-        /// Odczyt fszystkich pracowników
+        /// Odczyt fszystkich pracowników z bazy danych
         /// </summary>
         /// <returns>Zwraca listę pracowników</returns>
         public override ObservableCollection<Employee> GetEmployees()
@@ -138,7 +138,7 @@ namespace Repair_Service.DAL
         }
 
         /// <summary>
-        /// Odczyt wszystkich typów urządzeń
+        /// Odczyt wszystkich typów urządzeń z bazy danych
         /// </summary>
         /// <returns>Zwraca listę typów urządzeń</returns>
         public override ObservableCollection<Device_Type> GetTypes()
@@ -154,6 +154,25 @@ namespace Repair_Service.DAL
             }
 
             return types;
+        }
+
+        /// <summary>
+        /// Odczyt wszystkich problemów z bazy danych
+        /// </summary>
+        /// <returns>Zwraca listę wszyskich problemów</returns>
+        public override ObservableCollection<Problem> GetProblems()
+        {
+            ObservableCollection<Problem> problems;
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    problems = new ObservableCollection<Problem>(session.QueryOver<Problem>().List());
+                    transaction.Commit();
+                }
+            }
+
+            return problems;
         }
 
         #endregion

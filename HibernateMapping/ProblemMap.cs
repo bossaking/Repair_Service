@@ -17,7 +17,7 @@ namespace Repair_Service.HibernateMapping
 
             Map(x => x.Title);
 
-            HasManyToMany(x => x.Orders).Inverse().Table("orders_problems").ParentKeyColumn("Id_Problem").ChildKeyColumn("Id_Order").LazyLoad();
+            HasManyToMany(x => x.Orders).Inverse().Table("orders_problems").ParentKeyColumn("Id_Problem").ChildKeyColumn("Id_Order").Not.LazyLoad();
 
             Table("problems");
         }
