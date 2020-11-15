@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace Repair_Service
 {
-    /// <summary>
-    /// Interaction logic for DevicesPage.xaml
-    /// </summary>
     public partial class DevicesPage : Page
     {
         public DevicesPage()
@@ -25,26 +22,41 @@ namespace Repair_Service
             InitializeComponent();
         }
 
-        private void ButtonAddDevice(object sender, RoutedEventArgs e)
+        #region BUTTONS
+        private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            AddDevicePage addDevicePage = new AddDevicePage();
-            this.NavigationService.Navigate(addDevicePage);
+            LoadAddEditDevicePage();
         }
 
-        private void ButtonBackClick(object sender, RoutedEventArgs e)
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Czy na pewno chcesz usunąć wybrany element?", "Usuń element",
+                MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
+            {
+                return;
+            }
+            else
+            {
+                //DeleteDevice();
+            }
+        }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            LoadAddEditDevicePage();
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             MainPage mainPage = new MainPage();
             this.NavigationService.Navigate(mainPage);
         }
 
-        private void ButtonEditClick(object sender, RoutedEventArgs e)
+        private void LoadAddEditDevicePage()
         {
-
+            AddDevicePage addEditDevicePage = new AddDevicePage();
+            this.NavigationService.Navigate(addEditDevicePage);
         }
-
-        private void ButtonDeleteClick(object sender, RoutedEventArgs e)
-        {
-
-        }
+        #endregion
     }
 }

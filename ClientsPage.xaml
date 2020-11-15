@@ -5,8 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Repair_Service"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="ClientsPage" Loaded="Page_Loaded">
+      Title="Repair Service: Clients" d:DesignHeight="900" d:DesignWidth="1200" FontSize="16" Loaded="ClientsPage_Loaded">
 
     <Grid Background="White">
         <Grid.RowDefinitions>
@@ -14,8 +13,12 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <Label Content="Klienci" HorizontalAlignment="Center" FontSize="40" VerticalAlignment="Center"/>
-        <DataGrid AutoGenerateColumns="False" Grid.Row="1" Margin="5,5,5,5" Name="DataGrid" FontSize="16" Width="auto" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center" CanUserResizeColumns="False" CanUserResizeRows="False" ColumnWidth="auto" BorderBrush="Gray">
+
+        <!--CLIENTS HEADER-->
+        <Label FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center">Clients</Label>
+
+        <!--TABLE WITH CLIENTS-->
+        <DataGrid Name="DataGrid" Grid.Row="1" Margin="5,5,5,5" FontSize="16" Width="auto" ColumnWidth="auto" BorderBrush="Gray" IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Center" VerticalAlignment="Center" CanUserResizeColumns="False" CanUserResizeRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id_Client}"/>
                 <DataGridTextColumn Header="Client name" Binding="{Binding Name}"/>
@@ -25,15 +28,15 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <WrapPanel>
-                                <Button Content="Edit" Click="ButtonEditClick"/>
-                                <Button Content="Delete" Click="ButtonDeleteClick"/>
+                                <Button Click="EditButton_Click">Edit</Button>
+                                <Button Click="DeleteButton_Click">Delete</Button>
                             </WrapPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Grid.Row="2" Content="Back" VerticalAlignment="Center" HorizontalAlignment="Center" Width="100" Height="40" Margin="5" Click="ButtonBackClick"/>
+        <Button Click="BackButton_Click" Grid.Row="2" Width="100" Height="40" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center">Back</Button>
     </Grid>
 
 </Page>
