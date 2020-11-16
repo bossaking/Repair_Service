@@ -9,15 +9,10 @@ using System.Threading.Tasks;
 
 namespace Repair_Service.Controllers
 {
-    public class ReportmentPageController
+    public class ReportmentPageController : PageController
     {
-
-        private Database database;
-
-        public ReportmentPageController()
-        {
-            database = ProxyDatabase.GetDatabase();
-        }
+        public ReportmentPageController() : base() { }
+        
 
         /// <summary>
         /// Pozwala na asynchroniczny odczyt wszystkich pracowników

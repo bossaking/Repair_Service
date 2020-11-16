@@ -11,11 +11,11 @@ namespace Repair_Service.DAL
     public class ProxyDatabase : Database
     {
 
-         MainDatabase database;
-         ObservableCollection<Order> orders;
-         ObservableCollection<Client> clients;
-         ObservableCollection<Employee> employees;
-         ObservableCollection<Device_Type> types;
+        MainDatabase database;
+        ObservableCollection<Order> orders;
+        ObservableCollection<Client> clients;
+        ObservableCollection<Employee> employees;
+        ObservableCollection<Device_Type> types;
         ObservableCollection<Problem> problems;
 
         private static ProxyDatabase instance;
@@ -30,9 +30,28 @@ namespace Repair_Service.DAL
             return instance;
         }
 
-        
+
 
         #region CLIENTS TABLE
+
+        /// <summary>
+        /// Zwraca listę wszystkich klientów
+        /// </summary>
+        /// <returns>Zwraca listę wszystkich klientów</returns>
+        public override ObservableCollection<Client> GetAllClients()
+        {
+            if (clients == null)
+            {
+                clients = database == null ? (database = new MainDatabase()).GetAllClients() : database.GetAllClients();
+            }
+
+            return clients;
+        }
+
+        /// <summary>
+        /// Pozwala na dodawanie nowego klienta do bazy danych
+        /// </summary>
+        /// <param name="client">Obiekt klasy Client</param>
         public override void AddNewClient(Client client)
         {
             if (!ClientExists(client))
@@ -41,15 +60,52 @@ namespace Repair_Service.DAL
                 database.AddNewClient(client);
             }
         }
-        public override ObservableCollection<Client> GetAllClients()
+
+        /// <summary>
+        /// Pozwala na aktualizacje infirmacji klienta w bazie danych 
+        /// </summary>
+        /// <param name="client">Obiekt klasy Client</param>
+        public override void UpdateClient(Client client)
         {
-            if(clients == null)
-            {
+            Client oldClient = clients.First(c => c.Id_Client == client.Id_Client);
+            oldClient = client;
+            database.UpdateClient(client);
+        }
 
-                clients = database == null ? (database = new MainDatabase()).GetAllClients() : database.GetAllClients();
-            }
+        /// <summary>
+        /// Pozwala na usunięcie klienta z bazy danych
+        /// </summary>
+        /// <param name="id">Id klienta</param>
+        /// <returns>Zwraca TRUE jeżeli udało się usunąć klienta</returns>
+        public override bool DeleteClient(int id)
+        {
+            bool result = database.DeleteClient(id);
+            if (result == true) 
+            App.Current.Dispatcher.Invoke(() => clients.Remove(clients.Where(o => o.Id_Client == id).FirstOrDefault()));
+            return result;
+        }
 
-            return clients;
+        /// <summary>
+        /// Pozwala sprawdzić czy podany klient już znajduje się w bazie danych
+        /// </summary>
+        /// <param name="client">Obiekt klasy Client</param>
+        /// <returns>Zwraca TRUE jeżeli dany klient już znajduje się w bazie</returns>
+        private bool ClientExists(Client client)
+        {
+            if (clients == null) GetAllClients();
+            Client repeatClient = clients.Where(c => c.Name == client.Name && c.Surname == client.Surname && c.Phone_Number == c.Phone_Number).FirstOrDefault();
+            return repeatClient != null;
+        }
+
+        /// <summary>
+        /// Pozwala odnaleźć klienta na liście i zwraca jego identyfikator
+        /// </summary>
+        /// <param name="client">Obiekt klasy Client</param>
+        /// <returns>Zwraca ID klienta</returns>
+        private int GetClientId(Client client)
+        {
+            Client reClient = clients.Where(c => c.Name == client.Name && c.Surname == client.Surname && c.Phone_Number == c.Phone_Number).FirstOrDefault();
+            return reClient.Id_Client;
         }
 
         #endregion
@@ -115,7 +171,7 @@ namespace Repair_Service.DAL
 
         public override ObservableCollection<Problem> GetProblems()
         {
-            if(problems == null)
+            if (problems == null)
             {
                 problems = database == null ? (database = new MainDatabase()).GetProblems() : database.GetProblems();
             }
@@ -136,26 +192,11 @@ namespace Repair_Service.DAL
 
         public override bool SingInWithLoginAndPassword(string login, string password)
         {
-            if(database == null) database = new MainDatabase();
+            if (database == null) database = new MainDatabase();
             return database.SingInWithLoginAndPassword(login, password);
         }
 
-        /// <summary>
-        /// Pozwala sprawdzić czy podany klient już znajduje się w bazie danych
-        /// </summary>
-        /// <param name="client">Obiekt klasy Client</param>
-        /// <returns>Zwraca TRUE jeżeli dany klient już znajduje się w bazie</returns>
-        private bool ClientExists(Client client)
-        {
-            if (clients == null) GetAllClients();
-            Client repeatClient = clients.Where(c => c.Name == client.Name && c.Surname == client.Surname && c.Phone_Number == c.Phone_Number).FirstOrDefault();
-            return repeatClient != null;
-        }
-        private int GetClientId(Client client)
-        {
-            Client reClient = clients.Where(c => c.Name == client.Name && c.Surname == client.Surname && c.Phone_Number == c.Phone_Number).FirstOrDefault();
-            return reClient.Id_Client;
-        }
+
 
     }
 }

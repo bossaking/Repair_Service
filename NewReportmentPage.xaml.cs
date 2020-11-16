@@ -25,7 +25,6 @@ namespace Repair_Service
         public NewReportmentPage()
         {
             InitializeComponent();
-            //TODO obsłużyć brand w kodzie
         }
 
         #region DATA
@@ -91,7 +90,17 @@ namespace Repair_Service
         private void SelectClientButton_Click(object sender, RoutedEventArgs e)
         {
             ChooseExisitingClientWindow chooseExisitingClientWindow = new ChooseExisitingClientWindow();
-            chooseExisitingClientWindow.ShowDialog();
+            if (chooseExisitingClientWindow.ShowDialog() == true)
+            {
+                Client client = new Client {
+                    Name = chooseExisitingClientWindow.client.Name,
+                    Surname = chooseExisitingClientWindow.client.Surname,
+                    Phone_Number = chooseExisitingClientWindow.client.Phone_Number
+                };
+                newOrder.Client = client;
+            }
+            DataContext = null;
+            DataContext = newOrder;
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)

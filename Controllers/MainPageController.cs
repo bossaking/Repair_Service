@@ -9,15 +9,11 @@ using Repair_Service.Models;
 
 namespace Repair_Service.Controllers
 {
-    public class MainPageController
+    public class MainPageController : PageController
     {
 
-        private Database database;
 
-        public MainPageController()
-        {
-            database = ProxyDatabase.GetDatabase();
-        }
+        public MainPageController() : base() { }
 
 
         /// <summary>

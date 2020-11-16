@@ -19,17 +19,17 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <!--MODEL TITLE-->
+        <!--CLIENT NAME-->
         <Label Grid.Row="0" Grid.Column="0" VerticalContentAlignment="Center">Name:</Label>
-        <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Padding="3,4,4,4" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+        <TextBox Text="{Binding Path=Name}" Grid.Row="0" Grid.Column="1" Margin="5" Padding="3,4,4,4" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
 
-        <!--TYPE-->
+        <!--CLIENT SURNAME-->
         <Label Grid.Row="1" Grid.Column="0" VerticalContentAlignment="Center">Surname:</Label>
-        <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Padding="3,4,4,4" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+        <TextBox Text="{Binding Path=Surname}" Grid.Row="1" Grid.Column="1" Margin="5" Padding="3,4,4,4" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
         
-        <!--BRAND-->
+        <!--CLIENT PHONE NUMBER-->
         <Label Grid.Row="2" Grid.Column="0" VerticalContentAlignment="Center">Phone number:</Label>
-        <TextBox Grid.Row="2" Grid.Column="1" Margin="5" Padding="3,4,4,4" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+        <TextBox Text="{Binding Path=Phone_Number}" Grid.Row="2" Grid.Column="1" Margin="5" Padding="3,4,4,4" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
         
         <!--BUTTONS-->
         <WrapPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="5,20,5,5" HorizontalAlignment="Center">

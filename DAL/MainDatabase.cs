@@ -180,21 +180,17 @@ namespace Repair_Service.DAL
         #region UPDATE
 
         /// <summary>
-        /// Edycja zlecenia
+        /// Pozwala na aktualizacje informacji klienta w bazie danych
         /// </summary>
-        public void SetOrder()
+        /// <param name="client">Obiekt klasy Client</param>
+        public override void UpdateClient(Client client)
         {
             using (var session = NHibernateHelper.OpenSession())
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    Order order = session.QueryOver<Order>().Where(o => o.Id_Order == 3).SingleOrDefault();
-                    Client client = session.Get<Client>(1);
-                    order.Description = "Nowy opis";
-                    order.Client = client;
-                    session.Update(order);
+                    session.Update(client);
                     transaction.Commit();
-                    MessageBox.Show("Order edited!");
                 }
             }
         }
@@ -205,8 +201,9 @@ namespace Repair_Service.DAL
         #region DELETE
 
         /// <summary>
-        /// Usuwanie zlecenia
+        /// Usuwanie zlecenia o podanym ID z bazy danych
         /// </summary>
+        /// <param name="id">ID zlecenia</param>
         public override void DeleteOrder(int id)
         {
             using (var session = NHibernateHelper.OpenSession())
@@ -216,6 +213,33 @@ namespace Repair_Service.DAL
                     Order order = session.QueryOver<Order>().Where(o => o.Id_Order == id).SingleOrDefault();
                     session.Delete(order);
                     transaction.Commit();
+                    //TODO EXCEPTIONS
+                }
+            }
+        }
+
+        /// <summary>
+        /// Usuwanie klienta o podanym ID z bazy danych
+        /// </summary>
+        /// <param name="id">Id klienta</param>
+        /// <returns>Zwraca TRUE jeżeli udało się usunąć klienta</returns>
+        public override bool DeleteClient(int id)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        Client client = session.QueryOver<Client>().Where(o => o.Id_Client == id).SingleOrDefault();
+                        session.Delete(client);
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch
+                    {
+                        return false;
+                    }
                 }
             }
         }

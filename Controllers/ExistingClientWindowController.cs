@@ -9,26 +9,18 @@ using System.Threading.Tasks;
 
 namespace Repair_Service.Controllers
 {
-    public class ClientsPageController : PageController
+    public class ExistingClientWindowController : PageController
     {
 
-        public ClientsPageController() : base() { }
-        
+        public ExistingClientWindowController() : base() { }
 
         public async Task<ObservableCollection<Client>> GetClientsAsync()
         {
             ObservableCollection<Client> clients = new ObservableCollection<Client>();
-
-            await Task.Run(() => clients = database.GetAllClients());
-
-            return clients;
-        }
-
-        public async Task<bool> DeleteClient(int id)
-        {
-            return await Task.Run(() => 
-                database.DeleteClient(id)
+            await Task.Run(() =>
+                clients = database.GetAllClients()
             );
+            return clients;
         }
 
     }

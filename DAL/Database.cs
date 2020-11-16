@@ -13,8 +13,10 @@ namespace Repair_Service.DAL
 
 
         #region CLIENTS TABLE
-        public abstract void AddNewClient(Client client);
         public abstract ObservableCollection<Client> GetAllClients();
+        public abstract void AddNewClient(Client client);
+        public abstract void UpdateClient(Client client);
+        public abstract bool DeleteClient(int id);
         #endregion
 
         #region DEVICES TYPES TABLE

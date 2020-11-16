@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Repair_Service.Controllers;
+using Repair_Service.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,20 +14,41 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TableDependency.SqlClient;
+using System.Configuration;
 
 namespace Repair_Service
 {
     public partial class EditClientPage : Page
     {
-        public EditClientPage()
+        //TODO Dodać sprawdzenie czy wszystkie pola są wypełnione
+        readonly EditClientPageController pageController;
+        public EditClientPage(Client client)
         {
             InitializeComponent();
+            DataContext = client;
+
+            pageController = new EditClientPageController();
         }
 
         #region BUTTONS
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            LoadClientsPage();
+            UpdateClient(DataContext as Client);
+            SqlTableDependency<Client> dependency = new SqlTableDependency<Client>(ConfigurationManager.ConnectionStrings["DefaultDependencyConnection"].ConnectionString);
+            dependency.OnChanged += Dependency_OnChanged;
+            dependency.Start(10, 10);
+            //LoadClientsPage();
+        }
+
+        private void Dependency_OnChanged(object sender, TableDependency.SqlClient.Base.EventArgs.RecordChangedEventArgs<Client> e)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async void UpdateClient(Client client)
+        {
+            await pageController.UpdateClient(client);
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

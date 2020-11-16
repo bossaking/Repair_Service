@@ -7,15 +7,13 @@ using System.Threading.Tasks;
 
 namespace Repair_Service.Controllers
 {
-    public class LoginPageController
+    public class LoginPageController : PageController
     {
 
-        private Database database;
         private LocalUserData localUserData;
 
-        public LoginPageController()
+        public LoginPageController() : base()
         {
-            database = ProxyDatabase.GetDatabase();
             localUserData = new LocalUserData();
         }
 
