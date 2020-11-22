@@ -23,8 +23,8 @@
         <TextBox Name="TextBoxLogin" Grid.Row="1" Width="200" Height="30" Margin="0,25,0,0" VerticalContentAlignment="Center">Login</TextBox>
 
         <!--PASSWORD-->
-        <TextBox Name="TextBoxPassword" Grid.Row="2" Width="200" Height="30" Margin="0,15,0,10" VerticalContentAlignment="Center">Password</TextBox>
-        
+        <PasswordBox Name="TextBoxPassword" Grid.Row="2" Width="200" Height="30" Margin="0,15,0,10" VerticalContentAlignment="Center"/>
+
         <!--REMEMBER ME CHECKBOX-->
         <CheckBox Name="CheckBoxRememberMe" Grid.Row="3" VerticalContentAlignment="Center" HorizontalAlignment="Center" Unchecked="CheckBoxRememberMeUnchecked">Remember me</CheckBox>
         

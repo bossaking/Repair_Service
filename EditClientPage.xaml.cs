@@ -35,15 +35,7 @@ namespace Repair_Service
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             UpdateClient(DataContext as Client);
-            SqlTableDependency<Client> dependency = new SqlTableDependency<Client>(ConfigurationManager.ConnectionStrings["DefaultDependencyConnection"].ConnectionString);
-            dependency.OnChanged += Dependency_OnChanged;
-            dependency.Start(10, 10);
-            //LoadClientsPage();
-        }
-
-        private void Dependency_OnChanged(object sender, TableDependency.SqlClient.Base.EventArgs.RecordChangedEventArgs<Client> e)
-        {
-            throw new NotImplementedException();
+            LoadClientsPage();
         }
 
         public async void UpdateClient(Client client)
