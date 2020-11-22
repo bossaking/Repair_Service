@@ -163,6 +163,12 @@
     <Compile Include="AddEditTypesPage.xaml.cs">
       <DependentUpon>AddEditTypesPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ArchieveDetailsPage.xaml.cs">
+      <DependentUpon>ArchieveDetailsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ArchivePage.xaml.cs">
+      <DependentUpon>ArchivePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="BrandsPage.xaml.cs">
       <DependentUpon>BrandsPage.xaml</DependentUpon>
     </Compile>
@@ -258,6 +264,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddEditTypesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ArchieveDetailsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ArchivePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -361,6 +375,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Logo.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

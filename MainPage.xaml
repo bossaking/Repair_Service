@@ -14,8 +14,10 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" ShowGridLines="True" HorizontalAlignment="Center">
+        
+        <Grid Grid.Row="0" ShowGridLines="False" HorizontalAlignment="Center">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="auto"/>
@@ -35,6 +37,7 @@
             <Button Grid.Column="5" Margin="5" Click="EmployeesButton_Click">Employees</Button>
             <Button Grid.Column="6" Margin="5" Click="RolesButton_Click">Roles</Button>
             <Button Grid.Column="7" Margin="5" Click="SalonsButton_Click">Salons</Button>
+            <Button Grid.Column="8" Margin="5" Click="ArchiveButton_Click">Archive</Button>
         </Grid>
 
         <!--TABLE WITH REPORTMENTS-->

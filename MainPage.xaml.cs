@@ -129,6 +129,12 @@ namespace Repair_Service
             LoginPage loginPage = new LoginPage();
             this.NavigationService.Navigate(loginPage);
         }
+
+        private void ArchiveButton_Click(object sender, RoutedEventArgs e)
+        {
+            ArchivePage archivePage = new ArchivePage();
+            this.NavigationService.Navigate(archivePage);
+        }
         #endregion
     }
 }
