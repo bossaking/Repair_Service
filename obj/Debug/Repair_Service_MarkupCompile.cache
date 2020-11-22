@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\apps\Repair_Service\obj\Debug\
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\
 Repair_Service
 none
 false
 DEBUG;TRACE
-D:\apps\Repair_Service\App.xaml
-222074405489
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\App.xaml
+24388033006
 
-561800484477
-147825734815
-AddDevicePage.xaml;AddEditBrandsPage.xaml;AddEditEmployeesPage.xaml;AddEditProblemsPage.xaml;AddEditRolesPage.xaml;AddEditSalonsPage.xaml;AddEditTypesPage.xaml;BrandsPage.xaml;ChooseExisitingClientWindow.xaml;ClientsPage.xaml;DevicesPage.xaml;EditClientPage.xaml;EditPage.xaml;EmployeesPage.xaml;LoginPage.xaml;MainPage.xaml;MainWindow.xaml;NewReportmentPage.xaml;ProblemsPage.xaml;RolesPage.xaml;SalonsPage.xaml;TypesPage.xaml;
+581206789834
+1471552446499
+AddDevicePage.xaml;AddEditBrandsPage.xaml;AddEditEmployeesPage.xaml;AddEditProblemsPage.xaml;AddEditRolesPage.xaml;AddEditSalonsPage.xaml;AddEditTypesPage.xaml;ArchieveDetailsPage.xaml;ArchivePage.xaml;BrandsPage.xaml;ChooseExisitingClientWindow.xaml;ClientsPage.xaml;DevicesPage.xaml;EditClientPage.xaml;EditPage.xaml;EmployeesPage.xaml;LoginPage.xaml;MainPage.xaml;MainWindow.xaml;NewReportmentPage.xaml;ProblemsPage.xaml;RolesPage.xaml;SalonsPage.xaml;TypesPage.xaml;
 
 False
 

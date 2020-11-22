@@ -315,3 +315,11 @@ D:\apps\Repair_Service\obj\Debug\Repair_Service.pdb
 D:\apps\Repair_Service\bin\Debug\System.ComponentModel.Annotations.dll
 D:\apps\Repair_Service\bin\Debug\System.Data.SqlClient.dll
 D:\apps\Repair_Service\bin\Debug\TableDependency.SqlClient.dll
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\bin\Debug\Sdl.MultiSelectComboBox.dll
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\bin\Debug\System.ComponentModel.Annotations.dll
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\bin\Debug\System.Data.SqlClient.dll
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\bin\Debug\TableDependency.SqlClient.dll
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\ArchivePage.g.cs
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\ArchivePage.baml
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\ArchieveDetailsPage.g.cs
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\ArchieveDetailsPage.baml
