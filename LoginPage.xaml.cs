@@ -37,7 +37,7 @@ namespace Repair_Service
         private async void SingInWithEmailAndPassword()
         {
             string login = TextBoxLogin.Text;
-            string password = TextBoxPassword.Text;
+            string password = TextBoxPassword.Password;
 
             bool result = await loginPageController.SignInWithEmailAndPasswordAsync(login, password);
             if (result == true)
@@ -62,7 +62,7 @@ namespace Repair_Service
             if (userCredentials == null) return;
 
             TextBoxLogin.Text = userCredentials[0];
-            TextBoxPassword.Text = userCredentials[1];
+            TextBoxPassword.Password = userCredentials[1];
             CheckBoxRememberMe.IsChecked = true;
         }
 

@@ -79,7 +79,7 @@ namespace Repair_Service.DAL
         #region READ
 
         /// <summary>
-        /// Odczyt wszystkich klientów
+        /// Odczyt wszystkich klientów z bazy danych
         /// </summary>
         /// <returns>Zwraca listę klientów</returns>
         public override ObservableCollection<Client> GetAllClients()
@@ -99,7 +99,7 @@ namespace Repair_Service.DAL
         }
 
         /// <summary>
-        /// Odczyt wszystkich zleceń
+        /// Odczyt wszystkich zleceń z bazy danych
         /// </summary>
         /// <returns>Zwraca listę zleceń</returns>
         public override ObservableCollection<Order> GetAllOrders()
@@ -119,7 +119,7 @@ namespace Repair_Service.DAL
         }
 
         /// <summary>
-        /// Odczyt fszystkich pracowników
+        /// Odczyt fszystkich pracowników z bazy danych
         /// </summary>
         /// <returns>Zwraca listę pracowników</returns>
         public override ObservableCollection<Employee> GetEmployees()
@@ -138,7 +138,7 @@ namespace Repair_Service.DAL
         }
 
         /// <summary>
-        /// Odczyt wszystkich typów urządzeń
+        /// Odczyt wszystkich typów urządzeń z bazy danych
         /// </summary>
         /// <returns>Zwraca listę typów urządzeń</returns>
         public override ObservableCollection<Device_Type> GetTypes()
@@ -156,26 +156,41 @@ namespace Repair_Service.DAL
             return types;
         }
 
+        /// <summary>
+        /// Odczyt wszystkich problemów z bazy danych
+        /// </summary>
+        /// <returns>Zwraca listę wszyskich problemów</returns>
+        public override ObservableCollection<Problem> GetProblems()
+        {
+            ObservableCollection<Problem> problems;
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    problems = new ObservableCollection<Problem>(session.QueryOver<Problem>().List());
+                    transaction.Commit();
+                }
+            }
+
+            return problems;
+        }
+
         #endregion
 
         #region UPDATE
 
         /// <summary>
-        /// Edycja zlecenia
+        /// Pozwala na aktualizacje informacji klienta w bazie danych
         /// </summary>
-        public void SetOrder()
+        /// <param name="client">Obiekt klasy Client</param>
+        public override void UpdateClient(Client client)
         {
             using (var session = NHibernateHelper.OpenSession())
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    Order order = session.QueryOver<Order>().Where(o => o.Id_Order == 3).SingleOrDefault();
-                    Client client = session.Get<Client>(1);
-                    order.Description = "Nowy opis";
-                    order.Client = client;
-                    session.Update(order);
+                    session.Update(client);
                     transaction.Commit();
-                    MessageBox.Show("Order edited!");
                 }
             }
         }
@@ -186,8 +201,9 @@ namespace Repair_Service.DAL
         #region DELETE
 
         /// <summary>
-        /// Usuwanie zlecenia
+        /// Usuwanie zlecenia o podanym ID z bazy danych
         /// </summary>
+        /// <param name="id">ID zlecenia</param>
         public override void DeleteOrder(int id)
         {
             using (var session = NHibernateHelper.OpenSession())
@@ -197,6 +213,33 @@ namespace Repair_Service.DAL
                     Order order = session.QueryOver<Order>().Where(o => o.Id_Order == id).SingleOrDefault();
                     session.Delete(order);
                     transaction.Commit();
+                    //TODO EXCEPTIONS
+                }
+            }
+        }
+
+        /// <summary>
+        /// Usuwanie klienta o podanym ID z bazy danych
+        /// </summary>
+        /// <param name="id">Id klienta</param>
+        /// <returns>Zwraca TRUE jeżeli udało się usunąć klienta</returns>
+        public override bool DeleteClient(int id)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        Client client = session.QueryOver<Client>().Where(o => o.Id_Client == id).SingleOrDefault();
+                        session.Delete(client);
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch
+                    {
+                        return false;
+                    }
                 }
             }
         }

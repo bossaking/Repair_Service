@@ -9,15 +9,11 @@ using System.Threading.Tasks;
 
 namespace Repair_Service.Controllers
 {
-    public class ClientsPageController
+    public class ClientsPageController : PageController
     {
 
-        private Database database;
-
-        public ClientsPageController()
-        {
-            database = ProxyDatabase.GetDatabase();
-        }
+        public ClientsPageController() : base() { }
+        
 
         public async Task<ObservableCollection<Client>> GetClientsAsync()
         {
@@ -26,6 +22,13 @@ namespace Repair_Service.Controllers
             await Task.Run(() => clients = database.GetAllClients());
 
             return clients;
+        }
+
+        public async Task<bool> DeleteClient(int id)
+        {
+            return await Task.Run(() => 
+                database.DeleteClient(id)
+            );
         }
 
     }

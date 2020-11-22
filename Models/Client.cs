@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace Repair_Service.Models
 {
@@ -11,6 +12,7 @@ namespace Repair_Service.Models
         public virtual string Name { get; set; }
         public virtual string Surname { get; set; }
         public virtual IList<Order> Orders { get; set; }
+
 
     }
 }

@@ -25,14 +25,13 @@ namespace Repair_Service
         public NewReportmentPage()
         {
             InitializeComponent();
-            //TODO pole z problemami dodane, ale nie obsłużone w kodzie
-            //TODO obsłużyć brand w kodzie
         }
 
         #region DATA
         private void NewReportmentPage_Loaded(object sender, RoutedEventArgs e)
         {
             DeviceTypeComboBox.SelectionChanged += DeviceTypeComboBox_SelectionChanged;
+            DeviceBrandComboBox.SelectionChanged += DeviceBrandComboBox_SelectionChanged;
 
             reportmentPageController = new ReportmentPageController();
             newOrder = reportmentPageController.GetNewOrder();
@@ -41,21 +40,45 @@ namespace Repair_Service
 
             GetEmployees();
             GetTypes();
+            GetProblems();
         }
 
+        /// <summary>
+        /// Pobiera i przypisuje dane do elementu EmployeesComboBox
+        /// </summary>
         private async void GetEmployees()
         {
             EmployeesComboBox.ItemsSource = await reportmentPageController.GetEmployeesAsync();
         }
 
+        /// <summary>
+        /// Pobiera i przypisuje dane do elementu DeviceTypeComboBox
+        /// </summary>
         private async void GetTypes()
         {
             DeviceTypeComboBox.ItemsSource = await reportmentPageController.GetTypesAsync();
         }
 
+        /// <summary>
+        /// Pobiera i przypisuje dane do elementu ProblemsAutoComplete
+        /// </summary>
+        private async void GetProblems()
+        {
+            ProblemsComboBox.ItemsSource = await reportmentPageController.GetProblemsAsync();
+        }
+
         private void DeviceTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (DeviceTypeComboBox.SelectedItem != null)
+            {
+                DeviceBrandComboBox.IsEnabled = true;
+                DeviceBrandComboBox.SelectedIndex = 0;
+            }
+        }
+
+        private void DeviceBrandComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(DeviceBrandComboBox.SelectedItem != null)
             {
                 DeviceModelComboBox.IsEnabled = true;
                 DeviceModelComboBox.SelectedIndex = 0;
@@ -67,7 +90,17 @@ namespace Repair_Service
         private void SelectClientButton_Click(object sender, RoutedEventArgs e)
         {
             ChooseExisitingClientWindow chooseExisitingClientWindow = new ChooseExisitingClientWindow();
-            chooseExisitingClientWindow.ShowDialog();
+            if (chooseExisitingClientWindow.ShowDialog() == true)
+            {
+                Client client = new Client {
+                    Name = chooseExisitingClientWindow.client.Name,
+                    Surname = chooseExisitingClientWindow.client.Surname,
+                    Phone_Number = chooseExisitingClientWindow.client.Phone_Number
+                };
+                newOrder.Client = client;
+            }
+            DataContext = null;
+            DataContext = newOrder;
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)

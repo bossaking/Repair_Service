@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\
+D:\apps\Repair_Service\obj\Debug\
 Repair_Service
 none
 false
 DEBUG;TRACE
-C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\App.xaml
+D:\apps\Repair_Service\App.xaml
 222074405489
 
-54232675589
-144-1094274372
+57958125110
+147825734815
 AddDevicePage.xaml;AddEditBrandsPage.xaml;AddEditEmployeesPage.xaml;AddEditProblemsPage.xaml;AddEditRolesPage.xaml;AddEditSalonsPage.xaml;AddEditTypesPage.xaml;BrandsPage.xaml;ChooseExisitingClientWindow.xaml;ClientsPage.xaml;DevicesPage.xaml;EditClientPage.xaml;EditPage.xaml;EmployeesPage.xaml;LoginPage.xaml;MainPage.xaml;MainWindow.xaml;NewReportmentPage.xaml;ProblemsPage.xaml;RolesPage.xaml;SalonsPage.xaml;TypesPage.xaml;
 
 True

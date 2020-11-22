@@ -10,23 +10,33 @@ namespace Repair_Service.DAL
 {
     public abstract class Database
     {
+
+
+        #region CLIENTS TABLE
+        public abstract ObservableCollection<Client> GetAllClients();
+        public abstract void AddNewClient(Client client);
+        public abstract void UpdateClient(Client client);
+        public abstract bool DeleteClient(int id);
+        #endregion
+
+        #region DEVICES TYPES TABLE
+        public abstract ObservableCollection<Device_Type> GetTypes();
+        #endregion
+
+        #region EMPLOYEES TABLE
+        public abstract ObservableCollection<Employee> GetEmployees();
+        #endregion
+
+        #region ORDERS TABLE
         public abstract void AddNewOrder(Order order);
         public abstract ObservableCollection<Order> GetAllOrders();
         public abstract void DeleteOrder(int id);
+        #endregion
 
-        public abstract void AddNewClient(Client client);
-        public abstract ObservableCollection<Client> GetAllClients();
+        #region PROBLEMS TABLE
+        public abstract ObservableCollection<Problem> GetProblems();
 
-
-
-        public abstract ObservableCollection<Employee> GetEmployees();
-
-
-        public abstract ObservableCollection<Device_Type> GetTypes();
-
-
-
-
+        #endregion
 
 
 

@@ -26,7 +26,7 @@ namespace Repair_Service.HibernateMapping
             References(x => x.Device).Column("Id_Device").Not.LazyLoad();
             References(x => x.Employee).Column("Id_Employee").Not.LazyLoad();
 
-            HasManyToMany(x => x.Problems).Table("orders_problems").ParentKeyColumn("Id_Order").ChildKeyColumn("Id_Problem").LazyLoad();
+            HasManyToMany(x => x.Problems).Table("orders_problems").ParentKeyColumn("Id_Order").ChildKeyColumn("Id_Problem").Not.LazyLoad();
 
             Table("orders");
         }

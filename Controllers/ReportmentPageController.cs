@@ -9,17 +9,15 @@ using System.Threading.Tasks;
 
 namespace Repair_Service.Controllers
 {
-    public class ReportmentPageController
+    public class ReportmentPageController : PageController
     {
-
-        private Database database;
-
-        public ReportmentPageController()
-        {
-            database = ProxyDatabase.GetDatabase();
-        }
+        public ReportmentPageController() : base() { }
         
 
+        /// <summary>
+        /// Pozwala na asynchroniczny odczyt wszystkich pracowników
+        /// </summary>
+        /// <returns>Zwraca listę wszystkich pracowników</returns>
         public async Task<ObservableCollection<Employee>> GetEmployeesAsync()
         {
             ObservableCollection<Employee> employees = new ObservableCollection<Employee>();
@@ -30,6 +28,11 @@ namespace Repair_Service.Controllers
 
             return employees;
         }
+
+        /// <summary>
+        /// Pozwala na asynchroniczny odczyt wszystkich klientów
+        /// </summary>
+        /// <returns>Zwraca listę wszystkich klientów</returns>
         public async Task<ObservableCollection<Client>> GetClientsAsync()
         {
             ObservableCollection<Client> clients = new ObservableCollection<Client>();
@@ -40,6 +43,10 @@ namespace Repair_Service.Controllers
             return clients;
         }
 
+        /// <summary>
+        /// Pozwala na asynchroniczny odczyt wszystkich typów urządzeń
+        /// </summary>
+        /// <returns>Zwraca listę wszystkich typów urządzeń</returns>
         public async Task<ObservableCollection<Device_Type>> GetTypesAsync()
         {
             ObservableCollection<Device_Type> types = new ObservableCollection<Device_Type>();
@@ -49,6 +56,19 @@ namespace Repair_Service.Controllers
             );
 
             return types;
+        }
+
+        /// <summary>
+        /// Pozwala na asynchroniczny odczyt wszystkich problemów
+        /// </summary>
+        /// <returns>Zwraca listę wszystkich problemów</returns>
+        public async Task<ObservableCollection<Problem>> GetProblemsAsync()
+        {
+            ObservableCollection<Problem> problems = new ObservableCollection<Problem>();
+            await Task.Run(() => 
+                problems = database.GetProblems()
+            );
+            return problems;
         }
 
         public async void AddNewOrder(Order order)

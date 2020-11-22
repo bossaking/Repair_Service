@@ -1,4 +1,5 @@
 ﻿using Repair_Service.Controllers;
+using Repair_Service.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,26 +37,28 @@ namespace Repair_Service
         {
             DataGrid.ItemsSource = await clientsPageController.GetClientsAsync();
         }
+
+        private async void DeleteClient()
+        {
+            if (!await clientsPageController.DeleteClient((DataGrid.SelectedItem as Client).Id_Client))
+                MessageBox.Show("Jakiś tam error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            //TODO Zamienić komunikat   
+        }
         #endregion
 
         #region BUTTONS
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            EditClientPage editClientPage = new EditClientPage();
+            EditClientPage editClientPage = new EditClientPage((DataGrid.SelectedItem as Client));
             this.NavigationService.Navigate(editClientPage);
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
             if (MessageBox.Show("Czy na pewno chcesz usunąć wybrany element?", "Usuń element",
-                MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
-            {
-                return;
-            }
-            else
-            {
-                //DeleteClient();
-            }
+                MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                DeleteClient();
+            
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
