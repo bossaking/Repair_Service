@@ -16,7 +16,7 @@
         <!--SALONS HEADER-->
         <Label FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center">SALONS</Label>
         <Button Click="BackButton_Click" Grid.Row="0" Width="75" Padding="5" Margin="10" IsCancel="True" VerticalAlignment="Center" HorizontalAlignment="Left">Back</Button>
-        <Button Click="AddButton_Click" Grid.Row="0" Padding="5" Margin="10" IsDefault="True" HorizontalAlignment="Right">+Add salon</Button>
+        <Button Click="AddButton_Click" Grid.Row="0" Padding="5" Margin="10" Width="150" IsDefault="True" HorizontalAlignment="Right">+Add salon</Button>
 
 
         <!--TABLE WITH SALONS-->
