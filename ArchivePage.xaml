@@ -5,20 +5,20 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Repair_Service"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="ArchivePage">
+      Title="Repair Service: Archive" d:DesignHeight="450" d:DesignWidth="800" FontSize="16">
 
-    <Grid Background="White" ShowGridLines="True">
+    <Grid Background="White" ShowGridLines="False">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!--BUTTON-->
-        <Button Click="BackButton_Click" Grid.Row="0" Width="75" Margin="10" Padding="5" VerticalAlignment="Center" HorizontalAlignment="Left">Back</Button>
-        
+        <!--ARCHIVE HEADER-->
+        <Label FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center">ARCHIVE</Label>
+        <Button Click="BackButton_Click" Grid.Row="0" Width="75" Padding="5" Margin="10" IsCancel="True" VerticalAlignment="Center" HorizontalAlignment="Left">Back</Button>
+
         <!--TABLE WITH REPORTMENTS-->
-        <DataGrid Name="DataGrid" Grid.Row="1" Width="auto" ColumnWidth="auto" BorderBrush="Gray" FontSize="16" Margin="5,5,5,5" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center" AutoGenerateColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False">
+        <DataGrid Name="DataGrid" Grid.Row="1" Width="auto" ColumnWidth="auto" BorderBrush="Gray" FontSize="16" Margin="5,5,5,5" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Top" AutoGenerateColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id_Order}"/>
                 <DataGridTextColumn Header="Client name" Binding="{Binding Client.Name}"/>
@@ -42,4 +42,5 @@
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
+    
 </Page>
