@@ -7,8 +7,9 @@
       mc:Ignorable="d" 
       Title="Repair Service: Login page" d:DesignHeight="700" d:DesignWidth="1200" FontSize="16" Loaded="LoginPage_Loaded">
 
-    <Grid ShowGridLines="False" VerticalAlignment="Center" HorizontalAlignment="Center">
+    <Grid ShowGridLines="False" VerticalAlignment="Center" HorizontalAlignment="Center" Background="White">
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -30,6 +31,9 @@
         
         <!--SIGN IN BUTTON-->
         <Button Name="ButtonLogin" Click="LoginButton_Click" Grid.Row="4" Width="100" Height="30" Margin="0,30,0,0" VerticalContentAlignment="Center">Sign in</Button>
+
+        <!--PROGRESS BAR-->
+        <ProgressBar Name="ProgressBar" Grid.Row="5" Height="15" Width="200" IsIndeterminate="True" Margin="0,40,0,0" Visibility="Hidden"></ProgressBar>
     </Grid>
 
 </Page>

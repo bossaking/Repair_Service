@@ -52,7 +52,12 @@ namespace Repair_Service
             }
             else
             {
+                ProgressBar.Visibility = Visibility.Hidden;
                 MessageBox.Show("Incorrect login or password", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                TextBoxLogin.IsEnabled = true;
+                TextBoxPassword.IsEnabled = true;
+                CheckBoxRememberMe.IsEnabled = true;
+                ButtonLogin.IsEnabled = true;
             }
         }
 
@@ -78,6 +83,11 @@ namespace Repair_Service
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
+            ProgressBar.Visibility = Visibility.Visible;
+            TextBoxLogin.IsEnabled = false;
+            TextBoxPassword.IsEnabled = false;
+            CheckBoxRememberMe.IsEnabled = false;
+            ButtonLogin.IsEnabled = false;
             SingInWithEmailAndPassword();
         }
     }

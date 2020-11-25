@@ -10,16 +10,16 @@
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <!--EMPLOYEES HEADER-->
-        <Label FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center">Employees</Label>
+        <Label FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center">EMPLOYEES</Label>
+        <Button Click="BackButton_Click" Grid.Row="0" Width="75" Padding="5" Margin="10" IsCancel="True" VerticalAlignment="Center" HorizontalAlignment="Left">Back</Button>
+        <Button Click="AddButton_Click" Grid.Row="0" Padding="5" Margin="10" IsDefault="True" HorizontalAlignment="Right">+Add employee</Button>
 
         <!--TABLE WITH EMPLOYEES-->
-        <DataGrid Name="DataGrid" Grid.Row="1" Margin="5,5,5,5" FontSize="16" Width="auto" ColumnWidth="auto" BorderBrush="Gray" IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Center" VerticalAlignment="Center" CanUserResizeColumns="False" CanUserResizeRows="False">
+        <DataGrid Name="DataGrid" Grid.Row="1" Margin="5,5,5,5" FontSize="16" Width="auto" ColumnWidth="auto" BorderBrush="Gray" IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Center" VerticalAlignment="Top" CanUserResizeColumns="False" CanUserResizeRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id_Employee}"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
@@ -38,10 +38,6 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-
-        <!--BUTTONS-->
-        <Button Click="AddButton_Click" Grid.Row="2" Width="150" Height="40" Margin="5">+Add employee</Button>
-        <Button Click="BackButton_Click" Grid.Row="3" Width="100" Height="40" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center">Back</Button>
     </Grid>
 
 </Page>

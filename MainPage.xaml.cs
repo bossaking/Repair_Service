@@ -35,6 +35,11 @@ namespace Repair_Service
         {
             //Pobieranie wszystkich zleceń z bazy danych
             LoadAllOrders();
+            //if (DataGrid.Items.Count!=0)
+            //{
+            //    ProgressBar.Visibility = Visibility.Hidden;
+            //}
+            //ProgressBar.Visibility = Visibility.Hidden;
         }
 
         private async void LoadAllOrders()

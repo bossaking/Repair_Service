@@ -272,7 +272,5 @@ namespace Repair_Service.DAL
 
             return result;
         }
-
-
     }
 }
