@@ -35,7 +35,7 @@ namespace Repair_Service
 
             reportmentPageController = new ReportmentPageController();
             newOrder = reportmentPageController.GetNewOrder();
-            
+
             DataContext = newOrder;
 
             GetEmployees();
@@ -78,7 +78,7 @@ namespace Repair_Service
 
         private void DeviceBrandComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(DeviceBrandComboBox.SelectedItem != null)
+            if (DeviceBrandComboBox.SelectedItem != null)
             {
                 DeviceModelComboBox.IsEnabled = true;
                 DeviceModelComboBox.SelectedIndex = 0;
@@ -89,10 +89,11 @@ namespace Repair_Service
         #region BUTTONS
         private void SelectClientButton_Click(object sender, RoutedEventArgs e)
         {
-            ChooseExisitingClientWindow chooseExisitingClientWindow = new ChooseExisitingClientWindow();
+            ChooseExisitingClientWindow chooseExisitingClientWindow = new ChooseExisitingClientWindow { Owner = Window.GetWindow(this) };
             if (chooseExisitingClientWindow.ShowDialog() == true)
             {
-                Client client = new Client {
+                Client client = new Client
+                {
                     Name = chooseExisitingClientWindow.client.Name,
                     Surname = chooseExisitingClientWindow.client.Surname,
                     Phone_Number = chooseExisitingClientWindow.client.Phone_Number

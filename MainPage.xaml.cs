@@ -35,11 +35,6 @@ namespace Repair_Service
         {
             //Pobieranie wszystkich zleceń z bazy danych
             LoadAllOrders();
-            //if (DataGrid.Items.Count!=0)
-            //{
-            //    ProgressBar.Visibility = Visibility.Hidden;
-            //}
-            //ProgressBar.Visibility = Visibility.Hidden;
         }
 
         private async void LoadAllOrders()
@@ -50,6 +45,11 @@ namespace Repair_Service
         private async void DeleteOrder()
         {
             await mainPageController.DeleteOrder((DataGrid.SelectedItem as Order).Id_Order);
+        }
+
+        private void HideProgressBar()
+        {
+            ProgressBar.Visibility = Visibility.Hidden;
         }
         #endregion
 

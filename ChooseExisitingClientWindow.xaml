@@ -5,20 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Repair_Service"
         mc:Ignorable="d"
-        Title="Repair Service: Select client" Height="450" Width="800" Loaded="Window_Loaded">
+        Title="Repair Service: Select client" Height="450" Width="800" Loaded="Window_Loaded" WindowStartupLocation="CenterOwner">
     
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
         <!--SELECT EXISITING CLIENT HEADER-->
-        <Label HorizontalAlignment="Center" FontSize="40" VerticalAlignment="Center">Select an existing client</Label>
+        <Label FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center">CHOOSE CLIENT</Label>
+        <Button Click="BackButton_Click" Grid.Row="0" Width="75" Padding="5" Margin="10" IsCancel="True" VerticalAlignment="Center" HorizontalAlignment="Left">Back</Button>
 
         <!--TABLE WITH EXISITING CLIENTS-->
-        <DataGrid Name="ClientsDataGrid" Grid.Row="1" Width="auto" Margin="5,5,5,5" FontSize="16" IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Center" VerticalAlignment="Center" CanUserResizeColumns="False" CanUserResizeRows="False" ColumnWidth="auto" BorderBrush="Gray">
+        <DataGrid Name="ClientsDataGrid" Grid.Row="1" Width="auto" Margin="5,5,5,5" FontSize="16" IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Center" VerticalAlignment="Top" CanUserResizeColumns="False" CanUserResizeRows="False" ColumnWidth="auto" BorderBrush="Gray">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id_Client}"/>
                 <DataGridTextColumn Header="Client name" Binding="{Binding Name}"/>
@@ -35,7 +35,6 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Click="BackButton_Click" Grid.Row="2" Width="100" Height="40" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center" IsDefault="True">Back</Button>
     </Grid>
     
 </Window>

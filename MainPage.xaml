@@ -34,11 +34,16 @@
                 <Button Margin="5" Click="SalonsButton_Click">Salons</Button>
                 <Button Margin="5" Click="ArchiveButton_Click">Archive</Button>
             </WrapPanel>
-            <Button Grid.Column="2" Margin="10" Click="AddReportmentButton_Click" Padding="5" IsDefault="True" HorizontalAlignment="Right">+Add reportment</Button>
+            <Button Grid.Column="2" Margin="10" Width="150" Click="AddReportmentButton_Click" Padding="5" IsDefault="True" HorizontalAlignment="Right">+Add reportment</Button>
         </Grid>
 
         <!--TABLE WITH REPORTMENTS-->
-        <DataGrid Name="DataGrid" Grid.Row="1" Width="auto" ColumnWidth="auto" BorderBrush="Gray" FontSize="16" Margin="5,5,5,5" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Top" AutoGenerateColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False">
+        <DataGrid Name="DataGrid" Grid.Row="1" Width="auto" ColumnWidth="auto"  BorderBrush="Gray" FontSize="16" Margin="5,5,5,5" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Top" AutoGenerateColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False">
+            <!--<DataGrid.CellStyle>
+                <Style>
+                    <Setter></Setter>
+                </Style>
+            </DataGrid.CellStyle>-->
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id_Order}"/>
                 <DataGridTextColumn Header="Client name" Binding="{Binding Client.Name}"/>
