@@ -3,6 +3,7 @@ using Repair_Service.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,11 +31,28 @@ namespace Repair_Service
             mainPageController = new MainPageController();
         }
 
+
+
         #region DATA
         private void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
+            var dpd = DependencyPropertyDescriptor.FromProperty(ItemsControl.ItemsSourceProperty, typeof(DataGrid));
+            if(dpd != null)
+            {
+                dpd.AddValueChanged(DataGrid, DataGridItemSourceChanged);
+            }
             //Pobieranie wszystkich zleceń z bazy danych
             LoadAllOrders();
+        }
+
+        private void DataGridItemSourceChanged(object sender, EventArgs eventArgs)
+        {
+            HideProgressBar();
+        }
+
+        private void DataGrid_AddingNewItem(object sender, AddingNewItemEventArgs e)
+        {
+            HideProgressBar();
         }
 
         private async void LoadAllOrders()
@@ -42,15 +60,27 @@ namespace Repair_Service
             DataGrid.ItemsSource = await mainPageController.GetAllOrdersAsync();
         }
 
+
         private async void DeleteOrder()
         {
             await mainPageController.DeleteOrder((DataGrid.SelectedItem as Order).Id_Order);
+        }
+
+
+        #endregion
+
+        #region PROGRESS BAR
+
+        private void ShowProgressBar()
+        {
+            ProgressBar.Visibility = Visibility.Visible;
         }
 
         private void HideProgressBar()
         {
             ProgressBar.Visibility = Visibility.Hidden;
         }
+
         #endregion
 
         #region ACTION BUTTONS

@@ -149,6 +149,11 @@ namespace Repair_Service.DAL
             database.AddNewOrder(order);
             App.Current.Dispatcher.Invoke(() => orders.Add(order));
         }
+
+        /// <summary>
+        /// Zwraca listę wszystkich zleceń
+        /// </summary>
+        /// <returns>Lista wszystkich zleceń</returns>
         public override ObservableCollection<Order> GetAllOrders()
         {
             if (orders == null)
