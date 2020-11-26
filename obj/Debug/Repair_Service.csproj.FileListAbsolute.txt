@@ -323,3 +323,7 @@ C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\ArchivePage.g.cs
 C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\ArchivePage.baml
 C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\ArchieveDetailsPage.g.cs
 C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\ArchieveDetailsPage.baml
+D:\apps\Repair_Service\obj\Debug\ArchieveDetailsPage.g.cs
+D:\apps\Repair_Service\obj\Debug\ArchivePage.g.cs
+D:\apps\Repair_Service\obj\Debug\ArchieveDetailsPage.baml
+D:\apps\Repair_Service\obj\Debug\ArchivePage.baml
