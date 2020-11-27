@@ -17,9 +17,11 @@ namespace Repair_Service.Controllers
         /// </summary>
         /// <param name="client">Obiekt klasy Client</param>
         /// <returns></returns>
-        public async Task UpdateClient(Client client)
+        public async Task<bool> UpdateClient(Client client)
         {
-            await Task.Run(() => database.UpdateClient(client));
+            bool result = false;
+            await Task.Run(() => result = database.UpdateClient(client));
+            return result;
         }
 
     }

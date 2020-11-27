@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Repair_Service.Controllers;
+using Repair_Service.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,9 +19,33 @@ namespace Repair_Service
 {
     public partial class SalonsPage : Page
     {
+        //TODO Dodać edycje
+        //TODO Dodać progress bar
+        SalonsPageController pageController;
         public SalonsPage()
         {
             InitializeComponent();
+            this.Loaded += SalonsPage_Loaded;
+            pageController = new SalonsPageController();
+        }
+
+        private void SalonsPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            LoadSalons();
+        }
+
+        private async void LoadSalons()
+        {
+            DataGrid.ItemsSource = await pageController.GetSalonsAsync();
+        }
+
+        private async void DeleteSalon()
+        {
+            if(! await pageController.DeleteSalonAsync(DataGrid.SelectedItem as Salon))
+            {
+                //TODO Zmienić komunikat
+                MessageBox.Show("Jakiś tam error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         #region BUTTONS
@@ -37,13 +63,14 @@ namespace Repair_Service
             }
             else
             {
-                //DeleteSalon();
+                DeleteSalon();
             }
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            LoadAddEditSalonPage();
+            AddEditSalonsPage addEditSalonPage = new AddEditSalonsPage(pageController, new Salon(), Modes.Add);
+            this.NavigationService.Navigate(addEditSalonPage);
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
@@ -54,8 +81,8 @@ namespace Repair_Service
 
         private void LoadAddEditSalonPage()
         {
-            AddEditSalonsPage addEditSalonPage = new AddEditSalonsPage();
-            this.NavigationService.Navigate(addEditSalonPage);
+            //AddEditSalonsPage addEditSalonPage = new AddEditSalonsPage();
+            //this.NavigationService.Navigate(addEditSalonPage);
         }
         #endregion
     }

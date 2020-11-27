@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Repair_Service.Controllers;
+using Repair_Service.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,15 +22,36 @@ namespace Repair_Service
     /// </summary>
     public partial class AddEditRolesPage : Page
     {
-        public AddEditRolesPage()
+        RolesPageController pageController;
+        Role role;
+        Modes mode;
+        public AddEditRolesPage(RolesPageController pageController, Role role, Modes mode)
         {
             InitializeComponent();
+
+            this.pageController = pageController;
+            this.role = role;
+            this.mode = mode;
+
+            DataContext = role;
+        }
+
+        private async void AddNewRole()
+        {
+            if(! await pageController.AddNewRoleAsync(role))
+            {
+                //TODO Zmienić komunikat
+                MessageBox.Show("Jakiś tam error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            LoadRolesPage();
         }
 
         #region BUTTONS
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            LoadRolesPage();
+            if (mode == Modes.Add)
+                AddNewRole();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

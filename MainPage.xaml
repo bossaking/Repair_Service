@@ -51,7 +51,7 @@
                 <DataGridTextColumn Header="Device name" Binding="{Binding Device.Model_Title}"/>
                 <DataGridTextColumn Header="Device type" Binding="{Binding Device.Device_Type.Type_Title}"/>
                 <DataGridTextColumn Header="Order date" Binding="{Binding Order_Date}"/>
-                <DataGridTextColumn Header="Status" Binding="{Binding Order_Status}"/>
+                <DataGridTextColumn Header="Status" Binding="{Binding Status.Title}"/>
                 <DataGridTemplateColumn Header="Action">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

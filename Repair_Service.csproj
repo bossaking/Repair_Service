@@ -178,13 +178,20 @@
     <Compile Include="ClientsPage.xaml.cs">
       <DependentUpon>ClientsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\BrandsPageController.cs" />
     <Compile Include="Controllers\ClientsPageController.cs" />
+    <Compile Include="Controllers\DevicesPageController.cs" />
     <Compile Include="Controllers\EditClientPageController.cs" />
+    <Compile Include="Controllers\EmployeesPageController.cs" />
     <Compile Include="Controllers\ExistingClientWindowController.cs" />
     <Compile Include="Controllers\LoginPageController.cs" />
     <Compile Include="Controllers\MainPageController.cs" />
     <Compile Include="Controllers\PageController.cs" />
+    <Compile Include="Controllers\ProblemsPageController.cs" />
     <Compile Include="Controllers\ReportmentPageController.cs" />
+    <Compile Include="Controllers\RolesPageController.cs" />
+    <Compile Include="Controllers\SalonsPageController.cs" />
+    <Compile Include="Controllers\TypesPageController.cs" />
     <Compile Include="DAL\Database.cs" />
     <Compile Include="DAL\LocalUserData.cs" />
     <Compile Include="DAL\MainDatabase.cs" />
@@ -209,6 +216,7 @@
     <Compile Include="HibernateMapping\ProblemMap.cs" />
     <Compile Include="HibernateMapping\RoleMap.cs" />
     <Compile Include="HibernateMapping\SalonMap.cs" />
+    <Compile Include="HibernateMapping\StatusMap.cs" />
     <Compile Include="HibernateMapping\TypeMap.cs" />
     <Compile Include="LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
@@ -219,11 +227,13 @@
     <Compile Include="Models\Brand.cs" />
     <Compile Include="Models\Device.cs" />
     <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\Modes.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Problem.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Salon.cs" />
     <Compile Include="Models\Device_Type.cs" />
+    <Compile Include="Models\Status.cs" />
     <Compile Include="NewReportmentPage.xaml.cs">
       <DependentUpon>NewReportmentPage.xaml</DependentUpon>
     </Compile>

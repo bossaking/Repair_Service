@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Repair_Service.Controllers;
+using Repair_Service.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,15 +19,35 @@ namespace Repair_Service
 {
     public partial class AddEditTypesPage : Page
     {
-        public AddEditTypesPage()
+        TypesPageController pageController;
+        Device_Type type;
+        Modes mode;
+
+        public AddEditTypesPage(TypesPageController pageController, Device_Type type, Modes mode)
         {
             InitializeComponent();
+            this.mode = mode;
+            this.type = type;
+            DataContext = type;
+            this.pageController = pageController;
+        }
+
+        private async void AddNewType()
+        {
+            if(! await pageController.AddNewTypeAsync(type))
+            {
+                //TODO Zmienić komunikat
+                MessageBox.Show("Jakiś tam error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            LoadTypesPage();
         }
 
         #region BUTTONS
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            LoadTypesPage();
+            if(mode == Modes.Add)
+            AddNewType();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Repair_Service.Controllers;
+using Repair_Service.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,9 +19,33 @@ namespace Repair_Service
 {
     public partial class RolesPage : Page
     {
+        //TODO Dodać edycje
+        //TODO Dodać Progress Bar
+        RolesPageController pageController;
         public RolesPage()
         {
             InitializeComponent();
+            this.Loaded += RolesPage_Loaded;
+            pageController = new RolesPageController();
+        }
+
+        private void RolesPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            LoadRoles();
+        }
+
+        private async void LoadRoles()
+        {
+            DataGrid.ItemsSource = await pageController.GetRolesAsync();
+        }
+
+        private async void DeleteRole()
+        {
+            if(! await pageController.DeleteRoleAsync(DataGrid.SelectedItem as Role))
+            {
+                //TODO Zmienić komunikat
+                MessageBox.Show("Jakiś tam error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         #region BUTTONS
@@ -37,13 +63,14 @@ namespace Repair_Service
             }
             else
             {
-                //DeleteRole();
+                DeleteRole();
             }
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            LoadAddEditRolePage();
+            AddEditRolesPage addEditRolesPage = new AddEditRolesPage(pageController, new Role(), Modes.Add);
+            this.NavigationService.Navigate(addEditRolesPage);
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
@@ -54,8 +81,8 @@ namespace Repair_Service
 
         private void LoadAddEditRolePage()
         {
-            AddEditRolesPage addEditRolesPage = new AddEditRolesPage();
-            this.NavigationService.Navigate(addEditRolesPage);
+            //AddEditRolesPage addEditRolesPage = new AddEditRolesPage();
+            //this.NavigationService.Navigate(addEditRolesPage);
         }
         #endregion
     }

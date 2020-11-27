@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Repair_Service.Controllers;
+using Repair_Service.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,9 +19,35 @@ namespace Repair_Service
 {
     public partial class EmployeesPage : Page
     {
+        //TODO Sprawdzenie roli
+        //TODO Dodać edycje
+        //TODO Dodać Progress Bar
+
+        EmployeesPageController pageController;
         public EmployeesPage()
         {
             InitializeComponent();
+            this.Loaded += EmployeesPage_Loaded;
+            pageController = new EmployeesPageController();
+        }
+
+        private void EmployeesPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            LoadEmployees();
+        }
+
+        private async void LoadEmployees()
+        {
+            DataGrid.ItemsSource = await pageController.GetEmployeesAsync();
+        }
+
+        private async void DeleteEmployee()
+        {
+            if(! await pageController.DeleteEmployeeAsync(DataGrid.SelectedItem as Employee))
+            {
+                //TODO Zmienić komunikat
+                MessageBox.Show("Jakiś tam error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         #region BUTTONS
@@ -37,13 +65,14 @@ namespace Repair_Service
             }
             else
             {
-                //DeleteEmployee();
+                DeleteEmployee();
             }
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            LoadAddEditEmployeePage();
+            AddEditEmployeesPage addEditEmployeePage = new AddEditEmployeesPage(pageController, new Employee(), Modes.Add);
+            this.NavigationService.Navigate(addEditEmployeePage);
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
@@ -54,8 +83,8 @@ namespace Repair_Service
 
         private void LoadAddEditEmployeePage()
         {
-            AddEditEmployeesPage addEditEmployeePage = new AddEditEmployeesPage();
-            this.NavigationService.Navigate(addEditEmployeePage);
+            //AddEditEmployeesPage addEditEmployeePage = new AddEditEmployeesPage();
+            //this.NavigationService.Navigate(addEditEmployeePage);
         }
         #endregion
     }

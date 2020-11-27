@@ -35,12 +35,18 @@ namespace Repair_Service
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             UpdateClient(DataContext as Client);
-            LoadClientsPage();
         }
 
         public async void UpdateClient(Client client)
         {
-            await pageController.UpdateClient(client);
+            if (!await pageController.UpdateClient(client))
+            {
+                //TODO Zmienić komunikat
+                MessageBox.Show("Jakiś tam error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            LoadClientsPage();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

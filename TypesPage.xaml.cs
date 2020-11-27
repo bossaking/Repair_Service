@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Repair_Service.Controllers;
+using Repair_Service.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,15 +19,41 @@ namespace Repair_Service
 {
     public partial class TypesPage : Page
     {
+        //TODO Dodać Progress Bar
+        //TODO Dodać edycje
+
+        TypesPageController pageController;
         public TypesPage()
         {
             InitializeComponent();
+            this.Loaded += TypesPage_Loaded;
+            pageController = new TypesPageController();
+        }
+
+        private void TypesPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            GetTypes();
+        }
+
+        private async void DeleteType()
+        {
+            if(! await pageController.DeleteTypeAsync(DataGrid.SelectedItem as Device_Type))
+            {
+                //TODO Zmienić komunikat
+                MessageBox.Show("Jakiś tam error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private async void GetTypes()
+        {
+            DataGrid.ItemsSource = await pageController.GetTypesAsync();
         }
 
         #region BUTTONS
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            LoadAddEditTypePage();
+            AddEditTypesPage addEditTypePage = new AddEditTypesPage(pageController, DataGrid.SelectedItem as Device_Type, Modes.Edit);
+            this.NavigationService.Navigate(addEditTypePage);
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
@@ -37,25 +65,20 @@ namespace Repair_Service
             }
             else
             {
-                //DeleteType();
+                DeleteType();
             }
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            LoadAddEditTypePage();
+            AddEditTypesPage addEditTypePage = new AddEditTypesPage(pageController, new Device_Type(), Modes.Add);
+            this.NavigationService.Navigate(addEditTypePage);
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             MainPage mainPage = new MainPage();
             this.NavigationService.Navigate(mainPage);
-        }
-
-        private void LoadAddEditTypePage()
-        {
-            AddEditTypesPage addEditTypePage = new AddEditTypesPage();
-            this.NavigationService.Navigate(addEditTypePage);
         }
         #endregion
     }

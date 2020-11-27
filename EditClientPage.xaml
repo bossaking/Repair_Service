@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       Title="Repair Service: Edit client" d:DesignHeight="450" d:DesignWidth="800" FontSize="16">
 
-    <Grid ShowGridLines="False" Background="White" Margin="200,0,200,0" VerticalAlignment="Center">
+    <Grid x:Name="MainGrid" ShowGridLines="False" Background="White" Margin="200,0,200,0" VerticalAlignment="Center">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -21,15 +21,15 @@
 
         <!--CLIENT NAME-->
         <Label Grid.Row="0" Grid.Column="0" VerticalContentAlignment="Center">Name:</Label>
-        <TextBox Text="{Binding Path=Name}" Grid.Row="0" Grid.Column="1" Margin="5" Padding="3,4,4,4" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+        <TextBox x:Name="ClientNameTextBox" Text="{Binding Path=Name}" Grid.Row="0" Grid.Column="1" Margin="5" Padding="3,4,4,4" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
 
         <!--CLIENT SURNAME-->
         <Label Grid.Row="1" Grid.Column="0" VerticalContentAlignment="Center">Surname:</Label>
-        <TextBox Text="{Binding Path=Surname}" Grid.Row="1" Grid.Column="1" Margin="5" Padding="3,4,4,4" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+        <TextBox x:Name="ClientSurnameTextBox" Text="{Binding Path=Surname}" Grid.Row="1" Grid.Column="1" Margin="5" Padding="3,4,4,4" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
         
         <!--CLIENT PHONE NUMBER-->
         <Label Grid.Row="2" Grid.Column="0" VerticalContentAlignment="Center">Phone number:</Label>
-        <TextBox Text="{Binding Path=Phone_Number}" Grid.Row="2" Grid.Column="1" Margin="5" Padding="3,4,4,4" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+        <TextBox x:Name="ClientPhoneNumberTextBox" Text="{Binding Path=Phone_Number}" Grid.Row="2" Grid.Column="1" Margin="5" Padding="3,4,4,4" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
         
         <!--BUTTONS-->
         <WrapPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="5,20,5,5" HorizontalAlignment="Center">
