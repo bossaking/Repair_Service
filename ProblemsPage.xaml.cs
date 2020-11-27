@@ -43,10 +43,28 @@ namespace Repair_Service
         {
             if(! await pageController.DeleteProblemAsync(DataGrid.SelectedItem as Problem))
             {
-                //TODO Zmienić komunikat
-                MessageBox.Show("Jakiś tam error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Selected item cannot be deleted!", "Delete error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+        #region PROGRESS BAR
+
+        private void ShowProgressBar()
+        {
+            ProgressBar.Visibility = Visibility.Visible;
+        }
+
+        private void HideProgressBar()
+        {
+            ProgressBar.Visibility = Visibility.Hidden;
+        }
+
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        #endregion
 
         #region
         private void EditButton_Click(object sender, RoutedEventArgs e)
@@ -56,7 +74,7 @@ namespace Repair_Service
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Czy na pewno chcesz usunąć wybrany element?", "Usuń element",
+            if (MessageBox.Show("Are you sure you want to remove the selected problem?", "Delete problem",
                 MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
             {
                 return;

@@ -160,6 +160,9 @@
     <Compile Include="AddEditSalonsPage.xaml.cs">
       <DependentUpon>AddEditSalonsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddEditStatusesPage.xaml.cs">
+      <DependentUpon>AddEditStatusesPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddEditTypesPage.xaml.cs">
       <DependentUpon>AddEditTypesPage.xaml</DependentUpon>
     </Compile>
@@ -246,6 +249,9 @@
     <Compile Include="SalonsPage.xaml.cs">
       <DependentUpon>SalonsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="StatusesPage.xaml.cs">
+      <DependentUpon>StatusesPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TypesPage.xaml.cs">
       <DependentUpon>TypesPage.xaml</DependentUpon>
     </Compile>
@@ -270,6 +276,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddEditSalonsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddEditStatusesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -346,6 +356,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SalonsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StatusesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

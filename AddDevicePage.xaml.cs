@@ -47,8 +47,7 @@ namespace Repair_Service
             newDevice.Device_Brand = BrandsComboBox.SelectedItem as Brand;
             if(!await pageController.AddNewDevice(newDevice))
             {
-                //TODO Zmienić komunikat
-                MessageBox.Show("Jakiś tam error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Item already exists!", "Name error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             LoadDevicesPage();

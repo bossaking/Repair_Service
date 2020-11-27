@@ -1,6 +1,4 @@
-﻿using Repair_Service.Controllers;
-using Repair_Service.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,33 +15,11 @@ using System.Windows.Shapes;
 
 namespace Repair_Service
 {
-    //TODO Dodać edycje
-    //TODO Dodać Progress Bar
-    public partial class DevicesPage : Page
+    public partial class StatusesPage : Page
     {
-        DevicesPageController pageController;
-        public DevicesPage()
+        public StatusesPage()
         {
             InitializeComponent();
-            pageController = new DevicesPageController();
-        }
-
-        private void Page_Loaded(object sender, RoutedEventArgs e)
-        {
-            GetDevices();
-        }
-
-        private async void GetDevices()
-        {
-            DataGrid.ItemsSource = await pageController.GetDevicesAsync();
-        }
-
-        private async void DeleteDevice()
-        {
-            if(!await pageController.DeleteDeviceAsync(DataGrid.SelectedItem as Device))
-            {
-                MessageBox.Show("Selected item cannot be deleted!", "Delete error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
         }
 
         #region PROGRESS BAR
@@ -68,25 +44,26 @@ namespace Repair_Service
         #region BUTTONS
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            LoadAddEditDevicePage();
+            AddEditStatusesPage addEditStatusPage = new AddEditStatusesPage();
+            this.NavigationService.Navigate(addEditStatusPage);
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to remove the selected device?", "Delete device",
-                MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
+            if (MessageBox.Show("Are you sure you want to remove the selected status?", "Delete status", MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
             {
                 return;
             }
             else
             {
-                DeleteDevice();
+                //DeleteStatus();
             }
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            LoadAddEditDevicePage();
+            AddEditStatusesPage addEditStatusPage = new AddEditStatusesPage();
+            this.NavigationService.Navigate(addEditStatusPage);
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
@@ -94,14 +71,6 @@ namespace Repair_Service
             MainPage mainPage = new MainPage();
             this.NavigationService.Navigate(mainPage);
         }
-
-        private void LoadAddEditDevicePage()
-        {
-            AddDevicePage addEditDevicePage = new AddDevicePage(pageController);
-            this.NavigationService.Navigate(addEditDevicePage);
-        }
         #endregion
-
-
     }
 }
