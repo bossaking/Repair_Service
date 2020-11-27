@@ -50,11 +50,6 @@ namespace Repair_Service
             HideProgressBar();
         }
 
-        private void DataGrid_AddingNewItem(object sender, AddingNewItemEventArgs e)
-        {
-            HideProgressBar();
-        }
-
         private async void LoadAllOrders()
         {
             DataGrid.ItemsSource = await mainPageController.GetAllOrdersAsync();

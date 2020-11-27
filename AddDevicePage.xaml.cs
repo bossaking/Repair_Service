@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Repair_Service.Controllers;
+using Repair_Service.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,15 +19,45 @@ namespace Repair_Service
 {
     public partial class AddDevicePage : Page
     {
-        public AddDevicePage()
+        //TODO Dodać sprawdzenie czy wszystkie pola są wypełnione
+        DevicesPageController pageController;
+        Device newDevice;
+        public AddDevicePage(DevicesPageController pageController)
         {
             InitializeComponent();
+            this.pageController = pageController;
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            newDevice = new Device();
+            DataContext = newDevice;
+            LoadData();
+        }
+
+        private async void LoadData()
+        {
+            TypesComboBox.ItemsSource = await pageController.GetTypesAsync();
+            BrandsComboBox.ItemsSource = await pageController.GetBrandsAsync();
+        }
+
+        private async void AddNewDevice()
+        {
+            newDevice.Device_Type = TypesComboBox.SelectedItem as Device_Type;
+            newDevice.Device_Brand = BrandsComboBox.SelectedItem as Brand;
+            if(!await pageController.AddNewDevice(newDevice))
+            {
+                //TODO Zmienić komunikat
+                MessageBox.Show("Jakiś tam error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            LoadDevicesPage();
         }
 
         #region BUTTONS
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            LoadDevicesPage();
+            AddNewDevice();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
@@ -39,5 +71,7 @@ namespace Repair_Service
             this.NavigationService.Navigate(devicesPage);
         }
         #endregion
+
+
     }
 }

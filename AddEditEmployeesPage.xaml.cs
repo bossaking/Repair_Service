@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Repair_Service.Controllers;
+using Repair_Service.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,16 +19,57 @@ namespace Repair_Service
 {
     public partial class AddEditEmployeesPage : Page
     {
-        public AddEditEmployeesPage()
+        EmployeesPageController pageController;
+        Employee employee;
+        Modes mode;
+
+        public AddEditEmployeesPage(EmployeesPageController pageController, Employee employee, Modes mode)
         {
             InitializeComponent();
+            this.Loaded += AddEditEmployeesPage_Loaded;
+
+            this.pageController = pageController;
+            this.employee = employee;
+            this.mode = mode;
+
+            DataContext = employee;
+        }
+
+        private void AddEditEmployeesPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            LoadData();
+        }
+
+        private async void LoadData()
+        {
+            SalonComboBox.ItemsSource = await pageController.GetSalonsAsync();
+            RolesComboBox.ItemsSource = await pageController.GetRolesAsync();
+        }
+
+        private async void AddNewEmployee()
+        {
+            employee.Employee_Salon = SalonComboBox.SelectedItem as Salon;
+            employee.Employee_Role = RolesComboBox.SelectedItem as Role;
+
+            if(! await pageController.AddNewEmployeeAsync(employee))
+            {
+                //TODO Zmienić komunikat
+                MessageBox.Show("Jakiś tam error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            LoadEmployeesPage();
         }
 
         #region BUTTONS
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            LoadEmployeesPage();
+            if (mode == Modes.Add)
+                AddNewEmployee();
+
         }
+
+        
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Repair_Service.Controllers;
+using Repair_Service.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,15 +19,37 @@ namespace Repair_Service
 {
     public partial class AddEditBrandsPage : Page
     {
-        public AddEditBrandsPage()
+        BrandsPageController pageController;
+        Brand brand;
+        Modes mode;
+
+        public AddEditBrandsPage(BrandsPageController pageController, Brand brand, Modes mode)
         {
+            this.pageController = pageController;
+            this.brand = brand;
+            DataContext = brand;
+            this.mode = mode;
             InitializeComponent();
+        }
+
+        private async void AddNewBrand()
+        {
+            if(! await pageController.AddNewBrandAsync(brand))
+            {
+                MessageBox.Show("Jakiś tam error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            LoadBrandsPage();
         }
 
         #region BUTTONS
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            LoadBrandsPage();
+            if(mode == Modes.Add)
+            {
+                AddNewBrand();
+            }
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

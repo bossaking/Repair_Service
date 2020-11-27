@@ -12,11 +12,17 @@ namespace Repair_Service.DAL
     {
 
         MainDatabase database;
-        ObservableCollection<Order> orders;
+
+        ObservableCollection<Brand> brands;
         ObservableCollection<Client> clients;
-        ObservableCollection<Employee> employees;
+        ObservableCollection<Device> devices;
         ObservableCollection<Device_Type> types;
+        ObservableCollection<Employee> employees;
+        ObservableCollection<Order> orders;
         ObservableCollection<Problem> problems;
+        ObservableCollection<Role> roles;
+        ObservableCollection<Salon> salons;
+        ObservableCollection<Status> statuses;
 
         private static ProxyDatabase instance;
 
@@ -30,7 +36,45 @@ namespace Repair_Service.DAL
             return instance;
         }
 
+        #region BRANDS TABLE
 
+        /// <summary>
+        /// Zwraca listę wszystkich firm-producentów urządzeń
+        /// </summary>
+        /// <returns>Zwraca listę wszystkich firm</returns>
+        public override ObservableCollection<Brand> GetBrands()
+        {
+            if(brands == null)
+            {
+                brands = database == null ? (database = new MainDatabase()).GetBrands() : database.GetBrands();
+            }
+
+            return brands;
+        }
+
+
+        public override bool AddNewBrand(Brand brand)
+        {
+            if (BrandExists(brand)) return false;
+            App.Current.Dispatcher.Invoke(() => brands.Add(brand));
+            return database.AddNewBrand(brand);
+        }
+
+        private bool BrandExists(Brand brand)
+        {
+            return brands.FirstOrDefault(b => b.Title == brand.Title) != null;
+        }
+
+        public override bool DeleteBrand(Brand brand)
+        {
+            if (devices.FirstOrDefault(d => d.Device_Brand.Id_Brand == brand.Id_Brand) != null) return false;
+
+            
+            App.Current.Dispatcher.Invoke(() => brands.Remove(brand));
+            return database.DeleteBrand(brand);
+        }
+
+        #endregion
 
         #region CLIENTS TABLE
 
@@ -65,11 +109,20 @@ namespace Repair_Service.DAL
         /// Pozwala na aktualizacje infirmacji klienta w bazie danych 
         /// </summary>
         /// <param name="client">Obiekt klasy Client</param>
-        public override void UpdateClient(Client client)
+        public override bool UpdateClient(Client client)
         {
+            if (EditClientExists(client)) return false;
+
             Client oldClient = clients.First(c => c.Id_Client == client.Id_Client);
+            
+            App.Current.Dispatcher.Invoke(() => 
+                clients[clients.IndexOf(oldClient)] = client
+            );
+
             oldClient = client;
+            UpdateOrderClientInfromation(client);
             database.UpdateClient(client);
+            return true;
         }
 
         /// <summary>
@@ -79,10 +132,11 @@ namespace Repair_Service.DAL
         /// <returns>Zwraca TRUE jeżeli udało się usunąć klienta</returns>
         public override bool DeleteClient(int id)
         {
-            bool result = database.DeleteClient(id);
-            if (result == true) 
+            if (orders.FirstOrDefault(o => o.Client.Id_Client == id) != null) return false;
+            
+            database.DeleteClient(id); 
             App.Current.Dispatcher.Invoke(() => clients.Remove(clients.Where(o => o.Id_Client == id).FirstOrDefault()));
-            return result;
+            return true;
         }
 
         /// <summary>
@@ -93,7 +147,15 @@ namespace Repair_Service.DAL
         private bool ClientExists(Client client)
         {
             if (clients == null) GetAllClients();
-            Client repeatClient = clients.Where(c => c.Name == client.Name && c.Surname == client.Surname && c.Phone_Number == c.Phone_Number).FirstOrDefault();
+            Client repeatClient = clients.Where(c => c.Name == client.Name && c.Surname == client.Surname && c.Phone_Number == client.Phone_Number && 
+                c.Id_Client != client.Id_Client).FirstOrDefault();
+            return repeatClient != null;
+        }
+
+        private bool EditClientExists(Client client)
+        {
+            Client repeatClient = clients.Where(c => c.Name == client.Name && c.Surname == client.Surname && c.Phone_Number == c.Phone_Number 
+                && c.Id_Client != client.Id_Client).FirstOrDefault();
             return repeatClient != null;
         }
 
@@ -108,6 +170,70 @@ namespace Repair_Service.DAL
             return reClient.Id_Client;
         }
 
+        private void UpdateOrderClientInfromation(Client newClient)
+        {
+            Client client = orders.FirstOrDefault(o => o.Client.Id_Client == newClient.Id_Client).Client;
+            if(client != null)
+            client.Name = newClient.Name;
+            client.Phone_Number = newClient.Phone_Number;
+            client.Surname = newClient.Surname;
+        }
+
+        #endregion
+
+        #region DEVICES TABLE
+
+        /// <summary>
+        /// Zwraca listę wszystkich urządzeń
+        /// </summary>
+        /// <returns>Lista wszystkich urządzeń</returns>
+        public override ObservableCollection<Device> GetDevices()
+        {
+            if(devices == null)
+            {
+                devices = database == null ? (database = new MainDatabase()).GetDevices() : database.GetDevices();
+            }
+
+            return devices;
+        }
+
+        /// <summary>
+        /// Pozwala na dodanie urządzenia do listy oraz do bazy danych
+        /// </summary>
+        /// <param name="device">Obiekt klasy Device</param>
+        /// <returns>Zwraca TRUE jeżeli udało się dodać urządzenie</returns>
+        public override bool AddNewDevice(Device device)
+        {
+            if (DeviceExists(device)) return false;
+            App.Current.Dispatcher.Invoke(() => devices.Add(device));
+            return database.AddNewDevice(device);
+        }
+
+        /// <summary>
+        /// Sprawdza czy podane urządzenie akrualnie znajduje się na liście wszystkich urządzeń
+        /// </summary>
+        /// <param name="device">Obiekt klasy Device</param>
+        /// <returns>Zwraca TRUE jeżeli podane urządzenie aktualnie znajduje się na liście wszystkich urządzeń</returns>
+        private bool DeviceExists(Device device)
+        {
+            return devices.FirstOrDefault(d => d.Model_Title.Equals(device.Model_Title) && d.Device_Type.Type_Title.Equals(device.Device_Type.Type_Title)
+                && d.Device_Brand.Title.Equals(device.Device_Brand.Title)) != null;
+        }
+
+        /// <summary>
+        /// Pozwala na usunięcie urządzenia z listy oraz z bazy danych
+        /// </summary>
+        /// <param name="id">Id urządzenia</param>
+        /// <returns>Zwraca TRUE jeżeli udało się usunąć urządzenie</returns>
+        public override bool DeleteDevice(Device device)
+        {
+            if (orders.FirstOrDefault(o => o.Device.Id_Device == device.Id_Device) != null) return false;
+
+            database.DeleteDevice(device);
+            App.Current.Dispatcher.Invoke(() => devices.Remove(device));
+            return true;
+        }
+
         #endregion
 
         #region DEVICES TYPES TABLE
@@ -119,6 +245,26 @@ namespace Repair_Service.DAL
             }
 
             return types;
+        }
+
+        public override bool AddNewType(Device_Type type)
+        {
+            if (TypeExists(type)) return false;
+            App.Current.Dispatcher.Invoke(() => types.Add(type));
+            return database.AddNewType(type);
+        }
+
+        private bool TypeExists(Device_Type type)
+        {
+            return types.FirstOrDefault(t => t.Type_Title.Equals(type.Type_Title)) != null;
+        }
+
+        public override bool DeleteType(Device_Type type)
+        {
+            if (orders.FirstOrDefault(o => o.Device.Device_Type.Id_Type == type.Id_Type) != null) return false;
+            database.DeleteType(type);
+            App.Current.Dispatcher.Invoke(() => types.Remove(type) );
+            return true;
         }
         #endregion
 
@@ -132,20 +278,30 @@ namespace Repair_Service.DAL
 
             return employees;
         }
+
+
+        public override bool AddNewEmployee(Employee employee)
+        {
+            App.Current.Dispatcher.Invoke(() => employees.Add(employee));
+            return database.AddNewEmployee(employee);
+        }
+
+        public override bool DeleteEmployee(Employee employee)
+        {
+            if (orders.FirstOrDefault(o => o.Employee.Id_Employee == employee.Id_Employee) != null) return false;
+            App.Current.Dispatcher.Invoke(() => employees.Remove(employee));
+            return database.DeleteEmployee(employee);
+        }
         #endregion
 
         #region ORDERS TABLE
+
+
         public override void AddNewOrder(Order order)
         {
-
-            if (database == null)
-            {
-                database = new MainDatabase();
-            }
-
-
             AddNewClient(order.Client);
             order.Client.Id_Client = GetClientId(order.Client);
+            order.Status = GetStatus(1);
             database.AddNewOrder(order);
             App.Current.Dispatcher.Invoke(() => orders.Add(order));
         }
@@ -184,11 +340,127 @@ namespace Repair_Service.DAL
             return problems;
         }
 
+        public override bool AddNewProblem(Problem problem)
+        {
+            if (ProblemExists(problem)) return false;
+            App.Current.Dispatcher.Invoke(() => problems.Add(problem));
+            return database.AddNewProblem(problem);
+        }
+
+        private bool ProblemExists(Problem problem)
+        {
+            return problems.FirstOrDefault(p => p.Title == problem.Title) != null;
+        }
+
+        public override bool DeleteProblem(Problem problem)
+        {
+            if (orders.FirstOrDefault(o => o.Problems.FirstOrDefault(p => p.Id_Problem == problem.Id_Problem) != null) != null) return false;
+            App.Current.Dispatcher.Invoke(() => problems.Remove(problem));
+            return database.DeleteProblem(problem);
+        }
+
+        #endregion
+
+        #region ROLES TABLE
+
+        public override ObservableCollection<Role> GetRoles()
+        {
+            if (roles == null)
+            {
+                roles = database == null ? (database = new MainDatabase()).GetRoles() : database.GetRoles();
+            }
+
+            return roles;
+        }
+
+        public override bool AddNewRole(Role role)
+        {
+            if (RoleExists(role)) return false;
+            App.Current.Dispatcher.Invoke(() => roles.Add(role));
+            return database.AddNewRole(role);
+        }
+
+        private bool RoleExists(Role role)
+        {
+            return roles.FirstOrDefault(r => r.Title == role.Title) != null;
+        }
+
+        public override bool DeleteRole(Role role)
+        {
+            if (employees.FirstOrDefault(e => e.Employee_Role.Id_Role == role.Id_Role) != null) return false;
+            App.Current.Dispatcher.Invoke(() => roles.Remove(role));
+            return database.DeleteRole(role);
+        }
+
+        #endregion
+
+        #region SALONS TABLE
+
+        public override ObservableCollection<Salon> GetSalons()
+        {
+            if(salons == null)
+            {
+                salons = database == null ? (database = new MainDatabase()).GetSalons() : database.GetSalons();
+            }
+            return salons;
+        }
+
+        public override bool AddNewSalon(Salon salon)
+        {
+            if (SalonExists(salon)) return false;
+            App.Current.Dispatcher.Invoke(() => salons.Add(salon));
+            return database.AddNewSalon(salon);
+        }
+
+        private bool SalonExists(Salon salon)
+        {
+            return salons.FirstOrDefault(s => s.Title == salon.Title && s.Location == s.Location) != null;
+        }
+
+        public override bool DeleteSalon(Salon salon)
+        {
+            if (employees.FirstOrDefault(e => e.Employee_Salon.Id_Salon == salon.Id_Salon) != null) return false;
+            App.Current.Dispatcher.Invoke(() => salons.Remove(salon));
+            return database.DeleteSalon(salon);
+        }
+
+        #endregion
+
+        #region STATUSES TABLE
+
+        public override ObservableCollection<Status> GetStatuses()
+        {
+            if(statuses == null)
+            {
+                statuses = database == null ? (database = new MainDatabase()).GetStatuses() : database.GetStatuses();
+            }
+
+            return statuses;
+        }
+
+        private Status GetStatus(int id)
+        {
+            return statuses.FirstOrDefault(s => s.Id_Status == id);
+        }
+
         #endregion
 
 
 
-
+        private void RefreshAllData()
+        {
+            GetDatabase();
+            GetBrands();
+            GetAllClients();
+            GetDevices();
+            GetTypes();
+            GetEmployees();
+            GetAllOrders();
+            GetProblems();
+            GetRoles();
+            GetSalons();
+            GetStatuses();
+        }
 
 
 
@@ -198,7 +470,12 @@ namespace Repair_Service.DAL
         public override bool SingInWithLoginAndPassword(string login, string password)
         {
             if (database == null) database = new MainDatabase();
-            return database.SingInWithLoginAndPassword(login, password);
+            if(database.SingInWithLoginAndPassword(login, password))
+            {
+                RefreshAllData();
+                return true;
+            }
+            return false;
         }
 
 

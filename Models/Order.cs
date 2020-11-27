@@ -16,7 +16,7 @@ namespace Repair_Service.Models
         public virtual Employee Employee { get; set; }
         public virtual DateTime Order_Date { get; set; }
         public virtual DateTime? Reception_Date { get; set; }
-        public virtual string Order_Status { get; set; }
+        public virtual Status Status { get; set; }
         public virtual IList<Problem> Problems { get; set; }
 
         public Order()
@@ -27,7 +27,7 @@ namespace Repair_Service.Models
             Problems = new List<Problem>();
             Order_Date = DateTime.Now;
             //TODO Dodać tabele statusów
-            Order_Status = "Przyjęty";
+            Status = new Status();
         }
 
     }

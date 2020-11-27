@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Repair_Service.Controllers;
+using Repair_Service.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,11 +17,34 @@ using System.Windows.Shapes;
 
 namespace Repair_Service
 {
+    //TODO Dodać edycje
+    //TODO Dodać Progress Bar
     public partial class DevicesPage : Page
     {
+        DevicesPageController pageController;
         public DevicesPage()
         {
             InitializeComponent();
+            pageController = new DevicesPageController();
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            GetDevices();
+        }
+
+        private async void GetDevices()
+        {
+            DataGrid.ItemsSource = await pageController.GetDevicesAsync();
+        }
+
+        private async void DeleteDevice()
+        {
+            if(!await pageController.DeleteDeviceAsync(DataGrid.SelectedItem as Device))
+            {
+                //TODO Zmienić komunikat
+                MessageBox.Show("Jakiś tam error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         #region BUTTONS
@@ -37,7 +62,7 @@ namespace Repair_Service
             }
             else
             {
-                //DeleteDevice();
+                DeleteDevice();
             }
         }
 
@@ -54,9 +79,11 @@ namespace Repair_Service
 
         private void LoadAddEditDevicePage()
         {
-            AddDevicePage addEditDevicePage = new AddDevicePage();
+            AddDevicePage addEditDevicePage = new AddDevicePage(pageController);
             this.NavigationService.Navigate(addEditDevicePage);
         }
         #endregion
+
+
     }
 }

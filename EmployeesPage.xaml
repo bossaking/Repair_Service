@@ -24,8 +24,8 @@
                 <DataGridTextColumn Header="Id" Binding="{Binding Id_Employee}"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
                 <DataGridTextColumn Header="Surname" Binding="{Binding Surname}"/>
-                <DataGridTextColumn Header="Salon" Binding="{Binding Salon.Employee_Salon}"/>
-                <DataGridTextColumn Header="Role" Binding="{Binding Role.Employee_Role}"/>
+                <DataGridTextColumn Header="Salon" Binding="{Binding Employee_Salon.Title}"/>
+                <DataGridTextColumn Header="Role" Binding="{Binding Employee_Role.Title}"/>
                 <DataGridTemplateColumn Header="Action">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

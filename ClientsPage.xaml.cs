@@ -49,7 +49,15 @@ namespace Repair_Service
         #region BUTTONS
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            EditClientPage editClientPage = new EditClientPage((DataGrid.SelectedItem as Client));
+            Client client = new Client
+            {
+                Id_Client = (DataGrid.SelectedItem as Client).Id_Client,
+                Name = (DataGrid.SelectedItem as Client).Name,
+                Surname = (DataGrid.SelectedItem as Client).Surname,
+                Phone_Number = (DataGrid.SelectedItem as Client).Phone_Number,
+                Orders = (DataGrid.SelectedItem as Client).Orders
+            };
+            EditClientPage editClientPage = new EditClientPage(client);
             this.NavigationService.Navigate(editClientPage);
         }
 

@@ -36,22 +36,22 @@ namespace Repair_Service.DAL
 
         #region CREATE
 
-        /// <summary>
-        /// Dodawanie nowego zlecenia
-        /// </summary>
-        /// <param name="order">Obiekt klasy Order</param>
-        public override void AddNewOrder(Order order)
+        public override bool AddNewBrand(Brand brand)
         {
-            using(var session = NHibernateHelper.OpenSession())
+            using (var session = NHibernateHelper.OpenSession())
             {
-                using(var transaction = session.BeginTransaction())
+                using (var transaction = session.BeginTransaction())
                 {
-                    IList<Problem> problems = session.QueryOver<Problem>().List();
-                    //TODO Obsłużyć wszystkie wyjątki
-                    order.Problems = problems;
-
-                    session.Save(order);
-                    transaction.Commit();
+                    try
+                    {
+                        session.Save(brand);
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch
+                    {
+                        return false;
+                    }
                 }
             }
         }
@@ -73,10 +73,184 @@ namespace Repair_Service.DAL
             }
         }
 
+        /// <summary>
+        /// Pozwala na dodanie nowego urządzenia do bazy danych
+        /// </summary>
+        /// <param name="device">Obiekt klasy Device</param>
+        /// <returns>Zwraca TRUE jeżeli udało się dodać urządzenie</returns>
+        public override bool AddNewDevice(Device device)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        session.Save(device);
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
+
+        public override bool AddNewEmployee(Employee employee)
+        {
+
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        session.Save(employee);
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
+    
+
+        /// <summary>
+        /// Dodawanie nowego zlecenia
+        /// </summary>
+        /// <param name="order">Obiekt klasy Order</param>
+        public override void AddNewOrder(Order order)
+        {
+            using(var session = NHibernateHelper.OpenSession())
+            {
+                using(var transaction = session.BeginTransaction())
+                {
+                    IList<Problem> problems = session.QueryOver<Problem>().List();
+                    //TODO Obsłużyć wszystkie wyjątki
+                    order.Problems = problems;
+
+                    session.Save(order);
+                    transaction.Commit();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Dodawanie nowej problemy do bazy danych
+        /// </summary>
+        /// <param name="problem">Obiekt klasy Problem</param>
+        /// <returns>Zwraca TRUE jeżeli udało się dodać nowy problem</returns>
+        public override bool AddNewProblem(Problem problem)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        session.Save(problem);
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Dodawanie nowego typa urządzenia do bazy danych
+        /// </summary>
+        /// <param name="type">Obiekt klasy Device_Type</param>
+        /// <returns>Zwraca TRUE jeżeli udało się dodać nowy typ urządzeń</returns>
+        public override bool AddNewType(Device_Type type)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        session.Save(type);
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
+
+        public override bool AddNewRole(Role role)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        session.Save(role);
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
+
+        public override bool AddNewSalon(Salon salon)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        session.Save(salon);
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
 
         #endregion
 
         #region READ
+
+        /// <summary>
+        /// Zwraca listę wszystkich firm-producentów urządzeń z bazy danych
+        /// </summary>
+        /// <returns>Zwraca listę wszystkich firm</returns>
+        public override ObservableCollection<Brand> GetBrands()
+        {
+            ObservableCollection<Brand> brands;
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    brands = new ObservableCollection<Brand>(session.QueryOver<Brand>().List());
+                    transaction.Commit();
+                }
+            }
+            return brands;
+        }
 
         /// <summary>
         /// Odczyt wszystkich klientów z bazy danych
@@ -96,6 +270,24 @@ namespace Repair_Service.DAL
             }
 
             return clients;
+        }
+
+        /// <summary>
+        /// Odczyt wszystkich urządzeń z bazy danych
+        /// </summary>
+        /// <returns>Zwraca listę urządzeń</returns>
+        public override ObservableCollection<Device> GetDevices()
+        {
+            ObservableCollection<Device> devices;
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    devices = new ObservableCollection<Device>(session.QueryOver<Device>().List());
+                    transaction.Commit();
+                }
+            }
+            return devices;
         }
 
         /// <summary>
@@ -175,6 +367,53 @@ namespace Repair_Service.DAL
             return problems;
         }
 
+
+        public override ObservableCollection<Role> GetRoles()
+        {
+            ObservableCollection<Role> roles;
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    roles = new ObservableCollection<Role>(session.QueryOver<Role>().List());
+                    transaction.Commit();
+                }
+            }
+
+            return roles;
+        }
+
+
+        public override ObservableCollection<Salon> GetSalons()
+        {
+            ObservableCollection<Salon> salons;
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    salons = new ObservableCollection<Salon>(session.QueryOver<Salon>().List());
+                    transaction.Commit();
+                }
+            }
+
+            return salons;
+        }
+
+        public override ObservableCollection<Status> GetStatuses()
+        {
+            ObservableCollection<Status> statuses;
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    statuses = new ObservableCollection<Status>(session.QueryOver<Status>().List());
+                    transaction.Commit();
+                }
+            }
+
+            return statuses;
+        }
+
         #endregion
 
         #region UPDATE
@@ -183,7 +422,7 @@ namespace Repair_Service.DAL
         /// Pozwala na aktualizacje informacji klienta w bazie danych
         /// </summary>
         /// <param name="client">Obiekt klasy Client</param>
-        public override void UpdateClient(Client client)
+        public override bool UpdateClient(Client client)
         {
             using (var session = NHibernateHelper.OpenSession())
             {
@@ -193,6 +432,8 @@ namespace Repair_Service.DAL
                     transaction.Commit();
                 }
             }
+
+            return true;
         }
 
         #endregion
@@ -200,20 +441,22 @@ namespace Repair_Service.DAL
 
         #region DELETE
 
-        /// <summary>
-        /// Usuwanie zlecenia o podanym ID z bazy danych
-        /// </summary>
-        /// <param name="id">ID zlecenia</param>
-        public override void DeleteOrder(int id)
+        public override bool DeleteBrand(Brand brand)
         {
             using (var session = NHibernateHelper.OpenSession())
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    Order order = session.QueryOver<Order>().Where(o => o.Id_Order == id).SingleOrDefault();
-                    session.Delete(order);
-                    transaction.Commit();
-                    //TODO EXCEPTIONS
+                    try
+                    {
+                        session.Delete(brand);
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch
+                    {
+                        return false;
+                    }
                 }
             }
         }
@@ -243,6 +486,166 @@ namespace Repair_Service.DAL
                 }
             }
         }
+
+        /// <summary>
+        /// Pozwala na usunięcie urządzenia z bazy danych
+        /// </summary>
+        /// <param name="device">Obiekt klasy Device</param>
+        /// <returns>Zwraca TRUE jeżeli udało się usunąć urządzenie</returns>
+        public override bool DeleteDevice(Device device)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        session.Delete(device);
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            
+        }
+
+        /// <summary>
+        /// Pozwala na usunięcie typu urządzeń z bazy danych
+        /// </summary>
+        /// <param name="type">Obiekt klasy Device_Type</param>
+        /// <returns>Zwraca TRUE jeżeli udało się usunąć</returns>
+        public override bool DeleteType(Device_Type type)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        session.Delete(type);
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Pozwala na usunięcie pracownika z bazy danych
+        /// </summary>
+        /// <param name="employee">Obiekt klasy Employee</param>
+        /// <returns>Zwraca TRUE jeżeli udało się usunąć pracownika</returns>
+        public override bool DeleteEmployee(Employee employee)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        session.Delete(employee);
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// Usuwanie zlecenia o podanym ID z bazy danych
+        /// </summary>
+        /// <param name="id">ID zlecenia</param>
+        public override void DeleteOrder(int id)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    Order order = session.QueryOver<Order>().Where(o => o.Id_Order == id).SingleOrDefault();
+                    session.Delete(order);
+                    transaction.Commit();
+                    //TODO EXCEPTIONS
+                }
+            }
+        }
+
+
+        public override bool DeleteProblem(Problem problem)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        session.Delete(problem);
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
+
+        public override bool DeleteRole(Role role)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        session.Delete(role);
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
+
+
+        public override bool DeleteSalon(Salon salon)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        session.Delete(salon);
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
+
+
 
         #endregion
         #endregion
