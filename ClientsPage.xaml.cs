@@ -41,9 +41,27 @@ namespace Repair_Service
         private async void DeleteClient()
         {
             if (!await clientsPageController.DeleteClient((DataGrid.SelectedItem as Client).Id_Client))
-                MessageBox.Show("Jakiś tam error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            //TODO Zamienić komunikat   
+                MessageBox.Show("Selected item cannot be deleted!", "Delete error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
+        #endregion
+
+        #region PROGRESS BAR
+
+        private void ShowProgressBar()
+        {
+            ProgressBar.Visibility = Visibility.Visible;
+        }
+
+        private void HideProgressBar()
+        {
+            ProgressBar.Visibility = Visibility.Hidden;
+        }
+
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         #endregion
 
         #region BUTTONS
@@ -63,7 +81,7 @@ namespace Repair_Service
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Czy na pewno chcesz usunąć wybrany element?", "Usuń element",
+            if (MessageBox.Show("Are you sure you want to remove the selected client?", "Delete client",
                 MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 DeleteClient();
             

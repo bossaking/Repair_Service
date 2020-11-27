@@ -38,8 +38,7 @@ namespace Repair_Service
         {
             if(! await pageController.AddNewSalonAsync(salon))
             {
-                //TODO Zmienić komunikat
-                MessageBox.Show("Jakiś tam error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Item already exists!", "Name error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             LoadSalonsPage();

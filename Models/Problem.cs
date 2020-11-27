@@ -18,6 +18,7 @@ namespace Repair_Service.Models
                 return "";
             }
             return Title;
+
         }
     }
 }

@@ -76,6 +76,11 @@ namespace Repair_Service
             ProgressBar.Visibility = Visibility.Hidden;
         }
 
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         #endregion
 
         #region ACTION BUTTONS
@@ -87,7 +92,7 @@ namespace Repair_Service
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Czy na pewno chcesz usunąć wybrany element?", "Usuń element",
+            if (MessageBox.Show("Are you sure you want to remove the selected order?", "Delete order",
                 MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
             {
                 return;
@@ -164,6 +169,12 @@ namespace Repair_Service
         {
             ArchivePage archivePage = new ArchivePage();
             this.NavigationService.Navigate(archivePage);
+        }
+
+        private void StatusesButton_Click(object sender, RoutedEventArgs e)
+        {
+            StatusesPage statusesPage = new StatusesPage();
+            this.NavigationService.Navigate(statusesPage);
         }
         #endregion
     }

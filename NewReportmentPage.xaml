@@ -54,7 +54,7 @@
 
         <!--PROBLEMS-->
         <Label Grid.Row="7" Grid.Column="0" VerticalContentAlignment="Center">Problems:</Label>
-        <sdl:MultiSelectComboBox Name="ProblemsComboBox" Grid.Row="7" Grid.Column="1" Margin="5" Padding="5" MinHeight="30" VerticalContentAlignment="Center" IsEditable="true"  SelectionMode="Multiple">
+        <sdl:MultiSelectComboBox Name="ProblemsComboBox" Grid.Row="7" Grid.Column="1" Margin="5" Padding="5" MinHeight="30" VerticalContentAlignment="Center" IsEditable="true" SelectionMode="Multiple">
             <sdl:MultiSelectComboBox.SelectedItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Path=Title}" Margin="2,0" />

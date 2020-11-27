@@ -45,17 +45,35 @@ namespace Repair_Service
         {
             if(! await pageController.DeleteEmployeeAsync(DataGrid.SelectedItem as Employee))
             {
-                //TODO Zmienić komunikat
-                MessageBox.Show("Jakiś tam error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Selected item cannot be deleted!", "Delete error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+        #region PROGRESS BAR
+
+        private void ShowProgressBar()
+        {
+            ProgressBar.Visibility = Visibility.Visible;
+        }
+
+        private void HideProgressBar()
+        {
+            ProgressBar.Visibility = Visibility.Hidden;
+        }
+
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        #endregion
 
         #region BUTTONS
 
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Czy na pewno chcesz usunąć wybrany element?", "Usuń element",
+            if (MessageBox.Show("Are you sure you want to remove the selected employee?", "Delete employee",
                 MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
             {
                 return;
