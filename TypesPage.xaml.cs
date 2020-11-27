@@ -39,8 +39,7 @@ namespace Repair_Service
         {
             if(! await pageController.DeleteTypeAsync(DataGrid.SelectedItem as Device_Type))
             {
-                //TODO Zmienić komunikat
-                MessageBox.Show("Jakiś tam error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Selected item cannot be deleted!", "Delete error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -48,6 +47,25 @@ namespace Repair_Service
         {
             DataGrid.ItemsSource = await pageController.GetTypesAsync();
         }
+
+        #region PROGRESS BAR
+
+        private void ShowProgressBar()
+        {
+            ProgressBar.Visibility = Visibility.Visible;
+        }
+
+        private void HideProgressBar()
+        {
+            ProgressBar.Visibility = Visibility.Hidden;
+        }
+
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        #endregion
 
         #region BUTTONS
         private void EditButton_Click(object sender, RoutedEventArgs e)
@@ -58,7 +76,7 @@ namespace Repair_Service
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Czy na pewno chcesz usunąć wybrany element?", "Usuń element",
+            if (MessageBox.Show("Are you sure you want to remove the selected type?", "Delete type",
                 MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
             {
                 return;

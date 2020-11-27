@@ -5,12 +5,13 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Repair_Service"
       mc:Ignorable="d" 
-      Title="Repair Service: Archive" d:DesignHeight="450" d:DesignWidth="800" FontSize="16">
+      Title="Repair Service: Archive"  d:DesignHeight="700" d:DesignWidth="1200" FontSize="16">
 
     <Grid Background="White" ShowGridLines="False">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
         <!--ARCHIVE HEADER-->
@@ -41,6 +42,26 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+
+        <!--STATUS BAR-->
+        <StatusBar Grid.Row="2" Height="30">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="400"/>
+                    <ColumnDefinition Width="400"/>
+                    <ColumnDefinition Width="400"/>
+                </Grid.ColumnDefinitions>
+                <StatusBarItem Grid.Column="0" HorizontalAlignment="Center">
+                    <TextBlock Name="RefreshTextBlock">Status: OK</TextBlock>
+                </StatusBarItem>
+                <StatusBarItem Grid.Column="1" HorizontalAlignment="Center">
+                    <ProgressBar Name="ProgressBar" IsIndeterminate="True" Height="15" Width="300"></ProgressBar>
+                </StatusBarItem>
+                <StatusBarItem Grid.Column="2" HorizontalAlignment="Center">
+                    <Button Name="RefreshButton" Click="RefreshButton_Click" Padding="5,0,5,0">REFRESH</Button>
+                </StatusBarItem>
+            </Grid>
+        </StatusBar>
     </Grid>
     
 </Page>

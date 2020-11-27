@@ -32,6 +32,7 @@
                 <Button Margin="5" Click="EmployeesButton_Click">Employees</Button>
                 <Button Margin="5" Click="RolesButton_Click">Roles</Button>
                 <Button Margin="5" Click="SalonsButton_Click">Salons</Button>
+                <Button Margin="5" Click="StatusesButton_Click">Statuses</Button>
                 <Button Margin="5" Click="ArchiveButton_Click">Archive</Button>
             </WrapPanel>
             <Button Grid.Column="2" Margin="10" Width="150" Click="AddReportmentButton_Click" Padding="5" IsDefault="True" HorizontalAlignment="Right">+Add reportment</Button>
@@ -66,10 +67,23 @@
         </DataGrid>
 
         <!--STATUS BAR-->
-        <StatusBar Grid.Row="4" Height="20">
-            <StatusBarItem HorizontalAlignment="Center">
-                <ProgressBar Name="ProgressBar" IsIndeterminate="True" Height="10" Width="200"></ProgressBar>
-            </StatusBarItem>
+        <StatusBar Grid.Row="2" Height="30">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="400"/>
+                    <ColumnDefinition Width="400"/>
+                    <ColumnDefinition Width="400"/>
+                </Grid.ColumnDefinitions>
+                <StatusBarItem Grid.Column="0" HorizontalAlignment="Center">
+                    <TextBlock Name="RefreshTextBlock">Status: OK</TextBlock>
+                </StatusBarItem>
+                <StatusBarItem Grid.Column="1" HorizontalAlignment="Center">
+                    <ProgressBar Name="ProgressBar" IsIndeterminate="True" Height="15" Width="300"></ProgressBar>
+                </StatusBarItem>
+                <StatusBarItem Grid.Column="2" HorizontalAlignment="Center">
+                    <Button Name="RefreshButton" Click="RefreshButton_Click" Padding="5,0,5,0">REFRESH</Button>
+                </StatusBarItem>
+            </Grid>
         </StatusBar>
     </Grid>
 </Page>
