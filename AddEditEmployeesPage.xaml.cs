@@ -2,6 +2,7 @@
 using Repair_Service.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,14 +45,32 @@ namespace Repair_Service
         {
             SalonComboBox.ItemsSource = await pageController.GetSalonsAsync();
             RolesComboBox.ItemsSource = await pageController.GetRolesAsync();
+
+            if(mode == Modes.Edit)
+            {
+                SalonComboBox.SelectedItem = (SalonComboBox.ItemsSource as ObservableCollection<Salon>).FirstOrDefault(s => s.Id_Salon == employee.Employee_Salon.Id_Salon);
+                RolesComboBox.SelectedItem = (RolesComboBox.ItemsSource as ObservableCollection<Role>).FirstOrDefault(r => r.Id_Role == employee.Employee_Role.Id_Role);
+            }
         }
 
         private async void AddNewEmployee()
         {
-            employee.Employee_Salon = SalonComboBox.SelectedItem as Salon;
-            employee.Employee_Role = RolesComboBox.SelectedItem as Role;
 
             if(! await pageController.AddNewEmployeeAsync(employee))
+            {
+                //TODO Zmienić komunikat
+                MessageBox.Show("Jakiś tam error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            LoadEmployeesPage();
+        }
+
+        private async void UpdateEmployee()
+        {
+
+
+            if (!await pageController.UpdateEmployeeAsync(employee))
             {
                 //TODO Zmienić komunikat
                 MessageBox.Show("Jakiś tam error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -64,8 +83,14 @@ namespace Repair_Service
         #region BUTTONS
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
+            employee.Employee_Salon = SalonComboBox.SelectedItem as Salon;
+            employee.Employee_Role = RolesComboBox.SelectedItem as Role;
+
             if (mode == Modes.Add)
                 AddNewEmployee();
+
+            if (mode == Modes.Edit)
+                UpdateEmployee();
 
         }
 

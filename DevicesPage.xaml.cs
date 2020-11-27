@@ -50,7 +50,16 @@ namespace Repair_Service
         #region BUTTONS
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            LoadAddEditDevicePage();
+            Device device = new Device
+            {
+                Id_Device = (DataGrid.SelectedItem as Device).Id_Device,
+                Model_Title = (DataGrid.SelectedItem as Device).Model_Title,
+                Device_Type = (DataGrid.SelectedItem as Device).Device_Type,
+                Device_Brand = (DataGrid.SelectedItem as Device).Device_Brand,
+                Orders = (DataGrid.SelectedItem as Device).Orders
+            };
+            AddDevicePage addEditDevicePage = new AddDevicePage(pageController, device, Modes.Edit);
+            this.NavigationService.Navigate(addEditDevicePage);
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
@@ -68,19 +77,14 @@ namespace Repair_Service
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            LoadAddEditDevicePage();
+            AddDevicePage addEditDevicePage = new AddDevicePage(pageController, new Device(), Modes.Add);
+            this.NavigationService.Navigate(addEditDevicePage);
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             MainPage mainPage = new MainPage();
             this.NavigationService.Navigate(mainPage);
-        }
-
-        private void LoadAddEditDevicePage()
-        {
-            AddDevicePage addEditDevicePage = new AddDevicePage(pageController);
-            this.NavigationService.Navigate(addEditDevicePage);
         }
         #endregion
 

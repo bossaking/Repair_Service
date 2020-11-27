@@ -25,6 +25,11 @@ namespace Repair_Service.Controllers
             return await Task.Run(() => database.AddNewSalon(salon));
         }
 
+        public async Task<bool> UpdateSalonAsync(Salon salon)
+        {
+            return await Task.Run(() => database.UpdateSalon(salon));
+        }
+
         public async Task<bool> DeleteSalonAsync(Salon salon)
         {
             return await Task.Run(() => database.DeleteSalon(salon));

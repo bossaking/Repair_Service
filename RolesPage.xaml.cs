@@ -49,10 +49,7 @@ namespace Repair_Service
         }
 
         #region BUTTONS
-        private void EditButton_Click(object sender, RoutedEventArgs e)
-        {
-            LoadAddEditRolePage();
-        }
+
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
@@ -73,16 +70,22 @@ namespace Repair_Service
             this.NavigationService.Navigate(addEditRolesPage);
         }
 
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            Role role = new Role
+            {
+                Id_Role = (DataGrid.SelectedItem as Role).Id_Role,
+                Title = (DataGrid.SelectedItem as Role).Title,
+                Employees = (DataGrid.SelectedItem as Role).Employees
+            };
+            AddEditRolesPage addEditRolesPage = new AddEditRolesPage(pageController, role, Modes.Edit);
+            this.NavigationService.Navigate(addEditRolesPage);
+        }
+
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             MainPage mainPage = new MainPage();
             this.NavigationService.Navigate(mainPage);
-        }
-
-        private void LoadAddEditRolePage()
-        {
-            //AddEditRolesPage addEditRolesPage = new AddEditRolesPage();
-            //this.NavigationService.Navigate(addEditRolesPage);
         }
         #endregion
     }

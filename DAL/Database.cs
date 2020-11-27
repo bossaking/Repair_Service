@@ -15,6 +15,7 @@ namespace Repair_Service.DAL
 
         public abstract ObservableCollection<Brand> GetBrands();
         public abstract bool AddNewBrand(Brand brand);
+        public abstract bool UpdateBrand(Brand brand);
         public abstract bool DeleteBrand(Brand brand);
 
         #endregion
@@ -27,9 +28,9 @@ namespace Repair_Service.DAL
         #endregion
 
         #region DEVICES TABLE
-
         public abstract ObservableCollection<Device> GetDevices();
         public abstract bool AddNewDevice(Device device);
+        public abstract bool UpdateDevice(Device device);
         public abstract bool DeleteDevice(Device device);
 
         #endregion
@@ -37,12 +38,14 @@ namespace Repair_Service.DAL
         #region DEVICES TYPES TABLE
         public abstract ObservableCollection<Device_Type> GetTypes();
         public abstract bool AddNewType(Device_Type type);
+        public abstract bool UpdateType(Device_Type type);
         public abstract bool DeleteType(Device_Type type);
         #endregion
 
         #region EMPLOYEES TABLE
         public abstract ObservableCollection<Employee> GetEmployees();
         public abstract bool AddNewEmployee(Employee employee);
+        public abstract bool UpdateEmployee(Employee employee);
         public abstract bool DeleteEmployee(Employee employee);
         #endregion
 
@@ -61,12 +64,14 @@ namespace Repair_Service.DAL
         #region ROLES TABLE
         public abstract ObservableCollection<Role> GetRoles();
         public abstract bool AddNewRole(Role role);
+        public abstract bool UpdateRole(Role role);
         public abstract bool DeleteRole(Role role);
         #endregion
 
         #region SALONS TABLE
         public abstract ObservableCollection<Salon> GetSalons();
         public abstract bool AddNewSalon(Salon salon);
+        public abstract bool UpdateSalon(Salon salon);
         public abstract bool DeleteSalon(Salon salon);
         #endregion
 

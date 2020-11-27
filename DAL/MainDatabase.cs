@@ -118,7 +118,7 @@ namespace Repair_Service.DAL
                 }
             }
         }
-    
+
 
         /// <summary>
         /// Dodawanie nowego zlecenia
@@ -126,9 +126,9 @@ namespace Repair_Service.DAL
         /// <param name="order">Obiekt klasy Order</param>
         public override void AddNewOrder(Order order)
         {
-            using(var session = NHibernateHelper.OpenSession())
+            using (var session = NHibernateHelper.OpenSession())
             {
-                using(var transaction = session.BeginTransaction())
+                using (var transaction = session.BeginTransaction())
                 {
                     IList<Problem> problems = session.QueryOver<Problem>().List();
                     //TODO Obsłużyć wszystkie wyjątki
@@ -302,7 +302,7 @@ namespace Repair_Service.DAL
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    orders = new ObservableCollection<Order>(session.QueryOver<Order>().List());
+                    orders = new ObservableCollection<Order>(session.QueryOver<Order>().Cacheable().List());
                     transaction.Commit();
                 }
             }
@@ -428,14 +428,152 @@ namespace Repair_Service.DAL
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    session.Update(client);
-                    transaction.Commit();
+                    try
+                    {
+                        session.Update(client);
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch 
+                    {
+                        transaction.Rollback();
+                        return false;
+                    }
                 }
-            }
-
-            return true;
+            } 
         }
 
+
+        public override bool UpdateDevice(Device device)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        session.Update(device);
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        return false;
+                    }
+                }
+            }
+        }
+
+
+        public override bool UpdateType(Device_Type type)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        session.Update(type);
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        return false;
+                    }
+                }
+            }
+        }
+
+
+        public override bool UpdateBrand(Brand brand)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        session.Update(brand);
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        return false;
+                    }
+                }
+            }
+        }
+
+
+        public override bool UpdateEmployee(Employee employee)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        session.Update(employee);
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        return false;
+                    }
+                }
+            }
+        }
+
+
+        public override bool UpdateRole(Role role)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        session.Update(role);
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        return false;
+                    }
+                }
+            }
+        }
+
+
+        public override bool UpdateSalon(Salon salon)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        session.Update(salon);
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        return false;
+                    }
+                }
+            }
+        }
         #endregion
 
 
@@ -511,7 +649,7 @@ namespace Repair_Service.DAL
                 }
             }
 
-            
+
         }
 
         /// <summary>

@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Repair_Service.Models
 {
-    public class Order
+    public class Order : INotifyPropertyChanged
     {
         public virtual int Id_Order { get; set; }
-        public virtual Client Client { get; set; }
+        private Client client;
+        public virtual Client Client { get { return client; } set { client = value; OnPropertyChanged("Client"); } }
         public virtual string Description { get; set; }
         public virtual decimal Price { get; set; }
         public virtual Device Device { get; set; }
@@ -26,8 +28,13 @@ namespace Repair_Service.Models
             Device = new Device();
             Problems = new List<Problem>();
             Order_Date = DateTime.Now;
-            //TODO Dodać tabele statusów
             Status = new Status();
+        }
+
+        public virtual event PropertyChangedEventHandler PropertyChanged;
+        public virtual void OnPropertyChanged(string property)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
         }
 
     }

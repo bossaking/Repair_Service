@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,8 @@ namespace Repair_Service
         private ReportmentPageController reportmentPageController;
         private Order newOrder;
 
+        private IList<Problem> problems;
+
         public NewReportmentPage()
         {
             InitializeComponent();
@@ -32,6 +35,7 @@ namespace Repair_Service
         {
             DeviceTypeComboBox.SelectionChanged += DeviceTypeComboBox_SelectionChanged;
             DeviceBrandComboBox.SelectionChanged += DeviceBrandComboBox_SelectionChanged;
+            ProblemsComboBox.SelectedItemsChanged += ProblemsComboBox_SelectedItemsChanged;
 
             reportmentPageController = new ReportmentPageController();
             newOrder = reportmentPageController.GetNewOrder();
@@ -41,6 +45,17 @@ namespace Repair_Service
             GetEmployees();
             GetTypes();
             GetProblems();
+
+            problems = new List<Problem>();
+        }
+
+        private void ProblemsComboBox_SelectedItemsChanged(object sender, Sdl.MultiSelectComboBox.EventArgs.SelectedItemsChangedEventArgs e)
+        {
+            if(e.Added.Count > 0)
+            problems.Add((e.Added as IList)[0] as Problem);
+
+            if(e.Removed.Count > 0)
+            problems.Remove((e.Removed as IList)[0] as Problem);
         }
 
         /// <summary>
@@ -106,6 +121,7 @@ namespace Repair_Service
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
+            newOrder.Problems = problems;
             reportmentPageController.AddNewOrder(newOrder);
             LoadMainPage();
         }

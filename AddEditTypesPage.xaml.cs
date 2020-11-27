@@ -43,12 +43,28 @@ namespace Repair_Service
             LoadTypesPage();
         }
 
+        private async void UpdateType()
+        {
+            if (!await pageController.UpdateTypeAsync(type))
+            {
+                //TODO Zmienić komunikat
+                MessageBox.Show("Jakiś tam error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            LoadTypesPage();
+        }
+
         #region BUTTONS
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             if(mode == Modes.Add)
             AddNewType();
+
+            if (mode == Modes.Edit)
+                UpdateType();
         }
+
+
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {

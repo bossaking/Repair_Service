@@ -51,10 +51,7 @@ namespace Repair_Service
         }
 
         #region BUTTONS
-        private void EditButton_Click(object sender, RoutedEventArgs e)
-        {
-            LoadAddEditEmployeePage();
-        }
+
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
@@ -75,17 +72,28 @@ namespace Repair_Service
             this.NavigationService.Navigate(addEditEmployeePage);
         }
 
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            Employee employee = new Employee
+            {
+                Id_Employee = (DataGrid.SelectedItem as Employee).Id_Employee,
+                Name = (DataGrid.SelectedItem as Employee).Name,
+                Surname = (DataGrid.SelectedItem as Employee).Surname,
+                Login = (DataGrid.SelectedItem as Employee).Login,
+                Passwd = (DataGrid.SelectedItem as Employee).Passwd,
+                Orders = (DataGrid.SelectedItem as Employee).Orders,
+                Employee_Salon = (DataGrid.SelectedItem as Employee).Employee_Salon,
+                Employee_Role = (DataGrid.SelectedItem as Employee).Employee_Role
+            };
+            AddEditEmployeesPage addEditEmployeePage = new AddEditEmployeesPage(pageController, employee, Modes.Edit);
+            this.NavigationService.Navigate(addEditEmployeePage);
+        }
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             MainPage mainPage = new MainPage();
             this.NavigationService.Navigate(mainPage);
         }
 
-        private void LoadAddEditEmployeePage()
-        {
-            //AddEditEmployeesPage addEditEmployeePage = new AddEditEmployeesPage();
-            //this.NavigationService.Navigate(addEditEmployeePage);
-        }
         #endregion
     }
 }

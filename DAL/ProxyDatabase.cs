@@ -44,7 +44,7 @@ namespace Repair_Service.DAL
         /// <returns>Zwraca listę wszystkich firm</returns>
         public override ObservableCollection<Brand> GetBrands()
         {
-            if(brands == null)
+            if (brands == null)
             {
                 brands = database == null ? (database = new MainDatabase()).GetBrands() : database.GetBrands();
             }
@@ -60,6 +60,22 @@ namespace Repair_Service.DAL
             return database.AddNewBrand(brand);
         }
 
+
+        public override bool UpdateBrand(Brand brand)
+        {
+            if (BrandExists(brand)) return false;
+
+            if (database.UpdateBrand(brand))
+            {
+                Brand oldBrand = brands.FirstOrDefault(b => b.Id_Brand == brand.Id_Brand);
+                App.Current.Dispatcher.Invoke(() => brands[brands.IndexOf(oldBrand)] = brand);
+                orders = database.GetAllOrders();
+                devices = database.GetDevices();
+                return true;
+            }
+            return false;
+        }
+
         private bool BrandExists(Brand brand)
         {
             return brands.FirstOrDefault(b => b.Title == brand.Title) != null;
@@ -69,7 +85,7 @@ namespace Repair_Service.DAL
         {
             if (devices.FirstOrDefault(d => d.Device_Brand.Id_Brand == brand.Id_Brand) != null) return false;
 
-            
+
             App.Current.Dispatcher.Invoke(() => brands.Remove(brand));
             return database.DeleteBrand(brand);
         }
@@ -113,16 +129,19 @@ namespace Repair_Service.DAL
         {
             if (EditClientExists(client)) return false;
 
-            Client oldClient = clients.First(c => c.Id_Client == client.Id_Client);
-            
-            App.Current.Dispatcher.Invoke(() => 
-                clients[clients.IndexOf(oldClient)] = client
-            );
+            if (database.UpdateClient(client))
+            {
+                Client oldClient = clients.First(c => c.Id_Client == client.Id_Client);
 
-            oldClient = client;
-            UpdateOrderClientInfromation(client);
-            database.UpdateClient(client);
-            return true;
+                App.Current.Dispatcher.Invoke(() =>
+                    clients[clients.IndexOf(oldClient)] = client
+                );
+                orders = database.GetAllOrders();
+                return true;
+            }
+            return false;
+
+
         }
 
         /// <summary>
@@ -133,8 +152,8 @@ namespace Repair_Service.DAL
         public override bool DeleteClient(int id)
         {
             if (orders.FirstOrDefault(o => o.Client.Id_Client == id) != null) return false;
-            
-            database.DeleteClient(id); 
+
+            database.DeleteClient(id);
             App.Current.Dispatcher.Invoke(() => clients.Remove(clients.Where(o => o.Id_Client == id).FirstOrDefault()));
             return true;
         }
@@ -147,14 +166,14 @@ namespace Repair_Service.DAL
         private bool ClientExists(Client client)
         {
             if (clients == null) GetAllClients();
-            Client repeatClient = clients.Where(c => c.Name == client.Name && c.Surname == client.Surname && c.Phone_Number == client.Phone_Number && 
+            Client repeatClient = clients.Where(c => c.Name == client.Name && c.Surname == client.Surname && c.Phone_Number == client.Phone_Number &&
                 c.Id_Client != client.Id_Client).FirstOrDefault();
             return repeatClient != null;
         }
 
         private bool EditClientExists(Client client)
         {
-            Client repeatClient = clients.Where(c => c.Name == client.Name && c.Surname == client.Surname && c.Phone_Number == c.Phone_Number 
+            Client repeatClient = clients.Where(c => c.Name == client.Name && c.Surname == client.Surname && c.Phone_Number == c.Phone_Number
                 && c.Id_Client != client.Id_Client).FirstOrDefault();
             return repeatClient != null;
         }
@@ -170,15 +189,6 @@ namespace Repair_Service.DAL
             return reClient.Id_Client;
         }
 
-        private void UpdateOrderClientInfromation(Client newClient)
-        {
-            Client client = orders.FirstOrDefault(o => o.Client.Id_Client == newClient.Id_Client).Client;
-            if(client != null)
-            client.Name = newClient.Name;
-            client.Phone_Number = newClient.Phone_Number;
-            client.Surname = newClient.Surname;
-        }
-
         #endregion
 
         #region DEVICES TABLE
@@ -189,7 +199,7 @@ namespace Repair_Service.DAL
         /// <returns>Lista wszystkich urządzeń</returns>
         public override ObservableCollection<Device> GetDevices()
         {
-            if(devices == null)
+            if (devices == null)
             {
                 devices = database == null ? (database = new MainDatabase()).GetDevices() : database.GetDevices();
             }
@@ -207,6 +217,22 @@ namespace Repair_Service.DAL
             if (DeviceExists(device)) return false;
             App.Current.Dispatcher.Invoke(() => devices.Add(device));
             return database.AddNewDevice(device);
+        }
+
+
+        public override bool UpdateDevice(Device device)
+        {
+            if (DeviceExists(device)) return false;
+
+            if (database.UpdateDevice(device))
+            {
+                Device oldDevice = devices.FirstOrDefault(d => d.Id_Device == device.Id_Device);
+                App.Current.Dispatcher.Invoke(() => devices[devices.IndexOf(oldDevice)] = device);
+                orders = database.GetAllOrders();
+                return true;
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -254,6 +280,23 @@ namespace Repair_Service.DAL
             return database.AddNewType(type);
         }
 
+
+        public override bool UpdateType(Device_Type type)
+        {
+            if (TypeExists(type)) return false;
+
+            if (database.UpdateType(type))
+            {
+                Device_Type oldType = types.FirstOrDefault(t => t.Id_Type == type.Id_Type);
+                App.Current.Dispatcher.Invoke(() => types[types.IndexOf(oldType)] = type);
+                orders = database.GetAllOrders();
+                devices = database.GetDevices();
+
+                return true;
+            }
+            return false;
+        }
+
         private bool TypeExists(Device_Type type)
         {
             return types.FirstOrDefault(t => t.Type_Title.Equals(type.Type_Title)) != null;
@@ -263,7 +306,7 @@ namespace Repair_Service.DAL
         {
             if (orders.FirstOrDefault(o => o.Device.Device_Type.Id_Type == type.Id_Type) != null) return false;
             database.DeleteType(type);
-            App.Current.Dispatcher.Invoke(() => types.Remove(type) );
+            App.Current.Dispatcher.Invoke(() => types.Remove(type));
             return true;
         }
         #endregion
@@ -284,6 +327,19 @@ namespace Repair_Service.DAL
         {
             App.Current.Dispatcher.Invoke(() => employees.Add(employee));
             return database.AddNewEmployee(employee);
+        }
+
+
+        public override bool UpdateEmployee(Employee employee)
+        {
+            if (database.UpdateEmployee(employee))
+            {
+                Employee oldEmployee = employees.FirstOrDefault(e => e.Id_Employee == employee.Id_Employee);
+                App.Current.Dispatcher.Invoke(() => employees[employees.IndexOf(oldEmployee)] = employee);
+                orders = database.GetAllOrders();
+                return true;
+            }
+            return false;
         }
 
         public override bool DeleteEmployee(Employee employee)
@@ -380,6 +436,21 @@ namespace Repair_Service.DAL
             return database.AddNewRole(role);
         }
 
+
+        public override bool UpdateRole(Role role)
+        {
+            if (RoleExists(role)) return false;
+
+            if (database.UpdateRole(role))
+            {
+                Role oldRole = roles.FirstOrDefault(r => r.Id_Role == role.Id_Role);
+                App.Current.Dispatcher.Invoke(() => roles[roles.IndexOf(oldRole)] = role);
+                employees = database.GetEmployees();
+                return true;
+            }
+            return false;
+        }
+
         private bool RoleExists(Role role)
         {
             return roles.FirstOrDefault(r => r.Title == role.Title) != null;
@@ -398,7 +469,7 @@ namespace Repair_Service.DAL
 
         public override ObservableCollection<Salon> GetSalons()
         {
-            if(salons == null)
+            if (salons == null)
             {
                 salons = database == null ? (database = new MainDatabase()).GetSalons() : database.GetSalons();
             }
@@ -410,6 +481,21 @@ namespace Repair_Service.DAL
             if (SalonExists(salon)) return false;
             App.Current.Dispatcher.Invoke(() => salons.Add(salon));
             return database.AddNewSalon(salon);
+        }
+
+
+        public override bool UpdateSalon(Salon salon)
+        {
+            if (SalonExists(salon)) return false;
+
+            if (database.UpdateSalon(salon))
+            {
+                Salon oldSalon = salons.FirstOrDefault(s => s.Id_Salon == salon.Id_Salon);
+                App.Current.Dispatcher.Invoke(() => salons[salons.IndexOf(oldSalon)] = salon);
+                employees = database.GetEmployees();
+                return true;
+            }
+            return false;
         }
 
         private bool SalonExists(Salon salon)
@@ -430,7 +516,7 @@ namespace Repair_Service.DAL
 
         public override ObservableCollection<Status> GetStatuses()
         {
-            if(statuses == null)
+            if (statuses == null)
             {
                 statuses = database == null ? (database = new MainDatabase()).GetStatuses() : database.GetStatuses();
             }
@@ -447,7 +533,7 @@ namespace Repair_Service.DAL
 
 
 
-        private void RefreshAllData()
+        private void GetAllData()
         {
             GetDatabase();
             GetBrands();
@@ -470,9 +556,9 @@ namespace Repair_Service.DAL
         public override bool SingInWithLoginAndPassword(string login, string password)
         {
             if (database == null) database = new MainDatabase();
-            if(database.SingInWithLoginAndPassword(login, password))
+            if (database.SingInWithLoginAndPassword(login, password))
             {
-                RefreshAllData();
+                GetAllData();
                 return true;
             }
             return false;

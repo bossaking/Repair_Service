@@ -47,11 +47,25 @@ namespace Repair_Service
             LoadRolesPage();
         }
 
+        private async void UpdateRole()
+        {
+            if (!await pageController.UpdateRoleAsync(role))
+            {
+                //TODO Zmienić komunikat
+                MessageBox.Show("Jakiś tam error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            LoadRolesPage();
+        }
+
         #region BUTTONS
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             if (mode == Modes.Add)
                 AddNewRole();
+
+            if (mode == Modes.Edit)
+                UpdateRole();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
