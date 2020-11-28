@@ -124,18 +124,23 @@ namespace Repair_Service.DAL
         /// Dodawanie nowego zlecenia
         /// </summary>
         /// <param name="order">Obiekt klasy Order</param>
-        public override void AddNewOrder(Order order)
+        public override bool AddNewOrder(Order order)
         {
             using (var session = NHibernateHelper.OpenSession())
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    IList<Problem> problems = session.QueryOver<Problem>().List();
-                    //TODO Obsłużyć wszystkie wyjątki
-                    order.Problems = problems;
-
-                    session.Save(order);
-                    transaction.Commit();
+                    try
+                    {
+                        session.Save(order);
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        return false;
+                    }
                 }
             }
         }
@@ -230,6 +235,26 @@ namespace Repair_Service.DAL
             }
         }
 
+        public override bool AddNewStatus(Status status)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        session.Save(status);
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
+
         #endregion
 
         #region READ
@@ -250,6 +275,11 @@ namespace Repair_Service.DAL
                 }
             }
             return brands;
+        }
+
+        public override ObservableCollection<Brand> GetBrandsOfType(Device_Type type)
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -574,8 +604,51 @@ namespace Repair_Service.DAL
                 }
             }
         }
-        #endregion
 
+
+        public override bool UpdateStatus(Status status)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        session.Update(status);
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        return false;
+                    }
+                }
+            }
+        }
+
+
+        public override bool UpdateProblem(Problem problem)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        session.Update(problem);
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        return false;
+                    }
+                }
+            }
+        }
+        #endregion
 
         #region DELETE
 
@@ -783,6 +856,27 @@ namespace Repair_Service.DAL
             }
         }
 
+
+
+        public override bool DeleteStatus(Status status)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        session.Delete(status);
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
 
 
         #endregion

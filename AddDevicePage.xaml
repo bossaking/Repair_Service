@@ -21,7 +21,7 @@
         
         <!--MODEL TITLE-->
         <Label Grid.Row="0" Grid.Column="0" VerticalContentAlignment="Center">Model title:</Label>
-        <TextBox Grid.Row="0" Text="{Binding Model_Title}" Grid.Column="1" Margin="5" Padding="3,4,4,4" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+        <TextBox Grid.Row="0" Text="{Binding Model_Title, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Margin="5" Padding="3,4,4,4" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
         
         <!--TYPE-->
         <Label Grid.Row="1" Grid.Column="0" VerticalContentAlignment="Center">Type:</Label>

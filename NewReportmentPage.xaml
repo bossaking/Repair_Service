@@ -46,11 +46,11 @@
 
         <!--DEVICE BRAND-->
         <Label Grid.Row="5" Grid.Column="0" VerticalContentAlignment="Center">Device brand:</Label>
-        <ComboBox Name="DeviceBrandComboBox" Grid.Row="5" Grid.Column="1" Margin="5" Padding="5" ItemsSource="{Binding ElementName=DeviceTypeComboBox, Path=SelectedItem.Devices}" DisplayMemberPath="Device_Brand.Title" VerticalContentAlignment="Center" IsEditable="True" IsTextSearchEnabled="True" IsEnabled="False"/>
+        <ComboBox Name="DeviceBrandComboBox" Grid.Row="5" Grid.Column="1" Margin="5" Padding="5" DisplayMemberPath="Title" VerticalContentAlignment="Center" IsEditable="True" IsTextSearchEnabled="True" IsEnabled="False"/>
 
         <!--DEVICE MODEL-->
         <Label Grid.Row="6" Grid.Column="0" VerticalContentAlignment="Center">Device model:</Label>
-        <ComboBox Name="DeviceModelComboBox" Grid.Row="6" Grid.Column="1" Margin="5" Padding="5" SelectedValue="{Binding Path=Device}" ItemsSource="{Binding ElementName=DeviceBrandComboBox, Path=SelectedItem.Device_Brand.Devices}" DisplayMemberPath="Model_Title" VerticalContentAlignment="Center" IsEditable="True" IsTextSearchEnabled="True" TextSearch.TextPath="Model_Title" IsEnabled="False"/>
+        <ComboBox Name="DeviceModelComboBox" Grid.Row="6" Grid.Column="1" Margin="5" Padding="5" SelectedValue="{Binding Path=Device}" ItemsSource="{Binding ElementName=DeviceBrandComboBox, Path=SelectedItem.Devices}" DisplayMemberPath="Model_Title" VerticalContentAlignment="Center" IsEditable="True" IsTextSearchEnabled="True" TextSearch.TextPath="Model_Title" IsEnabled="False"/>
 
         <!--PROBLEMS-->
         <Label Grid.Row="7" Grid.Column="0" VerticalContentAlignment="Center">Problems:</Label>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Repair_Service.Controllers;
+using Repair_Service.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,9 +19,30 @@ namespace Repair_Service
 {
     public partial class StatusesPage : Page
     {
+        StatusesPageController pageController;
         public StatusesPage()
         {
             InitializeComponent();
+            this.Loaded += StatusesPage_Loaded;
+            pageController = new StatusesPageController();
+        }
+
+        private void StatusesPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            LoadStatuses();
+        }
+
+        private async void LoadStatuses()
+        {
+            DataGrid.ItemsSource = await pageController.GetStatusesAsync();
+        }
+
+        private async void DeleteStatus()
+        {
+            if(! await pageController.DeleteStatusAsync(DataGrid.SelectedItem as Status))
+            {
+                MessageBox.Show("Selected item cannot be deleted!", "Delete error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         #region PROGRESS BAR
@@ -42,11 +65,7 @@ namespace Repair_Service
         #endregion
 
         #region BUTTONS
-        private void EditButton_Click(object sender, RoutedEventArgs e)
-        {
-            AddEditStatusesPage addEditStatusPage = new AddEditStatusesPage();
-            this.NavigationService.Navigate(addEditStatusPage);
-        }
+
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
@@ -56,13 +75,25 @@ namespace Repair_Service
             }
             else
             {
-                //DeleteStatus();
+                DeleteStatus();
             }
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            AddEditStatusesPage addEditStatusPage = new AddEditStatusesPage();
+            AddEditStatusesPage addEditStatusPage = new AddEditStatusesPage(pageController, new Status(), Modes.Add);
+            this.NavigationService.Navigate(addEditStatusPage);
+        }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            Status status = new Status
+            {
+                Id_Status = (DataGrid.SelectedItem as Status).Id_Status,
+                Title = (DataGrid.SelectedItem as Status).Title,
+                Orders = (DataGrid.SelectedItem as Status).Orders
+            };
+            AddEditStatusesPage addEditStatusPage = new AddEditStatusesPage(pageController, status, Modes.Edit);
             this.NavigationService.Navigate(addEditStatusPage);
         }
 

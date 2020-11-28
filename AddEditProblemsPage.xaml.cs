@@ -34,7 +34,7 @@ namespace Repair_Service
 
         private async void AddNewProblem()
         {
-            if(! await pageController.AddNewProblemAsync(problem))
+            if (!await pageController.AddNewProblemAsync(problem))
             {
                 MessageBox.Show("Item already exists!", "Name error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
@@ -42,11 +42,25 @@ namespace Repair_Service
             LoadProblemsPage();
         }
 
+        private async void UpdateProblem()
+        {
+            if (!await pageController.UpdateProblemAsync(problem))
+            {
+                MessageBox.Show("Item already exists!", "Name error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            LoadProblemsPage();
+        }
+
+
         #region BUTTONS
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            if(mode == Modes.Add)
-            AddNewProblem();
+            if (mode == Modes.Add)
+                AddNewProblem();
+
+            if (mode == Modes.Edit)
+                UpdateProblem();
 
         }
 

@@ -58,6 +58,11 @@ namespace Repair_Service.Controllers
             return types;
         }
 
+        public ObservableCollection<Brand> GetBrandsofType(Device_Type type)
+        {
+            return database.GetBrandsOfType(type);
+        }
+
         /// <summary>
         /// Pozwala na asynchroniczny odczyt wszystkich problemów
         /// </summary>
@@ -71,9 +76,9 @@ namespace Repair_Service.Controllers
             return problems;
         }
 
-        public async void AddNewOrder(Order order)
+        public async Task<bool> AddNewOrder(Order order)
         {
-            await Task.Run(() => 
+            return await Task.Run(() => 
                 database.AddNewOrder(order)
             );
         }

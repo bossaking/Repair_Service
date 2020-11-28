@@ -14,6 +14,7 @@ namespace Repair_Service.DAL
         #region BRANDS TABLE
 
         public abstract ObservableCollection<Brand> GetBrands();
+        public abstract ObservableCollection<Brand> GetBrandsOfType(Device_Type type);
         public abstract bool AddNewBrand(Brand brand);
         public abstract bool UpdateBrand(Brand brand);
         public abstract bool DeleteBrand(Brand brand);
@@ -50,14 +51,16 @@ namespace Repair_Service.DAL
         #endregion
 
         #region ORDERS TABLE
-        public abstract void AddNewOrder(Order order);
         public abstract ObservableCollection<Order> GetAllOrders();
+        public abstract bool AddNewOrder(Order order);
+        //public abstract bool UpdateOrder(Order order);
         public abstract void DeleteOrder(int id);
         #endregion
 
         #region PROBLEMS TABLE
         public abstract ObservableCollection<Problem> GetProblems();
         public abstract bool AddNewProblem(Problem problem);
+        public abstract bool UpdateProblem(Problem problem);
         public abstract bool DeleteProblem(Problem problem);
         #endregion
 
@@ -77,6 +80,9 @@ namespace Repair_Service.DAL
 
         #region STATUSES TABLE
         public abstract ObservableCollection<Status> GetStatuses();
+        public abstract bool AddNewStatus(Status status);
+        public abstract bool UpdateStatus(Status status);
+        public abstract bool DeleteStatus(Status status);
         #endregion
 
 

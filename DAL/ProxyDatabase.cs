@@ -52,6 +52,10 @@ namespace Repair_Service.DAL
             return brands;
         }
 
+        public override ObservableCollection<Brand> GetBrandsOfType(Device_Type type)
+        {
+            return new ObservableCollection<Brand>(brands.Where(b => b.Devices.FirstOrDefault(d => d.Device_Type.Id_Type == type.Id_Type) != null));
+        }
 
         public override bool AddNewBrand(Brand brand)
         {
@@ -353,14 +357,7 @@ namespace Repair_Service.DAL
         #region ORDERS TABLE
 
 
-        public override void AddNewOrder(Order order)
-        {
-            AddNewClient(order.Client);
-            order.Client.Id_Client = GetClientId(order.Client);
-            order.Status = GetStatus(1);
-            database.AddNewOrder(order);
-            App.Current.Dispatcher.Invoke(() => orders.Add(order));
-        }
+
 
         /// <summary>
         /// Zwraca listę wszystkich zleceń
@@ -375,6 +372,31 @@ namespace Repair_Service.DAL
 
             return orders;
         }
+
+        public override bool AddNewOrder(Order order)
+        {
+            AddNewClient(order.Client);
+            order.Client.Id_Client = GetClientId(order.Client);
+            order.Status = GetStatus(1);
+            if (database.AddNewOrder(order))
+            {
+                App.Current.Dispatcher.Invoke(() => orders.Add(order));
+                return true;
+            }
+            return false;
+        }
+
+        //public override bool UpdateOrder(Order order)
+        //{
+        //    if (database.UpdateOrder(order))
+        //    {
+        //        Order oldOrder = orders.FirstOrDefault(o => o.Id_Order == order.Id_Order);
+        //        App.Current.Dispatcher.Invoke(() => orders[orders.IndexOf(oldOrder)] = order);
+
+        //        return true;
+        //    }
+        //    return false;
+        //}
 
         public override void DeleteOrder(int id)
         {
@@ -401,6 +423,20 @@ namespace Repair_Service.DAL
             if (ProblemExists(problem)) return false;
             App.Current.Dispatcher.Invoke(() => problems.Add(problem));
             return database.AddNewProblem(problem);
+        }
+
+        public override bool UpdateProblem(Problem problem)
+        {
+            if (ProblemExists(problem)) return false;
+
+            if (database.UpdateProblem(problem))
+            {
+                Problem oldProblem = problems.FirstOrDefault(p => p.Id_Problem == problem.Id_Problem);
+                App.Current.Dispatcher.Invoke(() => problems[problems.IndexOf(oldProblem)] = problem);
+                orders = GetAllOrders();
+                return true;
+            }
+            return false;
         }
 
         private bool ProblemExists(Problem problem)
@@ -522,6 +558,49 @@ namespace Repair_Service.DAL
             }
 
             return statuses;
+        }
+
+        public override bool AddNewStatus(Status status)
+        {
+            if (StatusExists(status)) return false;
+
+            if (database.AddNewStatus(status))
+            {
+                App.Current.Dispatcher.Invoke(() => statuses.Add(status));
+                return true;
+            }
+            return false;
+        }
+
+
+        public override bool UpdateStatus(Status status)
+        {
+            if (StatusExists(status)) return false;
+
+            if (database.UpdateStatus(status))
+            {
+                Status oldStatus = statuses.FirstOrDefault(s => s.Id_Status == status.Id_Status);
+                App.Current.Dispatcher.Invoke(() => statuses[statuses.IndexOf(oldStatus)] = status);
+                orders = database.GetAllOrders();
+                return true;
+            }
+            return false;
+        }
+
+        private bool StatusExists(Status status)
+        {
+            return statuses.FirstOrDefault(s => s.Title == status.Title) != null;
+        }
+
+        public override bool DeleteStatus(Status status)
+        {
+            if (orders.FirstOrDefault(o => o.Status.Id_Status == status.Id_Status) != null) return false;
+            if (database.DeleteStatus(status))
+            {
+                App.Current.Dispatcher.Invoke(() => statuses.Remove(status));
+                return true;
+            }
+            return false;
         }
 
         private Status GetStatus(int id)
