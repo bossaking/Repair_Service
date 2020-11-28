@@ -331,3 +331,9 @@ C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\StatusesPage.g.cs
 C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\StatusesPage.baml
 C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\AddEditStatusesPage.g.cs
 C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\AddEditStatusesPage.baml
+D:\apps\Repair_Service\bin\Debug\NHibernate.Caches.SysCache.dll
+D:\apps\Repair_Service\bin\Debug\NHibernate.Caches.SysCache.xml
+D:\apps\Repair_Service\obj\Debug\AddEditStatusesPage.g.cs
+D:\apps\Repair_Service\obj\Debug\StatusesPage.g.cs
+D:\apps\Repair_Service\obj\Debug\AddEditStatusesPage.baml
+D:\apps\Repair_Service\obj\Debug\StatusesPage.baml

@@ -14,6 +14,7 @@ namespace Repair_Service.HibernateMapping
 
         public OrderMap()
         {
+            Cache.ReadWrite().IncludeAll();
             Id(x => x.Id_Order).GeneratedBy.Increment();
 
             Map(x => x.Description);

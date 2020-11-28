@@ -20,7 +20,7 @@ namespace Repair_Service.HibernateMapping
             References(x => x.Device_Type).Column("Id_Type").Not.LazyLoad();
             References(x => x.Device_Brand).Column("Id_Brand").Not.LazyLoad();
 
-            HasMany(x => x.Orders).Not.LazyLoad().Not.LazyLoad();
+            HasMany(x => x.Orders).Not.LazyLoad().LazyLoad();
 
             Table("devices");
         }

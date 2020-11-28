@@ -43,6 +43,11 @@ namespace Repair_Service.Controllers
             return brands;
         }
 
+        public async Task<bool> UpdateDeviceAsync(Device device)
+        {
+            return await Task.Run(() => database.UpdateDevice(device));
+        }
+
         public async Task<bool> DeleteDeviceAsync(Device device)
         {
             return await Task.Run(() => database.DeleteDevice(device));

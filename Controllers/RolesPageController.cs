@@ -25,6 +25,11 @@ namespace Repair_Service.Controllers
             return await Task.Run(() => database.AddNewRole(role));
         }
 
+        public async Task<bool> UpdateRoleAsync(Role role)
+        {
+            return await Task.Run(() => database.UpdateRole(role));
+        }
+
         public async Task<bool> DeleteRoleAsync(Role role)
         {
             return await Task.Run(() => database.DeleteRole(role));

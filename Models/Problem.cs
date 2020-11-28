@@ -13,14 +13,12 @@ namespace Repair_Service.Models
         public virtual IList<Order> Orders { get; set; }
         public override string ToString()
         {
-            if (Title == String.Empty)
+            if (Title.Equals(string.Empty))
             {
                 return "";
             }
-            else
-            {
-                return Title;
-            }
+            return Title;
+
         }
     }
 }

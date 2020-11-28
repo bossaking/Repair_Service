@@ -68,11 +68,7 @@ namespace Repair_Service
         #endregion
 
         #region BUTTONS
-        private void EditButton_Click(object sender, RoutedEventArgs e)
-        {
-            AddEditTypesPage addEditTypePage = new AddEditTypesPage(pageController, DataGrid.SelectedItem as Device_Type, Modes.Edit);
-            this.NavigationService.Navigate(addEditTypePage);
-        }
+
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
@@ -90,6 +86,18 @@ namespace Repair_Service
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             AddEditTypesPage addEditTypePage = new AddEditTypesPage(pageController, new Device_Type(), Modes.Add);
+            this.NavigationService.Navigate(addEditTypePage);
+        }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            Device_Type type = new Device_Type
+            {
+                Id_Type = (DataGrid.SelectedItem as Device_Type).Id_Type,
+                Type_Title = (DataGrid.SelectedItem as Device_Type).Type_Title,
+                Devices = (DataGrid.SelectedItem as Device_Type).Devices
+            };
+            AddEditTypesPage addEditTypePage = new AddEditTypesPage(pageController, type, Modes.Edit);
             this.NavigationService.Navigate(addEditTypePage);
         }
 

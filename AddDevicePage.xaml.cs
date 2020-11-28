@@ -2,6 +2,7 @@
 using Repair_Service.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,17 +22,20 @@ namespace Repair_Service
     {
         //TODO Dodać sprawdzenie czy wszystkie pola są wypełnione
         DevicesPageController pageController;
-        Device newDevice;
-        public AddDevicePage(DevicesPageController pageController)
+        Device device;
+        Modes mode;
+        public AddDevicePage(DevicesPageController pageController, Device device, Modes mode)
         {
             InitializeComponent();
             this.pageController = pageController;
+            this.device = device;
+            this.mode = mode;
+
+            DataContext = device;
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            newDevice = new Device();
-            DataContext = newDevice;
             LoadData();
         }
 
@@ -39,13 +43,29 @@ namespace Repair_Service
         {
             TypesComboBox.ItemsSource = await pageController.GetTypesAsync();
             BrandsComboBox.ItemsSource = await pageController.GetBrandsAsync();
+
+            if(mode == Modes.Edit)
+            {
+                TypesComboBox.SelectedItem = (TypesComboBox.ItemsSource as ObservableCollection<Device_Type>).FirstOrDefault(t => t.Id_Type == device.Device_Type.Id_Type);
+                BrandsComboBox.SelectedItem = (BrandsComboBox.ItemsSource as ObservableCollection<Brand>).FirstOrDefault(b => b.Id_Brand == device.Device_Brand.Id_Brand);
+            }
         }
 
         private async void AddNewDevice()
         {
-            newDevice.Device_Type = TypesComboBox.SelectedItem as Device_Type;
-            newDevice.Device_Brand = BrandsComboBox.SelectedItem as Brand;
-            if(!await pageController.AddNewDevice(newDevice))
+
+            if (!await pageController.AddNewDevice(device))
+            {
+                //TODO Zmienić komunikat
+                MessageBox.Show("Jakiś tam error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            LoadDevicesPage();
+        }
+
+        private async void UpdateDevice()
+        {
+            if (!await pageController.UpdateDeviceAsync(device))
             {
                 MessageBox.Show("Item already exists!", "Name error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
@@ -56,7 +76,14 @@ namespace Repair_Service
         #region BUTTONS
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            AddNewDevice();
+            device.Device_Type = TypesComboBox.SelectedItem as Device_Type;
+            device.Device_Brand = BrandsComboBox.SelectedItem as Brand;
+
+            if (mode == Modes.Add)
+                AddNewDevice();
+
+            if (mode == Modes.Edit)
+                UpdateDevice(); 
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

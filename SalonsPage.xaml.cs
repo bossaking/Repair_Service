@@ -67,10 +67,7 @@ namespace Repair_Service
         #endregion
 
         #region BUTTONS
-        private void EditButton_Click(object sender, RoutedEventArgs e)
-        {
-            LoadAddEditSalonPage();
-        }
+
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
@@ -91,16 +88,23 @@ namespace Repair_Service
             this.NavigationService.Navigate(addEditSalonPage);
         }
 
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            Salon salon = new Salon
+            {
+                Id_Salon = (DataGrid.SelectedValue as Salon).Id_Salon,
+                Title = (DataGrid.SelectedValue as Salon).Title,
+                Location = (DataGrid.SelectedValue as Salon).Location,
+                Employees = (DataGrid.SelectedValue as Salon).Employees
+            };
+            AddEditSalonsPage addEditSalonPage = new AddEditSalonsPage(pageController, salon, Modes.Edit);
+            this.NavigationService.Navigate(addEditSalonPage);
+        }
+
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             MainPage mainPage = new MainPage();
             this.NavigationService.Navigate(mainPage);
-        }
-
-        private void LoadAddEditSalonPage()
-        {
-            //AddEditSalonsPage addEditSalonPage = new AddEditSalonsPage();
-            //this.NavigationService.Navigate(addEditSalonPage);
         }
         #endregion
     }

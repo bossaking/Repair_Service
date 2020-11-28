@@ -43,13 +43,26 @@ namespace Repair_Service
             LoadBrandsPage();
         }
 
+        private async void UpdateBrand()
+        {
+            if (!await pageController.UpdateBrandAsync(brand))
+            {
+                MessageBox.Show("Jakiś tam error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            LoadBrandsPage();
+        }
+
         #region BUTTONS
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             if(mode == Modes.Add)
-            {
                 AddNewBrand();
-            }
+
+            if (mode == Modes.Edit)
+                UpdateBrand();
+            
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

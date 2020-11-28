@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +24,8 @@ namespace Repair_Service
         private ReportmentPageController reportmentPageController;
         private Order newOrder;
 
+        private IList<Problem> problems;
+
         public NewReportmentPage()
         {
             InitializeComponent();
@@ -32,6 +36,12 @@ namespace Repair_Service
         {
             DeviceTypeComboBox.SelectionChanged += DeviceTypeComboBox_SelectionChanged;
             DeviceBrandComboBox.SelectionChanged += DeviceBrandComboBox_SelectionChanged;
+            var dpd = DependencyPropertyDescriptor.FromProperty(ItemsControl.ItemsSourceProperty, typeof(ComboBox));
+            if (dpd != null)
+            {
+                dpd.AddValueChanged(DeviceModelComboBox, ModelsComboBoxItemSourceChanged);
+            }
+            ProblemsComboBox.SelectedItemsChanged += ProblemsComboBox_SelectedItemsChanged;
 
             reportmentPageController = new ReportmentPageController();
             newOrder = reportmentPageController.GetNewOrder();
@@ -41,6 +51,19 @@ namespace Repair_Service
             GetEmployees();
             GetTypes();
             GetProblems();
+
+            problems = new List<Problem>();
+        }
+
+
+
+        private void ProblemsComboBox_SelectedItemsChanged(object sender, Sdl.MultiSelectComboBox.EventArgs.SelectedItemsChangedEventArgs e)
+        {
+            if (e.Added.Count > 0)
+                problems.Add((e.Added as IList)[0] as Problem);
+
+            if (e.Removed.Count > 0)
+                problems.Remove((e.Removed as IList)[0] as Problem);
         }
 
         /// <summary>
@@ -71,6 +94,7 @@ namespace Repair_Service
         {
             if (DeviceTypeComboBox.SelectedItem != null)
             {
+                DeviceBrandComboBox.ItemsSource = reportmentPageController.GetBrandsofType(DeviceTypeComboBox.SelectedItem as Device_Type);
                 DeviceBrandComboBox.IsEnabled = true;
                 DeviceBrandComboBox.SelectedIndex = 0;
             }
@@ -80,9 +104,31 @@ namespace Repair_Service
         {
             if (DeviceBrandComboBox.SelectedItem != null)
             {
+
+
                 DeviceModelComboBox.IsEnabled = true;
                 DeviceModelComboBox.SelectedIndex = 0;
+
             }
+        }
+
+        private void ModelsComboBoxItemSourceChanged(object sender, EventArgs e)
+        {
+            if (DeviceModelComboBox.Items.Count == 0)
+            {
+                DeviceModelComboBox.IsEnabled = false;
+            }
+        }
+
+        private async void AddNewOrder()
+        {
+            newOrder.Problems = problems;
+            if (!await reportmentPageController.AddNewOrder(newOrder))
+            {
+                MessageBox.Show("Something went wrong...Try again", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            LoadMainPage();
         }
         #endregion
 
@@ -106,8 +152,7 @@ namespace Repair_Service
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            reportmentPageController.AddNewOrder(newOrder);
-            LoadMainPage();
+            AddNewOrder();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

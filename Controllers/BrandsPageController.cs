@@ -28,6 +28,11 @@ namespace Repair_Service.Controllers
             return await Task.Run(() => database.AddNewBrand(brand));
         }
 
+        public async Task<bool> UpdateBrandAsync(Brand brand)
+        {
+            return await Task.Run(() => database.UpdateBrand(brand));
+        }
+
         public async Task<bool> DeleteBrandAsync(Brand brand)
         {
             return await Task.Run(() => database.DeleteBrand(brand));

@@ -19,7 +19,6 @@ namespace Repair_Service
 {
     public partial class BrandsPage : Page
     {
-        //TODO Dodać edycje
         //TODO Dodać Progress Bar
         BrandsPageController pageController;
         public BrandsPage()
@@ -59,10 +58,7 @@ namespace Repair_Service
         #endregion
 
         #region BUTTONS
-        private void EditButton_Click(object sender, RoutedEventArgs e)
-        {
-            LoadAddEditBrandPage();
-        }
+
 
         private async void DeleteBrand()
         {
@@ -91,16 +87,22 @@ namespace Repair_Service
             this.NavigationService.Navigate(addEditBrandPage);
         }
 
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            Brand brand = new Brand
+            {
+                Id_Brand = (DataGrid.SelectedItem as Brand).Id_Brand,
+                Title = (DataGrid.SelectedItem as Brand).Title,
+                Devices = (DataGrid.SelectedItem as Brand).Devices
+            };
+            AddEditBrandsPage addEditBrandPage = new AddEditBrandsPage(pageController, brand, Modes.Edit);
+            this.NavigationService.Navigate(addEditBrandPage);
+        }
+
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             MainPage mainPage = new MainPage();
             this.NavigationService.Navigate(mainPage);
-        }
-
-        private void LoadAddEditBrandPage()
-        {
-            //AddEditBrandsPage addEditBrandPage = new AddEditBrandsPage();
-            //this.NavigationService.Navigate(addEditBrandPage);
         }
         #endregion
     }

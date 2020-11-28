@@ -24,6 +24,11 @@ namespace Repair_Service.Controllers
             return await Task.Run(() => database.AddNewType(type));
         }
 
+        public async Task<bool> UpdateTypeAsync(Device_Type type)
+        {
+            return await Task.Run(() => database.UpdateType(type));
+        }
+
         public async Task<bool> DeleteTypeAsync(Device_Type type)
         {
             return await Task.Run(() => database.DeleteType(type));

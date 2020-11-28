@@ -39,6 +39,11 @@ namespace Repair_Service.Controllers
             return await Task.Run(() => database.AddNewEmployee(employee));
         }
 
+        public async Task<bool> UpdateEmployeeAsync(Employee employee)
+        {
+            return await Task.Run(() => database.UpdateEmployee(employee));
+        }
+
         public async Task<bool> DeleteEmployeeAsync(Employee employee)
         {
             return await Task.Run(() => database.DeleteEmployee(employee));

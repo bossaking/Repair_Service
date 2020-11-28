@@ -66,11 +66,8 @@ namespace Repair_Service
 
         #endregion
 
-        #region
-        private void EditButton_Click(object sender, RoutedEventArgs e)
-        {
-            LoadAddEditProblemPage();
-        }
+        #region BUTTONS
+
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
@@ -91,17 +88,25 @@ namespace Repair_Service
             this.NavigationService.Navigate(addEditProblemPage);
         }
 
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            Problem problem = new Problem
+            {
+                Id_Problem = (DataGrid.SelectedItem as Problem).Id_Problem,
+                Title = (DataGrid.SelectedItem as Problem).Title,
+                Orders = (DataGrid.SelectedItem as Problem).Orders
+            };
+            AddEditProblemsPage addEditProblemPage = new AddEditProblemsPage(pageController, problem, Modes.Edit);
+            this.NavigationService.Navigate(addEditProblemPage);
+        }
+
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             MainPage mainPage = new MainPage();
             this.NavigationService.Navigate(mainPage);
         }
 
-        private void LoadAddEditProblemPage()
-        {
-            //AddEditProblemsPage addEditProblemPage = new AddEditProblemsPage();
-            //this.NavigationService.Navigate(addEditProblemPage);
-        }
+
         #endregion
     }
 }

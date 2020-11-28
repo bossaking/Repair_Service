@@ -44,11 +44,26 @@ namespace Repair_Service
             LoadSalonsPage();
         }
 
+
+        private async void UpdateSalon()
+        {
+            if (!await pageController.UpdateSalonAsync(salon))
+            {
+                //TODO Zmienić komunikat
+                MessageBox.Show("Jakiś tam error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            LoadSalonsPage();
+        }
+
         #region BUTTONS
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             if (mode == Modes.Add)
                 AddNewSalon();
+
+            if (mode == Modes.Edit)
+                UpdateSalon();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
