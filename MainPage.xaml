@@ -22,7 +22,7 @@
             </Grid.ColumnDefinitions>
             
             <!--NAVIGATION BUTTONS-->
-            <Button Grid.Column="0" Margin="10" Click="LogoutButton_Click" Width="75" Padding="5" IsCancel="True" HorizontalAlignment="Left">Logout</Button>
+            <Button Grid.Column="0" Margin="10" Click="LogoutButton_Click" Width="75" Padding="5" IsCancel="True" HorizontalAlignment="Center">Logout</Button>
             <WrapPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Button Margin="5" Click="ClientsButton_Click">Clients</Button>
                 <Button Margin="5" Click="DevicesButton_Click">Devices</Button>
@@ -66,24 +66,5 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <!--STATUS BAR-->
-        <StatusBar Grid.Row="2" Height="30">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="400"/>
-                    <ColumnDefinition Width="400"/>
-                    <ColumnDefinition Width="400"/>
-                </Grid.ColumnDefinitions>
-                <StatusBarItem Grid.Column="0" HorizontalAlignment="Center">
-                    <TextBlock Name="RefreshTextBlock">Status: OK</TextBlock>
-                </StatusBarItem>
-                <StatusBarItem Grid.Column="1" HorizontalAlignment="Center">
-                    <ProgressBar Name="ProgressBar" IsIndeterminate="True" Height="15" Width="300"></ProgressBar>
-                </StatusBarItem>
-                <StatusBarItem Grid.Column="2" HorizontalAlignment="Center">
-                    <Button Name="RefreshButton" Click="RefreshButton_Click" Padding="5,0,5,0">REFRESH</Button>
-                </StatusBarItem>
-            </Grid>
-        </StatusBar>
     </Grid>
 </Page>

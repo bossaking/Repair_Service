@@ -68,12 +68,12 @@ namespace Repair_Service
 
         private void ShowProgressBar()
         {
-            ProgressBar.Visibility = Visibility.Visible;
+            //ProgressBar.Visibility = Visibility.Visible;
         }
 
         private void HideProgressBar()
         {
-            ProgressBar.Visibility = Visibility.Hidden;
+            //ProgressBar.Visibility = Visibility.Hidden;
         }
 
         private void RefreshButton_Click(object sender, RoutedEventArgs e)
