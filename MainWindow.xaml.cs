@@ -11,5 +11,10 @@ namespace Repair_Service
             LoginPage loginPage = new LoginPage();
             MyFrame.NavigationService.Navigate(loginPage);
         }
+
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
