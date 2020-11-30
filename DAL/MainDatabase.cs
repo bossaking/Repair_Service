@@ -340,6 +340,16 @@ namespace Repair_Service.DAL
             return orders;
         }
 
+        public override ObservableCollection<Order> GetArchiveOrders()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void RestoreOrder(Order order)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// Odczyt fszystkich pracowników z bazy danych
         /// </summary>
@@ -549,6 +559,28 @@ namespace Repair_Service.DAL
                     try
                     {
                         session.Update(employee);
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        return false;
+                    }
+                }
+            }
+        }
+
+
+        public override bool UpdateOrder(Order order)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        session.Update(order);
                         transaction.Commit();
                         return true;
                     }

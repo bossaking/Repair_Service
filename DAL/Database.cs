@@ -52,8 +52,10 @@ namespace Repair_Service.DAL
 
         #region ORDERS TABLE
         public abstract ObservableCollection<Order> GetAllOrders();
+        public abstract ObservableCollection<Order> GetArchiveOrders();
+        public abstract void RestoreOrder(Order order);
         public abstract bool AddNewOrder(Order order);
-        //public abstract bool UpdateOrder(Order order);
+        public abstract bool UpdateOrder(Order order);
         public abstract void DeleteOrder(int id);
         #endregion
 

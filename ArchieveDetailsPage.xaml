@@ -37,19 +37,19 @@
 
         <!--DEVICE TYPE-->
         <Label Grid.Row="3" Grid.Column="0" VerticalContentAlignment="Center">Device type:</Label>
-        <ComboBox Name="DeviceTypeComboBox" Grid.Row="3" Grid.Column="1" Margin="5" Padding="5" IsReadOnly="True" IsEnabled="False" DisplayMemberPath="Type_Title" VerticalContentAlignment="Center"/>
+        <TextBox Name="DeviceTypeComboBox" Grid.Row="3" Grid.Column="1" Margin="5" Padding="5" IsReadOnly="True" IsEnabled="False" Text="{Binding Path=Device.Device_Type.Type_Title}" VerticalContentAlignment="Center"/>
 
         <!--DEVICE BRAND-->
         <Label Grid.Row="4" Grid.Column="0" VerticalContentAlignment="Center">Device brand:</Label>
-        <ComboBox Name="DeviceBrandComboBox" Grid.Row="4" Grid.Column="1" Margin="5" Padding="5" IsReadOnly="True" ItemsSource="{Binding ElementName=DeviceTypeComboBox, Path=SelectedItem.Devices}" DisplayMemberPath="Device_Brand.Title" VerticalContentAlignment="Center" IsEditable="True" IsTextSearchEnabled="True" IsEnabled="False"/>
+        <TextBox Name="DeviceBrandComboBox" Grid.Row="4" Grid.Column="1" Margin="5" Padding="5" IsReadOnly="True" Text="{Binding Path=Device.Device_Brand.Title}"  VerticalContentAlignment="Center"  IsEnabled="False"/>
 
         <!--DEVICE MODEL-->
         <Label Grid.Row="5" Grid.Column="0" VerticalContentAlignment="Center">Device model:</Label>
-        <ComboBox Name="DeviceModelComboBox" Grid.Row="5" Grid.Column="1" Margin="5" Padding="5" IsReadOnly="True"  SelectedValue="{Binding Path=Device}" ItemsSource="{Binding ElementName=DeviceBrandComboBox, Path=SelectedItem.Device_Brand.Devices}" DisplayMemberPath="Model_Title" VerticalContentAlignment="Center" IsEditable="True" IsTextSearchEnabled="True" TextSearch.TextPath="Model_Title" IsEnabled="False"/>
+        <TextBox Name="DeviceModelComboBox" Grid.Row="5" Grid.Column="1" Margin="5" Padding="5" IsReadOnly="True" Text="{Binding Path=Device.Model_Title}" VerticalContentAlignment="Center"  IsEnabled="False"/>
 
         <!--PROBLEMS-->
         <Label Grid.Row="6" Grid.Column="0" VerticalContentAlignment="Center">Problems:</Label>
-        <sdl:MultiSelectComboBox Name="ProblemsComboBox" Grid.Row="6" Grid.Column="1" Margin="5" Padding="5" MinHeight="30" VerticalContentAlignment="Center" IsEditable="true"  SelectionMode="Multiple">
+        <sdl:MultiSelectComboBox Name="ProblemsComboBox" Grid.Row="6" Grid.Column="1" Margin="5" Padding="5" MinHeight="30" VerticalContentAlignment="Center" IsEditable="false" IsEnabled="False"  SelectionMode="Multiple">
             <sdl:MultiSelectComboBox.SelectedItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Path=Title}" Margin="2,0" />
@@ -76,20 +76,14 @@
 
         <!--EMPLOYEE-->
         <Label Grid.Row="8" Grid.Column="0" VerticalContentAlignment="Center">Employee:</Label>
-        <ComboBox Name="EmployeesComboBox" Grid.Row="8" Grid.Column="1" Margin="5" Padding="5" IsReadOnly="True" IsEnabled="False" SelectedValue="{Binding Path=Employee}" VerticalContentAlignment="Center" IsTextSearchEnabled="True" TextSearch.TextPath="Content">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock>
-                        <TextBlock.Text>
-                            <MultiBinding StringFormat="{}{0} {1}">
-                                <Binding Path="Name"/>
-                                <Binding Path="Surname"/>
-                            </MultiBinding>
-                        </TextBlock.Text>
-                    </TextBlock>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
+        <TextBox Name="EmployeesComboBox" Grid.Row="8" Grid.Column="1" Margin="5" Padding="5" IsReadOnly="True" IsEnabled="False" VerticalContentAlignment="Center"  TextSearch.TextPath="Content">
+            <TextBox.Text>
+                <MultiBinding StringFormat="{}{0} {1}">
+                    <Binding Path="Employee.Name" />
+                    <Binding Path="Employee.Surname" />
+                </MultiBinding>
+            </TextBox.Text>
+        </TextBox>
 
         <!--DESCRIPTION-->
         <Label Grid.Row="9" Grid.Column="0" VerticalContentAlignment="Center">Description:</Label>

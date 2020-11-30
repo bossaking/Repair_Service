@@ -86,7 +86,20 @@ namespace Repair_Service
         #region ACTION BUTTONS
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            EditPage editPage = new EditPage();
+            Order order = new Order()
+            {
+                Id_Order = (DataGrid.SelectedValue as Order).Id_Order,
+                Client = (DataGrid.SelectedValue as Order).Client,
+                Description = (DataGrid.SelectedValue as Order).Description,
+                Device = (DataGrid.SelectedValue as Order).Device,
+                Order_Date = (DataGrid.SelectedValue as Order).Order_Date,
+                Employee = (DataGrid.SelectedValue as Order).Employee,
+                Price = (DataGrid.SelectedValue as Order).Price,
+                Problems = (DataGrid.SelectedValue as Order).Problems,
+                Status = (DataGrid.SelectedValue as Order).Status,
+                Reception_Date = (DataGrid.SelectedValue as Order).Reception_Date
+            };
+            EditPage editPage = new EditPage(order);
             this.NavigationService.Navigate(editPage);
         }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Repair_Service.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,20 @@ namespace Repair_Service
     /// </summary>
     public partial class ArchieveDetailsPage : Page
     {
-        public ArchieveDetailsPage()
+        Order order;
+        public ArchieveDetailsPage(Order order)
         {
             InitializeComponent();
+            this.Loaded += ArchieveDetailsPage_Loaded;
+
+            this.order = order;
+        }
+
+        private void ArchieveDetailsPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            DataContext = order;
+            ProblemsComboBox.ItemsSource = (System.Collections.IList)order.Problems;
+            ProblemsComboBox.SelectedItems = (System.Collections.IList)order.Problems;
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

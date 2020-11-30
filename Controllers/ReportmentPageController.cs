@@ -76,11 +76,21 @@ namespace Repair_Service.Controllers
             return problems;
         }
 
+        public async Task<ObservableCollection<Status>> GetStatusesAsync()
+        {
+            return await Task.Run(() => database.GetStatuses());
+        }
+
         public async Task<bool> AddNewOrder(Order order)
         {
             return await Task.Run(() => 
                 database.AddNewOrder(order)
             );
+        }
+
+        public async Task<bool> UpdateOrderAsync(Order order)
+        {
+            return await Task.Run(() => database.UpdateOrder(order));
         }
 
         public Order GetNewOrder()
