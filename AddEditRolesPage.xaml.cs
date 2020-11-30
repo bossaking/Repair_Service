@@ -50,8 +50,7 @@ namespace Repair_Service
         {
             if (!await pageController.UpdateRoleAsync(role))
             {
-                //TODO Zmienić komunikat
-                MessageBox.Show("Jakiś tam error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Item already exists!", "Name error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             LoadRolesPage();
@@ -60,6 +59,7 @@ namespace Repair_Service
         #region BUTTONS
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
+            DisableGrid();
             if (mode == Modes.Add)
                 AddNewRole();
 
@@ -76,6 +76,11 @@ namespace Repair_Service
         {
             RolesPage rolesPage = new RolesPage();
             this.NavigationService.Navigate(rolesPage);
+        }
+
+        private void DisableGrid()
+        {
+            MainGrid.IsEnabled = false;
         }
         #endregion
     }

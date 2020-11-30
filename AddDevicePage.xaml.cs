@@ -53,11 +53,9 @@ namespace Repair_Service
 
         private async void AddNewDevice()
         {
-
             if (!await pageController.AddNewDevice(device))
             {
-                //TODO Zmienić komunikat
-                MessageBox.Show("Jakiś tam error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Item already exists!", "Name error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             LoadDevicesPage();
@@ -76,6 +74,8 @@ namespace Repair_Service
         #region BUTTONS
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
+            DisableGrid();
+
             device.Device_Type = TypesComboBox.SelectedItem as Device_Type;
             device.Device_Brand = BrandsComboBox.SelectedItem as Brand;
 
@@ -96,8 +96,11 @@ namespace Repair_Service
             DevicesPage devicesPage = new DevicesPage();
             this.NavigationService.Navigate(devicesPage);
         }
+
+        private void DisableGrid()
+        {
+            MainGrid.IsEnabled = false;
+        }
         #endregion
-
-
     }
 }

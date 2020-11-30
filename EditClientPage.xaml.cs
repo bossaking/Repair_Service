@@ -34,6 +34,7 @@ namespace Repair_Service
         #region BUTTONS
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
+            DisableGrid();
             UpdateClient(DataContext as Client);
         }
 
@@ -55,8 +56,12 @@ namespace Repair_Service
 
         private void LoadClientsPage()
         {
-            ClientsPage clientsPage = new ClientsPage();
-            this.NavigationService.Navigate(clientsPage);
+            this.NavigationService.Navigate(new ClientsPage());
+        }
+
+        private void DisableGrid()
+        {
+            MainGrid.IsEnabled = false;
         }
         #endregion
     }

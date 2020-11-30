@@ -57,12 +57,12 @@ namespace Repair_Service
         #region BUTTONS
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
+            DisableGrid();
             if(mode == Modes.Add)
                 AddNewBrand();
 
             if (mode == Modes.Edit)
                 UpdateBrand();
-            
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
@@ -74,6 +74,11 @@ namespace Repair_Service
         {
             BrandsPage brandsPage = new BrandsPage();
             this.NavigationService.Navigate(brandsPage);
+        }
+
+        private void DisableGrid()
+        {
+            MainGrid.IsEnabled = false;
         }
         #endregion
     }

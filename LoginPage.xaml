@@ -4,10 +4,13 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Repair_Service"
-      mc:Ignorable="d" 
-      Title="Repair Service: Login page" d:DesignHeight="700" d:DesignWidth="1200" FontSize="16" Loaded="LoginPage_Loaded">
+      mc:Ignorable="d"
+      d:DesignHeight="800" 
+      d:DesignWidth="1200" 
+      FontSize="16" 
+      Loaded="LoginPage_Loaded">
 
-    <Grid ShowGridLines="False" VerticalAlignment="Center" HorizontalAlignment="Center" Background="White">
+    <Grid Name="MainGrid" ShowGridLines="False" VerticalAlignment="Center" HorizontalAlignment="Center" Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>

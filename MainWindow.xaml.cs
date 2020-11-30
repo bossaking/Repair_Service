@@ -8,8 +8,7 @@ namespace Repair_Service
         {
             InitializeComponent();
 
-            LoginPage loginPage = new LoginPage();
-            MyFrame.NavigationService.Navigate(loginPage);
+            MyFrame.NavigationService.Navigate(new LoginPage());
         }
 
         private void RefreshButton_Click(object sender, RoutedEventArgs e)

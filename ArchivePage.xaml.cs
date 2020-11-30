@@ -22,7 +22,7 @@ namespace Repair_Service
     /// </summary>
     public partial class ArchivePage : Page
     {
-        ArchivePageController pageController; 
+        ArchivePageController pageController;
 
         public ArchivePage()
         {
@@ -34,6 +34,8 @@ namespace Repair_Service
 
         private void ArchivePage_Loaded(object sender, RoutedEventArgs e)
         {
+            MainWindow window = (MainWindow)Application.Current.MainWindow;
+            window.Title = "Repair Service: Archive";
             LoadOrders();
         }
 
@@ -59,22 +61,18 @@ namespace Repair_Service
             pageController.RestoreOrder(DataGrid.SelectedItem as Order);
         }
 
-        #region PROGRESS BAR
-
-        private void ShowProgressBar()
+        //TODO obsłużyć usuwanie z archiwum
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            ProgressBar.Visibility = Visibility.Visible;
+            if (MessageBox.Show("Are you sure you want to remove the selected order?", "Delete order",
+    MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
+            {
+                return;
+            }
+            else
+            {
+                //DeleteOrder();
+            }
         }
-
-        private void HideProgressBar()
-        {
-            ProgressBar.Visibility = Visibility.Hidden;
-        }
-
-        private void RefreshButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-        #endregion
     }
 }

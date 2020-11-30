@@ -46,8 +46,7 @@ namespace Repair_Service
         {
             if (!await pageController.UpdateTypeAsync(type))
             {
-                //TODO Zmienić komunikat
-                MessageBox.Show("Jakiś tam error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Item already exists!", "Name error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             LoadTypesPage();
@@ -56,14 +55,14 @@ namespace Repair_Service
         #region BUTTONS
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
+            DisableGrid();
+
             if(mode == Modes.Add)
             AddNewType();
 
             if (mode == Modes.Edit)
                 UpdateType();
         }
-
-
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
@@ -74,6 +73,11 @@ namespace Repair_Service
         {
             TypesPage typesPage = new TypesPage();
             this.NavigationService.Navigate(typesPage);
+        }
+
+        private void DisableGrid()
+        {
+            MainGrid.IsEnabled = false;
         }
         #endregion
     }

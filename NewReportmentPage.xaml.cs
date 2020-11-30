@@ -34,6 +34,9 @@ namespace Repair_Service
         #region DATA
         private void NewReportmentPage_Loaded(object sender, RoutedEventArgs e)
         {
+            MainWindow window = (MainWindow)Application.Current.MainWindow;
+            window.Title = "Repair Service: New order";
+
             DeviceTypeComboBox.SelectionChanged += DeviceTypeComboBox_SelectionChanged;
             DeviceBrandComboBox.SelectionChanged += DeviceBrandComboBox_SelectionChanged;
             var dpd = DependencyPropertyDescriptor.FromProperty(ItemsControl.ItemsSourceProperty, typeof(ComboBox));
@@ -54,8 +57,6 @@ namespace Repair_Service
 
             problems = new List<Problem>();
         }
-
-
 
         private void ProblemsComboBox_SelectedItemsChanged(object sender, Sdl.MultiSelectComboBox.EventArgs.SelectedItemsChangedEventArgs e)
         {
@@ -151,6 +152,7 @@ namespace Repair_Service
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
+            DisableGrid();
             AddNewOrder();
         }
 
@@ -163,6 +165,11 @@ namespace Repair_Service
         {
             MainPage mainPage = new MainPage();
             this.NavigationService.Navigate(mainPage);
+        }
+
+        private void DisableGrid()
+        {
+            MainGrid.IsEnabled = false;
         }
         #endregion
     }

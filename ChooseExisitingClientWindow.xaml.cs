@@ -48,7 +48,5 @@ namespace Repair_Service
         {
             Close();
         }
-
-
     }
 }

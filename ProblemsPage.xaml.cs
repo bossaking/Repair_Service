@@ -31,6 +31,8 @@ namespace Repair_Service
 
         private void ProblemsPage_Loaded(object sender, RoutedEventArgs e)
         {
+            MainWindow window = (MainWindow)Application.Current.MainWindow;
+            window.Title = "Repair Service: Problems";
             LoadProblems();
         }
 
@@ -46,25 +48,6 @@ namespace Repair_Service
                 MessageBox.Show("Selected item cannot be deleted!", "Delete error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
-        #region PROGRESS BAR
-
-        private void ShowProgressBar()
-        {
-            ProgressBar.Visibility = Visibility.Visible;
-        }
-
-        private void HideProgressBar()
-        {
-            ProgressBar.Visibility = Visibility.Hidden;
-        }
-
-        private void RefreshButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        #endregion
 
         #region BUTTONS
 
@@ -105,8 +88,6 @@ namespace Repair_Service
             MainPage mainPage = new MainPage();
             this.NavigationService.Navigate(mainPage);
         }
-
-
         #endregion
     }
 }
