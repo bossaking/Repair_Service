@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Repair_Service.Controllers;
+using Repair_Service.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,24 @@ namespace Repair_Service
     /// </summary>
     public partial class ArchivePage : Page
     {
+        ArchivePageController pageController; 
+
         public ArchivePage()
         {
             InitializeComponent();
+            this.Loaded += ArchivePage_Loaded;
+
+            pageController = new ArchivePageController();
+        }
+
+        private void ArchivePage_Loaded(object sender, RoutedEventArgs e)
+        {
+            LoadOrders();
+        }
+
+        private async void LoadOrders()
+        {
+            DataGrid.ItemsSource = await pageController.GetOrdersAsync();
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
@@ -33,13 +50,13 @@ namespace Repair_Service
 
         private void DetailsButton_Click(object sender, RoutedEventArgs e)
         {
-            ArchieveDetailsPage archieveDetailsPage = new ArchieveDetailsPage();
+            ArchieveDetailsPage archieveDetailsPage = new ArchieveDetailsPage(DataGrid.SelectedItem as Order);
             this.NavigationService.Navigate(archieveDetailsPage);
         }
 
         private void RestoreButton_Click(object sender, RoutedEventArgs e)
         {
-
+            pageController.RestoreOrder(DataGrid.SelectedItem as Order);
         }
 
         #region PROGRESS BAR

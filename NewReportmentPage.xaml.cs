@@ -105,7 +105,6 @@ namespace Repair_Service
             if (DeviceBrandComboBox.SelectedItem != null)
             {
 
-
                 DeviceModelComboBox.IsEnabled = true;
                 DeviceModelComboBox.SelectedIndex = 0;
 

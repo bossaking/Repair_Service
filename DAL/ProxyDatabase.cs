@@ -19,6 +19,7 @@ namespace Repair_Service.DAL
         ObservableCollection<Device_Type> types;
         ObservableCollection<Employee> employees;
         ObservableCollection<Order> orders;
+        ObservableCollection<Order> archiveOrders;
         ObservableCollection<Problem> problems;
         ObservableCollection<Role> roles;
         ObservableCollection<Salon> salons;
@@ -367,10 +368,44 @@ namespace Repair_Service.DAL
         {
             if (orders == null)
             {
-                orders = database == null ? (database = new MainDatabase()).GetAllOrders() : database.GetAllOrders();
+                ObservableCollection<Order> allOrders = database == null ? (database = new MainDatabase()).GetAllOrders() : database.GetAllOrders();
+                archiveOrders = new ObservableCollection<Order>();
+                orders = new ObservableCollection<Order>();
+                foreach(Order order in allOrders)
+                {
+                    if(order.Status.Title.Equals("Odebrany") || order.Status.Title.Equals("Niezrealizowany"))
+                    {
+                        App.Current.Dispatcher.Invoke(() =>
+                        {
+                            archiveOrders.Add(order);
+                        });
+                    }
+                    else
+                    {
+                        App.Current.Dispatcher.Invoke(() =>
+                        {
+                            orders.Add(order);
+                        });
+                    }
+                }
             }
 
             return orders;
+        }
+
+        public override ObservableCollection<Order> GetArchiveOrders()
+        {
+            return archiveOrders;
+        }
+
+        public override void RestoreOrder(Order order)
+        {
+            App.Current.Dispatcher.Invoke(() =>
+            {
+                archiveOrders.Remove(order);
+                order.Status = GetStatus(1);
+                orders.Add(order);
+            });
         }
 
         public override bool AddNewOrder(Order order)
@@ -386,17 +421,23 @@ namespace Repair_Service.DAL
             return false;
         }
 
-        //public override bool UpdateOrder(Order order)
-        //{
-        //    if (database.UpdateOrder(order))
-        //    {
-        //        Order oldOrder = orders.FirstOrDefault(o => o.Id_Order == order.Id_Order);
-        //        App.Current.Dispatcher.Invoke(() => orders[orders.IndexOf(oldOrder)] = order);
+        public override bool UpdateOrder(Order order)
+        {
+            if (database.UpdateOrder(order))
+            {
+                Order oldOrder = orders.FirstOrDefault(o => o.Id_Order == order.Id_Order);
+                App.Current.Dispatcher.Invoke(() => orders[orders.IndexOf(oldOrder)] = order);
 
-        //        return true;
-        //    }
-        //    return false;
-        //}
+                if (order.Status.Title.Equals("Odebrany") || order.Status.Title.Equals("Niezrealizowany"))
+                {
+                    App.Current.Dispatcher.Invoke(() => { orders.Remove(order); if (archiveOrders == null) archiveOrders = new ObservableCollection<Order>();
+                        archiveOrders.Add(order); });
+                }
+
+                return true;
+            }
+            return false;
+        }
 
         public override void DeleteOrder(int id)
         {

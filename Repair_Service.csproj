@@ -185,6 +185,7 @@
     <Compile Include="ClientsPage.xaml.cs">
       <DependentUpon>ClientsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\ArchivePageController.cs" />
     <Compile Include="Controllers\BrandsPageController.cs" />
     <Compile Include="Controllers\ClientsPageController.cs" />
     <Compile Include="Controllers\DevicesPageController.cs" />
