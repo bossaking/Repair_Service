@@ -6,9 +6,12 @@
       xmlns:sdl="http://schemas.sdl.com/xaml"
       xmlns:local="clr-namespace:Repair_Service"
       mc:Ignorable="d" 
-      Title="Repair Service: Add order" d:DesignHeight="700" d:DesignWidth="1200" FontSize="16" Loaded="NewReportmentPage_Loaded">
+      d:DesignHeight="800" 
+      d:DesignWidth="1200" 
+      FontSize="16" 
+      Loaded="NewReportmentPage_Loaded">
 
-    <Grid ShowGridLines="False" Background="White" Margin="200,0,200,0" VerticalAlignment="Center">
+    <Grid Name="MainGrid" ShowGridLines="False" Background="White" Margin="200,0,200,0" VerticalAlignment="Center">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -106,6 +109,7 @@
             <Button Click="CancelButton_Click" Padding="10,5" Margin="5,0,0,0" Width="75" IsCancel="True">Cancel</Button>
         </WrapPanel>
     </Grid>
+    
 </Page>
     
     

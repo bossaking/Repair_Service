@@ -5,7 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Repair_Service"
         mc:Ignorable="d"
-        Title="Repair Service: Select client" Height="450" Width="800" Loaded="Window_Loaded" WindowStartupLocation="CenterOwner">
+        Title="Repair Service: Choose client" 
+        Height="450" 
+        Width="800" 
+        Loaded="Window_Loaded" 
+        WindowStartupLocation="CenterOwner">
     
     <Grid>
         <Grid.RowDefinitions>

@@ -30,6 +30,8 @@ namespace Repair_Service
 
         private void BrandsPage_Loaded(object sender, RoutedEventArgs e)
         {
+            MainWindow window = (MainWindow)Application.Current.MainWindow;
+            window.Title = "Repair Service: Brands";
             LoadBrands();
         }
 
@@ -37,25 +39,6 @@ namespace Repair_Service
         {
             DataGrid.ItemsSource = await pageController.GetBrandsAsync();
         }
-
-        #region PROGRESS BAR
-
-        private void ShowProgressBar()
-        {
-            ProgressBar.Visibility = Visibility.Visible;
-        }
-
-        private void HideProgressBar()
-        {
-            ProgressBar.Visibility = Visibility.Hidden;
-        }
-
-        private void RefreshButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        #endregion
 
         #region BUTTONS
 

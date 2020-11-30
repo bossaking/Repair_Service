@@ -29,7 +29,7 @@ namespace Repair_Service
         public EditPage(Order order)
         {
             InitializeComponent();
-            this.Loaded += EditPage_Loaded;
+            //this.Loaded += EditPage_Loaded;
 
             this.pageController = new ReportmentPageController();
             this.order = order;
@@ -45,7 +45,12 @@ namespace Repair_Service
             }
         }
 
-
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            MainWindow window = (MainWindow)Application.Current.MainWindow;
+            window.Title = "Repair Service: Edit order";
+            EditPage_Loaded(sender, e);
+        }
 
         private void DeviceTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -68,7 +73,6 @@ namespace Repair_Service
                 DeviceModelComboBox.SelectedItem = (DeviceModelComboBox.ItemsSource as IList<Device>).FirstOrDefault(d => d.Id_Device == order.Device.Id_Device);
                 if (DeviceModelComboBox.SelectedItem == null)
                 DeviceModelComboBox.SelectedIndex = 0;
-
             }
         }
 
@@ -98,9 +102,7 @@ namespace Repair_Service
 
             ProblemsComboBox.ItemsSource = await pageController.GetProblemsAsync();
             ProblemsComboBox.SelectedItems = (IList)order.Problems;
-        
         }
-
 
         private async void UpdateOrder()
         {
@@ -123,13 +125,13 @@ namespace Repair_Service
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
+            MainGrid.IsEnabled = false;
             UpdateOrder();
         }
 
         private void LoadMainPage()
         {
-            MainPage mainPage = new MainPage();
-            this.NavigationService.Navigate(mainPage);
+            this.NavigationService.Navigate(new MainPage());
         }
         #endregion
 

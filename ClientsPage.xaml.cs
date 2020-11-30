@@ -30,6 +30,8 @@ namespace Repair_Service
         #region DATA
         private void ClientsPage_Loaded(object sender, RoutedEventArgs e)
         {
+            MainWindow window = (MainWindow)Application.Current.MainWindow;
+            window.Title = "Repair Service: Clients";
             GetAllClients();
         }
 
@@ -43,25 +45,6 @@ namespace Repair_Service
             if (!await clientsPageController.DeleteClient((DataGrid.SelectedItem as Client).Id_Client))
                 MessageBox.Show("Selected item cannot be deleted!", "Delete error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
-        #endregion
-
-        #region PROGRESS BAR
-
-        private void ShowProgressBar()
-        {
-            ProgressBar.Visibility = Visibility.Visible;
-        }
-
-        private void HideProgressBar()
-        {
-            ProgressBar.Visibility = Visibility.Hidden;
-        }
-
-        private void RefreshButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         #endregion
 
         #region BUTTONS

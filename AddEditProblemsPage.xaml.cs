@@ -56,6 +56,7 @@ namespace Repair_Service
         #region BUTTONS
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
+            DisableGrid();
             if (mode == Modes.Add)
                 AddNewProblem();
 
@@ -73,6 +74,11 @@ namespace Repair_Service
         {
             ProblemsPage problemsPage = new ProblemsPage();
             this.NavigationService.Navigate(problemsPage);
+        }
+
+        private void DisableGrid()
+        {
+            MainGrid.IsEnabled = false;
         }
         #endregion
     }

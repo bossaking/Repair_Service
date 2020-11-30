@@ -67,12 +67,9 @@ namespace Repair_Service
 
         private async void UpdateEmployee()
         {
-
-
             if (!await pageController.UpdateEmployeeAsync(employee))
             {
-                //TODO Zmienić komunikat
-                MessageBox.Show("Jakiś tam error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Item already exists!", "Name error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -82,6 +79,7 @@ namespace Repair_Service
         #region BUTTONS
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
+            DisableGrid();
             employee.Employee_Salon = SalonComboBox.SelectedItem as Salon;
             employee.Employee_Role = RolesComboBox.SelectedItem as Role;
 
@@ -90,10 +88,7 @@ namespace Repair_Service
 
             if (mode == Modes.Edit)
                 UpdateEmployee();
-
         }
-
-        
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
@@ -104,6 +99,11 @@ namespace Repair_Service
         {
             EmployeesPage employeesPage = new EmployeesPage();
             this.NavigationService.Navigate(employeesPage);
+        }
+
+        private void DisableGrid()
+        {
+            MainGrid.IsEnabled = false;
         }
         #endregion
     }

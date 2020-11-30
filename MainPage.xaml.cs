@@ -31,11 +31,12 @@ namespace Repair_Service
             mainPageController = new MainPageController();
         }
 
-
-
         #region DATA
         private void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
+            MainWindow window = (MainWindow)Application.Current.MainWindow;
+            window.Title = "Repair Service: Orders";
+
             var dpd = DependencyPropertyDescriptor.FromProperty(ItemsControl.ItemsSourceProperty, typeof(DataGrid));
             if(dpd != null)
             {
@@ -47,7 +48,7 @@ namespace Repair_Service
 
         private void DataGridItemSourceChanged(object sender, EventArgs eventArgs)
         {
-            HideProgressBar();
+            //HideProgressBar();
         }
 
         private async void LoadAllOrders()
@@ -55,12 +56,10 @@ namespace Repair_Service
             DataGrid.ItemsSource = await mainPageController.GetAllOrdersAsync();
         }
 
-
-        private async void DeleteOrder()
-        {
-            await mainPageController.DeleteOrder((DataGrid.SelectedItem as Order).Id_Order);
-        }
-
+        //private async void DeleteOrder()
+        //{
+        //    await mainPageController.DeleteOrder((DataGrid.SelectedItem as Order).Id_Order);
+        //}
 
         #endregion
 
@@ -103,18 +102,18 @@ namespace Repair_Service
             this.NavigationService.Navigate(editPage);
         }
 
-        private void DeleteButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (MessageBox.Show("Are you sure you want to remove the selected order?", "Delete order",
-                MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
-            {
-                return;
-            }
-            else
-            {
-                DeleteOrder();
-            }
-        }
+        //private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    if (MessageBox.Show("Are you sure you want to remove the selected order?", "Delete order",
+        //        MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
+        //    {
+        //        return;
+        //    }
+        //    else
+        //    {
+        //        DeleteOrder();
+        //    }
+        //}
 
         private void AddReportmentButton_Click(object sender, RoutedEventArgs e)
         {

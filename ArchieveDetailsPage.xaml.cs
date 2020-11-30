@@ -25,7 +25,7 @@ namespace Repair_Service
         public ArchieveDetailsPage(Order order)
         {
             InitializeComponent();
-            this.Loaded += ArchieveDetailsPage_Loaded;
+            //this.Loaded += ArchieveDetailsPage_Loaded;
 
             this.order = order;
         }
@@ -41,6 +41,13 @@ namespace Repair_Service
         {
             ArchivePage archivePage = new ArchivePage();
             this.NavigationService.Navigate(archivePage);
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            MainWindow window = (MainWindow)Application.Current.MainWindow;
+            window.Title = "Repair Service: Details in archive";
+            ArchieveDetailsPage_Loaded(sender, e);
         }
     }
 }

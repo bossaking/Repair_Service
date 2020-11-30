@@ -32,6 +32,8 @@ namespace Repair_Service
 
         private void TypesPage_Loaded(object sender, RoutedEventArgs e)
         {
+            MainWindow window = (MainWindow)Application.Current.MainWindow;
+            window.Title = "Repair Service: Types";
             GetTypes();
         }
 
@@ -47,25 +49,6 @@ namespace Repair_Service
         {
             DataGrid.ItemsSource = await pageController.GetTypesAsync();
         }
-
-        #region PROGRESS BAR
-
-        private void ShowProgressBar()
-        {
-            ProgressBar.Visibility = Visibility.Visible;
-        }
-
-        private void HideProgressBar()
-        {
-            ProgressBar.Visibility = Visibility.Hidden;
-        }
-
-        private void RefreshButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        #endregion
 
         #region BUTTONS
 

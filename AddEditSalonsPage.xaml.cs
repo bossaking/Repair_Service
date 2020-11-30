@@ -44,13 +44,11 @@ namespace Repair_Service
             LoadSalonsPage();
         }
 
-
         private async void UpdateSalon()
         {
             if (!await pageController.UpdateSalonAsync(salon))
             {
-                //TODO Zmienić komunikat
-                MessageBox.Show("Jakiś tam error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Item already exists!", "Name error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             LoadSalonsPage();
@@ -59,6 +57,7 @@ namespace Repair_Service
         #region BUTTONS
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
+            DisableGrid();
             if (mode == Modes.Add)
                 AddNewSalon();
 
@@ -75,6 +74,11 @@ namespace Repair_Service
         {
             SalonsPage salonsPage = new SalonsPage();
             this.NavigationService.Navigate(salonsPage);
+        }
+
+        private void DisableGrid()
+        {
+            MainGrid.IsEnabled = false;
         }
         #endregion
     }

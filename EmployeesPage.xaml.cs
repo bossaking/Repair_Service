@@ -33,6 +33,8 @@ namespace Repair_Service
 
         private void EmployeesPage_Loaded(object sender, RoutedEventArgs e)
         {
+            MainWindow window = (MainWindow)Application.Current.MainWindow;
+            window.Title = "Repair Service: Employees";
             LoadEmployees();
         }
 
@@ -49,27 +51,7 @@ namespace Repair_Service
             }
         }
 
-        #region PROGRESS BAR
-
-        private void ShowProgressBar()
-        {
-            ProgressBar.Visibility = Visibility.Visible;
-        }
-
-        private void HideProgressBar()
-        {
-            ProgressBar.Visibility = Visibility.Hidden;
-        }
-
-        private void RefreshButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        #endregion
-
         #region BUTTONS
-
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
@@ -111,7 +93,6 @@ namespace Repair_Service
             MainPage mainPage = new MainPage();
             this.NavigationService.Navigate(mainPage);
         }
-
         #endregion
     }
 }

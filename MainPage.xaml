@@ -5,7 +5,10 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Repair_Service"
       mc:Ignorable="d" 
-      Title="Repair Service: Main page" d:DesignHeight="700" d:DesignWidth="1200" FontSize="16" Loaded="MainPage_Loaded">
+      d:DesignHeight="800" 
+      d:DesignWidth="1200" 
+      FontSize="16" 
+      Loaded="MainPage_Loaded">
 
     <Grid ShowGridLines="False" Background="White">
         <Grid.RowDefinitions>
@@ -13,7 +16,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        
+
         <Grid Grid.Row="0" ShowGridLines="False">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -58,7 +61,6 @@
                         <DataTemplate>
                             <WrapPanel>
                                 <Button Click="EditButton_Click">Edit</Button>
-                                <Button Click="DeleteButton_Click">Delete</Button>
                             </WrapPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
