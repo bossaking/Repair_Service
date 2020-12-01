@@ -8,9 +8,10 @@
       d:DesignHeight="800" 
       d:DesignWidth="1200" 
       FontSize="16" 
-      Loaded="MainPage_Loaded">
+      Loaded="MainPage_Loaded"
+      Background="White">
 
-    <Grid ShowGridLines="False" Background="White">
+    <Grid ShowGridLines="False">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
@@ -25,7 +26,7 @@
             </Grid.ColumnDefinitions>
             
             <!--NAVIGATION BUTTONS-->
-            <Button Grid.Column="0" Margin="10" Click="LogoutButton_Click" Width="75" Padding="5" IsCancel="True" HorizontalAlignment="Center">Logout</Button>
+            <Button Grid.Column="0" Margin="10" Click="LogoutButton_Click" Width="75" Padding="5" IsCancel="True" HorizontalAlignment="Left">Logout</Button>
             <WrapPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Button Margin="5" Click="ClientsButton_Click">Clients</Button>
                 <Button Margin="5" Click="DevicesButton_Click">Devices</Button>
@@ -38,7 +39,7 @@
                 <Button Margin="5" Click="StatusesButton_Click">Statuses</Button>
                 <Button Margin="5" Click="ArchiveButton_Click">Archive</Button>
             </WrapPanel>
-            <Button Grid.Column="2" Margin="10" Width="150" Click="AddReportmentButton_Click" Padding="5" IsDefault="True" HorizontalAlignment="Right">+Add reportment</Button>
+            <Button Grid.Column="2" Margin="10" Width="120" Click="AddReportmentButton_Click" Padding="5" IsDefault="True" HorizontalAlignment="Right">+Add order</Button>
         </Grid>
 
         <!--TABLE WITH REPORTMENTS-->
@@ -70,3 +71,5 @@
 
     </Grid>
 </Page>
+
+<!--Background="#EEEEE8"-->

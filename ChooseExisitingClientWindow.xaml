@@ -31,7 +31,7 @@
                 <DataGridTemplateColumn Header="Action">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <WrapPanel>
+                            <WrapPanel HorizontalAlignment="Center">
                                 <Button Click="AddButton_Click">Add</Button>
                             </WrapPanel>
                         </DataTemplate>

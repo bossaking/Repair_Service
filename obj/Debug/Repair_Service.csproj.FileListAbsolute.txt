@@ -339,3 +339,10 @@ C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\Views\Roles\RolesP
 C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\Views\Salons\SalonsPage.baml
 C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\Views\Statuses\StatusesPage.baml
 C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\Views\Types\TypesPage.baml
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\bin\Debug\MaterialDesignColors.dll
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\bin\Debug\MaterialDesignColors.pdb
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\bin\Debug\System.Data.SqlClient.xml
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\App.baml

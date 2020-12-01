@@ -19,7 +19,7 @@
         <!--BRANDS HEADER-->
         <Label FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center">BRANDS</Label>
         <Button Click="BackButton_Click" Grid.Row="0" Width="75" Padding="5" Margin="10" IsCancel="True" VerticalAlignment="Center" HorizontalAlignment="Left">Back</Button>
-        <Button Click="AddButton_Click" Grid.Row="0" Padding="5" Margin="10" Width="150" IsDefault="True" HorizontalAlignment="Right">+Add brand</Button>
+        <Button Click="AddButton_Click" Grid.Row="0" Padding="5" Margin="10" Width="120" IsDefault="True" HorizontalAlignment="Right">+Add brand</Button>
 
         <!--TABLE WITH BRANDS-->
         <DataGrid Name="DataGrid" Grid.Row="1" Margin="5,5,5,5" FontSize="16" Width="auto" ColumnWidth="auto" BorderBrush="Gray" IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Center" VerticalAlignment="Top" CanUserResizeColumns="False" CanUserResizeRows="False">

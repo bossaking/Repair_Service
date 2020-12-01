@@ -7,9 +7,10 @@
       mc:Ignorable="d" 
       d:DesignHeight="800" 
       d:DesignWidth="1200" 
-      FontSize="16">
+      FontSize="16"
+      Background="White">
 
-    <Grid Background="White" ShowGridLines="False">
+    <Grid ShowGridLines="False">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
