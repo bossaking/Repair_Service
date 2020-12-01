@@ -1,4 +1,5 @@
-﻿using Repair_Service.Models;
+﻿using Repair_Service.DAL;
+using Repair_Service.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -35,5 +36,9 @@ namespace Repair_Service.Controllers
             return await Task.Run(() => database.DeleteRole(role));
         }
 
+        public async Task<bool> RefreshRoles()
+        {
+            return await Task.Run(() => (database as ProxyDatabase).RefreshRoles());
+        }
     }
 }

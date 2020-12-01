@@ -30,6 +30,7 @@ namespace Repair_Service.DAL
 
         #region DEVICES TABLE
         public abstract ObservableCollection<Device> GetDevices();
+        public abstract ObservableCollection<Device> GetDevicesOfTypeAndBrand(Device_Type type, Brand brand);
         public abstract bool AddNewDevice(Device device);
         public abstract bool UpdateDevice(Device device);
         public abstract bool DeleteDevice(Device device);

@@ -1,0 +1,51 @@
+﻿<Page x:Class="Repair_Service.ArchivePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Repair_Service"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" 
+      d:DesignWidth="1200" 
+      FontSize="16"
+      Background="White">
+
+    <Grid ShowGridLines="False">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <!--ARCHIVE HEADER-->
+        <Label FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center">ARCHIVE</Label>
+        <Button Click="BackButton_Click" Grid.Row="0" Width="75" Padding="5" Margin="10" IsCancel="True" VerticalAlignment="Center" HorizontalAlignment="Left">Back</Button>
+
+        <!--TABLE WITH REPORTMENTS-->
+        <DataGrid Name="DataGrid" Grid.Row="1" Width="auto" ColumnWidth="auto" BorderBrush="Gray" FontSize="16" Margin="5,5,5,5" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Top" AutoGenerateColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id_Order}"/>
+                <DataGridTextColumn Header="Client name" Binding="{Binding Client.Name}"/>
+                <DataGridTextColumn Header="Client phone number" Binding="{Binding Client.Phone_Number}"/>
+                <DataGridTextColumn Header="Device name" Binding="{Binding Device.Model_Title}"/>
+                <DataGridTextColumn Header="Device type" Binding="{Binding Device.Device_Type.Type_Title}"/>
+                <DataGridTextColumn Header="Order date" Binding="{Binding Order_Date}"/>
+                <DataGridTextColumn Header="Status" Binding="{Binding Status.Title}"/>
+                <DataGridTemplateColumn Header="Action">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <WrapPanel>
+                                <!--Wszystko w details jest readonly-->
+                                <Button Click="DetailsButton_Click">Details</Button>
+                                <!--Restore przywraca zgłoszenie i zmienia status na w trakcie czy coś-->
+                                <Button Click="RestoreButton_Click">Restore</Button>
+                                <Button Click="DeleteButton_Click">Delete</Button>
+                            </WrapPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+    
+</Page>

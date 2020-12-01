@@ -1,4 +1,5 @@
-﻿using Repair_Service.Models;
+﻿using Repair_Service.DAL;
+using Repair_Service.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -37,6 +38,11 @@ namespace Repair_Service.Controllers
         public async Task<bool> DeleteStatusAsync(Status status)
         {
             return await Task.Run(() => database.DeleteStatus(status));
+        }
+
+        public async Task<bool> RefreshStatuses()
+        {
+            return await Task.Run(() => (database as ProxyDatabase).RefreshStatuses());
         }
 
     }

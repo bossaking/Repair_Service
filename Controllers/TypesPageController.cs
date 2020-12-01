@@ -1,4 +1,5 @@
-﻿using Repair_Service.Models;
+﻿using Repair_Service.DAL;
+using Repair_Service.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -32,6 +33,11 @@ namespace Repair_Service.Controllers
         public async Task<bool> DeleteTypeAsync(Device_Type type)
         {
             return await Task.Run(() => database.DeleteType(type));
+        }
+
+        public async Task<bool> RefreshTypes()
+        {
+            return await Task.Run(() => (database as ProxyDatabase).RefreshTypes());
         }
     }
 }
