@@ -7,40 +7,48 @@
         mc:Ignorable="d"
         Title="Repair Service" 
         Height="800" 
-        Width="1200" 
+        Width="1300" 
         FontSize="16" 
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        Background="White">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        
+
         <!--NavigationUIVisibility - Widok wracania do stron poprzednich-->
         <Frame Name="MyFrame" Grid.Row="0" NavigationUIVisibility="Hidden"/>
-        
+
         <!--STATUS BAR-->
-        <StatusBar Grid.Row="1" Height="30">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="400"/>
-                    <ColumnDefinition Width="400"/>
-                    <ColumnDefinition Width="400"/>
-                </Grid.ColumnDefinitions>
-                <StatusBarItem Grid.Column="0" HorizontalAlignment="Center">
-                    <TextBlock Name="RefreshTextBlock">Status: OK</TextBlock>
+        <Border Grid.Row="1" BorderThickness="0,1,0,0" BorderBrush="#7953d2">
+            <StatusBar Height="30">
+                <StatusBar.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.33*"/>
+                                <ColumnDefinition Width="0.33*"/>
+                                <ColumnDefinition Width="0.33*"/>
+                            </Grid.ColumnDefinitions>
+                        </Grid>
+                    </ItemsPanelTemplate>
+                </StatusBar.ItemsPanel>
+                <StatusBarItem Grid.Column="0" HorizontalAlignment="Center" Padding="0">
+                    <TextBlock Name="RefreshTextBlock" FontSize="15">Status: OK</TextBlock>
                 </StatusBarItem>
                 <StatusBarItem Grid.Column="1" HorizontalAlignment="Center">
                     <ProgressBar Name="ProgressBar" IsIndeterminate="True" Height="15" Width="300"></ProgressBar>
                 </StatusBarItem>
-                <StatusBarItem Grid.Column="2" HorizontalAlignment="Center">
-                    <Button Name="RefreshButton" Click="RefreshButton_Click" Padding="5,0,5,0">REFRESH</Button>
+                <StatusBarItem Grid.Column="2" HorizontalAlignment="Center" Padding="0">
+                    <Button Name="RefreshButton" Click="RefreshButton_Click" Height="24" Width="75" Padding="5,2,5,2">REFRESH</Button>
                 </StatusBarItem>
-            </Grid>
-        </StatusBar>
+            </StatusBar>
+        </Border>
+        
     </Grid>
 
 </Window>
 
-    <!--EDIT PAGE + ARCHIEVE DETAILS PAGE-->
+<!--EDIT PAGE + ARCHIEVE DETAILS PAGE-->

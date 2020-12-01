@@ -7,9 +7,10 @@
       mc:Ignorable="d" 
       d:DesignHeight="800" 
       d:DesignWidth="1200" 
-      FontSize="16">
+      FontSize="16"
+      Background="White">
 
-    <Grid Name="MainGrid" ShowGridLines="False" Background="White" Margin="200,0,200,0" VerticalAlignment="Center">
+    <Grid Name="MainGrid" ShowGridLines="False" Margin="200,0,200,0" VerticalAlignment="Center">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -26,19 +27,19 @@
 
         <!--NAME-->
         <Label Grid.Row="0" Grid.Column="0" VerticalContentAlignment="Center">Name:</Label>
-        <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="1" Margin="5" Padding="3,4,4,4" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+        <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="1" Margin="5" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
 
         <!--SURNAME-->
         <Label Grid.Row="1" Grid.Column="0" VerticalContentAlignment="Center">Surname:</Label>
-        <TextBox Text="{Binding Surname, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" Margin="5" Padding="3,4,4,4" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+        <TextBox Text="{Binding Surname, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" Margin="5" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
 
         <!--LOGIN-->
         <Label Grid.Row="2" Grid.Column="0" VerticalContentAlignment="Center">Login:</Label>
-        <TextBox Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1" Margin="5" Padding="3,4,4,4" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+        <TextBox Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1" Margin="5" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
 
         <!--Password-->
         <Label Grid.Row="3" Grid.Column="0" VerticalContentAlignment="Center">Password:</Label>
-        <TextBox Text="{Binding Passwd, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1" Margin="5" Padding="3,4,4,4" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+        <TextBox Text="{Binding Passwd, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1" Margin="5" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
 
         <!--SALON-->
         <Label Grid.Row="4" Grid.Column="0" VerticalContentAlignment="Center">Salon:</Label>

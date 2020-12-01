@@ -9,9 +9,10 @@
       d:DesignHeight="800" 
       d:DesignWidth="1200" 
       FontSize="16" 
-      Loaded="NewReportmentPage_Loaded">
+      Loaded="NewReportmentPage_Loaded"
+      Background="White">
 
-    <Grid Name="MainGrid" ShowGridLines="False" Background="White" Margin="200,0,200,0" VerticalAlignment="Center">
+    <Grid Name="MainGrid" ShowGridLines="False" Margin="200,0,200,0" VerticalAlignment="Center">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -33,15 +34,15 @@
 
 
         <!--SELECT EXISITING CLIENT BUTTON-->
-        <Button Click="SelectClientButton_Click" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Width="200" Height="25" Margin="5,5,5,5">Select an exisiting client</Button>
+        <Button Click="SelectClientButton_Click" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Width="200" Height="30" Margin="5,5,5,5">Select an exisiting client</Button>
 
         <!--CLIENT INFORMATIONS-->
         <Label Grid.Row="1" VerticalContentAlignment="Center">Name:</Label>
-        <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Padding="3,4,4,4" Text="{Binding Path=Client.Name}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Text="{Binding Path=Client.Name}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
         <Label Grid.Row="2" Grid.Column="0" VerticalContentAlignment="Center">Surname:</Label>
-        <TextBox Grid.Row="2" Grid.Column="1" Margin="5" Padding="3,4,4,4" Text="{Binding Path=Client.Surname}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Margin="5" Text="{Binding Path=Client.Surname}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
         <Label Grid.Row="3" Grid.Column="0" VerticalContentAlignment="Center">Phone number:</Label>
-        <TextBox Grid.Row="3" Grid.Column="1" Margin="5" Padding="3,4,4,4" Text="{Binding Path=Client.Phone_Number}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+        <TextBox Grid.Row="3" Grid.Column="1" Margin="5" Text="{Binding Path=Client.Phone_Number}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
 
         <!--DEVICE TYPE-->
         <Label Grid.Row="4" Grid.Column="0" VerticalContentAlignment="Center">Device type:</Label>
@@ -57,10 +58,10 @@
 
         <!--PROBLEMS-->
         <Label Grid.Row="7" Grid.Column="0" VerticalContentAlignment="Center">Problems:</Label>
-        <sdl:MultiSelectComboBox Name="ProblemsComboBox" Grid.Row="7" Grid.Column="1" Margin="5" Padding="5" MinHeight="30" VerticalContentAlignment="Center" IsEditable="true" SelectionMode="Multiple">
+        <sdl:MultiSelectComboBox Name="ProblemsComboBox" Grid.Row="7" Grid.Column="1" Margin="5" Padding="5" MinHeight="40" VerticalContentAlignment="Center" IsEditable="true" SelectionMode="Multiple">
             <sdl:MultiSelectComboBox.SelectedItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding Path=Title}" Margin="2,0" />
+                    <TextBlock Height="13" Text="{Binding Path=Title}" Margin="2,0" Foreground="Black"/>
                 </DataTemplate>
             </sdl:MultiSelectComboBox.SelectedItemTemplate>
             <sdl:MultiSelectComboBox.DropdownItemTemplate>
@@ -71,7 +72,7 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="30"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="1" Text="{Binding Path=Title}"/>
+                        <TextBlock Style="{StaticResource MaterialDesignDataGridTextColumnStyle}" Padding="10" Grid.Column="1" Text="{Binding Path=Title}" Foreground="Black"/>
                     </Grid>
                 </DataTemplate>
             </sdl:MultiSelectComboBox.DropdownItemTemplate>
@@ -80,7 +81,7 @@
 
         <!--ESTIMATED COST-->
         <Label Grid.Row="8" Grid.Column="0" VerticalContentAlignment="Center">Estimated cost:</Label>
-        <TextBox Grid.Row="8" Grid.Column="1"  Margin="5" Padding="3,4,4,4" Text="{Binding Path=Price}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+        <TextBox Grid.Row="8" Grid.Column="1"  Margin="5" Text="{Binding Path=Price}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
 
         <!--EMPLOYEE-->
         <Label Grid.Row="9" Grid.Column="0" VerticalContentAlignment="Center">Employee:</Label>
@@ -101,7 +102,7 @@
 
         <!--DESCRIPTION-->
         <Label Grid.Row="10" Grid.Column="0" VerticalContentAlignment="Center">Description:</Label>
-        <TextBox Grid.Row="10" Grid.Column="1" Margin="5" Padding="3,4,4,4" Text="{Binding Path=Description}" MinLines="8" MaxLines="8" MaxLength="1500" AcceptsReturn="True" AcceptsTab="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"/>
+        <TextBox Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" Grid.Row="10" Grid.Column="1" Margin="5" Text="{Binding Path=Description}" MinLines="6" MaxLines="6" MaxLength="1500" AcceptsReturn="True" AcceptsTab="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"/>
 
         <!--BUTTONS-->
         <WrapPanel Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Margin="5,20,5,5" HorizontalAlignment="Center">

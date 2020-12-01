@@ -9,9 +9,10 @@
       d:DesignHeight="800" 
       d:DesignWidth="1200" 
       FontSize="16"
-      Loaded="Page_Loaded">
+      Loaded="Page_Loaded"
+      Background="White">
 
-    <Grid ShowGridLines="False" Background="White" Margin="200,0,200,0" VerticalAlignment="Center">
+    <Grid ShowGridLines="False" Margin="200,0,200,0" VerticalAlignment="Center">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -32,27 +33,27 @@
 
         <!--CLIENT INFORMATIONS-->
         <Label Grid.Row="0" VerticalContentAlignment="Center">Name:</Label>
-        <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Padding="3,4,4,4" IsReadOnly="True" IsEnabled="False" Text="{Binding Path=Client.Name}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+        <TextBox Grid.Row="0" Grid.Column="1" Margin="5" IsReadOnly="True" IsEnabled="False" Text="{Binding Path=Client.Name}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
         <Label Grid.Row="1" Grid.Column="0" VerticalContentAlignment="Center">Surname:</Label>
-        <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Padding="3,4,4,4" IsReadOnly="True" IsEnabled="False" Text="{Binding Path=Client.Surname}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="5" IsReadOnly="True" IsEnabled="False" Text="{Binding Path=Client.Surname}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
         <Label Grid.Row="2" Grid.Column="0" VerticalContentAlignment="Center">Phone number:</Label>
-        <TextBox Grid.Row="2" Grid.Column="1" Margin="5" Padding="3,4,4,4" IsReadOnly="True" IsEnabled="False" Text="{Binding Path=Client.Phone_Number}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Margin="5" IsReadOnly="True" IsEnabled="False" Text="{Binding Path=Client.Phone_Number}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
 
         <!--DEVICE TYPE-->
         <Label Grid.Row="3" Grid.Column="0" VerticalContentAlignment="Center">Device type:</Label>
-        <TextBox Name="DeviceTypeComboBox" Grid.Row="3" Grid.Column="1" Margin="5" Padding="5" IsReadOnly="True" IsEnabled="False" Text="{Binding Path=Device.Device_Type.Type_Title}" VerticalContentAlignment="Center"/>
+        <TextBox Name="DeviceTypeComboBox" Grid.Row="3" Grid.Column="1" Margin="5" IsReadOnly="True" IsEnabled="False" Text="{Binding Path=Device.Device_Type.Type_Title}" VerticalContentAlignment="Center"/>
 
         <!--DEVICE BRAND-->
         <Label Grid.Row="4" Grid.Column="0" VerticalContentAlignment="Center">Device brand:</Label>
-        <TextBox Name="DeviceBrandComboBox" Grid.Row="4" Grid.Column="1" Margin="5" Padding="5" IsReadOnly="True" Text="{Binding Path=Device.Device_Brand.Title}"  VerticalContentAlignment="Center"  IsEnabled="False"/>
+        <TextBox Name="DeviceBrandComboBox" Grid.Row="4" Grid.Column="1" Margin="5" IsReadOnly="True" Text="{Binding Path=Device.Device_Brand.Title}"  VerticalContentAlignment="Center"  IsEnabled="False"/>
 
         <!--DEVICE MODEL-->
         <Label Grid.Row="5" Grid.Column="0" VerticalContentAlignment="Center">Device model:</Label>
-        <TextBox Name="DeviceModelComboBox" Grid.Row="5" Grid.Column="1" Margin="5" Padding="5" IsReadOnly="True" Text="{Binding Path=Device.Model_Title}" VerticalContentAlignment="Center"  IsEnabled="False"/>
+        <TextBox Name="DeviceModelComboBox" Grid.Row="5" Grid.Column="1" Margin="5" IsReadOnly="True" Text="{Binding Path=Device.Model_Title}" VerticalContentAlignment="Center"  IsEnabled="False"/>
 
         <!--PROBLEMS-->
         <Label Grid.Row="6" Grid.Column="0" VerticalContentAlignment="Center">Problems:</Label>
-        <sdl:MultiSelectComboBox Name="ProblemsComboBox" Grid.Row="6" Grid.Column="1" Margin="5" Padding="5" MinHeight="30" VerticalContentAlignment="Center" IsEditable="false" IsEnabled="False"  SelectionMode="Multiple">
+        <sdl:MultiSelectComboBox Name="ProblemsComboBox" Grid.Row="6" Grid.Column="1" Margin="5" Padding="5" MinHeight="40" VerticalContentAlignment="Center" IsEditable="false" IsEnabled="False"  SelectionMode="Multiple">
             <sdl:MultiSelectComboBox.SelectedItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Path=Title}" Margin="2,0" />
@@ -75,11 +76,11 @@
 
         <!--ESTIMATED COST-->
         <Label Grid.Row="7" Grid.Column="0" VerticalContentAlignment="Center">Estimated cost:</Label>
-        <TextBox Grid.Row="7" Grid.Column="1"  Margin="5" Padding="3,4,4,4" IsReadOnly="True" IsEnabled="False" Text="{Binding Path=Price}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+        <TextBox Grid.Row="7" Grid.Column="1"  Margin="5" IsReadOnly="True" IsEnabled="False" Text="{Binding Path=Price}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
 
         <!--EMPLOYEE-->
         <Label Grid.Row="8" Grid.Column="0" VerticalContentAlignment="Center">Employee:</Label>
-        <TextBox Name="EmployeesComboBox" Grid.Row="8" Grid.Column="1" Margin="5" Padding="5" IsReadOnly="True" IsEnabled="False" VerticalContentAlignment="Center"  TextSearch.TextPath="Content">
+        <TextBox Name="EmployeesComboBox" Grid.Row="8" Grid.Column="1" Margin="5" IsReadOnly="True" IsEnabled="False" VerticalContentAlignment="Center"  TextSearch.TextPath="Content">
             <TextBox.Text>
                 <MultiBinding StringFormat="{}{0} {1}">
                     <Binding Path="Employee.Name" />
@@ -90,7 +91,7 @@
 
         <!--DESCRIPTION-->
         <Label Grid.Row="9" Grid.Column="0" VerticalContentAlignment="Center">Description:</Label>
-        <TextBox Grid.Row="9" Grid.Column="1" Margin="5" Padding="3,4,4,4" IsReadOnly="True" IsEnabled="False" Text="{Binding Path=Description}" MinLines="8" MaxLines="8" MaxLength="1500" AcceptsReturn="True" AcceptsTab="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"/>
+        <TextBox Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" Grid.Row="9" Grid.Column="1" Margin="5" IsReadOnly="True" IsEnabled="False" Text="{Binding Path=Description}" MinLines="6" MaxLines="6" MaxLength="1500" AcceptsReturn="True" AcceptsTab="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"/>
 
         <!--BUTTONS-->
         <WrapPanel Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Margin="5,20,5,5" HorizontalAlignment="Center">

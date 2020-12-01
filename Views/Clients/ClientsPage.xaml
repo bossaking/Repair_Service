@@ -8,9 +8,10 @@
       d:DesignHeight="800" 
       d:DesignWidth="1200" 
       FontSize="16" 
-      Loaded="ClientsPage_Loaded">
+      Loaded="ClientsPage_Loaded"
+      Background="White">
 
-    <Grid Background="White">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
