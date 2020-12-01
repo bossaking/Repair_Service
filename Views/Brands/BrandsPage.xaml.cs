@@ -19,8 +19,9 @@ namespace Repair_Service
 {
     public partial class BrandsPage : Page
     {
-        //TODO Dodać Progress Bar
         BrandsPageController pageController;
+        MainWindow window;
+
         public BrandsPage()
         {
             InitializeComponent();
@@ -30,7 +31,7 @@ namespace Repair_Service
 
         private void BrandsPage_Loaded(object sender, RoutedEventArgs e)
         {
-            MainWindow window = (MainWindow)Application.Current.MainWindow;
+            window = (MainWindow)Application.Current.MainWindow;
             window.Title = "Repair Service: Brands";
             LoadBrands();
         }
@@ -40,13 +41,24 @@ namespace Repair_Service
             DataGrid.ItemsSource = await pageController.GetBrandsAsync();
         }
 
+        public async void RefreshData()
+        {
+            if(await pageController.RefreshBrands())
+            {
+                DataGrid.ItemsSource = await pageController.GetBrandsAsync();
+                window.StopRefreshing();
+            }
+        }
+
         #region BUTTONS
 
 
         private async void DeleteBrand()
         {
+            window.ShowProgressBar();
             if(! await pageController.DeleteBrandAsync(DataGrid.SelectedItem as Brand))
             {
+                window.HideProgressBar();
                 MessageBox.Show("Selected item cannot be deleted!", "Delete error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }

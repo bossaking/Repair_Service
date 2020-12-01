@@ -22,9 +22,10 @@ namespace Repair_Service
         BrandsPageController pageController;
         Brand brand;
         Modes mode;
-
+        MainWindow window;
         public AddEditBrandsPage(BrandsPageController pageController, Brand brand, Modes mode)
         {
+            window = window = (MainWindow)Application.Current.MainWindow;
             this.pageController = pageController;
             this.brand = brand;
             DataContext = brand;
@@ -34,9 +35,13 @@ namespace Repair_Service
 
         private async void AddNewBrand()
         {
+            window.ShowProgressBar();
+            //TODO Komunikat
             if(! await pageController.AddNewBrandAsync(brand))
             {
                 MessageBox.Show("Jakiś tam error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                window.HideProgressBar();
+                EnableGrid();
                 return;
             }
 
@@ -45,9 +50,13 @@ namespace Repair_Service
 
         private async void UpdateBrand()
         {
+            window.ShowProgressBar();
+            //TODO Komunikat
             if (!await pageController.UpdateBrandAsync(brand))
             {
                 MessageBox.Show("Jakiś tam error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                window.HideProgressBar();
+                EnableGrid();
                 return;
             }
 
@@ -79,6 +88,11 @@ namespace Repair_Service
         private void DisableGrid()
         {
             MainGrid.IsEnabled = false;
+        }
+
+        private void EnableGrid()
+        {
+            MainGrid.IsEnabled = true;
         }
         #endregion
     }

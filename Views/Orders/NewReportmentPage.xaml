@@ -54,7 +54,7 @@
 
         <!--DEVICE MODEL-->
         <Label Grid.Row="6" Grid.Column="0" VerticalContentAlignment="Center">Device model:</Label>
-        <ComboBox Name="DeviceModelComboBox" Grid.Row="6" Grid.Column="1" Margin="5" Padding="5" SelectedValue="{Binding Path=Device}" ItemsSource="{Binding ElementName=DeviceBrandComboBox, Path=SelectedItem.Devices}" DisplayMemberPath="Model_Title" VerticalContentAlignment="Center" IsEditable="True" IsTextSearchEnabled="True" TextSearch.TextPath="Model_Title" IsEnabled="False"/>
+        <ComboBox Name="DeviceModelComboBox" Grid.Row="6" Grid.Column="1" Margin="5" Padding="5" SelectedValue="{Binding Path=Device}" DisplayMemberPath="Model_Title" VerticalContentAlignment="Center" IsEditable="True" IsTextSearchEnabled="True" TextSearch.TextPath="Model_Title" IsEnabled="False"/>
 
         <!--PROBLEMS-->
         <Label Grid.Row="7" Grid.Column="0" VerticalContentAlignment="Center">Problems:</Label>

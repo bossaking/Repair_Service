@@ -20,6 +20,7 @@ namespace Repair_Service
     public partial class StatusesPage : Page
     {
         StatusesPageController pageController;
+        MainWindow window;
         public StatusesPage()
         {
             InitializeComponent();
@@ -29,7 +30,7 @@ namespace Repair_Service
 
         private void StatusesPage_Loaded(object sender, RoutedEventArgs e)
         {
-            MainWindow window = (MainWindow)Application.Current.MainWindow;
+            window = (MainWindow)Application.Current.MainWindow;
             window.Title = "Repair Service: Statuses";
             LoadStatuses();
         }
@@ -37,6 +38,15 @@ namespace Repair_Service
         private async void LoadStatuses()
         {
             DataGrid.ItemsSource = await pageController.GetStatusesAsync();
+        }
+
+        public async void RefreshData()
+        {
+            if(await pageController.RefreshStatuses())
+            {
+                DataGrid.ItemsSource = await pageController.GetStatusesAsync();
+                window.StopRefreshing();
+            }
         }
 
         private async void DeleteStatus()

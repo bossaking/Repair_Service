@@ -63,6 +63,12 @@ namespace Repair_Service.Controllers
             return database.GetBrandsOfType(type);
         }
 
+
+        public ObservableCollection<Device> GetDevicesOfTypeAndBrand(Device_Type type, Brand brand)
+        {
+            return database.GetDevicesOfTypeAndBrand(type, brand);
+        }
+
         /// <summary>
         /// Pozwala na asynchroniczny odczyt wszystkich problemów
         /// </summary>

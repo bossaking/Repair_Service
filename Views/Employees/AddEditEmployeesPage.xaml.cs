@@ -24,6 +24,7 @@ namespace Repair_Service
         Employee employee;
         Modes mode;
 
+        MainWindow window;
         public AddEditEmployeesPage(EmployeesPageController pageController, Employee employee, Modes mode)
         {
             InitializeComponent();
@@ -32,6 +33,8 @@ namespace Repair_Service
             this.pageController = pageController;
             this.employee = employee;
             this.mode = mode;
+
+            window = Application.Current.MainWindow as MainWindow;
 
             DataContext = employee;
         }
@@ -55,10 +58,12 @@ namespace Repair_Service
 
         private async void AddNewEmployee()
         {
-
+            window.ShowProgressBar();
             if(! await pageController.AddNewEmployeeAsync(employee))
             {
+                window.HideProgressBar();
                 MessageBox.Show("Item already exists!", "Name error", MessageBoxButton.OK, MessageBoxImage.Error);
+                EnableGrid();
                 return;
             }
 
@@ -67,9 +72,12 @@ namespace Repair_Service
 
         private async void UpdateEmployee()
         {
+            window.ShowProgressBar();
             if (!await pageController.UpdateEmployeeAsync(employee))
             {
+                window.HideProgressBar();
                 MessageBox.Show("Item already exists!", "Name error", MessageBoxButton.OK, MessageBoxImage.Error);
+                EnableGrid();
                 return;
             }
 
@@ -104,6 +112,11 @@ namespace Repair_Service
         private void DisableGrid()
         {
             MainGrid.IsEnabled = false;
+        }
+
+        private void EnableGrid()
+        {
+            MainGrid.IsEnabled = true;
         }
         #endregion
     }

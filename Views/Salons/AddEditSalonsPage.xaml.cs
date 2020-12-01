@@ -23,6 +23,7 @@ namespace Repair_Service
         Salon salon;
         Modes mode;
 
+        MainWindow window;
         public AddEditSalonsPage(SalonsPageController pageController, Salon salon, Modes mode)
         {
             InitializeComponent();
@@ -31,14 +32,19 @@ namespace Repair_Service
             this.salon = salon;
             this.mode = mode;
 
+            window = Application.Current.MainWindow as MainWindow;
+
             DataContext = salon;
         }
 
         private async void AddNewSalon()
         {
+            window.ShowProgressBar();
             if(! await pageController.AddNewSalonAsync(salon))
             {
+                window.HideProgressBar();
                 MessageBox.Show("Item already exists!", "Name error", MessageBoxButton.OK, MessageBoxImage.Error);
+                EnableGrid();
                 return;
             }
             LoadSalonsPage();
@@ -46,9 +52,12 @@ namespace Repair_Service
 
         private async void UpdateSalon()
         {
+            window.ShowProgressBar();
             if (!await pageController.UpdateSalonAsync(salon))
             {
+                window.HideProgressBar();
                 MessageBox.Show("Item already exists!", "Name error", MessageBoxButton.OK, MessageBoxImage.Error);
+                EnableGrid();
                 return;
             }
             LoadSalonsPage();
@@ -79,6 +88,11 @@ namespace Repair_Service
         private void DisableGrid()
         {
             MainGrid.IsEnabled = false;
+        }
+
+        private void EnableGrid()
+        {
+            MainGrid.IsEnabled = true;
         }
         #endregion
     }

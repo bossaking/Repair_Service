@@ -17,14 +17,14 @@ using System.Windows.Shapes;
 
 namespace Repair_Service
 {
-    /// <summary>
-    /// Interaction logic for AddEditRolesPage.xaml
-    /// </summary>
+
     public partial class AddEditRolesPage : Page
     {
         RolesPageController pageController;
         Role role;
         Modes mode;
+
+        MainWindow window;
         public AddEditRolesPage(RolesPageController pageController, Role role, Modes mode)
         {
             InitializeComponent();
@@ -33,14 +33,19 @@ namespace Repair_Service
             this.role = role;
             this.mode = mode;
 
+            window = Application.Current.MainWindow as MainWindow;
+
             DataContext = role;
         }
 
         private async void AddNewRole()
         {
+            window.ShowProgressBar();
             if(! await pageController.AddNewRoleAsync(role))
             {
+                window.HideProgressBar();
                 MessageBox.Show("Item already exists!", "Name error", MessageBoxButton.OK, MessageBoxImage.Error);
+                EnableGrid();
                 return;
             }
             LoadRolesPage();
@@ -48,9 +53,12 @@ namespace Repair_Service
 
         private async void UpdateRole()
         {
+            window.ShowProgressBar();
             if (!await pageController.UpdateRoleAsync(role))
             {
+                window.HideProgressBar();
                 MessageBox.Show("Item already exists!", "Name error", MessageBoxButton.OK, MessageBoxImage.Error);
+                EnableGrid();
                 return;
             }
             LoadRolesPage();
@@ -81,6 +89,11 @@ namespace Repair_Service
         private void DisableGrid()
         {
             MainGrid.IsEnabled = false;
+        }
+
+        private void EnableGrid()
+        {
+            MainGrid.IsEnabled = true;
         }
         #endregion
     }

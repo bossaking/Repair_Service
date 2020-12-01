@@ -19,9 +19,8 @@ namespace Repair_Service
 {
     public partial class SalonsPage : Page
     {
-        //TODO Dodać edycje
-        //TODO Dodać progress bar
         SalonsPageController pageController;
+        MainWindow window;
         public SalonsPage()
         {
             InitializeComponent();
@@ -31,7 +30,7 @@ namespace Repair_Service
 
         private void SalonsPage_Loaded(object sender, RoutedEventArgs e)
         {
-            MainWindow window = (MainWindow)Application.Current.MainWindow;
+            window = (MainWindow)Application.Current.MainWindow;
             window.Title = "Repair Service: Salons";
             LoadSalons();
         }
@@ -39,6 +38,16 @@ namespace Repair_Service
         private async void LoadSalons()
         {
             DataGrid.ItemsSource = await pageController.GetSalonsAsync();
+        }
+
+
+        public async void RefreshData()
+        {
+            if(await pageController.RefreshSalons())
+            {
+                DataGrid.ItemsSource = await pageController.GetSalonsAsync();
+                window.StopRefreshing();
+            }
         }
 
         private async void DeleteSalon()

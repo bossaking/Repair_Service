@@ -1,4 +1,5 @@
-﻿using Repair_Service.Models;
+﻿using Repair_Service.DAL;
+using Repair_Service.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -49,5 +50,9 @@ namespace Repair_Service.Controllers
             return await Task.Run(() => database.DeleteEmployee(employee));
         }
 
+        public async Task<bool> RefreshEmployees()
+        {
+            return await Task.Run(() => (database as ProxyDatabase).RefreshEmployees());
+        }
     }
 }

@@ -31,5 +31,11 @@ namespace Repair_Service.Controllers
             );
         }
 
+
+        public async Task<bool> RefreshClients()
+        {
+            return await Task.Run(() => (database as ProxyDatabase).RefreshClients());
+        }
+
     }
 }

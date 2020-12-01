@@ -25,11 +25,10 @@ namespace Repair_Service
     {
         ReportmentPageController pageController;
         private Order order;
-
+        MainWindow window;
         public EditPage(Order order)
         {
             InitializeComponent();
-            //this.Loaded += EditPage_Loaded;
 
             this.pageController = new ReportmentPageController();
             this.order = order;
@@ -47,7 +46,7 @@ namespace Repair_Service
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            MainWindow window = (MainWindow)Application.Current.MainWindow;
+            window = (MainWindow)Application.Current.MainWindow;
             window.Title = "Repair Service: Edit order";
             EditPage_Loaded(sender, e);
         }
@@ -112,6 +111,7 @@ namespace Repair_Service
             if(! await pageController.UpdateOrderAsync(order))
             {
                 MessageBox.Show("Something went wrong...Try again", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                EnableGrid();
                 return;
             }
             LoadMainPage();
@@ -126,6 +126,7 @@ namespace Repair_Service
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             MainGrid.IsEnabled = false;
+            window.ShowProgressBar();
             UpdateOrder();
         }
 
@@ -144,6 +145,11 @@ namespace Repair_Service
             }
             DataContext = null;
             DataContext = order;
+        }
+
+        private void EnableGrid()
+        {
+            MainGrid.IsEnabled = true;
         }
     }
 }

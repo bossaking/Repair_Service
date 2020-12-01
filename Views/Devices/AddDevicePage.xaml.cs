@@ -24,12 +24,15 @@ namespace Repair_Service
         DevicesPageController pageController;
         Device device;
         Modes mode;
+        MainWindow window;
         public AddDevicePage(DevicesPageController pageController, Device device, Modes mode)
         {
             InitializeComponent();
             this.pageController = pageController;
             this.device = device;
             this.mode = mode;
+
+            window = (MainWindow)Application.Current.MainWindow;
 
             DataContext = device;
         }
@@ -53,9 +56,12 @@ namespace Repair_Service
 
         private async void AddNewDevice()
         {
+            window.ShowProgressBar();
             if (!await pageController.AddNewDevice(device))
             {
+                window.HideProgressBar();
                 MessageBox.Show("Item already exists!", "Name error", MessageBoxButton.OK, MessageBoxImage.Error);
+                EnableGrid();
                 return;
             }
             LoadDevicesPage();
@@ -63,9 +69,12 @@ namespace Repair_Service
 
         private async void UpdateDevice()
         {
+            window.ShowProgressBar();
             if (!await pageController.UpdateDeviceAsync(device))
             {
+                window.HideProgressBar();
                 MessageBox.Show("Item already exists!", "Name error", MessageBoxButton.OK, MessageBoxImage.Error);
+                EnableGrid();
                 return;
             }
             LoadDevicesPage();
@@ -100,6 +109,11 @@ namespace Repair_Service
         private void DisableGrid()
         {
             MainGrid.IsEnabled = false;
+        }
+
+        private void EnableGrid()
+        {
+            MainGrid.IsEnabled = true;
         }
         #endregion
     }

@@ -23,6 +23,7 @@ namespace Repair_Service
         Status status;
         Modes mode;
 
+        MainWindow window;
         public AddEditStatusesPage(StatusesPageController pageController, Status status, Modes mode)
         {
             InitializeComponent();
@@ -31,14 +32,19 @@ namespace Repair_Service
             this.status = status;
             this.mode = mode;
 
+            window = Application.Current.MainWindow as MainWindow;
+
             DataContext = status;
         }
 
         private async void AddNewStatus()
         {
+            window.ShowProgressBar();
             if(! await pageController.AddNewStatusAsync(status))
             {
+                window.HideProgressBar();
                 MessageBox.Show("Item already exists!", "Name error", MessageBoxButton.OK, MessageBoxImage.Error);
+                EnableGrid();
                 return;
             }
             LoadStatusesPage();
@@ -46,9 +52,12 @@ namespace Repair_Service
 
         private async void UpdateStatus()
         {
+            window.ShowProgressBar();
             if (!await pageController.UpdateStatusAsync(status))
             {
+                window.HideProgressBar();
                 MessageBox.Show("Item already exists!", "Name error", MessageBoxButton.OK, MessageBoxImage.Error);
+                EnableGrid();
                 return;
             }
             LoadStatusesPage();
@@ -79,6 +88,11 @@ namespace Repair_Service
         private void DisableGrid()
         {
             MainGrid.IsEnabled = false;
+        }
+
+        private void EnableGrid()
+        {
+            MainGrid.IsEnabled = true;
         }
         #endregion
     }

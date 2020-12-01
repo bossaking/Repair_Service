@@ -19,10 +19,10 @@ namespace Repair_Service
 {
     public partial class TypesPage : Page
     {
-        //TODO Dodać Progress Bar
-        //TODO Dodać edycje
+
 
         TypesPageController pageController;
+        MainWindow window; 
         public TypesPage()
         {
             InitializeComponent();
@@ -32,7 +32,7 @@ namespace Repair_Service
 
         private void TypesPage_Loaded(object sender, RoutedEventArgs e)
         {
-            MainWindow window = (MainWindow)Application.Current.MainWindow;
+            window = (MainWindow)Application.Current.MainWindow;
             window.Title = "Repair Service: Types";
             GetTypes();
         }
@@ -42,6 +42,15 @@ namespace Repair_Service
             if(! await pageController.DeleteTypeAsync(DataGrid.SelectedItem as Device_Type))
             {
                 MessageBox.Show("Selected item cannot be deleted!", "Delete error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        public async void RefreshData()
+        {
+            if(await pageController.RefreshTypes())
+            {
+                DataGrid.ItemsSource = await pageController.GetTypesAsync();
+                window.StopRefreshing();
             }
         }
 

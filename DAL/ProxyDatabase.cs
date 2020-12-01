@@ -95,6 +95,12 @@ namespace Repair_Service.DAL
             return database.DeleteBrand(brand);
         }
 
+        public bool RefreshBrands()
+        {
+            brands = database.GetBrands();
+            return true;
+        }
+
         #endregion
 
         #region CLIENTS TABLE
@@ -171,8 +177,7 @@ namespace Repair_Service.DAL
         private bool ClientExists(Client client)
         {
             if (clients == null) GetAllClients();
-            Client repeatClient = clients.Where(c => c.Name == client.Name && c.Surname == client.Surname && c.Phone_Number == client.Phone_Number &&
-                c.Id_Client != client.Id_Client).FirstOrDefault();
+            Client repeatClient = clients.Where(c => c.Name == client.Name && c.Surname == client.Surname && c.Phone_Number == client.Phone_Number).FirstOrDefault();
             return repeatClient != null;
         }
 
@@ -194,6 +199,12 @@ namespace Repair_Service.DAL
             return reClient.Id_Client;
         }
 
+        public bool RefreshClients()
+        {
+            clients = database.GetAllClients();
+            return true;
+        }
+
         #endregion
 
         #region DEVICES TABLE
@@ -210,6 +221,12 @@ namespace Repair_Service.DAL
             }
 
             return devices;
+        }
+
+
+        public override ObservableCollection<Device> GetDevicesOfTypeAndBrand(Device_Type type, Brand brand)
+        {
+            return new ObservableCollection<Device>(devices.Where(d => d.Device_Type.Id_Type == type.Id_Type && d.Device_Brand.Id_Brand == brand.Id_Brand).ToList());
         }
 
         /// <summary>
@@ -265,6 +282,12 @@ namespace Repair_Service.DAL
             return true;
         }
 
+        public bool RefreshDevices()
+        {
+            devices = database.GetDevices();
+            return true;
+        }
+
         #endregion
 
         #region DEVICES TYPES TABLE
@@ -314,6 +337,12 @@ namespace Repair_Service.DAL
             App.Current.Dispatcher.Invoke(() => types.Remove(type));
             return true;
         }
+
+        public bool RefreshTypes()
+        {
+            types = database.GetTypes();
+            return true;
+        }
         #endregion
 
         #region EMPLOYEES TABLE
@@ -353,13 +382,16 @@ namespace Repair_Service.DAL
             App.Current.Dispatcher.Invoke(() => employees.Remove(employee));
             return database.DeleteEmployee(employee);
         }
+
+        public bool RefreshEmployees()
+        {
+            employees = database.GetEmployees();
+            return true;
+        }
+
         #endregion
 
         #region ORDERS TABLE
-
-
-
-
         /// <summary>
         /// Zwraca listę wszystkich zleceń
         /// </summary>
@@ -441,8 +473,22 @@ namespace Repair_Service.DAL
 
         public override void DeleteOrder(int id)
         {
-            App.Current.Dispatcher.Invoke(() => orders.Remove(orders.Where(o => o.Id_Order == id).FirstOrDefault()));
+            App.Current.Dispatcher.Invoke(() => archiveOrders.Remove(archiveOrders.Where(o => o.Id_Order == id).FirstOrDefault()));
             database.DeleteOrder(id);
+        }
+
+        public bool RefreshOrders()
+        {
+            orders = null;
+            GetAllOrders();
+            return true;
+        }
+
+        public bool RefreshArchive()
+        {
+            orders = null;
+            GetAllOrders();
+            return true;
         }
 
         #endregion
@@ -490,6 +536,12 @@ namespace Repair_Service.DAL
             if (orders.FirstOrDefault(o => o.Problems.FirstOrDefault(p => p.Id_Problem == problem.Id_Problem) != null) != null) return false;
             App.Current.Dispatcher.Invoke(() => problems.Remove(problem));
             return database.DeleteProblem(problem);
+        }
+
+        public bool RefreshProblems()
+        {
+            problems = database.GetProblems();
+            return true;
         }
 
         #endregion
@@ -540,6 +592,13 @@ namespace Repair_Service.DAL
             return database.DeleteRole(role);
         }
 
+
+        public bool RefreshRoles()
+        {
+            roles = database.GetRoles();
+            return true;
+        }
+
         #endregion
 
         #region SALONS TABLE
@@ -585,6 +644,12 @@ namespace Repair_Service.DAL
             if (employees.FirstOrDefault(e => e.Employee_Salon.Id_Salon == salon.Id_Salon) != null) return false;
             App.Current.Dispatcher.Invoke(() => salons.Remove(salon));
             return database.DeleteSalon(salon);
+        }
+
+        public bool RefreshSalons()
+        {
+            salons = database.GetSalons();
+            return true;
         }
 
         #endregion
@@ -649,6 +714,12 @@ namespace Repair_Service.DAL
             return statuses.FirstOrDefault(s => s.Id_Status == id);
         }
 
+        public bool RefreshStatuses()
+        {
+            statuses = database.GetStatuses();
+            return true;
+        }
+
         #endregion
 
 
@@ -667,11 +738,6 @@ namespace Repair_Service.DAL
             GetSalons();
             GetStatuses();
         }
-
-
-
-
-
 
         public override bool SingInWithLoginAndPassword(string login, string password)
         {

@@ -23,7 +23,7 @@ namespace Repair_Service
     public partial class ArchivePage : Page
     {
         ArchivePageController pageController;
-
+        MainWindow window;
         public ArchivePage()
         {
             InitializeComponent();
@@ -34,7 +34,7 @@ namespace Repair_Service
 
         private void ArchivePage_Loaded(object sender, RoutedEventArgs e)
         {
-            MainWindow window = (MainWindow)Application.Current.MainWindow;
+            window = (MainWindow)Application.Current.MainWindow;
             window.Title = "Repair Service: Archive";
             LoadOrders();
         }
@@ -42,6 +42,20 @@ namespace Repair_Service
         private async void LoadOrders()
         {
             DataGrid.ItemsSource = await pageController.GetOrdersAsync();
+        }
+
+        public async void RefreshData()
+        {
+            if(await pageController.RefreshArchive())
+            {
+                DataGrid.ItemsSource = await pageController.GetOrdersAsync();
+                window.StopRefreshing();
+            }
+        }
+
+        private async void DeleteOrder()
+        {
+            await pageController.DeleteOrder((DataGrid.SelectedItem as Order).Id_Order);
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
@@ -61,9 +75,9 @@ namespace Repair_Service
             pageController.RestoreOrder(DataGrid.SelectedItem as Order);
         }
 
-        //TODO obsłużyć usuwanie z archiwum
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
+            
             if (MessageBox.Show("Are you sure you want to remove the selected order?", "Delete order",
     MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
             {
@@ -71,7 +85,8 @@ namespace Repair_Service
             }
             else
             {
-                //DeleteOrder();
+                window.ShowProgressBar();
+                DeleteOrder();
             }
         }
     }

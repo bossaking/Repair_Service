@@ -23,8 +23,10 @@ namespace Repair_Service
     {
         //TODO Dodać sprawdzenie czy wszystkie pola są wypełnione
         readonly EditClientPageController pageController;
+        MainWindow window;
         public EditClientPage(Client client)
         {
+            window = (MainWindow)Application.Current.MainWindow;
             InitializeComponent();
             DataContext = client;
 
@@ -40,9 +42,12 @@ namespace Repair_Service
 
         public async void UpdateClient(Client client)
         {
+            window.ShowProgressBar();
             if (!await pageController.UpdateClient(client))
             {
+                window.HideProgressBar();
                 MessageBox.Show("Item already exists!", "Name error", MessageBoxButton.OK, MessageBoxImage.Error);
+                EnableGrid();
                 return;
             }
 
@@ -62,6 +67,11 @@ namespace Repair_Service
         private void DisableGrid()
         {
             MainGrid.IsEnabled = false;
+        }
+
+        private void EnableGrid()
+        {
+            MainGrid.IsEnabled = true;
         }
         #endregion
     }
