@@ -22,7 +22,7 @@
         <Frame Name="MyFrame" Grid.Row="0" NavigationUIVisibility="Hidden" Navigated="MyFrame_Navigated"/>
 
         <!--STATUS BAR-->
-        <Border x:Name="MainWindowBorder" Grid.Row="1" BorderThickness="0,1,0,0" BorderBrush="#7953d2">
+        <Border Name="MainWindowBorder" Grid.Row="1" BorderThickness="0,0,0,0" BorderBrush="Cyan">
             <StatusBar Height="30">
                 <StatusBar.ItemsPanel>
                     <ItemsPanelTemplate>
