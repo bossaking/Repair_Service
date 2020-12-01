@@ -149,43 +149,43 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddDevicePage.xaml.cs">
+    <Compile Include="Views\Devices\AddDevicePage.xaml.cs">
       <DependentUpon>AddDevicePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddEditBrandsPage.xaml.cs">
+    <Compile Include="Views\Brands\AddEditBrandsPage.xaml.cs">
       <DependentUpon>AddEditBrandsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddEditEmployeesPage.xaml.cs">
+    <Compile Include="Views\Employees\AddEditEmployeesPage.xaml.cs">
       <DependentUpon>AddEditEmployeesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddEditProblemsPage.xaml.cs">
+    <Compile Include="Views\Problems\AddEditProblemsPage.xaml.cs">
       <DependentUpon>AddEditProblemsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddEditRolesPage.xaml.cs">
+    <Compile Include="Views\Roles\AddEditRolesPage.xaml.cs">
       <DependentUpon>AddEditRolesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddEditSalonsPage.xaml.cs">
+    <Compile Include="Views\Salons\AddEditSalonsPage.xaml.cs">
       <DependentUpon>AddEditSalonsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddEditStatusesPage.xaml.cs">
+    <Compile Include="Views\Statuses\AddEditStatusesPage.xaml.cs">
       <DependentUpon>AddEditStatusesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddEditTypesPage.xaml.cs">
+    <Compile Include="Views\Types\AddEditTypesPage.xaml.cs">
       <DependentUpon>AddEditTypesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ArchieveDetailsPage.xaml.cs">
+    <Compile Include="Views\Archive\ArchieveDetailsPage.xaml.cs">
       <DependentUpon>ArchieveDetailsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ArchivePage.xaml.cs">
+    <Compile Include="Views\Archive\ArchivePage.xaml.cs">
       <DependentUpon>ArchivePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="BrandsPage.xaml.cs">
+    <Compile Include="Views\Brands\BrandsPage.xaml.cs">
       <DependentUpon>BrandsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ChooseExisitingClientWindow.xaml.cs">
       <DependentUpon>ChooseExisitingClientWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ClientsPage.xaml.cs">
+    <Compile Include="Views\Clients\ClientsPage.xaml.cs">
       <DependentUpon>ClientsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controllers\ArchivePageController.cs" />
@@ -208,16 +208,16 @@
     <Compile Include="DAL\LocalUserData.cs" />
     <Compile Include="DAL\MainDatabase.cs" />
     <Compile Include="DAL\ProxyDatabase.cs" />
-    <Compile Include="DevicesPage.xaml.cs">
+    <Compile Include="Views\Devices\DevicesPage.xaml.cs">
       <DependentUpon>DevicesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EditClientPage.xaml.cs">
+    <Compile Include="Views\Clients\EditClientPage.xaml.cs">
       <DependentUpon>EditClientPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EditPage.xaml.cs">
+    <Compile Include="Views\Orders\EditPage.xaml.cs">
       <DependentUpon>EditPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EmployeesPage.xaml.cs">
+    <Compile Include="Views\Employees\EmployeesPage.xaml.cs">
       <DependentUpon>EmployeesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="HibernateMapping\BrandMap.cs" />
@@ -230,10 +230,10 @@
     <Compile Include="HibernateMapping\SalonMap.cs" />
     <Compile Include="HibernateMapping\StatusMap.cs" />
     <Compile Include="HibernateMapping\TypeMap.cs" />
-    <Compile Include="LoginPage.xaml.cs">
+    <Compile Include="Views\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainPage.xaml.cs">
+    <Compile Include="Views\Orders\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Brand.cs" />
@@ -246,65 +246,65 @@
     <Compile Include="Models\Salon.cs" />
     <Compile Include="Models\Device_Type.cs" />
     <Compile Include="Models\Status.cs" />
-    <Compile Include="NewReportmentPage.xaml.cs">
+    <Compile Include="Views\Orders\NewReportmentPage.xaml.cs">
       <DependentUpon>NewReportmentPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ProblemsPage.xaml.cs">
+    <Compile Include="Views\Problems\ProblemsPage.xaml.cs">
       <DependentUpon>ProblemsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="RolesPage.xaml.cs">
+    <Compile Include="Views\Roles\RolesPage.xaml.cs">
       <DependentUpon>RolesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SalonsPage.xaml.cs">
+    <Compile Include="Views\Salons\SalonsPage.xaml.cs">
       <DependentUpon>SalonsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StatusesPage.xaml.cs">
+    <Compile Include="Views\Statuses\StatusesPage.xaml.cs">
       <DependentUpon>StatusesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TypesPage.xaml.cs">
+    <Compile Include="Views\Types\TypesPage.xaml.cs">
       <DependentUpon>TypesPage.xaml</DependentUpon>
     </Compile>
-    <Page Include="AddDevicePage.xaml">
+    <Page Include="Views\Devices\AddDevicePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AddEditBrandsPage.xaml">
+    <Page Include="Views\Brands\AddEditBrandsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AddEditEmployeesPage.xaml">
+    <Page Include="Views\Employees\AddEditEmployeesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AddEditProblemsPage.xaml">
+    <Page Include="Views\Problems\AddEditProblemsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AddEditRolesPage.xaml">
+    <Page Include="Views\Roles\AddEditRolesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AddEditSalonsPage.xaml">
+    <Page Include="Views\Salons\AddEditSalonsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AddEditStatusesPage.xaml">
+    <Page Include="Views\Statuses\AddEditStatusesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AddEditTypesPage.xaml">
+    <Page Include="Views\Types\AddEditTypesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ArchieveDetailsPage.xaml">
+    <Page Include="Views\Archive\ArchieveDetailsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ArchivePage.xaml">
+    <Page Include="Views\Archive\ArchivePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="BrandsPage.xaml">
+    <Page Include="Views\Brands\BrandsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -312,31 +312,31 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ClientsPage.xaml">
+    <Page Include="Views\Clients\ClientsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="DevicesPage.xaml">
+    <Page Include="Views\Devices\DevicesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EditClientPage.xaml">
+    <Page Include="Views\Clients\EditClientPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EditPage.xaml">
+    <Page Include="Views\Orders\EditPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EmployeesPage.xaml">
+    <Page Include="Views\Employees\EmployeesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="LoginPage.xaml">
+    <Page Include="Views\LoginPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainPage.xaml">
+    <Page Include="Views\Orders\MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -352,27 +352,27 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="NewReportmentPage.xaml">
+    <Page Include="Views\Orders\NewReportmentPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ProblemsPage.xaml">
+    <Page Include="Views\Problems\ProblemsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="RolesPage.xaml">
+    <Page Include="Views\Roles\RolesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SalonsPage.xaml">
+    <Page Include="Views\Salons\SalonsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="StatusesPage.xaml">
+    <Page Include="Views\Statuses\StatusesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TypesPage.xaml">
+    <Page Include="Views\Types\TypesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -409,9 +409,7 @@
   <ItemGroup>
     <Resource Include="Images\Logo.jpeg" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Images\Icons\Repair Service icon.ico" />
   </ItemGroup>
