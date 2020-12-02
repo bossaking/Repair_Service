@@ -1,43 +1,104 @@
 ﻿<Page x:Class="Repair_Service.LoginPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:Repair_Service"
       mc:Ignorable="d"
-      d:DesignHeight="800" 
-      d:DesignWidth="1200" 
-      FontSize="16"  
+      d:DesignHeight="800"
+      d:DesignWidth="1200"
+      FontSize="16"
       Loaded="LoginPage_Loaded"
       Background="White">
 
-    <Grid Name="MainGrid" ShowGridLines="False" VerticalAlignment="Center" HorizontalAlignment="Center">
+    <Grid Name="MainGrid"
+          ShowGridLines="False"
+          VerticalAlignment="Center"
+          HorizontalAlignment="Center">
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
         <!--LOGO-->
-        <Image Grid.Row="0" Width="250" Height="250" Margin="0,0,0,25" Source="../Images/Logo.jpeg"/>
+        <!--
+        <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth4">
+            <Image Grid.Row="0"
+                   Width="250"
+                   Height="250"
+                   Margin="0,0,0,25"
+                   Source="../Images/Logo.jpeg" />
+        </materialDesign:Card>-->
+
+        <!--LOGO-->
+        <Image Grid.Row="0"
+               Width="250"
+               Height="250"
+               Margin="0,0,0,25"
+               Source="../Images/Logo.jpeg" />
 
         <!--LOGIN-->
-        <TextBox Name="TextBoxLogin" Grid.Row="1" Width="200" Height="30" Margin="0,25,0,0" VerticalContentAlignment="Center">Login</TextBox>
+        <WrapPanel Grid.Row="1"
+                   Margin="0,25,0,0"
+                   VerticalAlignment="Center">
+            <materialDesign:PackIcon Kind="Account"
+                                     Width="25"
+                                     Height="25"
+                                     Margin="0,0,5,0"
+                                     VerticalAlignment="Bottom" />
+            <TextBox Name="TextBoxLogin"
+                     Width="200"
+                     materialDesign:HintAssist.Hint="Login"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     materialDesign:TextFieldAssist.HasClearButton="True" />
+        </WrapPanel>
 
         <!--PASSWORD-->
-        <PasswordBox Name="TextBoxPassword" Grid.Row="2" Width="200" Height="30" Margin="0,15,0,10" VerticalContentAlignment="Center"/>
+        <WrapPanel Grid.Row="2"
+                   Margin="0,15,0,20"
+                   VerticalAlignment="Center">
+            <materialDesign:PackIcon Kind="Key"
+                                     Width="25"
+                                     Height="25"
+                                     Margin="0,0,7,0"
+                                     VerticalAlignment="Bottom" />
+            <PasswordBox Name="TextBoxPassword"
+                         Width="200"
+                         materialDesign:HintAssist.Hint="Password"
+                         Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
+                         materialDesign:TextFieldAssist.HasClearButton="True" />
+        </WrapPanel>
 
         <!--REMEMBER ME CHECKBOX-->
-        <CheckBox Name="CheckBoxRememberMe" Grid.Row="3" VerticalContentAlignment="Center" HorizontalAlignment="Center" Unchecked="CheckBoxRememberMeUnchecked">Remember me</CheckBox>
+        <CheckBox Name="CheckBoxRememberMe"
+                  Grid.Row="3"
+                  VerticalAlignment="Center"
+                  VerticalContentAlignment="Center"
+                  HorizontalAlignment="Center"
+                  Unchecked="CheckBoxRememberMeUnchecked">Remember me</CheckBox>
 
         <!--SIGN IN BUTTON-->
-        <Button Name="ButtonLogin" Click="LoginButton_Click" Grid.Row="4" Width="100" Height="30" Margin="0,30,0,0" VerticalContentAlignment="Center">Sign in</Button>
+        <Button Name="ButtonLogin"
+                Click="LoginButton_Click"
+                Grid.Row="4"
+                Width="100"
+                Height="30"
+                Margin="0,30,0,0"
+                VerticalContentAlignment="Center">Sign in</Button>
 
         <!--PROGRESS BAR-->
-        <ProgressBar Name="ProgressBar" Grid.Row="5" Height="15" Width="200" IsIndeterminate="True" Margin="0,40,0,0" Visibility="Hidden"></ProgressBar>
+        <ProgressBar Name="ProgressBar"
+                     Grid.Row="5"
+                     Height="15"
+                     Width="200"
+                     IsIndeterminate="True"
+                     Margin="0,40,0,0"
+                     Visibility="Hidden"></ProgressBar>
     </Grid>
 
 </Page>

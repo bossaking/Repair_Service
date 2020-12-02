@@ -136,7 +136,7 @@ namespace Repair_Service.DAL
                         transaction.Commit();
                         return true;
                     }
-                    catch
+                    catch(Exception ex)
                     {
                         transaction.Rollback();
                         return false;
@@ -278,6 +278,11 @@ namespace Repair_Service.DAL
         }
 
         public override ObservableCollection<Brand> GetBrandsOfType(Device_Type type)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override ObservableCollection<Device> GetDevicesOfTypeAndBrand(Device_Type type, Brand brand)
         {
             throw new NotImplementedException();
         }

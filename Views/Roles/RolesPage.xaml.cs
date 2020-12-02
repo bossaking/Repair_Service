@@ -19,9 +19,9 @@ namespace Repair_Service
 {
     public partial class RolesPage : Page
     {
-        //TODO Dodać edycje
-        //TODO Dodać Progress Bar
+
         RolesPageController pageController;
+        MainWindow window;
         public RolesPage()
         {
             InitializeComponent();
@@ -31,7 +31,7 @@ namespace Repair_Service
 
         private void RolesPage_Loaded(object sender, RoutedEventArgs e)
         {
-            MainWindow window = (MainWindow)Application.Current.MainWindow;
+            window = (MainWindow)Application.Current.MainWindow;
             window.Title = "Repair Service: Roles";
             LoadRoles();
         }
@@ -41,6 +41,14 @@ namespace Repair_Service
             DataGrid.ItemsSource = await pageController.GetRolesAsync();
         }
 
+        public async void RefreshData()
+        {
+            if(await pageController.RefreshRoles())
+            {
+                DataGrid.ItemsSource = await pageController.GetRolesAsync();
+                window.StopRefreshing();
+            }
+        }
         private async void DeleteRole()
         {
             if(! await pageController.DeleteRoleAsync(DataGrid.SelectedItem as Role))

@@ -20,7 +20,8 @@ namespace Repair_Service
     public partial class ClientsPage : Page
     {
         private ClientsPageController clientsPageController;
-     
+        MainWindow window;
+
         public ClientsPage()
         {
             InitializeComponent();
@@ -30,7 +31,7 @@ namespace Repair_Service
         #region DATA
         private void ClientsPage_Loaded(object sender, RoutedEventArgs e)
         {
-            MainWindow window = (MainWindow)Application.Current.MainWindow;
+            window = (MainWindow)Application.Current.MainWindow;
             window.Title = "Repair Service: Clients";
             GetAllClients();
         }
@@ -42,8 +43,23 @@ namespace Repair_Service
 
         private async void DeleteClient()
         {
+            window.ShowProgressBar();
+
             if (!await clientsPageController.DeleteClient((DataGrid.SelectedItem as Client).Id_Client))
+            {
                 MessageBox.Show("Selected item cannot be deleted!", "Delete error", MessageBoxButton.OK, MessageBoxImage.Error);
+                
+            }
+            window.HideProgressBar();
+        }
+
+        public async void RefreshData()
+        {
+            if(await clientsPageController.RefreshClients())
+            {
+                DataGrid.ItemsSource = await clientsPageController.GetClientsAsync();
+                window.StopRefreshing();
+            }
         }
         #endregion
 

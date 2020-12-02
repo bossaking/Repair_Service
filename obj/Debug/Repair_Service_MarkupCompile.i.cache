@@ -16,5 +16,5 @@ C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\App.xaml
 50-1114326531
 Views\Devices\AddDevicePage.xaml;Views\Brands\AddEditBrandsPage.xaml;Views\Employees\AddEditEmployeesPage.xaml;Views\Problems\AddEditProblemsPage.xaml;Views\Roles\AddEditRolesPage.xaml;Views\Salons\AddEditSalonsPage.xaml;Views\Statuses\AddEditStatusesPage.xaml;Views\Types\AddEditTypesPage.xaml;Views\Archive\ArchieveDetailsPage.xaml;Views\Archive\ArchivePage.xaml;Views\Brands\BrandsPage.xaml;ChooseExisitingClientWindow.xaml;Views\Clients\ClientsPage.xaml;Views\Devices\DevicesPage.xaml;Views\Clients\EditClientPage.xaml;Views\Orders\EditPage.xaml;Views\Employees\EmployeesPage.xaml;Views\LoginPage.xaml;Views\Orders\MainPage.xaml;MainWindow.xaml;Views\Orders\NewReportmentPage.xaml;Views\Problems\ProblemsPage.xaml;Views\Roles\RolesPage.xaml;Views\Salons\SalonsPage.xaml;Views\Statuses\StatusesPage.xaml;Views\Types\TypesPage.xaml;
 
-True
+False
 

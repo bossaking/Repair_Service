@@ -22,7 +22,7 @@ namespace Repair_Service
     public partial class MainPage : Page
     {
         private MainPageController mainPageController;
-
+        MainWindow window;
         public MainPage()
         {
             InitializeComponent();
@@ -34,7 +34,7 @@ namespace Repair_Service
         #region DATA
         private void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
-            MainWindow window = (MainWindow)Application.Current.MainWindow;
+            window = (MainWindow)Application.Current.MainWindow;
             window.Title = "Repair Service: Orders";
 
             var dpd = DependencyPropertyDescriptor.FromProperty(ItemsControl.ItemsSourceProperty, typeof(DataGrid));
@@ -56,10 +56,14 @@ namespace Repair_Service
             DataGrid.ItemsSource = await mainPageController.GetAllOrdersAsync();
         }
 
-        //private async void DeleteOrder()
-        //{
-        //    await mainPageController.DeleteOrder((DataGrid.SelectedItem as Order).Id_Order);
-        //}
+        public async void RefreshData()
+        {
+            if(await mainPageController.RefreshOrders())
+            {
+                DataGrid.ItemsSource = await mainPageController.GetAllOrdersAsync();
+                window.StopRefreshing();
+            }
+        }
 
         #endregion
 
@@ -102,20 +106,7 @@ namespace Repair_Service
             this.NavigationService.Navigate(editPage);
         }
 
-        //private void DeleteButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    if (MessageBox.Show("Are you sure you want to remove the selected order?", "Delete order",
-        //        MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
-        //    {
-        //        return;
-        //    }
-        //    else
-        //    {
-        //        DeleteOrder();
-        //    }
-        //}
-
-        private void AddReportmentButton_Click(object sender, RoutedEventArgs e)
+        private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             NewReportmentPage newReportmentPage = new NewReportmentPage();
             this.NavigationService.Navigate(newReportmentPage);

@@ -19,9 +19,8 @@ namespace Repair_Service
 {
     public partial class EmployeesPage : Page
     {
-        //TODO Sprawdzenie roli
-        //TODO Dodać edycje
-        //TODO Dodać Progress Bar
+
+        MainWindow window;
 
         EmployeesPageController pageController;
         public EmployeesPage()
@@ -33,7 +32,7 @@ namespace Repair_Service
 
         private void EmployeesPage_Loaded(object sender, RoutedEventArgs e)
         {
-            MainWindow window = (MainWindow)Application.Current.MainWindow;
+            window = (MainWindow)Application.Current.MainWindow;
             window.Title = "Repair Service: Employees";
             LoadEmployees();
         }
@@ -49,6 +48,16 @@ namespace Repair_Service
             {
                 MessageBox.Show("Selected item cannot be deleted!", "Delete error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        public async void RefreshData()
+        {
+            if(await pageController.RefreshEmployees())
+            {
+                DataGrid.ItemsSource = await pageController.GetEmployeesAsync();
+                window.StopRefreshing();
+            }
+            
         }
 
         #region BUTTONS

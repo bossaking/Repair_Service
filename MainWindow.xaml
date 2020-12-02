@@ -19,10 +19,10 @@
         </Grid.RowDefinitions>
 
         <!--NavigationUIVisibility - Widok wracania do stron poprzednich-->
-        <Frame Name="MyFrame" Grid.Row="0" NavigationUIVisibility="Hidden"/>
+        <Frame Name="MyFrame" Grid.Row="0" NavigationUIVisibility="Hidden" Navigated="MyFrame_Navigated"/>
 
         <!--STATUS BAR-->
-        <Border Grid.Row="1" BorderThickness="0,1,0,0" BorderBrush="#7953d2">
+        <Border Name="MainWindowBorder" Grid.Row="1" BorderThickness="0,0,0,0" BorderBrush="Cyan">
             <StatusBar Height="30">
                 <StatusBar.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -39,7 +39,7 @@
                     <TextBlock Name="RefreshTextBlock" FontSize="15">Status: OK</TextBlock>
                 </StatusBarItem>
                 <StatusBarItem Grid.Column="1" HorizontalAlignment="Center">
-                    <ProgressBar Name="ProgressBar" IsIndeterminate="True" Height="15" Width="300"></ProgressBar>
+                    <ProgressBar Name="ProgressBar" Visibility="Hidden" IsIndeterminate="True" Height="15" Width="300"></ProgressBar>
                 </StatusBarItem>
                 <StatusBarItem Grid.Column="2" HorizontalAlignment="Center" Padding="0">
                     <Button Name="RefreshButton" Click="RefreshButton_Click" Height="24" Width="75" Padding="5,2,5,2">REFRESH</Button>

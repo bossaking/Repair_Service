@@ -1,45 +1,99 @@
 ﻿<Page x:Class="Repair_Service.ProblemsPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:Repair_Service"
-      mc:Ignorable="d" 
-      d:DesignHeight="800" 
-      d:DesignWidth="1200" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d"
+      d:DesignHeight="800"
+      d:DesignWidth="1200"
       FontSize="16"
       Background="White">
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
         <!--PROBLEMS HEADER-->
-        <Label FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center">PROBLEMS</Label>
-        <Button Click="BackButton_Click" Grid.Row="0" Width="75" Padding="5" Margin="10" IsCancel="True" VerticalAlignment="Center" HorizontalAlignment="Left">Back</Button>
-        <Button Click="AddButton_Click" Grid.Row="0" Padding="5" Margin="10" Width="120" IsDefault="True" HorizontalAlignment="Right">+Add problem</Button>
-
+        <Label FontSize="30"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center">PROBLEMS</Label>
+        <Button Grid.Row="0"
+                Margin="10,0"
+                Click="BackButton_Click"
+                IsCancel="True"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Style="{StaticResource MaterialDesignIconButton}"
+                ToolTip="Back"
+                Foreground="Black">
+            <materialDesign:PackIcon Kind="ArrowLeft" />
+        </Button>
 
         <!--TABLE WITH PROBLEMS-->
-        <DataGrid Name="DataGrid" Grid.Row="1" Margin="5,5,5,5" FontSize="16" Width="auto" ColumnWidth="auto" BorderBrush="Gray" IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Center" VerticalAlignment="Top" CanUserResizeColumns="False" CanUserResizeRows="False">
+        <DataGrid Name="DataGrid"
+                  Grid.Row="1"
+                  Margin="5,5,5,5"
+                  FontSize="16"
+                  Width="auto"
+                  ColumnWidth="auto"
+                  IsReadOnly="True"
+                  AutoGenerateColumns="False"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Top"
+                  CanUserResizeColumns="False"
+                  CanUserResizeRows="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Binding="{Binding Id_Problem}"/>
-                <DataGridTextColumn Header="Problem title" Binding="{Binding Title}"/>
+                <DataGridTextColumn Header="Id"
+                                    Binding="{Binding Id_Problem}" />
+                <DataGridTextColumn Header="Problem title"
+                                    Binding="{Binding Title}" />
                 <DataGridTemplateColumn Header="Action">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <WrapPanel>
-                                <Button Click="EditButton_Click">Edit</Button>
-                                <Button Click="DeleteButton_Click">Delete</Button>
+                                <Button Click="EditButton_Click"
+                                        Padding="0"
+                                        Margin="0,0,15,0"
+                                        Style="{StaticResource MaterialDesignFlatButton}"
+                                        ToolTip="Edit"
+                                        Foreground="Black">
+                                    <materialDesign:PackIcon Kind="Pencil"
+                                                             Height="22"
+                                                             Width="22" />
+                                </Button>
+                                <Button Click="DeleteButton_Click"
+                                        Padding="0"
+                                        Style="{StaticResource MaterialDesignFlatButton}"
+                                        ToolTip="Delete"
+                                        Foreground="Black">
+                                    <materialDesign:PackIcon Kind="Delete"
+                                                             Height="22"
+                                                             Width="22" />
+                                </Button>
                             </WrapPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+
+        <Button Grid.Row="1"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Margin="0,0,40,40"
+                Click="AddButton_Click"
+                IsDefault="True"
+                Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+                ToolTip="Add problem">
+            <materialDesign:PackIcon Kind="Plus"
+                                     Height="30"
+                                     Width="30" />
+        </Button>
     </Grid>
 
 </Page>

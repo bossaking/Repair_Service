@@ -4,35 +4,71 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Repair_Service"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Repair Service: Choose client" 
-        Height="450" 
-        Width="800" 
-        Loaded="Window_Loaded" 
+        Title="Repair Service: Choose client"
+        Height="450"
+        Width="800"
+        Loaded="Window_Loaded"
         WindowStartupLocation="CenterOwner">
-    
+
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <!--SELECT EXISITING CLIENT HEADER-->
-        <Label FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center">CHOOSE CLIENT</Label>
-        <Button Click="BackButton_Click" Grid.Row="0" Width="75" Padding="5" Margin="10" IsCancel="True" VerticalAlignment="Center" HorizontalAlignment="Left">Back</Button>
+        <Label FontSize="30"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center">CHOOSE CLIENT</Label>
+        <Button Grid.Row="0"
+                Margin="10,0"
+                Click="BackButton_Click"
+                IsCancel="True"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Style="{StaticResource MaterialDesignIconButton}"
+                ToolTip="Back"
+                Foreground="Black">
+            <materialDesign:PackIcon Kind="ArrowLeft" />
+        </Button>
 
         <!--TABLE WITH EXISITING CLIENTS-->
-        <DataGrid Name="ClientsDataGrid" Grid.Row="1" Width="auto" Margin="5,5,5,5" FontSize="16" IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Center" VerticalAlignment="Top" CanUserResizeColumns="False" CanUserResizeRows="False" ColumnWidth="auto" BorderBrush="Gray">
+        <DataGrid Name="ClientsDataGrid"
+                  Grid.Row="1"
+                  Width="auto"
+                  Margin="5,5,5,5"
+                  FontSize="16"
+                  IsReadOnly="True"
+                  AutoGenerateColumns="False"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Top"
+                  CanUserResizeColumns="False"
+                  CanUserResizeRows="False"
+                  ColumnWidth="auto">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Binding="{Binding Id_Client}"/>
-                <DataGridTextColumn Header="Client name" Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="Client surname" Binding="{Binding Surname}"/>
-                <DataGridTextColumn Header="Client phone number" Binding="{Binding Phone_Number}"/>
+                <DataGridTextColumn Header="Id"
+                                    Binding="{Binding Id_Client}" />
+                <DataGridTextColumn Header="Client name"
+                                    Binding="{Binding Name}" />
+                <DataGridTextColumn Header="Client surname"
+                                    Binding="{Binding Surname}" />
+                <DataGridTextColumn Header="Client phone number"
+                                    Binding="{Binding Phone_Number}" />
                 <DataGridTemplateColumn Header="Action">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <WrapPanel HorizontalAlignment="Center">
-                                <Button Click="AddButton_Click">Add</Button>
+                                <Button Click="AddButton_Click"
+                                        Padding="0"
+                                        Style="{StaticResource MaterialDesignFlatButton}"
+                                        ToolTip="Choose client"
+                                        Foreground="Black">
+                                    <materialDesign:PackIcon Kind="AccountPlus"
+                                                             Height="22"
+                                                             Width="22" />
+                                </Button>
                             </WrapPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -40,5 +76,5 @@
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
-    
+
 </Window>

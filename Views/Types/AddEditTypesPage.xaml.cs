@@ -23,6 +23,7 @@ namespace Repair_Service
         Device_Type type;
         Modes mode;
 
+        MainWindow window;
         public AddEditTypesPage(TypesPageController pageController, Device_Type type, Modes mode)
         {
             InitializeComponent();
@@ -30,13 +31,18 @@ namespace Repair_Service
             this.type = type;
             DataContext = type;
             this.pageController = pageController;
+
+            window = Application.Current.MainWindow as MainWindow;
         }
 
         private async void AddNewType()
         {
+            window.ShowProgressBar();
             if(! await pageController.AddNewTypeAsync(type))
             {
+                window.HideProgressBar();
                 MessageBox.Show("Item already exists!", "Name error", MessageBoxButton.OK, MessageBoxImage.Error);
+                EnableGrid();
                 return;
             }
             LoadTypesPage();
@@ -44,9 +50,12 @@ namespace Repair_Service
 
         private async void UpdateType()
         {
+            window.ShowProgressBar();
             if (!await pageController.UpdateTypeAsync(type))
             {
+                window.HideProgressBar();
                 MessageBox.Show("Item already exists!", "Name error", MessageBoxButton.OK, MessageBoxImage.Error);
+                EnableGrid();
                 return;
             }
             LoadTypesPage();
@@ -78,6 +87,11 @@ namespace Repair_Service
         private void DisableGrid()
         {
             MainGrid.IsEnabled = false;
+        }
+
+        private void EnableGrid()
+        {
+            MainGrid.IsEnabled = true;
         }
         #endregion
     }

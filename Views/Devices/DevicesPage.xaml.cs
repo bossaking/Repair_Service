@@ -22,6 +22,7 @@ namespace Repair_Service
     public partial class DevicesPage : Page
     {
         DevicesPageController pageController;
+        MainWindow window;
         public DevicesPage()
         {
             InitializeComponent();
@@ -30,7 +31,7 @@ namespace Repair_Service
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            MainWindow window = (MainWindow)Application.Current.MainWindow;
+            window = (MainWindow)Application.Current.MainWindow;
             window.Title = "Repair Service: Devices";
             GetDevices();
         }
@@ -40,6 +41,14 @@ namespace Repair_Service
             DataGrid.ItemsSource = await pageController.GetDevicesAsync();
         }
 
+        public async void RefreshData()
+        {
+            if(await pageController.RefreshDevices())
+            {
+                DataGrid.ItemsSource = await pageController.GetDevicesAsync();
+                window.StopRefreshing();
+            }
+        }
         private async void DeleteDevice()
         {
             if(!await pageController.DeleteDeviceAsync(DataGrid.SelectedItem as Device))

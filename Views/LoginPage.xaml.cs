@@ -31,6 +31,7 @@ namespace Repair_Service
 
         private void LoginPage_Loaded(object sender, RoutedEventArgs e)
         {
+
             MainWindow window = (MainWindow)Application.Current.MainWindow;
             window.Title = "Repair Service: Login";
             ReadUserLoginData();

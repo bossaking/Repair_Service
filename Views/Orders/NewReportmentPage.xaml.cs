@@ -23,6 +23,7 @@ namespace Repair_Service
     {
         private ReportmentPageController reportmentPageController;
         private Order newOrder;
+        MainWindow window;
 
         private IList<Problem> problems;
 
@@ -34,7 +35,7 @@ namespace Repair_Service
         #region DATA
         private void NewReportmentPage_Loaded(object sender, RoutedEventArgs e)
         {
-            MainWindow window = (MainWindow)Application.Current.MainWindow;
+            window = (MainWindow)Application.Current.MainWindow;
             window.Title = "Repair Service: New order";
 
             DeviceTypeComboBox.SelectionChanged += DeviceTypeComboBox_SelectionChanged;
@@ -105,7 +106,8 @@ namespace Repair_Service
         {
             if (DeviceBrandComboBox.SelectedItem != null)
             {
-
+                DeviceModelComboBox.ItemsSource = reportmentPageController.GetDevicesOfTypeAndBrand(DeviceTypeComboBox.SelectedItem as Device_Type,
+                    DeviceBrandComboBox.SelectedItem as Brand);
                 DeviceModelComboBox.IsEnabled = true;
                 DeviceModelComboBox.SelectedIndex = 0;
 
@@ -123,9 +125,12 @@ namespace Repair_Service
         private async void AddNewOrder()
         {
             newOrder.Problems = problems;
+            window.ShowProgressBar();
             if (!await reportmentPageController.AddNewOrder(newOrder))
             {
                 MessageBox.Show("Something went wrong...Try again", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                EnableGrid();
+                window.HideProgressBar();
                 return;
             }
             LoadMainPage();
@@ -170,6 +175,11 @@ namespace Repair_Service
         private void DisableGrid()
         {
             MainGrid.IsEnabled = false;
+        }
+
+        private void EnableGrid()
+        {
+            MainGrid.IsEnabled = true;
         }
         #endregion
     }

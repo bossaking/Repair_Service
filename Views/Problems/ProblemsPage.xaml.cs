@@ -17,11 +17,10 @@ using System.Windows.Shapes;
 
 namespace Repair_Service
 {
-    //TODO Dodać edycje
-    //TODO Dodać Progress Bar
     public partial class ProblemsPage : Page
     {
         ProblemsPageController pageController;
+        MainWindow window;
         public ProblemsPage()
         {
             InitializeComponent();
@@ -31,7 +30,7 @@ namespace Repair_Service
 
         private void ProblemsPage_Loaded(object sender, RoutedEventArgs e)
         {
-            MainWindow window = (MainWindow)Application.Current.MainWindow;
+            window = (MainWindow)Application.Current.MainWindow;
             window.Title = "Repair Service: Problems";
             LoadProblems();
         }
@@ -39,6 +38,15 @@ namespace Repair_Service
         private async void LoadProblems()
         {
             DataGrid.ItemsSource = await pageController.GetProblemsAsync();
+        }
+
+        public async void RefreshData()
+        {
+            if(await pageController.RefreshProblems())
+            {
+                DataGrid.ItemsSource = await pageController.GetProblemsAsync();
+                window.StopRefreshing();
+            }
         }
 
         private async void DeleteProblem()
