@@ -85,7 +85,6 @@ namespace Repair_Service
             }
             else
             {
-                window.ShowProgressBar();
                 DeleteOrder();
             }
         }

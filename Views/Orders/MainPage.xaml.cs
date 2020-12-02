@@ -106,9 +106,7 @@ namespace Repair_Service
             this.NavigationService.Navigate(editPage);
         }
 
-
-
-        private void AddReportmentButton_Click(object sender, RoutedEventArgs e)
+        private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             NewReportmentPage newReportmentPage = new NewReportmentPage();
             this.NavigationService.Navigate(newReportmentPage);

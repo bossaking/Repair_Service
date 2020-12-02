@@ -164,9 +164,12 @@ namespace Repair_Service.DAL
         {
             if (orders.FirstOrDefault(o => o.Client.Id_Client == id) != null) return false;
 
-            database.DeleteClient(id);
-            App.Current.Dispatcher.Invoke(() => clients.Remove(clients.Where(o => o.Id_Client == id).FirstOrDefault()));
-            return true;
+            if (database.DeleteClient(id))
+            {
+                App.Current.Dispatcher.Invoke(() => clients.Remove(clients.Where(o => o.Id_Client == id).FirstOrDefault()));
+                return true;
+            }
+            return false;
         }
 
         /// <summary>
@@ -277,9 +280,13 @@ namespace Repair_Service.DAL
         {
             if (orders.FirstOrDefault(o => o.Device.Id_Device == device.Id_Device) != null) return false;
 
-            database.DeleteDevice(device);
-            App.Current.Dispatcher.Invoke(() => devices.Remove(device));
-            return true;
+            if (database.DeleteDevice(device))
+            {
+
+                App.Current.Dispatcher.Invoke(() => devices.Remove(device));
+                return true;
+            }
+            return false;
         }
 
         public bool RefreshDevices()
@@ -379,8 +386,12 @@ namespace Repair_Service.DAL
         public override bool DeleteEmployee(Employee employee)
         {
             if (orders.FirstOrDefault(o => o.Employee.Id_Employee == employee.Id_Employee) != null) return false;
-            App.Current.Dispatcher.Invoke(() => employees.Remove(employee));
-            return database.DeleteEmployee(employee);
+            if (database.DeleteEmployee(employee))
+            {
+                App.Current.Dispatcher.Invoke(() => employees.Remove(employee));
+                return true;
+            }
+            return false;
         }
 
         public bool RefreshEmployees()
@@ -534,8 +545,12 @@ namespace Repair_Service.DAL
         public override bool DeleteProblem(Problem problem)
         {
             if (orders.FirstOrDefault(o => o.Problems.FirstOrDefault(p => p.Id_Problem == problem.Id_Problem) != null) != null) return false;
-            App.Current.Dispatcher.Invoke(() => problems.Remove(problem));
-            return database.DeleteProblem(problem);
+            if (database.DeleteProblem(problem))
+            {
+                App.Current.Dispatcher.Invoke(() => problems.Remove(problem));
+                return true;
+            }
+            return false;
         }
 
         public bool RefreshProblems()
