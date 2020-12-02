@@ -27,7 +27,7 @@ namespace Repair_Service.Controllers
         {
             bool result = false;
             await Task.Run(() =>
-                result = database.SingInWithLoginAndPassword(login, password)
+                result = (database as ProxyDatabase).SingInWithLoginAndPassword(login, password)
             );
             return result;
         }

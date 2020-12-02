@@ -1,2 +1,2 @@
-Gabriel
-Czajkowski
+login
+password
