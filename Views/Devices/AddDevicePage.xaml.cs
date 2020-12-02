@@ -20,7 +20,6 @@ namespace Repair_Service
 {
     public partial class AddDevicePage : Page
     {
-        //TODO Dodać sprawdzenie czy wszystkie pola są wypełnione
         DevicesPageController pageController;
         Device device;
         Modes mode;

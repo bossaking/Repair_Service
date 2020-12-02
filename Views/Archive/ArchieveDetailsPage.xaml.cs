@@ -16,16 +16,12 @@ using System.Windows.Shapes;
 
 namespace Repair_Service
 {
-    /// <summary>
-    /// Interaction logic for ArchieveDetailsPage.xaml
-    /// </summary>
     public partial class ArchieveDetailsPage : Page
     {
         Order order;
         public ArchieveDetailsPage(Order order)
         {
             InitializeComponent();
-            //this.Loaded += ArchieveDetailsPage_Loaded;
 
             this.order = order;
         }

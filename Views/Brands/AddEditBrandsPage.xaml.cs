@@ -36,10 +36,9 @@ namespace Repair_Service
         private async void AddNewBrand()
         {
             window.ShowProgressBar();
-            //TODO Komunikat
             if(! await pageController.AddNewBrandAsync(brand))
             {
-                MessageBox.Show("Jakiś tam error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Item already exists!", "Name error", MessageBoxButton.OK, MessageBoxImage.Error);
                 window.HideProgressBar();
                 EnableGrid();
                 return;
@@ -51,10 +50,9 @@ namespace Repair_Service
         private async void UpdateBrand()
         {
             window.ShowProgressBar();
-            //TODO Komunikat
             if (!await pageController.UpdateBrandAsync(brand))
             {
-                MessageBox.Show("Jakiś tam error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Item already exists!", "Name error", MessageBoxButton.OK, MessageBoxImage.Error);
                 window.HideProgressBar();
                 EnableGrid();
                 return;

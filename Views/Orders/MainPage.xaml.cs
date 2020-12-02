@@ -67,25 +67,6 @@ namespace Repair_Service
 
         #endregion
 
-        #region PROGRESS BAR
-
-        private void ShowProgressBar()
-        {
-            //ProgressBar.Visibility = Visibility.Visible;
-        }
-
-        private void HideProgressBar()
-        {
-            //ProgressBar.Visibility = Visibility.Hidden;
-        }
-
-        private void RefreshButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        #endregion
-
         #region ACTION BUTTONS
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {

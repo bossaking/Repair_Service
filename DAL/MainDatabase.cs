@@ -66,9 +66,15 @@ namespace Repair_Service.DAL
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    //TODO Obsłużyć wszystkie wyjątki
-                    session.Save(client);
-                    transaction.Commit();
+                    try
+                    {
+                        session.Save(client);
+                        transaction.Commit();
+                    }
+                    catch
+                    {
+
+                    }
                 }
             }
         }
@@ -823,10 +829,16 @@ namespace Repair_Service.DAL
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    Order order = session.QueryOver<Order>().Where(o => o.Id_Order == id).SingleOrDefault();
-                    session.Delete(order);
-                    transaction.Commit();
-                    //TODO EXCEPTIONS
+                    try
+                    {
+                        Order order = session.QueryOver<Order>().Where(o => o.Id_Order == id).SingleOrDefault();
+                        session.Delete(order);
+                        transaction.Commit();
+                    }
+                    catch
+                    {
+
+                    }
                 }
             }
         }
