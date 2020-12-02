@@ -50,6 +50,7 @@
                         Click="BrandsButton_Click">Brands</Button>
                 <Button Margin="5"
                         Click="ProblemsButton_Click">Problems</Button>
+                <WrapPanel Name="AdministratorPanel" Visibility="Collapsed">
                 <Button Margin="5"
                         Click="EmployeesButton_Click">Employees</Button>
                 <Button Margin="5"
@@ -60,6 +61,7 @@
                         Click="StatusesButton_Click">Statuses</Button>
                 <Button Margin="5"
                         Click="ArchiveButton_Click">Archive</Button>
+                </WrapPanel>
             </WrapPanel>
         </Grid>
 

@@ -88,9 +88,5 @@ namespace Repair_Service.DAL
         public abstract bool DeleteStatus(Status status);
         #endregion
 
-
-        public abstract bool SingInWithLoginAndPassword(string login, string password);
-        
-
     }
 }

@@ -42,6 +42,10 @@ namespace Repair_Service
             {
                 dpd.AddValueChanged(DataGrid, DataGridItemSourceChanged);
             }
+
+            if (mainPageController.IsAdministrator())
+                AdministratorPanel.Visibility = Visibility.Visible;
+
             //Pobieranie wszystkich zleceń z bazy danych
             LoadAllOrders();
         }

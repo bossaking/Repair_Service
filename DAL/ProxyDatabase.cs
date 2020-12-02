@@ -25,6 +25,8 @@ namespace Repair_Service.DAL
         ObservableCollection<Salon> salons;
         ObservableCollection<Status> statuses;
 
+        Employee actualEmployee;
+
         private static ProxyDatabase instance;
 
         private ProxyDatabase()
@@ -394,6 +396,11 @@ namespace Repair_Service.DAL
             return false;
         }
 
+        public bool IsAdministrator()
+        {
+            return actualEmployee.Employee_Role.Title == "Root" || actualEmployee.Employee_Role.Title == "Administrator";
+        }
+
         public bool RefreshEmployees()
         {
             employees = database.GetEmployees();
@@ -754,10 +761,12 @@ namespace Repair_Service.DAL
             GetStatuses();
         }
 
-        public override bool SingInWithLoginAndPassword(string login, string password)
+        public bool SingInWithLoginAndPassword(string login, string password)
         {
+            actualEmployee = new Employee();
             if (database == null) database = new MainDatabase();
-            if (database.SingInWithLoginAndPassword(login, password))
+            actualEmployee = database.SingInWithLoginAndPassword(login, password);
+            if (actualEmployee != null)
             {
                 GetAllData();
                 return true;

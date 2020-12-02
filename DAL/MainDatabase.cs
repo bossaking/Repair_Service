@@ -937,24 +937,33 @@ namespace Repair_Service.DAL
         /// </summary>
         /// <param name="login">Login użytkownika</param>
         /// <param name="password">Hasło użytkownika</param>
-        /// <returns>Zwraca TRUE jeżeli udało się zalogować</returns>
-        public override bool SingInWithLoginAndPassword(string login, string password)
+        /// <returns>Zwraca obiekt klasy Employee</returns>
+        public Employee SingInWithLoginAndPassword(string login, string password)
         {
-            bool result = false;
+            Employee employee = null;
 
             using (var session = NHibernateHelper.OpenSession())
             {
 
                 using (var transaction = session.BeginTransaction())
                 {
-                    Employee employee = session.QueryOver<Employee>().Where(e => e.Login == login).SingleOrDefault();
-                    if (employee == null) { result = false; }
-                    else if (employee.Passwd == password) { result = true; }
-                    transaction.Commit();
+                    try
+                    {
+                        employee = session.QueryOver<Employee>().Where(e => e.Login == login).SingleOrDefault();
+                        if (employee != null && employee.Passwd != password) 
+                        {
+                            employee = null;
+                        }
+                        transaction.Commit();
+                        return employee;
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        return null;
+                    }
                 }
             }
-
-            return result;
         }
     }
 }

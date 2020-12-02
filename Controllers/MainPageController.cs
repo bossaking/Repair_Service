@@ -35,6 +35,9 @@ namespace Repair_Service.Controllers
             return await Task.Run(() => (database as ProxyDatabase).RefreshOrders());
         }
 
-
+        public bool IsAdministrator()
+        {
+            return (database as ProxyDatabase).IsAdministrator();
+        }
     }
 }
