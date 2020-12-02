@@ -67,7 +67,8 @@ namespace Repair_Service
         {
             if (DeviceBrandComboBox.SelectedItem != null)
             {
-                DeviceModelComboBox.ItemsSource = (DeviceBrandComboBox.SelectedItem as Brand).Devices;
+                DeviceModelComboBox.ItemsSource = pageController.GetDevicesOfTypeAndBrand(DeviceTypeComboBox.SelectedItem as Device_Type,
+                    DeviceBrandComboBox.SelectedItem as Brand);
                 DeviceModelComboBox.IsEnabled = true;
                 DeviceModelComboBox.SelectedItem = (DeviceModelComboBox.ItemsSource as IList<Device>).FirstOrDefault(d => d.Id_Device == order.Device.Id_Device);
                 if (DeviceModelComboBox.SelectedItem == null)
@@ -111,6 +112,7 @@ namespace Repair_Service
             if(! await pageController.UpdateOrderAsync(order))
             {
                 MessageBox.Show("Something went wrong...Try again", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                window.HideProgressBar();
                 EnableGrid();
                 return;
             }

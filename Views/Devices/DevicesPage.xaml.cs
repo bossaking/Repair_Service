@@ -17,8 +17,6 @@ using System.Windows.Shapes;
 
 namespace Repair_Service
 {
-    //TODO Dodać edycje
-    //TODO Dodać Progress Bar
     public partial class DevicesPage : Page
     {
         DevicesPageController pageController;

@@ -21,7 +21,6 @@ namespace Repair_Service
 {
     public partial class EditClientPage : Page
     {
-        //TODO Dodać sprawdzenie czy wszystkie pola są wypełnione
         readonly EditClientPageController pageController;
         MainWindow window;
         public EditClientPage(Client client)

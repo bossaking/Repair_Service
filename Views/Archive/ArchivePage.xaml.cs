@@ -17,9 +17,6 @@ using System.Windows.Shapes;
 
 namespace Repair_Service
 {
-    /// <summary>
-    /// Interaction logic for ArchivePage.xaml
-    /// </summary>
     public partial class ArchivePage : Page
     {
         ArchivePageController pageController;

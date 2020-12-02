@@ -74,7 +74,7 @@ namespace Repair_Service.DAL
             {
                 Brand oldBrand = brands.FirstOrDefault(b => b.Id_Brand == brand.Id_Brand);
                 App.Current.Dispatcher.Invoke(() => brands[brands.IndexOf(oldBrand)] = brand);
-                orders = database.GetAllOrders();
+                RefreshOrders();
                 devices = database.GetDevices();
                 return true;
             }
@@ -147,7 +147,7 @@ namespace Repair_Service.DAL
                 App.Current.Dispatcher.Invoke(() =>
                     clients[clients.IndexOf(oldClient)] = client
                 );
-                orders = database.GetAllOrders();
+                RefreshOrders();
                 return true;
             }
             return false;
@@ -253,7 +253,7 @@ namespace Repair_Service.DAL
             {
                 Device oldDevice = devices.FirstOrDefault(d => d.Id_Device == device.Id_Device);
                 App.Current.Dispatcher.Invoke(() => devices[devices.IndexOf(oldDevice)] = device);
-                orders = database.GetAllOrders();
+                RefreshOrders();
                 return true;
             }
 
@@ -324,7 +324,7 @@ namespace Repair_Service.DAL
             {
                 Device_Type oldType = types.FirstOrDefault(t => t.Id_Type == type.Id_Type);
                 App.Current.Dispatcher.Invoke(() => types[types.IndexOf(oldType)] = type);
-                orders = database.GetAllOrders();
+                RefreshOrders();
                 devices = database.GetDevices();
 
                 return true;
@@ -377,7 +377,7 @@ namespace Repair_Service.DAL
             {
                 Employee oldEmployee = employees.FirstOrDefault(e => e.Id_Employee == employee.Id_Employee);
                 App.Current.Dispatcher.Invoke(() => employees[employees.IndexOf(oldEmployee)] = employee);
-                orders = database.GetAllOrders();
+                RefreshOrders();
                 return true;
             }
             return false;
@@ -531,7 +531,7 @@ namespace Repair_Service.DAL
             {
                 Problem oldProblem = problems.FirstOrDefault(p => p.Id_Problem == problem.Id_Problem);
                 App.Current.Dispatcher.Invoke(() => problems[problems.IndexOf(oldProblem)] = problem);
-                orders = GetAllOrders();
+                RefreshOrders();
                 return true;
             }
             return false;
@@ -702,7 +702,7 @@ namespace Repair_Service.DAL
             {
                 Status oldStatus = statuses.FirstOrDefault(s => s.Id_Status == status.Id_Status);
                 App.Current.Dispatcher.Invoke(() => statuses[statuses.IndexOf(oldStatus)] = status);
-                orders = database.GetAllOrders();
+                RefreshOrders();
                 return true;
             }
             return false;
