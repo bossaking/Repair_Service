@@ -56,6 +56,7 @@ namespace Repair_Service.DAL
             }
         }
 
+        //TODO Zmienić void na bool
         /// <summary>
         /// Dodawanie nowego klienta
         /// </summary>
@@ -142,7 +143,7 @@ namespace Repair_Service.DAL
                         transaction.Commit();
                         return true;
                     }
-                    catch(Exception ex)
+                    catch
                     {
                         transaction.Rollback();
                         return false;

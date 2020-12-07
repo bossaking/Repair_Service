@@ -29,12 +29,9 @@ namespace Repair_Service.NHibernate
         private static void InitializeSessionFactory()
         {
             _sessionFactory = Fluently.Configure().Database(MySQLConfiguration.Standard.ConnectionString(
-                c => c.FromConnectionStringWithKey("DefaultConnection")).ShowSql()).Cache(c => c.ProviderClass<SysCacheProvider>().UseQueryCache())
+                c => c.FromConnectionStringWithKey("DefaultConnection")).ShowSql())
                     .Mappings(m => m.FluentMappings.AddFromAssemblyOf<Database>())
-                    
-                       
                         .BuildSessionFactory();
-            _sessionFactory.Statistics.IsStatisticsEnabled = true;
         }
 
         public static ISession OpenSession()

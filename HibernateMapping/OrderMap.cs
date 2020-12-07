@@ -14,7 +14,6 @@ namespace Repair_Service.HibernateMapping
 
         public OrderMap()
         {
-            Cache.ReadWrite().IncludeAll();
             Id(x => x.Id_Order).GeneratedBy.Increment();
 
             Map(x => x.Description);
@@ -24,7 +23,7 @@ namespace Repair_Service.HibernateMapping
 
             References(x => x.Client).Column("Id_Client").Not.LazyLoad();
             References(x => x.Device).Column("Id_Device").Not.LazyLoad();
-            References(x => x.Employee).Column("Id_Employee").Fetch.Select().Not.LazyLoad();
+            References(x => x.Employee).Column("Id_Employee").Not.LazyLoad();
             References(x => x.Status).Column("Id_Status").Not.LazyLoad();
 
             HasManyToMany(x => x.Problems).Table("orders_problems").ParentKeyColumn("Id_Order").ChildKeyColumn("Id_Problem").Not.LazyLoad();

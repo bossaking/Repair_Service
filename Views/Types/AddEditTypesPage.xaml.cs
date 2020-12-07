@@ -67,7 +67,7 @@ namespace Repair_Service
             DisableGrid();
 
             if(mode == Modes.Add)
-            AddNewType();
+                AddNewType();
 
             if (mode == Modes.Edit)
                 UpdateType();
