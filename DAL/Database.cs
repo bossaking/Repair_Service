@@ -12,7 +12,6 @@ namespace Repair_Service.DAL
     {
 
         #region BRANDS TABLE
-
         public abstract ObservableCollection<Brand> GetBrands();
         public abstract ObservableCollection<Brand> GetBrandsOfType(Device_Type type);
         public abstract bool AddNewBrand(Brand brand);

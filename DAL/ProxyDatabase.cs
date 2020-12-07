@@ -51,7 +51,6 @@ namespace Repair_Service.DAL
             {
                 brands = database == null ? (database = new MainDatabase()).GetBrands() : database.GetBrands();
             }
-
             return brands;
         }
 
@@ -63,8 +62,12 @@ namespace Repair_Service.DAL
         public override bool AddNewBrand(Brand brand)
         {
             if (BrandExists(brand)) return false;
-            App.Current.Dispatcher.Invoke(() => brands.Add(brand));
-            return database.AddNewBrand(brand);
+            if (database.AddNewBrand(brand))
+            {
+                App.Current.Dispatcher.Invoke(() => brands.Add(brand));
+                return true;
+            }
+            return false;
         }
 
 
@@ -91,10 +94,12 @@ namespace Repair_Service.DAL
         public override bool DeleteBrand(Brand brand)
         {
             if (devices.FirstOrDefault(d => d.Device_Brand.Id_Brand == brand.Id_Brand) != null) return false;
-
-
-            App.Current.Dispatcher.Invoke(() => brands.Remove(brand));
-            return database.DeleteBrand(brand);
+            if (database.DeleteBrand(brand))
+            {
+                App.Current.Dispatcher.Invoke(() => brands.Remove(brand));
+                return true;
+            }
+            return false;
         }
 
         public bool RefreshBrands()
