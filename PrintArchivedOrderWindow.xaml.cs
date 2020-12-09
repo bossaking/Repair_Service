@@ -56,7 +56,6 @@ namespace Repair_Service
             //    this.IsEnabled = true;
             //}
 
-
             BackButton.Visibility = Visibility.Hidden;
             PrintButton.Visibility = Visibility.Hidden;
 

@@ -27,7 +27,7 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <!--  NAVIGATION BUTTONS  -->
+            <!--#region NAVIGATION BUTTONS-->
             <Button
                 Grid.Column="2"
                 Margin="10,0"
@@ -56,9 +56,10 @@
                     <Button Margin="5" Click="ArchiveButton_Click">Archive</Button>
                 </WrapPanel>
             </WrapPanel>
+            <!--#endregion-->
         </Grid>
 
-        <!--  SEARCH BOX  -->
+        <!--#region SEARCH BOX-->
         <WrapPanel
             Grid.Row="1"
             HorizontalAlignment="Center"
@@ -85,8 +86,9 @@
                 materialDesign:TextFieldAssist.HasClearButton="True"
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
         </WrapPanel>
+        <!--#endregion-->
 
-        <!--  TABLE WITH REPORTMENTS  -->
+        <!--#region TABLE WITH REPORTMENTS-->
         <DataGrid
             Name="DataGrid"
             Grid.Row="2"
@@ -100,11 +102,6 @@
             ColumnWidth="auto"
             FontSize="16"
             IsReadOnly="True">
-            <!--<DataGrid.CellStyle>
-                <Style>
-                    <Setter></Setter>
-                </Style>
-            </DataGrid.CellStyle>-->
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Id_Order}" Header="Id" />
                 <DataGridTextColumn Binding="{Binding Client.Name}" Header="Client name" />
@@ -133,9 +130,9 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <!--#endregion-->
 
-        <!--  xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"  -->
-
+        <!--#region FLOATING BUTTON-->
         <Button
             Grid.Row="2"
             Margin="0,0,40,40"
@@ -149,7 +146,6 @@
                 Height="30"
                 Kind="Plus" />
         </Button>
+        <!--#endregion-->
     </Grid>
 </Page>
-
-<!--  Background="#EEEEE8"  -->

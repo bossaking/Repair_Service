@@ -124,7 +124,7 @@ namespace Repair_Service
 
         private async void AddNewOrder()
         {
-            
+
             newOrder.Problems = problems;
             window.ShowProgressBar();
             if (!await reportmentPageController.AddNewOrder(newOrder))

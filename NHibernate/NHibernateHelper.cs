@@ -11,7 +11,6 @@ namespace Repair_Service.NHibernate
 {
     public class NHibernateHelper
     {
-
         private static ISessionFactory _sessionFactory;
 
         private static ISessionFactory SessionFactory
@@ -38,6 +37,5 @@ namespace Repair_Service.NHibernate
         {
             return SessionFactory.OpenSession();
         }
-
     }
 }

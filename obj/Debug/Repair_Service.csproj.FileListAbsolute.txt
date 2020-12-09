@@ -481,3 +481,4 @@ C:\Users\Mateusz\Documents\GitHub\Repair_Service\obj\Debug\Repair_Service.csproj
 C:\Users\Mateusz\Documents\GitHub\Repair_Service\obj\Debug\Repair_Service.csproj.CopyComplete
 C:\Users\Mateusz\Documents\GitHub\Repair_Service\obj\Debug\Repair_Service.exe
 C:\Users\Mateusz\Documents\GitHub\Repair_Service\obj\Debug\Repair_Service.pdb
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\GeneratedInternalTypeHelper.g.cs

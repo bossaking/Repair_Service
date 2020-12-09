@@ -41,7 +41,7 @@ namespace Repair_Service
 
         public async void RefreshData()
         {
-            if(await pageController.RefreshDevices())
+            if (await pageController.RefreshDevices())
             {
                 DataGrid.ItemsSource = await pageController.GetDevicesAsync();
                 window.StopRefreshing();
@@ -49,7 +49,7 @@ namespace Repair_Service
         }
         private async void DeleteDevice()
         {
-            if(!await pageController.DeleteDeviceAsync(DataGrid.SelectedItem as Device))
+            if (!await pageController.DeleteDeviceAsync(DataGrid.SelectedItem as Device))
             {
                 MessageBox.Show("Selected item cannot be deleted!", "Delete error", MessageBoxButton.OK, MessageBoxImage.Error);
             }

@@ -41,7 +41,7 @@ namespace Repair_Service
         private async void AddNewRole()
         {
             window.ShowProgressBar();
-            if(! await pageController.AddNewRoleAsync(role))
+            if (!await pageController.AddNewRoleAsync(role))
             {
                 window.HideProgressBar();
                 MessageBox.Show("Item already exists!", "Name error", MessageBoxButton.OK, MessageBoxImage.Error);

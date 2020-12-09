@@ -53,7 +53,7 @@ namespace Repair_Service
 
         public async void RefreshData()
         {
-            if(await mainPageController.RefreshOrders())
+            if (await mainPageController.RefreshOrders())
             {
                 DataGrid.ItemsSource = await mainPageController.GetAllOrdersAsync();
                 window.StopRefreshing();

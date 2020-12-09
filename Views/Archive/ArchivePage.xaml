@@ -1,15 +1,16 @@
-﻿<Page x:Class="Repair_Service.ArchivePage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:local="clr-namespace:Repair_Service"
-      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      mc:Ignorable="d"
-      d:DesignHeight="800"
-      d:DesignWidth="1200"
-      FontSize="16"
-      Background="White">
+﻿<Page
+    x:Class="Repair_Service.ArchivePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Repair_Service"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="800"
+    d:DesignWidth="1200"
+    Background="White"
+    FontSize="16"
+    mc:Ignorable="d">
 
     <Grid ShowGridLines="False">
         <Grid.RowDefinitions>
@@ -18,83 +19,88 @@
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
-        <!--ARCHIVE HEADER-->
-        <Label FontSize="30"
-               HorizontalAlignment="Center"
-               VerticalAlignment="Center">ARCHIVE</Label>
+        <!--#region ARCHIVE HEADER-->
+        <Label
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="30">
+            ARCHIVE
+        </Label>
 
-        <Button Grid.Row="0"
-                Margin="10,0"
-                Click="BackButton_Click"
-                IsCancel="True"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                Style="{StaticResource MaterialDesignIconButton}"
-                ToolTip="Back"
-                Foreground="Black">
+        <Button
+            Grid.Row="0"
+            Margin="10,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Click="BackButton_Click"
+            Foreground="Black"
+            IsCancel="True"
+            Style="{StaticResource MaterialDesignIconButton}"
+            ToolTip="Back">
             <materialDesign:PackIcon Kind="ArrowLeft" />
         </Button>
+        <!--#endregion-->
 
-        <!--TABLE WITH REPORTMENTS-->
-        <DataGrid Name="DataGrid"
-                  Grid.Row="1"
-                  Width="auto"
-                  ColumnWidth="auto"
-                  FontSize="16"
-                  Margin="5,5,5,5"
-                  IsReadOnly="True"
-                  HorizontalAlignment="Center"
-                  VerticalAlignment="Top"
-                  AutoGenerateColumns="False"
-                  CanUserResizeColumns="False"
-                  CanUserResizeRows="False">
+        <!--#region TABLE WITH REPORTMENTS-->
+        <DataGrid
+            Name="DataGrid"
+            Grid.Row="1"
+            Width="auto"
+            Margin="5,5,5,5"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            AutoGenerateColumns="False"
+            CanUserResizeColumns="False"
+            CanUserResizeRows="False"
+            ColumnWidth="auto"
+            FontSize="16"
+            IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id"
-                                    Binding="{Binding Id_Order}" />
-                <DataGridTextColumn Header="Client name"
-                                    Binding="{Binding Client.Name}" />
-                <DataGridTextColumn Header="Client phone number"
-                                    Binding="{Binding Client.Phone_Number}" />
-                <DataGridTextColumn Header="Device name"
-                                    Binding="{Binding Device.Model_Title}" />
-                <DataGridTextColumn Header="Device type"
-                                    Binding="{Binding Device.Device_Type.Type_Title}" />
-                <DataGridTextColumn Header="Order date"
-                                    Binding="{Binding Order_Date}" />
-                <DataGridTextColumn Header="Status"
-                                    Binding="{Binding Status.Title}" />
+                <DataGridTextColumn Binding="{Binding Id_Order}" Header="Id" />
+                <DataGridTextColumn Binding="{Binding Client.Name}" Header="Client name" />
+                <DataGridTextColumn Binding="{Binding Client.Phone_Number}" Header="Client phone number" />
+                <DataGridTextColumn Binding="{Binding Device.Model_Title}" Header="Device name" />
+                <DataGridTextColumn Binding="{Binding Device.Device_Type.Type_Title}" Header="Device type" />
+                <DataGridTextColumn Binding="{Binding Order_Date}" Header="Order date" />
+                <DataGridTextColumn Binding="{Binding Status.Title}" Header="Status" />
                 <DataGridTemplateColumn Header="Action">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <WrapPanel>
-                                <Button Click="DetailsButton_Click"
-                                        Padding="0"
-                                        Margin="0,0,15,0"
-                                        Style="{StaticResource MaterialDesignFlatButton}"
-                                        ToolTip="Details"
-                                        Foreground="Black">
-                                    <materialDesign:PackIcon Kind="TextBoxSearchOutline"
-                                                             Height="22"
-                                                             Width="22" />
+                                <Button
+                                    Margin="0,0,15,0"
+                                    Padding="0"
+                                    Click="DetailsButton_Click"
+                                    Foreground="Black"
+                                    Style="{StaticResource MaterialDesignFlatButton}"
+                                    ToolTip="Details">
+                                    <materialDesign:PackIcon
+                                        Width="22"
+                                        Height="22"
+                                        Kind="TextBoxSearchOutline" />
                                 </Button>
-                                <Button Click="RestoreButton_Click"
-                                        Padding="0"
-                                        Margin="0,0,15,0"
-                                        Style="{StaticResource MaterialDesignFlatButton}"
-                                        ToolTip="Restore"
-                                        Foreground="Black">
-                                    <materialDesign:PackIcon Kind="Restore"
-                                                             Height="22"
-                                                             Width="22" />
+                                <Button
+                                    Margin="0,0,15,0"
+                                    Padding="0"
+                                    Click="RestoreButton_Click"
+                                    Foreground="Black"
+                                    Style="{StaticResource MaterialDesignFlatButton}"
+                                    ToolTip="Restore">
+                                    <materialDesign:PackIcon
+                                        Width="22"
+                                        Height="22"
+                                        Kind="Restore" />
                                 </Button>
-                                <Button Click="DeleteButton_Click"
-                                        Padding="0"
-                                        Style="{StaticResource MaterialDesignFlatButton}"
-                                        ToolTip="Delete"
-                                        Foreground="Black">
-                                    <materialDesign:PackIcon Kind="Delete"
-                                                             Height="22"
-                                                             Width="22" />
+                                <Button
+                                    Padding="0"
+                                    Click="DeleteButton_Click"
+                                    Foreground="Black"
+                                    Style="{StaticResource MaterialDesignFlatButton}"
+                                    ToolTip="Delete">
+                                    <materialDesign:PackIcon
+                                        Width="22"
+                                        Height="22"
+                                        Kind="Delete" />
                                 </Button>
                             </WrapPanel>
                         </DataTemplate>
@@ -102,6 +108,7 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <!--#endregion-->
     </Grid>
 
 </Page>

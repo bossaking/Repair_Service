@@ -46,7 +46,7 @@ namespace Repair_Service
             TypesComboBox.ItemsSource = await pageController.GetTypesAsync();
             BrandsComboBox.ItemsSource = await pageController.GetBrandsAsync();
 
-            if(mode == Modes.Edit)
+            if (mode == Modes.Edit)
             {
                 TypesComboBox.SelectedItem = (TypesComboBox.ItemsSource as ObservableCollection<Device_Type>).FirstOrDefault(t => t.Id_Type == device.Device_Type.Id_Type);
                 BrandsComboBox.SelectedItem = (BrandsComboBox.ItemsSource as ObservableCollection<Brand>).FirstOrDefault(b => b.Id_Brand == device.Device_Brand.Id_Brand);
@@ -92,7 +92,7 @@ namespace Repair_Service
                 AddNewDevice();
 
             if (mode == Modes.Edit)
-                UpdateDevice(); 
+                UpdateDevice();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

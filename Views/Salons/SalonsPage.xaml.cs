@@ -43,7 +43,7 @@ namespace Repair_Service
 
         public async void RefreshData()
         {
-            if(await pageController.RefreshSalons())
+            if (await pageController.RefreshSalons())
             {
                 DataGrid.ItemsSource = await pageController.GetSalonsAsync();
                 window.StopRefreshing();
@@ -52,7 +52,7 @@ namespace Repair_Service
 
         private async void DeleteSalon()
         {
-            if(! await pageController.DeleteSalonAsync(DataGrid.SelectedItem as Salon))
+            if (!await pageController.DeleteSalonAsync(DataGrid.SelectedItem as Salon))
             {
                 MessageBox.Show("Selected item cannot be deleted!", "Delete error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
