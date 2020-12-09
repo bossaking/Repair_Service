@@ -127,6 +127,7 @@ namespace Repair_Service
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
+            if (Validator.HasErrors(MainGrid)) return;
             MainGrid.IsEnabled = false;
             window.ShowProgressBar();
             UpdateOrder();
