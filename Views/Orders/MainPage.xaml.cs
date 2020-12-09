@@ -156,5 +156,10 @@ namespace Repair_Service
             this.NavigationService.Navigate(statusesPage);
         }
         #endregion
+
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

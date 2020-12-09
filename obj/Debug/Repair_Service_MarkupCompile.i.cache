@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\apps\Repair_Service\obj\Debug\
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\
 Repair_Service
 none
 false
 DEBUG;TRACE
-D:\apps\Repair_Service\App.xaml
-26-1573231662
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\App.xaml
+281947144699
 
-732133386478
-501570038312
-Views\Devices\AddDevicePage.xaml;Views\Brands\AddEditBrandsPage.xaml;Views\Employees\AddEditEmployeesPage.xaml;Views\Problems\AddEditProblemsPage.xaml;Views\Roles\AddEditRolesPage.xaml;Views\Salons\AddEditSalonsPage.xaml;Views\Statuses\AddEditStatusesPage.xaml;Views\Types\AddEditTypesPage.xaml;Views\Archive\ArchieveDetailsPage.xaml;Views\Archive\ArchivePage.xaml;Views\Brands\BrandsPage.xaml;ChooseExisitingClientWindow.xaml;Views\Clients\ClientsPage.xaml;Views\Devices\DevicesPage.xaml;Views\Clients\EditClientPage.xaml;Views\Orders\EditPage.xaml;Views\Employees\EmployeesPage.xaml;Views\LoginPage.xaml;Views\Orders\MainPage.xaml;MainWindow.xaml;Views\Orders\NewReportmentPage.xaml;Views\Problems\ProblemsPage.xaml;Views\Roles\RolesPage.xaml;Views\Salons\SalonsPage.xaml;Views\Statuses\StatusesPage.xaml;Views\Types\TypesPage.xaml;
+74-668395009
+50-1114326531
+Images\RLogo.xaml;PrintArchivedOrderWindow.xaml;Views\Devices\AddDevicePage.xaml;Views\Brands\AddEditBrandsPage.xaml;Views\Employees\AddEditEmployeesPage.xaml;Views\Problems\AddEditProblemsPage.xaml;Views\Roles\AddEditRolesPage.xaml;Views\Salons\AddEditSalonsPage.xaml;Views\Statuses\AddEditStatusesPage.xaml;Views\Types\AddEditTypesPage.xaml;Views\Archive\ArchieveDetailsPage.xaml;Views\Archive\ArchivePage.xaml;Views\Brands\BrandsPage.xaml;ChooseExisitingClientWindow.xaml;Views\Clients\ClientsPage.xaml;Views\Devices\DevicesPage.xaml;Views\Clients\EditClientPage.xaml;Views\Orders\EditPage.xaml;Views\Employees\EmployeesPage.xaml;Views\LoginPage.xaml;Views\Orders\MainPage.xaml;MainWindow.xaml;Views\Orders\NewReportmentPage.xaml;Views\Problems\ProblemsPage.xaml;Views\Roles\RolesPage.xaml;Views\Salons\SalonsPage.xaml;Views\Statuses\StatusesPage.xaml;Views\Types\TypesPage.xaml;
 
 True
 
