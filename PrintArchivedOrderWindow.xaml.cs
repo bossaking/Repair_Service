@@ -1,4 +1,4 @@
-﻿using NHibernate.Criterion;
+﻿using Repair_Service.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,14 +17,23 @@ namespace Repair_Service
 {
     public partial class PrintArchivedOrderWindow : Window
     {
-        public PrintArchivedOrderWindow()
+        Order order;
+        public PrintArchivedOrderWindow(Order order)
         {
+            this.order = order;
             InitializeComponent();
         }
 
         private void PrintArchivedOrderWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            //TODO Binding
+            dateLabel.Content = DateTime.Now;
+            for(int i = 0; i < order.Problems.Count; i++)
+            {
+                problemsTextBlock.Text += order.Problems[i];
+                if (i < order.Problems.Count - 1)
+                    problemsTextBlock.Text += ", ";
+            }
+            DataContext = order;
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
@@ -39,22 +48,6 @@ namespace Repair_Service
 
         private void PrintButton_Click(object sender, RoutedEventArgs e)
         {
-            //try
-            //{
-            //    NavigationGrid.Visibility = Visibility.Collapsed;
-            //    this.IsEnabled = false;
-
-            //    PrintDialog printDialog = new PrintDialog();
-            //    if (printDialog.ShowDialog() == true)
-            //    {
-            //        printDialog.PrintVisual(this, "Something");
-            //    }
-            //}
-            //finally
-            //{
-            //    NavigationGrid.Visibility = Visibility.Visible;
-            //    this.IsEnabled = true;
-            //}
 
             BackButton.Visibility = Visibility.Hidden;
             PrintButton.Visibility = Visibility.Hidden;
@@ -62,7 +55,7 @@ namespace Repair_Service
             PrintDialog printDialog = new PrintDialog();
             if (printDialog.ShowDialog() == true)
             {
-                printDialog.PrintVisual(this, "Something");
+                printDialog.PrintVisual(this, "Repair Service");
             }
 
             BackButton.Visibility = Visibility.Visible;

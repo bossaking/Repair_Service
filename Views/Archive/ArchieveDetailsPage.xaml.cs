@@ -48,7 +48,7 @@ namespace Repair_Service
 
         private void PrintButton_Click(object sender, RoutedEventArgs e)
         {
-            PrintArchivedOrderWindow printArchivedOrderWindow = new PrintArchivedOrderWindow() { Owner = Window.GetWindow(this) };
+            PrintArchivedOrderWindow printArchivedOrderWindow = new PrintArchivedOrderWindow(order) { Owner = Window.GetWindow(this) };
             printArchivedOrderWindow.ShowDialog();
         }
     }
