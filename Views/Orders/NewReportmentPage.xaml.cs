@@ -124,6 +124,7 @@ namespace Repair_Service
 
         private async void AddNewOrder()
         {
+            
             newOrder.Problems = problems;
             window.ShowProgressBar();
             if (!await reportmentPageController.AddNewOrder(newOrder))
@@ -157,9 +158,12 @@ namespace Repair_Service
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
+            if (Validator.HasErrors(MainGrid)) return;
             DisableGrid();
             AddNewOrder();
         }
+
+
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {

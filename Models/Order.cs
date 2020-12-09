@@ -11,7 +11,7 @@ namespace Repair_Service.Models
     {
         public virtual int Id_Order { get; set; }
         private Client client;
-        public virtual Client Client { get { return client; } set { client = value; OnPropertyChanged("Client"); } }
+        public virtual Client Client { get { return client; } set { client = value ?? throw new ArgumentException("The field cannot be empty"); OnPropertyChanged("Client"); } }
         public virtual string Description { get; set; }
         public virtual decimal Price { get; set; }
         public virtual Device Device { get; set; }

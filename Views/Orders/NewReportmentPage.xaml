@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:sdl="http://schemas.sdl.com/xaml"
       xmlns:local="clr-namespace:Repair_Service"
-      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:local1="clr-namespace:Repair_Service.Models"
       mc:Ignorable="d"
       d:DesignHeight="800"
       d:DesignWidth="1200"
@@ -51,27 +51,48 @@
         <TextBox Grid.Row="1"
                  Grid.Column="1"
                  Margin="5"
-                 Text="{Binding Path=Client.Name}"
                  VerticalContentAlignment="Center"
-                 HorizontalContentAlignment="Left" />
+                 HorizontalContentAlignment="Left">
+            <TextBox.Text>
+                <Binding Path="Client.Name">
+                    <Binding.ValidationRules>
+                        <local1:NonEmptyFieldRule ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
         <Label Grid.Row="2"
                Grid.Column="0"
                VerticalContentAlignment="Center">Surname:</Label>
         <TextBox Grid.Row="2"
                  Grid.Column="1"
                  Margin="5"
-                 Text="{Binding Path=Client.Surname}"
                  VerticalContentAlignment="Center"
-                 HorizontalContentAlignment="Left" />
+                 HorizontalContentAlignment="Left">
+            <TextBox.Text>
+                <Binding Path="Client.Surname">
+                    <Binding.ValidationRules>
+                        <local1:NonEmptyFieldRule  ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
         <Label Grid.Row="3"
                Grid.Column="0"
                VerticalContentAlignment="Center">Phone number:</Label>
         <TextBox Grid.Row="3"
                  Grid.Column="1"
                  Margin="5"
-                 Text="{Binding Path=Client.Phone_Number}"
                  VerticalContentAlignment="Center"
-                 HorizontalContentAlignment="Left" />
+                 HorizontalContentAlignment="Left">
+            <TextBox.Text>
+                <Binding Path="Client.Phone_Number">
+                    <Binding.ValidationRules>
+                        <local1:NonEmptyFieldRule ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
 
         <!--DEVICE TYPE-->
         <Label Grid.Row="4"
@@ -81,9 +102,17 @@
                   Grid.Row="4"
                   Grid.Column="1"
                   Margin="5"
-                  Padding="5"
                   DisplayMemberPath="Type_Title"
-                  VerticalContentAlignment="Center" />
+                  Padding="5"
+                  VerticalContentAlignment="Center" >
+            <ComboBox.Text>
+                <Binding Path="Device.Device_Type.Type_Title">
+                    <Binding.ValidationRules>
+                        <local1:NonEmptyFieldRule ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </ComboBox.Text>
+        </ComboBox>
 
         <!--DEVICE BRAND-->
         <Label Grid.Row="5"
@@ -98,7 +127,15 @@
                   VerticalContentAlignment="Center"
                   IsEditable="True"
                   IsTextSearchEnabled="True"
-                  IsEnabled="False" />
+                  IsEnabled="False" >
+            <ComboBox.Text>
+                <Binding Path="Device.Device_Brand.Title">
+                    <Binding.ValidationRules>
+                        <local1:NonEmptyFieldRule ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </ComboBox.Text>
+        </ComboBox>
 
         <!--DEVICE MODEL-->
         <Label Grid.Row="6"
@@ -109,13 +146,21 @@
                   Grid.Column="1"
                   Margin="5"
                   Padding="5"
-                  SelectedValue="{Binding Path=Device}"
                   DisplayMemberPath="Model_Title"
+                  SelectedValue="{Binding Path=Device}"
                   VerticalContentAlignment="Center"
                   IsEditable="True"
                   IsTextSearchEnabled="True"
                   TextSearch.TextPath="Model_Title"
-                  IsEnabled="False" />
+                  IsEnabled="False">
+            <ComboBox.Text>
+                <Binding Path="Device.Model_Title">
+                    <Binding.ValidationRules>
+                        <local1:NonEmptyFieldRule ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </ComboBox.Text>
+        </ComboBox>
 
         <!--PROBLEMS-->
         <Label Grid.Row="7"
@@ -186,13 +231,22 @@
                     <TextBlock>
                         <TextBlock.Text>
                             <MultiBinding StringFormat="{}{0} {1}">
-                                <Binding Path="Name" />
-                                <Binding Path="Surname" />
+                                <MultiBinding.Bindings>
+                                <Binding Path="Name"/>
+                                <Binding Path="Surname"/>
+                                </MultiBinding.Bindings>
                             </MultiBinding>
                         </TextBlock.Text>
                     </TextBlock>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
+            <ComboBox.SelectedItem>
+                <Binding Path="Employee.Name">
+                    <Binding.ValidationRules>
+                        <local1:NonEmptyFieldRule ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </ComboBox.SelectedItem>
         </ComboBox>
 
         <!--DESCRIPTION-->
@@ -204,14 +258,21 @@
                  Grid.Row="10"
                  Grid.Column="1"
                  Margin="5"
-                 Text="{Binding Path=Description}"
                  MinLines="6"
                  MaxLines="6"
                  MaxLength="1500"
                  AcceptsReturn="True"
                  AcceptsTab="True"
                  TextWrapping="Wrap"
-                 VerticalScrollBarVisibility="Auto" />
+                 VerticalScrollBarVisibility="Auto">
+            <TextBox.Text>
+                <Binding Path="Description">
+                    <Binding.ValidationRules>
+                        <local1:NonEmptyFieldRule ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
 
         <!--BUTTONS-->
         <WrapPanel Grid.Row="11"
