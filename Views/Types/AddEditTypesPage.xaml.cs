@@ -38,7 +38,7 @@ namespace Repair_Service
         private async void AddNewType()
         {
             window.ShowProgressBar();
-            if(! await pageController.AddNewTypeAsync(type))
+            if (!await pageController.AddNewTypeAsync(type))
             {
                 window.HideProgressBar();
                 MessageBox.Show("Item already exists!", "Name error", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -67,7 +67,7 @@ namespace Repair_Service
             if (Validator.HasErrors(MainGrid)) return;
             DisableGrid();
 
-            if(mode == Modes.Add)
+            if (mode == Modes.Add)
                 AddNewType();
 
             if (mode == Modes.Edit)

@@ -44,7 +44,7 @@ namespace Repair_Service
 
         private async void DeleteEmployee()
         {
-            if(! await pageController.DeleteEmployeeAsync(DataGrid.SelectedItem as Employee))
+            if (!await pageController.DeleteEmployeeAsync(DataGrid.SelectedItem as Employee))
             {
                 MessageBox.Show("Selected item cannot be deleted!", "Delete error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -52,12 +52,12 @@ namespace Repair_Service
 
         public async void RefreshData()
         {
-            if(await pageController.RefreshEmployees())
+            if (await pageController.RefreshEmployees())
             {
                 DataGrid.ItemsSource = await pageController.GetEmployeesAsync();
                 window.StopRefreshing();
             }
-            
+
         }
 
         #region BUTTONS

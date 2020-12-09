@@ -43,7 +43,7 @@ namespace Repair_Service
 
         public async void RefreshData()
         {
-            if(await pageController.RefreshRoles())
+            if (await pageController.RefreshRoles())
             {
                 DataGrid.ItemsSource = await pageController.GetRolesAsync();
                 window.StopRefreshing();
@@ -51,7 +51,7 @@ namespace Repair_Service
         }
         private async void DeleteRole()
         {
-            if(! await pageController.DeleteRoleAsync(DataGrid.SelectedItem as Role))
+            if (!await pageController.DeleteRoleAsync(DataGrid.SelectedItem as Role))
             {
                 MessageBox.Show("Selected item cannot be deleted!", "Delete error", MessageBoxButton.OK, MessageBoxImage.Error);
             }

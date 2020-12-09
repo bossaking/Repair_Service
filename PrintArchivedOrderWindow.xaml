@@ -21,7 +21,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <!--  BUTTONS  -->
+        <!--#region BUTTONS-->
         <Button
             Name="BackButton"
             Grid.Row="0"
@@ -49,6 +49,7 @@
             ToolTip="Print">
             <materialDesign:PackIcon Kind="Printer" />
         </Button>
+        <!--#endregion-->
 
         <Grid Name="Print" Grid.Row="1">
             <Grid.RowDefinitions>
@@ -62,7 +63,7 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <!--  HEADER  -->
+            <!--#region HEADER-->
             <Grid
                 Name="HeaderGrid"
                 Grid.Row="0"
@@ -85,7 +86,9 @@
                     Repair Service
                 </TextBlock>
             </Grid>
+            <!--#endregion-->
 
+            <!--#region DATA-->
             <StackPanel Grid.Row="1" Margin="0,25,0,0">
                 <Label
                     Margin="45,0"
@@ -294,5 +297,6 @@
                 13:21 08-12-2020
             </Label>
         </Grid>
+        <!--#endregion-->
     </Grid>
 </Window>

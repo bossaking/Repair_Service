@@ -58,8 +58,8 @@ namespace Repair_Service
                 DeviceBrandComboBox.ItemsSource = pageController.GetBrandsofType(DeviceTypeComboBox.SelectedItem as Device_Type);
                 DeviceBrandComboBox.IsEnabled = true;
                 DeviceBrandComboBox.SelectedItem = (DeviceBrandComboBox.ItemsSource as ObservableCollection<Brand>).FirstOrDefault(b => b.Id_Brand == order.Device.Device_Brand.Id_Brand);
-                if(DeviceBrandComboBox.SelectedItem == null)
-                DeviceBrandComboBox.SelectedIndex = 0;
+                if (DeviceBrandComboBox.SelectedItem == null)
+                    DeviceBrandComboBox.SelectedIndex = 0;
             }
         }
 
@@ -72,7 +72,7 @@ namespace Repair_Service
                 DeviceModelComboBox.IsEnabled = true;
                 DeviceModelComboBox.SelectedItem = (DeviceModelComboBox.ItemsSource as IList<Device>).FirstOrDefault(d => d.Id_Device == order.Device.Id_Device);
                 if (DeviceModelComboBox.SelectedItem == null)
-                DeviceModelComboBox.SelectedIndex = 0;
+                    DeviceModelComboBox.SelectedIndex = 0;
             }
         }
 
@@ -109,7 +109,7 @@ namespace Repair_Service
             order.Device = DeviceModelComboBox.SelectedItem as Device;
             order.Employee = EmployeesComboBox.SelectedItem as Employee;
             order.Status = StatusComboBox.SelectedItem as Status;
-            if(! await pageController.UpdateOrderAsync(order))
+            if (!await pageController.UpdateOrderAsync(order))
             {
                 MessageBox.Show("Something went wrong...Try again", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 window.HideProgressBar();

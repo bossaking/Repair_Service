@@ -43,7 +43,7 @@ namespace Repair_Service
 
         public async void RefreshData()
         {
-            if(await pageController.RefreshArchive())
+            if (await pageController.RefreshArchive())
             {
                 DataGrid.ItemsSource = await pageController.GetOrdersAsync();
                 window.StopRefreshing();
@@ -74,7 +74,7 @@ namespace Repair_Service
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            
+
             if (MessageBox.Show("Are you sure you want to remove the selected order?", "Delete order",
     MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
             {

@@ -49,7 +49,7 @@ namespace Repair_Service
             SalonComboBox.ItemsSource = await pageController.GetSalonsAsync();
             RolesComboBox.ItemsSource = await pageController.GetRolesAsync();
 
-            if(mode == Modes.Edit)
+            if (mode == Modes.Edit)
             {
                 SalonComboBox.SelectedItem = (SalonComboBox.ItemsSource as ObservableCollection<Salon>).FirstOrDefault(s => s.Id_Salon == employee.Employee_Salon.Id_Salon);
                 RolesComboBox.SelectedItem = (RolesComboBox.ItemsSource as ObservableCollection<Role>).FirstOrDefault(r => r.Id_Role == employee.Employee_Role.Id_Role);
@@ -59,7 +59,7 @@ namespace Repair_Service
         private async void AddNewEmployee()
         {
             window.ShowProgressBar();
-            if(! await pageController.AddNewEmployeeAsync(employee))
+            if (!await pageController.AddNewEmployeeAsync(employee))
             {
                 window.HideProgressBar();
                 MessageBox.Show("Item already exists!", "Name error", MessageBoxButton.OK, MessageBoxImage.Error);

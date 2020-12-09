@@ -36,7 +36,7 @@ namespace Repair_Service
         private async void AddNewBrand()
         {
             window.ShowProgressBar();
-            if(! await pageController.AddNewBrandAsync(brand))
+            if (!await pageController.AddNewBrandAsync(brand))
             {
                 MessageBox.Show("Item already exists!", "Name error", MessageBoxButton.OK, MessageBoxImage.Error);
                 window.HideProgressBar();
@@ -66,7 +66,7 @@ namespace Repair_Service
         {
             if (Validator.HasErrors(MainGrid)) return;
             DisableGrid();
-            if(mode == Modes.Add)
+            if (mode == Modes.Add)
                 AddNewBrand();
 
             if (mode == Modes.Edit)

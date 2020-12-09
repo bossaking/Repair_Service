@@ -48,14 +48,14 @@ namespace Repair_Service
             if (!await clientsPageController.DeleteClient((DataGrid.SelectedItem as Client).Id_Client))
             {
                 MessageBox.Show("Selected item cannot be deleted!", "Delete error", MessageBoxButton.OK, MessageBoxImage.Error);
-                
+
             }
             window.HideProgressBar();
         }
 
         public async void RefreshData()
         {
-            if(await clientsPageController.RefreshClients())
+            if (await clientsPageController.RefreshClients())
             {
                 DataGrid.ItemsSource = await clientsPageController.GetClientsAsync();
                 window.StopRefreshing();
@@ -83,7 +83,7 @@ namespace Repair_Service
             if (MessageBox.Show("Are you sure you want to remove the selected client?", "Delete client",
                 MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 DeleteClient();
-            
+
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)

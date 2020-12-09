@@ -40,7 +40,7 @@ namespace Repair_Service
         private async void AddNewStatus()
         {
             window.ShowProgressBar();
-            if(! await pageController.AddNewStatusAsync(status))
+            if (!await pageController.AddNewStatusAsync(status))
             {
                 window.HideProgressBar();
                 MessageBox.Show("Item already exists!", "Name error", MessageBoxButton.OK, MessageBoxImage.Error);

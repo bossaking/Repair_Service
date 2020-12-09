@@ -1,54 +1,80 @@
-﻿<Window x:Class="Repair_Service.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Repair_Service"
-        mc:Ignorable="d"
-        Title="Repair Service" 
-        Height="800" 
-        Width="1300" 
-        FontSize="16" 
-        WindowStartupLocation="CenterScreen"
-        Background="White">
+﻿<Window
+    x:Class="Repair_Service.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Repair_Service"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Repair Service"
+    Width="1300"
+    Height="800"
+    Background="White"
+    FontSize="16"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
-        <!--NavigationUIVisibility - Widok wracania do stron poprzednich-->
-        <Frame Name="MyFrame" Grid.Row="0" NavigationUIVisibility="Hidden" Navigated="MyFrame_Navigated"/>
+        <!--#region FRAME-->
+        <Frame
+            Name="MyFrame"
+            Grid.Row="0"
+            Navigated="MyFrame_Navigated"
+            NavigationUIVisibility="Hidden" />
+        <!--#endregion-->
 
-        <!--STATUS BAR-->
-        <Border Name="MainWindowBorder" Grid.Row="1" BorderThickness="0,0,0,0" BorderBrush="Cyan">
+        <!--#region STATUS BAR-->
+        <Border
+            Name="MainWindowBorder"
+            Grid.Row="1"
+            BorderBrush="Cyan"
+            BorderThickness="0,0,0,0">
             <StatusBar Height="30">
                 <StatusBar.ItemsPanel>
                     <ItemsPanelTemplate>
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="0.33*"/>
-                                <ColumnDefinition Width="0.33*"/>
-                                <ColumnDefinition Width="0.33*"/>
+                                <ColumnDefinition Width="0.33*" />
+                                <ColumnDefinition Width="0.33*" />
+                                <ColumnDefinition Width="0.33*" />
                             </Grid.ColumnDefinitions>
                         </Grid>
                     </ItemsPanelTemplate>
                 </StatusBar.ItemsPanel>
-                <StatusBarItem Grid.Column="0" HorizontalAlignment="Center" Padding="0">
+                <StatusBarItem
+                    Grid.Column="0"
+                    Padding="0"
+                    HorizontalAlignment="Center">
                     <TextBlock Name="RefreshTextBlock" FontSize="15">Status: OK</TextBlock>
                 </StatusBarItem>
                 <StatusBarItem Grid.Column="1" HorizontalAlignment="Center">
-                    <ProgressBar Name="ProgressBar" Visibility="Hidden" IsIndeterminate="True" Height="15" Width="300"></ProgressBar>
+                    <ProgressBar
+                        Name="ProgressBar"
+                        Width="300"
+                        Height="15"
+                        IsIndeterminate="True"
+                        Visibility="Hidden" />
                 </StatusBarItem>
-                <StatusBarItem Grid.Column="2" HorizontalAlignment="Center" Padding="0">
-                    <Button Name="RefreshButton" Click="RefreshButton_Click" Height="24" Width="75" Padding="5,2,5,2">REFRESH</Button>
+                <StatusBarItem
+                    Grid.Column="2"
+                    Padding="0"
+                    HorizontalAlignment="Center">
+                    <Button
+                        Name="RefreshButton"
+                        Width="75"
+                        Height="24"
+                        Padding="5,2,5,2"
+                        Click="RefreshButton_Click">
+                        REFRESH
+                    </Button>
                 </StatusBarItem>
             </StatusBar>
         </Border>
-        
+        <!--#endregion-->
     </Grid>
 
 </Window>
-
-<!--EDIT PAGE + ARCHIEVE DETAILS PAGE-->
