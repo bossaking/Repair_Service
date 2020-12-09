@@ -1,114 +1,131 @@
-﻿<Page x:Class="Repair_Service.MainPage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:local="clr-namespace:Repair_Service"
-      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      mc:Ignorable="d"
-      d:DesignHeight="800"
-      d:DesignWidth="1200"
-      FontSize="16"
-      Loaded="MainPage_Loaded"
-      Background="White">
+﻿<Page
+    x:Class="Repair_Service.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Repair_Service"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="800"
+    d:DesignWidth="1200"
+    Background="White"
+    FontSize="16"
+    Loaded="MainPage_Loaded"
+    mc:Ignorable="d">
 
     <Grid ShowGridLines="False">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0"
-              ShowGridLines="False">
+        <Grid Grid.Row="0" ShowGridLines="False">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <!--NAVIGATION BUTTONS-->
-            <Button Grid.Column="2"
-                    Margin="10,0"
-                    Click="LogoutButton_Click"
-                    IsCancel="True"
-                    HorizontalAlignment="Right"
-                    Style="{StaticResource MaterialDesignIconButton}"
-                    ToolTip="Logout"
-                    Foreground="Black">
+            <!--  NAVIGATION BUTTONS  -->
+            <Button
+                Grid.Column="2"
+                Margin="10,0"
+                HorizontalAlignment="Right"
+                Click="LogoutButton_Click"
+                Foreground="Black"
+                IsCancel="True"
+                Style="{StaticResource MaterialDesignIconButton}"
+                ToolTip="Logout">
                 <materialDesign:PackIcon Kind="Logout" />
             </Button>
-            <WrapPanel Grid.Column="1"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center">
-                <Button Margin="5"
-                        Click="ClientsButton_Click">Clients</Button>
-                <Button Margin="5"
-                        Click="DevicesButton_Click">Devices</Button>
-                <Button Margin="5"
-                        Click="TypesButton_Click">Types</Button>
-                <Button Margin="5"
-                        Click="BrandsButton_Click">Brands</Button>
-                <Button Margin="5"
-                        Click="ProblemsButton_Click">Problems</Button>
+            <WrapPanel
+                Grid.Column="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+                <Button Margin="5" Click="ClientsButton_Click">Clients</Button>
+                <Button Margin="5" Click="DevicesButton_Click">Devices</Button>
+                <Button Margin="5" Click="TypesButton_Click">Types</Button>
+                <Button Margin="5" Click="BrandsButton_Click">Brands</Button>
+                <Button Margin="5" Click="ProblemsButton_Click">Problems</Button>
                 <WrapPanel Name="AdministratorPanel" Visibility="Collapsed">
-                <Button Margin="5"
-                        Click="EmployeesButton_Click">Employees</Button>
-                <Button Margin="5"
-                        Click="RolesButton_Click">Roles</Button>
-                <Button Margin="5"
-                        Click="SalonsButton_Click">Salons</Button>
-                <Button Margin="5"
-                        Click="StatusesButton_Click">Statuses</Button>
-                <Button Margin="5"
-                        Click="ArchiveButton_Click">Archive</Button>
+                    <Button Margin="5" Click="EmployeesButton_Click">Employees</Button>
+                    <Button Margin="5" Click="RolesButton_Click">Roles</Button>
+                    <Button Margin="5" Click="SalonsButton_Click">Salons</Button>
+                    <Button Margin="5" Click="StatusesButton_Click">Statuses</Button>
+                    <Button Margin="5" Click="ArchiveButton_Click">Archive</Button>
                 </WrapPanel>
             </WrapPanel>
         </Grid>
 
-        <!--TABLE WITH REPORTMENTS-->
-        <DataGrid Name="DataGrid"
-                  Grid.Row="1"
-                  Width="auto"
-                  ColumnWidth="auto"
-                  FontSize="16"
-                  Margin="5,5,5,5"
-                  IsReadOnly="True"
-                  HorizontalAlignment="Center"
-                  VerticalAlignment="Top"
-                  AutoGenerateColumns="False"
-                  CanUserResizeColumns="False"
-                  CanUserResizeRows="False">
+        <!--  SEARCH BOX  -->
+        <WrapPanel
+            Grid.Row="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+            <Button
+                Height="25"
+                Padding="0"
+                VerticalAlignment="Bottom"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                Click="SearchButton_Click"
+                Foreground="Black"
+                ToolTip="Search">
+                <materialDesign:PackIcon
+                    Width="25"
+                    Height="25"
+                    Margin="0,0,2,0"
+                    Kind="Search" />
+            </Button>
+            <TextBox
+                Name="TextBoxLogin"
+                Width="200"
+                materialDesign:HintAssist.Hint="Search"
+                materialDesign:TextFieldAssist.HasClearButton="True"
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+        </WrapPanel>
+
+        <!--  TABLE WITH REPORTMENTS  -->
+        <DataGrid
+            Name="DataGrid"
+            Grid.Row="2"
+            Width="auto"
+            Margin="5,5,5,5"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            AutoGenerateColumns="False"
+            CanUserResizeColumns="False"
+            CanUserResizeRows="False"
+            ColumnWidth="auto"
+            FontSize="16"
+            IsReadOnly="True">
             <!--<DataGrid.CellStyle>
                 <Style>
                     <Setter></Setter>
                 </Style>
             </DataGrid.CellStyle>-->
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id"
-                                    Binding="{Binding Id_Order}" />
-                <DataGridTextColumn Header="Client name"
-                                    Binding="{Binding Client.Name}" />
-                <DataGridTextColumn Header="Client phone number"
-                                    Binding="{Binding Client.Phone_Number}" />
-                <DataGridTextColumn Header="Device name"
-                                    Binding="{Binding Device.Model_Title}" />
-                <DataGridTextColumn Header="Device type"
-                                    Binding="{Binding Device.Device_Type.Type_Title}" />
-                <DataGridTextColumn Header="Order date"
-                                    Binding="{Binding Order_Date}" />
-                <DataGridTextColumn Header="Status"
-                                    Binding="{Binding Status.Title}" />
+                <DataGridTextColumn Binding="{Binding Id_Order}" Header="Id" />
+                <DataGridTextColumn Binding="{Binding Client.Name}" Header="Client name" />
+                <DataGridTextColumn Binding="{Binding Client.Phone_Number}" Header="Client phone number" />
+                <DataGridTextColumn Binding="{Binding Device.Model_Title}" Header="Device name" />
+                <DataGridTextColumn Binding="{Binding Device.Device_Type.Type_Title}" Header="Device type" />
+                <DataGridTextColumn Binding="{Binding Order_Date}" Header="Order date" />
+                <DataGridTextColumn Binding="{Binding Status.Title}" Header="Status" />
                 <DataGridTemplateColumn Header="Action">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <WrapPanel>
-                                <Button Click="EditButton_Click"
-                                        Style="{StaticResource MaterialDesignFlatButton}"
-                                        ToolTip="Edit"
-                                        Foreground="Black">
-                                    <materialDesign:PackIcon Kind="Pencil" 
-                                                             Height="22"
-                                                             Width="22"/>
+                                <Button
+                                    Click="EditButton_Click"
+                                    Foreground="Black"
+                                    Style="{StaticResource MaterialDesignFlatButton}"
+                                    ToolTip="Edit">
+                                    <materialDesign:PackIcon
+                                        Width="22"
+                                        Height="22"
+                                        Kind="Pencil" />
                                 </Button>
                             </WrapPanel>
                         </DataTemplate>
@@ -117,21 +134,22 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <!--xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"-->
+        <!--  xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"  -->
 
-        <Button Grid.Row="1"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Bottom"
-                Margin="0,0,40,40"
-                Click="AddButton_Click"
-                IsDefault="True"
-                Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
-                ToolTip="Add order">
-            <materialDesign:PackIcon Kind="Plus"
-                                     Height="30"
-                                     Width="30" />
+        <Button
+            Grid.Row="2"
+            Margin="0,0,40,40"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            Click="AddButton_Click"
+            Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+            ToolTip="Add order">
+            <materialDesign:PackIcon
+                Width="30"
+                Height="30"
+                Kind="Plus" />
         </Button>
     </Grid>
 </Page>
 
-<!--Background="#EEEEE8"-->
+<!--  Background="#EEEEE8"  -->

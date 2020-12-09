@@ -353,4 +353,6 @@ D:\apps\Repair_Service\obj\Debug\Views\Roles\RolesPage.baml
 D:\apps\Repair_Service\obj\Debug\Views\Salons\SalonsPage.baml
 D:\apps\Repair_Service\obj\Debug\Views\Statuses\StatusesPage.baml
 D:\apps\Repair_Service\obj\Debug\Views\Types\TypesPage.baml
-D:\apps\Repair_Service\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\PrintArchivedOrderWindow.g.cs
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\PrintArchivedOrderWindow.baml
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\Images\RLogo.baml
