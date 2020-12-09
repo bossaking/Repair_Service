@@ -356,3 +356,7 @@ D:\apps\Repair_Service\obj\Debug\Views\Types\TypesPage.baml
 C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\PrintArchivedOrderWindow.g.cs
 C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\PrintArchivedOrderWindow.baml
 C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\Images\RLogo.baml
+D:\apps\Repair_Service\obj\Debug\Images\RLogo.baml
+D:\apps\Repair_Service\obj\Debug\PrintArchivedOrderWindow.g.cs
+D:\apps\Repair_Service\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\apps\Repair_Service\obj\Debug\PrintArchivedOrderWindow.baml
