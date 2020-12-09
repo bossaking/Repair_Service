@@ -45,5 +45,11 @@ namespace Repair_Service
             window.Title = "Repair Service: Details in archive";
             ArchieveDetailsPage_Loaded(sender, e);
         }
+
+        private void PrintButton_Click(object sender, RoutedEventArgs e)
+        {
+            PrintArchivedOrderWindow printArchivedOrderWindow = new PrintArchivedOrderWindow() { Owner = Window.GetWindow(this) };
+            printArchivedOrderWindow.ShowDialog();
+        }
     }
 }
