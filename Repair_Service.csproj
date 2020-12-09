@@ -155,6 +155,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controllers\Validator.cs" />
+    <Compile Include="Models\NonEmptyFieldRule.cs" />
     <Compile Include="PrintArchivedOrderWindow.xaml.cs">
       <DependentUpon>PrintArchivedOrderWindow.xaml</DependentUpon>
     </Compile>
