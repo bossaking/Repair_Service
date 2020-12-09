@@ -82,6 +82,7 @@ namespace Repair_Service
         #region BUTTONS
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
+            if (Validator.HasErrors(MainGrid)) return;
             DisableGrid();
 
             device.Device_Type = TypesComboBox.SelectedItem as Device_Type;
