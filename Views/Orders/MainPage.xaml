@@ -80,10 +80,11 @@
                     Kind="Search" />
             </Button>
             <TextBox
-                Name="TextBoxLogin"
+                Name="TextBoxSearch"
                 Width="200"
                 materialDesign:HintAssist.Hint="Search"
                 materialDesign:TextFieldAssist.HasClearButton="True"
+                TextChanged="TextBoxSearch_TextChanged"
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
         </WrapPanel>
         <!--#endregion-->
