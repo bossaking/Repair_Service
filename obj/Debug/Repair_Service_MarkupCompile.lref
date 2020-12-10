@@ -1,5 +1,6 @@
 ﻿
 FC:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\App.xaml;;
+FC:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\DeleteWindow.xaml;;
 FC:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\PrintArchivedOrderWindow.xaml;;
 FC:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\Views\Devices\AddDevicePage.xaml;;
 FC:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\Views\Brands\AddEditBrandsPage.xaml;;
@@ -27,4 +28,5 @@ FC:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\Views\Roles\RolesPage.xaml;
 FC:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\Views\Salons\SalonsPage.xaml;;
 FC:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\Views\Statuses\StatusesPage.xaml;;
 FC:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\Views\Types\TypesPage.xaml;;
+FC:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\ErrorWindow.xaml;;
 

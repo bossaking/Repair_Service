@@ -42,7 +42,7 @@ namespace Repair_Service
 
         public async void RefreshData()
         {
-            if(await pageController.RefreshProblems())
+            if (await pageController.RefreshProblems())
             {
                 DataGrid.ItemsSource = await pageController.GetProblemsAsync();
                 window.StopRefreshing();
@@ -51,9 +51,17 @@ namespace Repair_Service
 
         private async void DeleteProblem()
         {
-            if(! await pageController.DeleteProblemAsync(DataGrid.SelectedItem as Problem))
+            if (!await pageController.DeleteProblemAsync(DataGrid.SelectedItem as Problem))
             {
-                MessageBox.Show("Selected item cannot be deleted!", "Delete error", MessageBoxButton.OK, MessageBoxImage.Error);
+                //MessageBox.Show("Selected item cannot be deleted!", "Delete error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                ErrorWindow errorWindow = new ErrorWindow
+                {
+                    Owner = window
+                };
+
+                errorWindow.text = "Selected item cannot be deleted!";
+                errorWindow.ShowDialog();
             }
         }
 
@@ -62,14 +70,28 @@ namespace Repair_Service
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to remove the selected problem?", "Delete problem",
-                MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
+            //if (MessageBox.Show("Are you sure you want to remove the selected problem?", "Delete problem",
+            //    MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
+            //{
+            //    return;
+            //}
+            //else
+            //{
+            //    DeleteProblem();
+            //}
+
+            DeleteWindow deleteWindow = new DeleteWindow
             {
-                return;
+                Owner = window
+            };
+
+            if (deleteWindow.ShowDialog() == true)
+            {
+                DeleteProblem();
             }
             else
             {
-                DeleteProblem();
+                return;
             }
         }
 

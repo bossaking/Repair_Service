@@ -43,7 +43,7 @@ namespace Repair_Service
 
         public async void RefreshData()
         {
-            if(await pageController.RefreshBrands())
+            if (await pageController.RefreshBrands())
             {
                 DataGrid.ItemsSource = await pageController.GetBrandsAsync();
                 window.StopRefreshing();
@@ -56,7 +56,7 @@ namespace Repair_Service
         private async void DeleteBrand()
         {
             window.ShowProgressBar();
-            if(! await pageController.DeleteBrandAsync(DataGrid.SelectedItem as Brand))
+            if (!await pageController.DeleteBrandAsync(DataGrid.SelectedItem as Brand))
             {
                 window.HideProgressBar();
                 MessageBox.Show("Selected item cannot be deleted!", "Delete error", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -65,14 +65,28 @@ namespace Repair_Service
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to remove the selected brand?", "Delete brand",
-                MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
+            //if (MessageBox.Show("Are you sure you want to remove the selected brand?", "Delete brand",
+            //    MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
+            //{
+            //    return;
+            //}
+            //else
+            //{
+            //    DeleteBrand();
+            //}
+
+            DeleteWindow deleteWindow = new DeleteWindow
             {
-                return;
+                Owner = window
+            };
+
+            if (deleteWindow.ShowDialog() == true)
+            {
+                DeleteBrand();
             }
             else
             {
-                DeleteBrand();
+                return;
             }
         }
 

@@ -53,7 +53,15 @@ namespace Repair_Service
         {
             if (!await pageController.DeleteRoleAsync(DataGrid.SelectedItem as Role))
             {
-                MessageBox.Show("Selected item cannot be deleted!", "Delete error", MessageBoxButton.OK, MessageBoxImage.Error);
+                //MessageBox.Show("Selected item cannot be deleted!", "Delete error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                ErrorWindow errorWindow = new ErrorWindow
+                {
+                    Owner = window
+                };
+
+                errorWindow.text = "Selected item cannot be deleted!";
+                errorWindow.ShowDialog();
             }
         }
 
@@ -62,14 +70,28 @@ namespace Repair_Service
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to remove the selected role?", "Delete role",
-                MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
+            //if (MessageBox.Show("Are you sure you want to remove the selected role?", "Delete role",
+            //    MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
+            //{
+            //    return;
+            //}
+            //else
+            //{
+            //    DeleteRole();
+            //}
+
+            DeleteWindow deleteWindow = new DeleteWindow
             {
-                return;
+                Owner = window
+            };
+
+            if (deleteWindow.ShowDialog() == true)
+            {
+                DeleteRole();
             }
             else
             {
-                DeleteRole();
+                return;
             }
         }
 

@@ -156,6 +156,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controllers\Validator.cs" />
+    <Compile Include="DeleteWindow.xaml.cs">
+      <DependentUpon>DeleteWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorWindow.xaml.cs">
+      <DependentUpon>ErrorWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Models\NonEmptyFieldRule.cs" />
     <Compile Include="PrintArchivedOrderWindow.xaml.cs">
       <DependentUpon>PrintArchivedOrderWindow.xaml</DependentUpon>
@@ -275,6 +281,14 @@
     <Compile Include="Views\Types\TypesPage.xaml.cs">
       <DependentUpon>TypesPage.xaml</DependentUpon>
     </Compile>
+    <Page Include="DeleteWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ErrorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Images\RLogo.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -429,7 +443,9 @@
   <ItemGroup>
     <Resource Include="Images\Logo.jpeg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Windows\" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Icons\Repair Service icon.ico" />
   </ItemGroup>

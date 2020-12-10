@@ -353,8 +353,6 @@ D:\apps\Repair_Service\obj\Debug\Views\Roles\RolesPage.baml
 D:\apps\Repair_Service\obj\Debug\Views\Salons\SalonsPage.baml
 D:\apps\Repair_Service\obj\Debug\Views\Statuses\StatusesPage.baml
 D:\apps\Repair_Service\obj\Debug\Views\Types\TypesPage.baml
-C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\PrintArchivedOrderWindow.g.cs
-C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\PrintArchivedOrderWindow.baml
 C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\Images\RLogo.baml
 D:\apps\Repair_Service\obj\Debug\Images\RLogo.baml
 D:\apps\Repair_Service\obj\Debug\PrintArchivedOrderWindow.g.cs
@@ -482,3 +480,9 @@ C:\Users\Mateusz\Documents\GitHub\Repair_Service\obj\Debug\Repair_Service.csproj
 C:\Users\Mateusz\Documents\GitHub\Repair_Service\obj\Debug\Repair_Service.exe
 C:\Users\Mateusz\Documents\GitHub\Repair_Service\obj\Debug\Repair_Service.pdb
 C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\DeleteWindow.g.cs
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\PrintArchivedOrderWindow.g.cs
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\DeleteWindow.baml
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\PrintArchivedOrderWindow.baml
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\ErrorWindow.g.cs
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\ErrorWindow.baml
