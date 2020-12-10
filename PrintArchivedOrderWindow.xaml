@@ -124,7 +124,7 @@
                     Grid.Column="1"
                     Margin="5"
                     VerticalAlignment="Center"
-                    Text="Binding to do" />
+                    Text="{Binding Path=Client.Name}" />
                 <Label
                     Grid.Row="1"
                     Grid.Column="0"
@@ -136,7 +136,7 @@
                     Grid.Column="1"
                     Margin="5"
                     VerticalAlignment="Center"
-                    Text="Binding to do" />
+                    Text="{Binding Path=Client.Surname}" />
                 <Label
                     Grid.Row="2"
                     Grid.Column="0"
@@ -148,7 +148,7 @@
                     Grid.Column="1"
                     Margin="5"
                     VerticalAlignment="Center"
-                    Text="Binding to do" />
+                    Text="{Binding Path=Client.Phone_Number}" />
             </Grid>
 
             <StackPanel Grid.Row="3" Margin="0,20,0,0">
@@ -188,7 +188,7 @@
                     Grid.Column="1"
                     Margin="5"
                     VerticalAlignment="Center"
-                    Text="Binding to do" />
+                    Text="{Binding Path=Device.Device_Type.Type_Title}" />
                 <Label
                     Grid.Row="1"
                     Grid.Column="0"
@@ -200,7 +200,7 @@
                     Grid.Column="1"
                     Margin="5"
                     VerticalAlignment="Center"
-                    Text="Binding to do" />
+                    Text="{Binding Path=Device.Device_Brand.Title}" />
                 <Label
                     Grid.Row="2"
                     Grid.Column="0"
@@ -212,7 +212,7 @@
                     Grid.Column="1"
                     Margin="5"
                     VerticalAlignment="Center"
-                    Text="Binding to do" />
+                    Text="{Binding Path=Device.Model_Title}" />
                 <Label
                     Grid.Row="3"
                     Grid.Column="0"
@@ -220,11 +220,11 @@
                     Problems:
                 </Label>
                 <TextBlock
+                    Name="problemsTextBlock"
                     Grid.Row="3"
                     Grid.Column="1"
                     Margin="5"
-                    VerticalAlignment="Center"
-                    Text="Binding to do" />
+                    VerticalAlignment="Center"/>
                 <Label
                     Grid.Row="4"
                     Grid.Column="0"
@@ -236,7 +236,8 @@
                     Grid.Column="1"
                     Margin="5"
                     VerticalAlignment="Center"
-                    Text="Binding to do" />
+                    Text="{Binding Path=Description}"
+                    TextWrapping="Wrap"/>
             </Grid>
 
             <StackPanel Grid.Row="5" Margin="0,20,0,0">
@@ -272,8 +273,16 @@
                     Grid.Row="0"
                     Grid.Column="1"
                     Margin="5"
-                    VerticalAlignment="Center"
-                    Text="Binding to do" />
+                    VerticalAlignment="Center">
+                    <TextBlock.Text>
+                        <MultiBinding StringFormat="{}{0} {1}">
+                            <MultiBinding.Bindings>
+                                <Binding Path="Employee.Name" />
+                                <Binding Path="Employee.Surname" />
+                            </MultiBinding.Bindings>
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
                 <Label
                     Grid.Row="1"
                     Grid.Column="0"
@@ -285,16 +294,17 @@
                     Grid.Column="1"
                     Margin="5"
                     VerticalAlignment="Center"
-                    Text="Binding to do" />
+                    Text="{Binding Path=Price, StringFormat=C}"
+                    TextWrapping="Wrap"/>
             </Grid>
 
             <Label
+                Name="dateLabel"
                 Grid.Row="7"
                 Margin="40,30"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Bottom"
                 FontSize="14">
-                13:21 08-12-2020
             </Label>
         </Grid>
         <!--#endregion-->
