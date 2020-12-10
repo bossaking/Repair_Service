@@ -22,6 +22,7 @@ namespace Repair_Service
     public partial class MainPage : Page
     {
         private MainPageController mainPageController;
+        ObservableCollection<Order> orders = new ObservableCollection<Order>();
         MainWindow window;
         public MainPage()
         {
@@ -48,7 +49,8 @@ namespace Repair_Service
 
         private async void LoadAllOrders()
         {
-            DataGrid.ItemsSource = await mainPageController.GetAllOrdersAsync();
+            orders = await mainPageController.GetAllOrdersAsync();
+            DataGrid.ItemsSource = orders;
         }
 
         public async void RefreshData()
@@ -160,6 +162,17 @@ namespace Repair_Service
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void TextBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string searchingValue = TextBoxSearch.Text.ToLower();
+            var filtered = orders.Where(o => o.Client.Name.ToLower().Contains(searchingValue) ||
+                                             o.Client.Phone_Number.ToLower().Contains(searchingValue) ||
+                                             o.Device.Model_Title.ToLower().Contains(searchingValue) ||
+                                             o.Device.Device_Type.Type_Title.ToLower().Contains(searchingValue) ||
+                                             o.Status.Title.ToLower().Contains(searchingValue));
+            DataGrid.ItemsSource = filtered;
         }
     }
 }
