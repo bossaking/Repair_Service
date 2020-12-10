@@ -111,7 +111,16 @@ namespace Repair_Service
             order.Status = StatusComboBox.SelectedItem as Status;
             if (!await pageController.UpdateOrderAsync(order))
             {
-                MessageBox.Show("Something went wrong...Try again", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                //MessageBox.Show("Something went wrong...Try again", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                ErrorWindow errorWindow = new ErrorWindow
+                {
+                    Owner = window
+                };
+
+                errorWindow.text = "Something went wrong...Try again";
+                errorWindow.ShowDialog();
+
                 window.HideProgressBar();
                 EnableGrid();
                 return;

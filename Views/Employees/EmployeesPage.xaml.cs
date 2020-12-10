@@ -46,7 +46,15 @@ namespace Repair_Service
         {
             if (!await pageController.DeleteEmployeeAsync(DataGrid.SelectedItem as Employee))
             {
-                MessageBox.Show("Selected item cannot be deleted!", "Delete error", MessageBoxButton.OK, MessageBoxImage.Error);
+                //MessageBox.Show("Selected item cannot be deleted!", "Delete error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                ErrorWindow errorWindow = new ErrorWindow
+                {
+                    Owner = window
+                };
+
+                errorWindow.text = "Selected item cannot be deleted!";
+                errorWindow.ShowDialog();
             }
         }
 
@@ -64,14 +72,28 @@ namespace Repair_Service
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to remove the selected employee?", "Delete employee",
-                MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
+            //if (MessageBox.Show("Are you sure you want to remove the selected employee?", "Delete employee",
+            //    MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
+            //{
+            //    return;
+            //}
+            //else
+            //{
+            //    DeleteEmployee();
+            //}
+
+            DeleteWindow deleteWindow = new DeleteWindow
             {
-                return;
+                Owner = window
+            };
+
+            if (deleteWindow.ShowDialog() == true)
+            {
+                DeleteEmployee();
             }
             else
             {
-                DeleteEmployee();
+                return;
             }
         }
 

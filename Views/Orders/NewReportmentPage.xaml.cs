@@ -129,7 +129,16 @@ namespace Repair_Service
             window.ShowProgressBar();
             if (!await reportmentPageController.AddNewOrder(newOrder))
             {
-                MessageBox.Show("Something went wrong...Try again", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                //MessageBox.Show("Something went wrong...Try again", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                ErrorWindow errorWindow = new ErrorWindow
+                {
+                    Owner = window
+                };
+
+                errorWindow.text = "Something went wrong...Try again";
+                errorWindow.ShowDialog();
+
                 EnableGrid();
                 window.HideProgressBar();
                 return;

@@ -85,11 +85,7 @@
             VerticalContentAlignment="Center"
             IsReadOnly="True">
             <TextBox.Text>
-                <Binding Path="Client.Surname" UpdateSourceTrigger="PropertyChanged">
-                    <Binding.ValidationRules>
-                        <local1:NonEmptyFieldRule ValidatesOnTargetUpdated="True" />
-                    </Binding.ValidationRules>
-                </Binding>
+                <Binding Path="Client.Surname" UpdateSourceTrigger="PropertyChanged" />
             </TextBox.Text>
         </TextBox>
         <Label

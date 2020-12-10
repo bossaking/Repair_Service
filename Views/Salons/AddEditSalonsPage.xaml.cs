@@ -43,7 +43,15 @@ namespace Repair_Service
             if (!await pageController.AddNewSalonAsync(salon))
             {
                 window.HideProgressBar();
-                MessageBox.Show("Item already exists!", "Name error", MessageBoxButton.OK, MessageBoxImage.Error);
+                //MessageBox.Show("Item already exists!", "Name error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                ErrorWindow errorWindow = new ErrorWindow
+                {
+                    Owner = window
+                };
+
+                errorWindow.text = "Item already exists!";
+                errorWindow.ShowDialog();
                 EnableGrid();
                 return;
             }
@@ -56,7 +64,15 @@ namespace Repair_Service
             if (!await pageController.UpdateSalonAsync(salon))
             {
                 window.HideProgressBar();
-                MessageBox.Show("Item already exists!", "Name error", MessageBoxButton.OK, MessageBoxImage.Error);
+                //MessageBox.Show("Item already exists!", "Name error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                ErrorWindow errorWindow = new ErrorWindow
+                {
+                    Owner = window
+                };
+
+                errorWindow.text = "Item already exists!";
+                errorWindow.ShowDialog();
                 EnableGrid();
                 return;
             }

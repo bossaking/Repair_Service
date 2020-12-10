@@ -38,7 +38,16 @@ namespace Repair_Service
             window.ShowProgressBar();
             if (!await pageController.AddNewBrandAsync(brand))
             {
-                MessageBox.Show("Item already exists!", "Name error", MessageBoxButton.OK, MessageBoxImage.Error);
+                //MessageBox.Show("Item already exists!", "Name error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                ErrorWindow errorWindow = new ErrorWindow
+                {
+                    Owner = window
+                };
+
+                errorWindow.text = "Item already exists!";
+                errorWindow.ShowDialog();
+
                 window.HideProgressBar();
                 EnableGrid();
                 return;
@@ -52,7 +61,16 @@ namespace Repair_Service
             window.ShowProgressBar();
             if (!await pageController.UpdateBrandAsync(brand))
             {
-                MessageBox.Show("Item already exists!", "Name error", MessageBoxButton.OK, MessageBoxImage.Error);
+                //MessageBox.Show("Item already exists!", "Name error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                ErrorWindow errorWindow = new ErrorWindow
+                {
+                    Owner = window
+                };
+
+                errorWindow.text = "Item already exists!";
+                errorWindow.ShowDialog();
+
                 window.HideProgressBar();
                 EnableGrid();
                 return;

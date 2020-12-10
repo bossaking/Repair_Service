@@ -75,14 +75,28 @@ namespace Repair_Service
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
 
-            if (MessageBox.Show("Are you sure you want to remove the selected order?", "Delete order",
-    MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
+            //        if (MessageBox.Show("Are you sure you want to remove the selected order?", "Delete order",
+            //MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
+            //        {
+            //            return;
+            //        }
+            //        else
+            //        {
+            //            DeleteOrder();
+            //        }
+
+            DeleteWindow deleteWindow = new DeleteWindow
             {
-                return;
+                Owner = window
+            };
+
+            if (deleteWindow.ShowDialog() == true)
+            {
+                DeleteOrder();
             }
             else
             {
-                DeleteOrder();
+                return;
             }
         }
     }

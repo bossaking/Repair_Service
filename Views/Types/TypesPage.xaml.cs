@@ -22,7 +22,7 @@ namespace Repair_Service
 
 
         TypesPageController pageController;
-        MainWindow window; 
+        MainWindow window;
         public TypesPage()
         {
             InitializeComponent();
@@ -39,15 +39,23 @@ namespace Repair_Service
 
         private async void DeleteType()
         {
-            if(! await pageController.DeleteTypeAsync(DataGrid.SelectedItem as Device_Type))
+            if (!await pageController.DeleteTypeAsync(DataGrid.SelectedItem as Device_Type))
             {
-                MessageBox.Show("Selected item cannot be deleted!", "Delete error", MessageBoxButton.OK, MessageBoxImage.Error);
+                //MessageBox.Show("Selected item cannot be deleted!", "Delete error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                ErrorWindow errorWindow = new ErrorWindow
+                {
+                    Owner = window
+                };
+
+                errorWindow.text = "Selected item cannot be deleted!";
+                errorWindow.ShowDialog();
             }
         }
 
         public async void RefreshData()
         {
-            if(await pageController.RefreshTypes())
+            if (await pageController.RefreshTypes())
             {
                 DataGrid.ItemsSource = await pageController.GetTypesAsync();
                 window.StopRefreshing();
@@ -64,14 +72,28 @@ namespace Repair_Service
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to remove the selected type?", "Delete type",
-                MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
+            //if (MessageBox.Show("Are you sure you want to remove the selected type?", "Delete type",
+            //    MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
+            //{
+            //    return;
+            //}
+            //else
+            //{
+            //    DeleteType();
+            //}
+
+            DeleteWindow deleteWindow = new DeleteWindow
             {
-                return;
+                Owner = window
+            };
+
+            if (deleteWindow.ShowDialog() == true)
+            {
+                DeleteType();
             }
             else
             {
-                DeleteType();
+                return;
             }
         }
 

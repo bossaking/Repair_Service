@@ -47,8 +47,15 @@ namespace Repair_Service
 
             if (!await clientsPageController.DeleteClient((DataGrid.SelectedItem as Client).Id_Client))
             {
-                MessageBox.Show("Selected item cannot be deleted!", "Delete error", MessageBoxButton.OK, MessageBoxImage.Error);
+                //MessageBox.Show("Selected item cannot be deleted!", "Delete error", MessageBoxButton.OK, MessageBoxImage.Error);
 
+                ErrorWindow errorWindow = new ErrorWindow
+                {
+                    Owner = window
+                };
+
+                errorWindow.text = "Selected item cannot be deleted!";
+                errorWindow.ShowDialog();
             }
             window.HideProgressBar();
         }
@@ -80,10 +87,23 @@ namespace Repair_Service
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to remove the selected client?", "Delete client",
-                MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-                DeleteClient();
+            //if (MessageBox.Show("Are you sure you want to remove the selected client?", "Delete client",
+            //    MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            //    DeleteClient();
 
+            DeleteWindow deleteWindow = new DeleteWindow
+            {
+                Owner = window
+            };
+
+            if (deleteWindow.ShowDialog() == true)
+            {
+                DeleteClient();
+            }
+            else
+            {
+                return;
+            }
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
