@@ -64,28 +64,19 @@
             Grid.Row="1"
             HorizontalAlignment="Center"
             VerticalAlignment="Center">
-            <Button
+            <materialDesign:PackIcon
+                Width="25"
                 Height="25"
-                Padding="0"
+                Margin="0,0,2,0"
                 VerticalAlignment="Bottom"
-                Background="Transparent"
-                BorderBrush="Transparent"
-                Click="SearchButton_Click"
-                Foreground="Black"
-                ToolTip="Search">
-                <materialDesign:PackIcon
-                    Width="25"
-                    Height="25"
-                    Margin="0,0,2,0"
-                    Kind="Search" />
-            </Button>
+                Kind="Search" />
             <TextBox
                 Name="TextBoxSearch"
                 Width="200"
                 materialDesign:HintAssist.Hint="Search"
                 materialDesign:TextFieldAssist.HasClearButton="True"
-                TextChanged="TextBoxSearch_TextChanged"
-                Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                TextChanged="TextBoxSearch_TextChanged" />
         </WrapPanel>
         <!--#endregion-->
 

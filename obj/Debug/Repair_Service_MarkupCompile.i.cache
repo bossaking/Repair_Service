@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\App.xaml
-3014114181
+30-1998269203
 
-78680076991
+78300383487
 50-1114326531
-DeleteWindow.xaml;ErrorWindow.xaml;Images\RLogo.xaml;PrintArchivedOrderWindow.xaml;Views\Devices\AddDevicePage.xaml;Views\Brands\AddEditBrandsPage.xaml;Views\Employees\AddEditEmployeesPage.xaml;Views\Problems\AddEditProblemsPage.xaml;Views\Roles\AddEditRolesPage.xaml;Views\Salons\AddEditSalonsPage.xaml;Views\Statuses\AddEditStatusesPage.xaml;Views\Types\AddEditTypesPage.xaml;Views\Archive\ArchieveDetailsPage.xaml;Views\Archive\ArchivePage.xaml;Views\Brands\BrandsPage.xaml;ChooseExisitingClientWindow.xaml;Views\Clients\ClientsPage.xaml;Views\Devices\DevicesPage.xaml;Views\Clients\EditClientPage.xaml;Views\Orders\EditPage.xaml;Views\Employees\EmployeesPage.xaml;Views\LoginPage.xaml;Views\Orders\MainPage.xaml;MainWindow.xaml;Views\Orders\NewReportmentPage.xaml;Views\Problems\ProblemsPage.xaml;Views\Roles\RolesPage.xaml;Views\Salons\SalonsPage.xaml;Views\Statuses\StatusesPage.xaml;Views\Types\TypesPage.xaml;
+Windows\DeleteWindow.xaml;Windows\ErrorWindow.xaml;Images\RLogo.xaml;Windows\PrintArchivedOrderWindow.xaml;Views\Devices\AddDevicePage.xaml;Views\Brands\AddEditBrandsPage.xaml;Views\Employees\AddEditEmployeesPage.xaml;Views\Problems\AddEditProblemsPage.xaml;Views\Roles\AddEditRolesPage.xaml;Views\Salons\AddEditSalonsPage.xaml;Views\Statuses\AddEditStatusesPage.xaml;Views\Types\AddEditTypesPage.xaml;Views\Archive\ArchieveDetailsPage.xaml;Views\Archive\ArchivePage.xaml;Views\Brands\BrandsPage.xaml;Windows\ChooseExisitingClientWindow.xaml;Views\Clients\ClientsPage.xaml;Views\Devices\DevicesPage.xaml;Views\Clients\EditClientPage.xaml;Views\Orders\EditOrderPage.xaml;Views\Employees\EmployeesPage.xaml;Views\LoginPage.xaml;Views\Orders\OrderPage.xaml;MainWindow.xaml;Views\Orders\AddOrderPage.xaml;Views\Problems\ProblemsPage.xaml;Views\Roles\RolesPage.xaml;Views\Salons\SalonsPage.xaml;Views\Statuses\StatusesPage.xaml;Views\Types\TypesPage.xaml;
 
 True
 

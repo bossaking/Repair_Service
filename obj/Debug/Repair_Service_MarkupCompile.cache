@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\apps\Repair_Service\obj\Debug\
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\
 Repair_Service
 none
 false
 DEBUG;TRACE
-D:\apps\Repair_Service\App.xaml
-281947144699
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\App.xaml
+30-1998269203
 
-75214421791
-501570038312
-Images\RLogo.xaml;PrintArchivedOrderWindow.xaml;Views\Devices\AddDevicePage.xaml;Views\Brands\AddEditBrandsPage.xaml;Views\Employees\AddEditEmployeesPage.xaml;Views\Problems\AddEditProblemsPage.xaml;Views\Roles\AddEditRolesPage.xaml;Views\Salons\AddEditSalonsPage.xaml;Views\Statuses\AddEditStatusesPage.xaml;Views\Types\AddEditTypesPage.xaml;Views\Archive\ArchieveDetailsPage.xaml;Views\Archive\ArchivePage.xaml;Views\Brands\BrandsPage.xaml;ChooseExisitingClientWindow.xaml;Views\Clients\ClientsPage.xaml;Views\Devices\DevicesPage.xaml;Views\Clients\EditClientPage.xaml;Views\Orders\EditPage.xaml;Views\Employees\EmployeesPage.xaml;Views\LoginPage.xaml;Views\Orders\MainPage.xaml;MainWindow.xaml;Views\Orders\NewReportmentPage.xaml;Views\Problems\ProblemsPage.xaml;Views\Roles\RolesPage.xaml;Views\Salons\SalonsPage.xaml;Views\Statuses\StatusesPage.xaml;Views\Types\TypesPage.xaml;
+771142742854
+50-1114326531
+Windows\DeleteWindow.xaml;Windows\ErrorWindow.xaml;Images\RLogo.xaml;Windows\PrintArchivedOrderWindow.xaml;Views\Devices\AddDevicePage.xaml;Views\Brands\AddEditBrandsPage.xaml;Views\Employees\AddEditEmployeesPage.xaml;Views\Problems\AddEditProblemsPage.xaml;Views\Roles\AddEditRolesPage.xaml;Views\Salons\AddEditSalonsPage.xaml;Views\Statuses\AddEditStatusesPage.xaml;Views\Types\AddEditTypesPage.xaml;Views\Archive\ArchieveDetailsPage.xaml;Views\Archive\ArchivePage.xaml;Views\Brands\BrandsPage.xaml;Windows\ChooseExisitingClientWindow.xaml;Views\Clients\ClientsPage.xaml;Views\Devices\DevicesPage.xaml;Views\Clients\EditClientPage.xaml;Views\Orders\EditOrderPage.xaml;Views\Employees\EmployeesPage.xaml;Views\LoginPage.xaml;Views\Orders\OrderPage.xaml;MainWindow.xaml;Views\Orders\AddOrderPage.xaml;Views\Problems\ProblemsPage.xaml;Views\Roles\RolesPage.xaml;Views\Salons\SalonsPage.xaml;Views\Statuses\StatusesPage.xaml;Views\Types\TypesPage.xaml;
 
 False
 

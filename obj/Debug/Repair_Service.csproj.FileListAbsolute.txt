@@ -165,8 +165,6 @@ C:\Users\ddgam\source\repos\Repair_Service\obj\Debug\MainPage.baml
 C:\Users\ddgam\source\repos\Repair_Service\obj\Debug\NewReportmentPage.baml
 C:\Users\ddgam\source\repos\Repair_Service\obj\Debug\EditPage.g.cs
 C:\Users\ddgam\source\repos\Repair_Service\obj\Debug\EditPage.baml
-C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\ChooseExisitingClientWindow.g.cs
-C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\ChooseExisitingClientWindow.baml
 C:\Users\ddgam\source\repos\Repair_Service\obj\Debug\AddDevicePage.g.cs
 C:\Users\ddgam\source\repos\Repair_Service\obj\Debug\ChooseExisitingClientWindow.g.cs
 C:\Users\ddgam\source\repos\Repair_Service\obj\Debug\ClientsPage.g.cs
@@ -243,12 +241,6 @@ D:\apps\Repair_Service\bin\Debug\NHibernate.Caches.SysCache.dll
 D:\apps\Repair_Service\bin\Debug\NHibernate.Caches.SysCache.xml
 C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\bin\Debug\NHibernate.Caches.SysCache.dll
 C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\bin\Debug\NHibernate.Caches.SysCache.xml
-C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\Views\Orders\MainPage.g.cs
-C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\Views\Orders\MainPage.baml
-C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\Views\Orders\EditPage.g.cs
-C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\Views\Orders\NewReportmentPage.g.cs
-C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\Views\Orders\EditPage.baml
-C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\Views\Orders\NewReportmentPage.baml
 C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\Views\Devices\AddDevicePage.g.cs
 C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\Views\Brands\AddEditBrandsPage.g.cs
 C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\Views\Employees\AddEditEmployeesPage.g.cs
@@ -480,9 +472,17 @@ C:\Users\Mateusz\Documents\GitHub\Repair_Service\obj\Debug\Repair_Service.csproj
 C:\Users\Mateusz\Documents\GitHub\Repair_Service\obj\Debug\Repair_Service.exe
 C:\Users\Mateusz\Documents\GitHub\Repair_Service\obj\Debug\Repair_Service.pdb
 C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\GeneratedInternalTypeHelper.g.cs
-C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\DeleteWindow.g.cs
-C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\PrintArchivedOrderWindow.g.cs
-C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\DeleteWindow.baml
-C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\PrintArchivedOrderWindow.baml
-C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\ErrorWindow.g.cs
-C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\ErrorWindow.baml
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\Windows\DeleteWindow.g.cs
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\Windows\ErrorWindow.g.cs
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\Windows\PrintArchivedOrderWindow.g.cs
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\Windows\ChooseExisitingClientWindow.g.cs
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\Windows\DeleteWindow.baml
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\Windows\ErrorWindow.baml
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\Windows\PrintArchivedOrderWindow.baml
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\Windows\ChooseExisitingClientWindow.baml
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\Views\Orders\EditOrderPage.g.cs
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\Views\Orders\OrderPage.g.cs
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\Views\Orders\AddOrderPage.g.cs
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\Views\Orders\EditOrderPage.baml
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\Views\Orders\OrderPage.baml
+C:\Studia\Moje\Semestr V\Systemy baz danych\Projekt\obj\Debug\Views\Orders\AddOrderPage.baml

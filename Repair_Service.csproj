@@ -156,14 +156,14 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controllers\Validator.cs" />
-    <Compile Include="DeleteWindow.xaml.cs">
+    <Compile Include="Windows\DeleteWindow.xaml.cs">
       <DependentUpon>DeleteWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ErrorWindow.xaml.cs">
+    <Compile Include="Windows\ErrorWindow.xaml.cs">
       <DependentUpon>ErrorWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\NonEmptyFieldRule.cs" />
-    <Compile Include="PrintArchivedOrderWindow.xaml.cs">
+    <Compile Include="Windows\PrintArchivedOrderWindow.xaml.cs">
       <DependentUpon>PrintArchivedOrderWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Devices\AddDevicePage.xaml.cs">
@@ -199,7 +199,7 @@
     <Compile Include="Views\Brands\BrandsPage.xaml.cs">
       <DependentUpon>BrandsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ChooseExisitingClientWindow.xaml.cs">
+    <Compile Include="Windows\ChooseExisitingClientWindow.xaml.cs">
       <DependentUpon>ChooseExisitingClientWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Clients\ClientsPage.xaml.cs">
@@ -231,8 +231,8 @@
     <Compile Include="Views\Clients\EditClientPage.xaml.cs">
       <DependentUpon>EditClientPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Orders\EditPage.xaml.cs">
-      <DependentUpon>EditPage.xaml</DependentUpon>
+    <Compile Include="Views\Orders\EditOrderPage.xaml.cs">
+      <DependentUpon>EditOrderPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Employees\EmployeesPage.xaml.cs">
       <DependentUpon>EmployeesPage.xaml</DependentUpon>
@@ -250,8 +250,8 @@
     <Compile Include="Views\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Orders\MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
+    <Compile Include="Views\Orders\OrderPage.xaml.cs">
+      <DependentUpon>OrderPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Brand.cs" />
     <Compile Include="Models\Device.cs" />
@@ -263,8 +263,8 @@
     <Compile Include="Models\Salon.cs" />
     <Compile Include="Models\Device_Type.cs" />
     <Compile Include="Models\Status.cs" />
-    <Compile Include="Views\Orders\NewReportmentPage.xaml.cs">
-      <DependentUpon>NewReportmentPage.xaml</DependentUpon>
+    <Compile Include="Views\Orders\AddOrderPage.xaml.cs">
+      <DependentUpon>AddOrderPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Problems\ProblemsPage.xaml.cs">
       <DependentUpon>ProblemsPage.xaml</DependentUpon>
@@ -281,11 +281,11 @@
     <Compile Include="Views\Types\TypesPage.xaml.cs">
       <DependentUpon>TypesPage.xaml</DependentUpon>
     </Compile>
-    <Page Include="DeleteWindow.xaml">
+    <Page Include="Windows\DeleteWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ErrorWindow.xaml">
+    <Page Include="Windows\ErrorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -294,7 +294,7 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Page>
-    <Page Include="PrintArchivedOrderWindow.xaml">
+    <Page Include="Windows\PrintArchivedOrderWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -342,7 +342,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ChooseExisitingClientWindow.xaml">
+    <Page Include="Windows\ChooseExisitingClientWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -358,7 +358,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Orders\EditPage.xaml">
+    <Page Include="Views\Orders\EditOrderPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -370,7 +370,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Orders\MainPage.xaml">
+    <Page Include="Views\Orders\OrderPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -386,7 +386,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\Orders\NewReportmentPage.xaml">
+    <Page Include="Views\Orders\AddOrderPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -443,9 +443,7 @@
   <ItemGroup>
     <Resource Include="Images\Logo.jpeg" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Windows\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Images\Icons\Repair Service icon.ico" />
   </ItemGroup>
